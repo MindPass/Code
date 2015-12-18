@@ -4,9 +4,9 @@ import os
 from oauth2 import *
 
 client_id="287712233618-7qua8pervof64n6g740gi8d0o7ifiu28.apps.googleusercontent.com"
-client_secret=input('Rentrer le client secret: ')
+client_secret=raw_input('Rentrer le client secret: ')
 
-auth_code="4/EIgXqRNROVGg6d4vH5tdWFIz2etWHCAzf9q4keYIDxx" #modifie par w précaution
+auth_code=raw_input("Auth code: ")
 
 tokens= open("tokens.txt", "a")
  
