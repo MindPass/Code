@@ -1,16 +1,15 @@
 # -*-coding:utf-8 -*
 
 import os
-import sys
+import imaplib
 import oauth2
-print(sys.path)
 
-user=input("prefixe gmail: ")
+user=raw_input("prefixe gmail: ")
 user= user +"@gmail.com"
 
 client_id="287712233618-7qua8pervof64n6g740gi8d0o7ifiu28.apps.googleusercontent.com"
-client_secret=input('Client secret: ')
-access_token=input("Access token: ")
+client_secret="rmaPILlhhe1XUi2Qm6dPXodN"#raw_input('Client secret: ')
+access_token="ya29.TgJxJU1XMol5TBhHAacRONjT70hQGV2cprhtHPuoqXwNSWGLCi_qkHqiZhVl3bF3Jqh_"#raw_input("Access token: ")
 
 auth_string=oauth2.GenerateOAuth2String(user, access_token, False)
 #print(auth_string)
