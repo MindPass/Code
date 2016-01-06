@@ -7,8 +7,7 @@ import oauth2
 user=raw_input("prefixe gmail: ")
 user= user +"@gmail.com"
 
-client_id="287712233618-7qua8pervof64n6g740gi8d0o7ifiu28.apps.googleusercontent.co
-client_secret=raw_input('Client secret: ')
+client_id="287712233618-7qua8pervof64n6g740gi8d0o7ifiu28.apps.googleusercontent.com"
 access_token=raw_input("Access token: ")
 
 auth_string=oauth2.GenerateOAuth2String(user, access_token, False)
