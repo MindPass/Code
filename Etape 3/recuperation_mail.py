@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import imaplib
+import imaplib, base64
 from email.parser import Parser
 
 #user=input('entrez le pseudo: ')+"@outlook.com"
@@ -21,21 +21,28 @@ result, data = imap_conn.fetch(latest_email_id, "(RFC822)") # fetch the email bo
 
 nombreMailsInbox = len(listeMailsInbox)
 
-raw_email = data[0][1].decode('unicode')
+raw_email = data[0][1].decode('utf-8')
 # .decode('utf-8') for python 3.x compatibility (bytes -> str)
 mail = Parser().parsestr(raw_email)
 
 imap_conn.close()
 imap_conn.logout()
 
+
+open("laposte.txt","w").close()
 email = open("laposte.txt", "w")
 email.write(raw_email)
 email.close()
 
 #print(mail['To'])
+#print(mail['From'])
+
+print(base64.decode(mail['Subject']))
+
+print(mail['Content-Type'])
+
 #print(mail['Date'])
-print("%s " % type(mail['From']))
-print(mail['From'])
+
 
 """
 print(mail['From'])
