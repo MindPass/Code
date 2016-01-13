@@ -12,9 +12,9 @@ cur.execute ("CREATE TABLE mails (expéditeur TEXT, destinataire TEXT, objet TEX
 """
 
 # INSERER UNE NOUVELLE LIGNE
-"""
+
 cur.execute ("INSERT INTO mails (expéditeur,destinataire,objet, contenu, date) VALUES('machintttt@lequipe.fr','FranckLopez@lol.fr', 'blabla', 'loret ipsum', '01/01/2016') ")
-"""
+
 
 # COMMIT
 conn.commit()
