@@ -82,6 +82,4 @@ Content-Transfer-Encoding: 8bit
 </table>
 </body>
 </html>
---=-uR/D7cxwZGnnPWkhUFUSEQ==--
-
-test paris
+--=-uR/D7cxwZGnnPWkhUFUSEQ==--
