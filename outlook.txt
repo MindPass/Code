@@ -1,3 +1,4 @@
+<<<<<<< e24ef659aa02b6f89aacee736ab6b2271174f439
 x-store-info: Ru8Mzrcu9BgQ2IiRwdjyVpSaWkQS4B9lFDdZ3W0jy3s=
 Authentication-Results: hotmail.com; spf=pass (sender IP is 65.54.190.161; identity alignment result is pass and alignment mode is relaxed) smtp.mailfrom=account-security-noreply@account.microsoft.com; dkim=none (identity alignment result is pass and alignment mode is relaxed) header.d=account.microsoft.com; x-hmca=pass header.id=account-security-noreply@account.microsoft.com
 X-SID-PRA: account-security-noreply@account.microsoft.com
@@ -83,3 +84,5 @@ Content-Transfer-Encoding: 8bit
 </body>
 </html>
 --=-uR/D7cxwZGnnPWkhUFUSEQ==--
+=======
+>>>>>>> Récupérer les infos importantes

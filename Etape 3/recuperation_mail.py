@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-import imaplib, getpass
+import imaplib
+from email.parser import Parser
 
 #user=input('entrez le pseudo: ')+"@outlook.com"
 user=input('entrez le pseudo: ')+"@laposte.net"
 mdp=input('Entrez le mdp: ') # à garder pendant le développement
-#mdp=getpass.getpass('Entrez le mdp: ') # pour cacher le mdp lors de la saisie
+
 
 #imap_conn = imaplib.IMAP4_SSL('imap-mail.outlook.com')
 imap_conn = imaplib.IMAP4_SSL('imap.laposte.net')
@@ -20,14 +21,26 @@ result, data = imap_conn.fetch(latest_email_id, "(RFC822)") # fetch the email bo
 
 nombreMailsInbox = len(listeMailsInbox)
 
-raw_email = data[0][1].decode('utf-8') # .decode('utf-8') for python 3.x compatibility (bytes -> str)
+raw_email = data[0][1].decode('unicode')
+# .decode('utf-8') for python 3.x compatibility (bytes -> str)
+mail = Parser().parsestr(raw_email)
 
 imap_conn.close()
 imap_conn.logout()
 
-#email = open("outlook.txt", "w")
 email = open("laposte.txt", "w")
 email.write(raw_email)
 email.close()
 
-print( "Le nombre de messages est : " + str(nombreMailsInbox) )
+#print(mail['To'])
+#print(mail['Date'])
+print("%s " % type(mail['From']))
+print(mail['From'])
+
+"""
+print(mail['From'])
+print(mail['Subject'])
+"""
+
+
+#print( "Le nombre de messages est : " + str(nombreMailsInbox) )
