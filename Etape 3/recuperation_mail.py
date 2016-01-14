@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-import imaplib, base64
+# coding: utf8
+import imaplib, urllib.parse, re
 from email.parser import Parser
 
 #user=input('entrez le pseudo: ')+"@outlook.com"
@@ -34,13 +34,26 @@ email = open("laposte.txt", "w")
 email.write(raw_email)
 email.close()
 
-#print(mail['To'])
-#print(mail['From'])
+"""
+print(mail['To'])
+print(mail['From'])
+"""
 
-print(base64.decode(mail['Subject']))
+""" méthode Alex """
+subject=mail['Subject']
+for i in range(len(subject)):
+    if subject[i] == "=":
+        subject = subject[:i] + "%" + subject[i+1:]
+    elif subject[i] == "_":
+        subject = subject[:i] + " " + subject[i+1:]
+# suppression des entêtes de merde avec une regexp
+subject = re.sub('(\n)*\%\?(UTF|utf)\-8\?(Q|q)\? *', '', subject, re.IGNORECASE)
+subject = re.sub('\?\%(\r\n)*', '', subject, re.IGNORECASE)
+subject=urllib.parse.unquote(subject) 
+print(subject) # <<<mail['Subject']>>> modifié avec le bon décodage et sans superflu
+""" fin méthode Alex """
 
-print(mail['Content-Type'])
-
+#print(mail['Content-Type'])
 #print(mail['Date'])
 
 
