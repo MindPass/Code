@@ -16,7 +16,7 @@ result, data = imap_conn.search(None, "ALL")
 ids = data[0] # data is a list.
 listeMailsInbox = ids.split() # ids is a space separated string
 
-latest_email_id = listeMailsInbox[-2] # get the latest
+latest_email_id = listeMailsInbox[6] # get the latest
 result, data = imap_conn.fetch(latest_email_id, "(RFC822)") # fetch the email body (RFC822) for the given ID
 
 nombreMailsInbox = len(listeMailsInbox)
@@ -34,9 +34,12 @@ f = FeedParser()
 f.feed(raw_email)
 rootMessage = f.close()
 
-corps=rootMessage.get_payload(0).get_payload(decode=True).decode('utf-8')
-# Récupérer le corps du mail en plain/text bien décodé
-
+if(rootMessage.is_multipart()):
+    corps=rootMessage.get_payload(0).get_payload(decode=True).decode('utf-8')
+    # Récupérer le corps du mail en plain/text bien décodé
+else:
+    corps=rootMessage.get_payload(decode=True).decode('latin-1').encode('utf-8').decode('utf-8')
+     
 """ si on veut tester dans un txt
 open("laposte.txt","w").close()
 email = open("laposte.txt", "w")
@@ -51,7 +54,7 @@ for i in range(len(subject)):
     if subject[i] == "=":
         subject = subject[:i] + "%" + subject[i+1:]
     elif subject[i] == "_":
-         subject = subject[:i] + " " + subject[i+1:]
+        subject = subject[:i] + " " + subject[i+1:]
 subject = re.sub('(\n)*\%\?(UTF|utf)\-8\?(Q|B|q|b)\? *', '', subject)
 subject = re.sub('\?\%(\r\n)*', '', subject)
 subject=urllib.parse.unquote(subject) 
@@ -64,3 +67,5 @@ print (corps)
 
 
 #print( "Le nombre de messages est : " + str(nombreMailsInbox) )
+
+    
