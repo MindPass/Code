@@ -1,299 +1,412 @@
-Return-Path: notification+kr4kwyxsx4xr@facebookmail.com
-Received: from lpn-prd-vrin012.prosodie (LHLO lpn-prd-vrin012)
- (10.128.63.13) by lpn-prd-mstr025 with LMTP; Thu, 14 Jan 2016 10:52:10
- +0100 (CET)
-Received: from lpn-prd-vrin012 (localhost [127.0.0.1])
-	by lpn-prd-vrin012 (Postfix) with ESMTP id 2178D1200D6
-	for <mindpasstest@laposte.net>; Thu, 14 Jan 2016 10:52:10 +0100 (CET)
-Received: from mx-out.facebook.com (66-220-155-141.outmail.facebook.com [66.220.155.141])
-	(using TLSv1 with cipher ECDHE-RSA-AES128-SHA (128/128 bits))
+Return-Path: bounce-md_30212984.5696982c.v1-f16bebe5305a49e0884b6fc845778503@mandrillapp.com
+Received: from lpn-prd-vrin016.laposte (LHLO lpn-prd-vrin016) (10.128.63.17)
+ by lpn-prd-mstr025 with LMTP; Wed, 13 Jan 2016 19:32:16 +0100 (CET)
+Received: from lpn-prd-vrin016 (localhost [127.0.0.1])
+	by lpn-prd-vrin016 (Postfix) with ESMTP id CD24C2C0086
+	for <mindpasstest@laposte.net>; Wed, 13 Jan 2016 19:32:16 +0100 (CET)
+Received: from mail128-247.atl41.mandrillapp.com (mail128-247.atl41.mandrillapp.com [198.2.128.247])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by lpn-prd-vrin012 (Postfix) with ESMTPS id 8C58F120035
-	for <mindpasstest@laposte.net>; Thu, 14 Jan 2016 10:52:06 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=facebookmail.com;
-	s=s1024-2013-q3; t=1452765124;
-	bh=tWx7wVLesPQM3ML+eIltdK5P7ZJHk3AM9ZWFdwMkvLY=;
-	h=Date:To:Subject:From:MIME-Version:Content-Type;
-	b=K/dPqhbtucXajID2AuA7Eg81oxfjigm30dR4dB+j322sBj6xbmO6Xcg8YvogDif6Y
-	 GwsCj/BU9DIKQMGNbE1Zg8Ek8tYVYIimQ3fAarrBxY9k+Vh0SfHFJjeImfWJfILBIJ
-	 TKDgLe7A3awcWyLs3WcrRcPvX8fqiYNaVUJuKvmI=
-Received: from facebook.com (i3c7nkhMHi5Y5nq+g2kVDEH6N2NEJNQN7lkhk+NPlSkJAXMj0X9u3IaJL4RseAJH 10.212.198.43)
- by facebook.com with Thrift id 7797e722baa411e5ad5d0002c9df1968-3a1f11f0;
- Thu, 14 Jan 2016 01:52:04 -0800
-X-Facebook: from 2401:db00:2130:10d5:face:0:2d:0 ([MTI3LjAuMC4x]) 
-	by async.facebook.com with HTTP (ZuckMail);
-Date: Thu, 14 Jan 2016 01:52:04 -0800
-To: Franck Lopez <mindpasstest@laposte.net>
-Subject: =?UTF-8?B?Vm91cyBhdmV6IHBsdXMg?=
- =?UTF-8?B?ZOKAmWFtaXMgc3VyIEZhY2U=?=
- =?UTF-8?B?Ym9vayBxdWUgdm91cyBu?=
- =?UTF-8?B?ZSBsZSBwZW5zZXo=?=
-X-Priority: 3
-X-Mailer: ZuckMail [version 1.00]
-From: "Facebook" <notification+kr4kwyxsx4xr@facebookmail.com>
-Reply-to: noreply <noreply@facebookmail.com>
-Errors-To: notification+kr4kwyxsx4xr@facebookmail.com
-X-Facebook-Notify: stale_contact_import; mailid=52947f39a2d22G5af59f36f342G529483d302ff4G32fGf096
-List-Unsubscribe: <https://www.facebook.com/o.php?k=AS3JSqcEZDBfD1Kr&u=100010984665922&mid=52947f39a2d22G5af59f36f342G529483d302ff4G32fGf096>
-X-FACEBOOK-PRIORITY: 1
-X-Auto-Response-Suppress: All
-Require-Recipient-Valid-Since: mindpasstest@laposte.net; Wednesday,  6 Jan 2016 18:26:32 +0000
-Message-ID: <cbd536b0e6f81f4536af19d2881ba230@async.facebook.com>
+	by lpn-prd-vrin016 (Postfix) with ESMTPS id 78CE12C0001
+	for <mindpasstest@laposte.net>; Wed, 13 Jan 2016 19:32:13 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=mail128-247.atl41.mandrillapp.com;
+ h=From:Sender:Subject:To:Message-Id:Date:MIME-Version:Content-Type; i=noreply@mail128-247.atl41.mandrillapp.com;
+ bh=juQ1H0lQ1LlgI/f6tI51C171Hvk=;
+ b=Gz3BQpH9rNHFMx7Y9Ty3vn9ss1sf9ZZIF+dTrJZ9suHEPgAT5vL+Vr5fHPJvSD548x4VSF9to2sE
+   ZnG50YOXcOIj61kMoLCARKvoU8oywMOicr5oTqE2Y5zv4jD1y0ofPgyuEM9GfTRATDbweQkS8pu3
+   939jhlqpFLnwnVqLEBI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mandrill; d=mail128-247.atl41.mandrillapp.com;
+ b=Cj2mi0Qtz4jyDodX7TLM3fj02vF6Grc28eAXOabAqo0BnbFO3VDlYJ5+L34vW32Z83/1CQINW/Lb
+   p/4ZZTI9Lk+fnlaNOXvJCrFl/BK3KqjvH1dmUDXXZQ9bj8pBz0FiI8s9TOaognZoMJW1xxQPBfVs
+   lt5Ohd1Y9SvHB7JSJbo=;
+Received: from pmta01.mandrill.prod.atl01.rsglab.com (127.0.0.1) by mail128-247.atl41.mandrillapp.com id hiqc2q1mquka for <mindpasstest@laposte.net>; Wed, 13 Jan 2016 18:32:12 +0000 (envelope-from <bounce-md_30212984.5696982c.v1-f16bebe5305a49e0884b6fc845778503@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1452709932; h=From : 
+ Sender : Subject : To : Message-Id : Date : MIME-Version : Content-Type 
+ : From : Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=rH2XX6OGEkTCVr8lqHgP4zvWiDJuRYcT/m6SzmBOlWY=; 
+ b=Lf0sSoKhZ6M02X7wQGh1iJI1t32ihH7m7JrFtk9bl6uo0IJ1LINm43ASkA+VRSUYZ+ogNn
+ Vu0f+Q25RcNeLZBVezcCnQDM0EmrYVLf40MTTCOQAfg7jZ5Je+a6W5XgEPgmVLoKiETfSPix
+ P+gtC/J2/36DsijHMMSZ7GWD3wkXA=
+From: Dailymotion Notifications <noreply@dailymotion.com>
+Sender: Dailymotion Notifications <noreply@mail128-247.atl41.mandrillapp.com>
+Subject: =?utf-8?Q?Quelques=20astuces=20pour=20publier=20vos=20prochaines=20vid=C3=A9os=20sur=20Dailymotion?=
+Received: from [188.65.124.27] by mandrillapp.com id f16bebe5305a49e0884b6fc845778503; Wed, 13 Jan 2016 18:32:12 +0000
+To: Mindpasstest <mindpasstest@laposte.net>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30212984.f16bebe5305a49e0884b6fc845778503
+X-Mandrill-User: md_30212984
+Message-Id: <30212984.20160113183212.5696982c32b528.67010729@mail128-247.atl41.mandrillapp.com>
+Date: Wed, 13 Jan 2016 18:32:12 +0000
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="b1_cbd536b0e6f81f4536af19d2881ba230"
-X-VR-SrcIP: 66.220.155.141
-X-VR-FullState: 13
-X-VR-Score: 1
-X-VR-Cause-1: gggruggvucftvghtrhhoucdtuddrfeekiedrkeelgddtjecutefuodetggdotefrodftvfcurfhrohhf
-X-VR-Cause-2: ihhlvgemucfntefrqffuvffgpdggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemucehtddt
-X-VR-Cause-3: necuhfgrtggvsghoohhkucdluddmnecujfgurhepfffvuffroffhrhgvjffkgggtsegrtdhjphertdej
-X-VR-Cause-4: necuhfhrohhmpedfhfgrtggvsghoohhkfdcuoehnohhtihhfihgtrghtihhonhdokhhrgehkfiihgihs
-X-VR-Cause-5: gieggihrsehfrggtvggsohhokhhmrghilhdrtghomheqnecuffhomhgrihhnpehfrggtvggsohhokhdr
-X-VR-Cause-6: tghomhenucfrrghrrghmpehhvghlohepmhigqdhouhhtrdhfrggtvggsohhokhdrtghomhdpihhnvght
-X-VR-Cause-7: peeiiedrvddvtddrudehhedrudeguddpmhgrihhlfhhrohhmpehnohhtihhfihgtrghtihhonhdokhhr
-X-VR-Cause-8: gehkfiihgihsgieggihrsehfrggtvggsohhokhhmrghilhdrtghomhdprhgtphhtthhopehmihhnughp
-X-VR-Cause-9: rghsshhtvghstheslhgrphhoshhtvgdrnhgvth
+Content-Type: multipart/alternative; boundary="_av-vWXS9eXstClJwi-nQx_UkQ"
+X-VR-SrcIP: 198.2.128.247
+X-VR-FullState: 11
+X-VR-Score: 17
+X-VR-Cause-1: gggruggvucftvghtrhhoucdtuddrfeekiedrkeejgdduudduucetufdoteggodetrfdotffvucfrrhho
+X-VR-Cause-2: fhhilhgvmecunfetrffquffvgfdpggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecuhedt
+X-VR-Cause-3: tdenucdnofetkffnkffpifculddujedmnecujfgurhephfhsuffvkfffgggtsegrtddtredttdejnecu
+X-VR-Cause-4: hfhrohhmpeffrghilhihmhhothhiohhnucfpohhtihhfihgtrghtihhonhhsuceonhhorhgvphhlhies
+X-VR-Cause-5: uggrihhlhihmohhtihhonhdrtghomheqnecuffhomhgrihhnpehmrghnughrihhllhgrphhprdgtohhm
+X-VR-Cause-6: necurfgrrhgrmhephhgvlhhopehmrghilhduvdekqddvgeejrdgrthhlgedurdhmrghnughrihhllhgr
+X-VR-Cause-7: phhprdgtohhmpdhinhgvthepudelkedrvddruddvkedrvdegjedpmhgrihhlfhhrohhmpegsohhunhgt
+X-VR-Cause-8: vgdqmhgupgeftddvuddvleekgedrheeileeileekvdgtrdhvuddqfhduiegsvggsvgehfedthegrgeel
+X-VR-Cause-9: vgdtkeekgegsiehftgekgeehjeejkeehtdefsehmrghnughrihhllhgrphhprdgtohhmpdhrtghpthht
+X-VR-Cause-10: ohepmhhinhguphgrshhsthgvshhtsehlrghpohhsthgvrdhnvght
+X-LIST-UNSUBSCRIBE: VG89TWluZHBhc3N0ZXN0IDxtaW5kcGFzc3Rlc3RAbGFwb3N0ZS5uZXQ+DQpGcm9tPURhaWx5bW90aW9uIE5vdGlmaWNhdGlvbnMgPG5vcmVwbHlAZGFpbHltb3Rpb24uY29tPg0K
+X-VR-Reason: 777
 X-VR-State: 0
-X-Antivirus: avast! (VPS 160114-0, 14/01/2016), Inbound message
-X-Antivirus-Status: Clean
 
-
---b1_cbd536b0e6f81f4536af19d2881ba230
-Content-Type: text/plain; charset="UTF-8"
+--_av-vWXS9eXstClJwi-nQx_UkQ
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-Acc=C3=A9dez =C3=A0 Facebook
-https://www.facebook.com/n/?medium=3Demail&mid=3D52947f39a2d22G5af59f36f34=
-2G529483d302ff4G32fGf096&bcode=3D1.1452765124.AblUt6-7EEgEO7a5&n_m=3Dmindp=
-asstest%40laposte.net&lloc=3D2nd_cta
+Gagner du temps
 
+Notre Mass Uploader est une application qui vous permet de publier vos vid=
+=C3=A9os sur votre cha=C3=AEne sans vous rendre sur le site. G=C3=A9rez en =
+toute simplicit=C3=A9 tous les aspects de la publication de plusieurs vid=
+=C3=A9os en m=C3=AAme temps directement sur Dailymotion.
+O=C3=B9 que vous soyez
 
-Retrouver des amis
-https://www.facebook.com/n/?find-friends%2F&medium=3Demail&mid=3D52947f39a=
-2d22G5af59f36f342G529483d302ff4G32fGf096&bcode=3D1.1452765124.AblUt6-7EEgE=
-O7a5&n_m=3Dmindpasstest%40laposte.net&lloc=3D1st_cta
+Publiez vos vid=C3=A9os directement depuis votre mobile via notre applicati=
+on Android. Une fois que votre vid=C3=A9o est pr=C3=AAte, il vous suffit de=
+ cliquer sur le bouton de partage, puis sur l'ic=C3=B4ne Dailymotion. Vous =
+n'avez plus qu'=C3=A0 ajouter un titre et un descriptif, votre vid=C3=A9o e=
+st pr=C3=AAte =C3=A0 =C3=AAtre publi=C3=A9e. T=C3=A9l=C3=A9chargez l'applic=
+ation https://play.google.com/store/apps/details?id=3Dcom.dailymotion.daily=
+motion.
 
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+Bo=C3=AEte =C3=A0 outils
 
-Bonjour Franck,
+Filmez, =C3=A9ditez et partagez vos vid=C3=A9os depuis votre iPhone. Impres=
+sionnez vos amis en rajoutant des filtres, des effets sp=C3=A9ciaux etc. L'=
+application Dailymotion Cam=C3=A9ra est une v=C3=A9ritable bo=C3=AEte =C3=
+=A0 outils pour tous les vid=C3=A9astes. T=C3=A9l=C3=A9chargez l'applicatio=
+n https://itunes.apple.com/us/app/dailymotion-camera-capture/id671857483?mt=
+=3D8.
 
-La fa=C3=A7on la plus rapide de retrouver tous vos amis sur Facebook est =
-d=E2=80=99importer vos contacts de bo=C3=AEte mail. Une fois vos contacts =
-import=C3=A9s, vous pourrez les afficher, les g=C3=A9rer ou les supprimer =
-quand vous le souhaitez.
-
-Merci,
-L=E2=80=99=C3=A9quipe Facebook
-
-
-
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-Ce message a =C3=A9t=C3=A9 envoy=C3=A9 =C3=A0 mindpasstest@laposte.net. Si =
-vous ne souhaitez plus recevoir ces messages de la part de Facebook, =
-veuillez suivre le lien ci-dessous pour annuler votre abonnement.
-https://www.facebook.com/o.php?k=3DAS3JSqcEZDBfD1Kr&u=3D100010984665922&mi=
-d=3D52947f39a2d22G5af59f36f342G529483d302ff4G32fGf096
-Facebook, Inc., Attention: Community Support, Menlo Park, CA 94025
-
-
---b1_cbd536b0e6f81f4536af19d2881ba230
-Content-Type: text/html; charset="UTF-8"
+--_av-vWXS9eXstClJwi-nQx_UkQ
+Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional =
-//EN"><html><head><title>Facebook</title><meta http-equiv=3D"Content-Type" =
-content=3D"text/html; charset=3Dutf-8" /><style>@media all and (max-width: =
-480px){*[class].ib_t{min-width:100% =
-!important}*[class].ib_row{display:block =
-!important}*[class].ib_ext{display:block !important;padding:10px 0 5px =
-0;vertical-align:top !important;width:100% =
-!important}*[class].ib_img,*[class].ib_mid{vertical-align:top =
-!important}*[class].mb_blk{display:block =
-!important;padding-bottom:10px;width:100% =
-!important}*[class].mb_hide{display:none =
-!important}*[class].mb_inl{display:inline !important}}</style></head><body =
-style=3D"margin:0;padding:0;" dir=3D"ltr" bgcolor=3D"#ffffff"><table =
-cellspacing=3D"0" cellpadding=3D"0" width=3D"100%;" id=3D"email_table" =
-border=3D"0" style=3D"border-collapse:collapse;"><tr><td =
-id=3D"email_content" style=3D"font-family:Helvetica Neue,Helvetica,Lucida =
-Grande,tahoma,verdana,arial,sans-serif;background:#ffffff;"><table =
-cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
-style=3D"border-collapse:collapse;"><tr style=3D""><td height=3D"20" =
-style=3D"line-height:20px;" colspan=3D"3">&nbsp;</td></tr><tr><td =
-height=3D"1" colspan=3D"3" style=3D"line-height:1px;"><span =
-style=3D"color:#FFFFFF;display:none !important;font-size:1px;">=C2=A0 La =
-fa=C3=A7on la plus rapide de retrouver tous vos amis sur Facebook est =
-d=E2=80=99importer vos contacts de bo=C3=AEte mail. Une fois vos contacts =
-import=C3=A9s, vous pourrez les afficher, les g=C3=A9rer ou les supprimer =
-quand vous le souhaitez. =C2=A0 =C2=A0 =C2=A0=C2=A0=C2=A0 =
-=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =
-=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0</span></td></tr><tr><td width=3D"15" =
-style=3D"display:block;width:15px;">&nbsp;&nbsp;&nbsp;</td><td =
-style=3D""><table cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
-style=3D"border-collapse:collapse;"><tr style=3D""><td height=3D"16" =
-style=3D"line-height:16px;" colspan=3D"3">&nbsp;</td></tr><tr><td =
-width=3D"32" align=3D"left" valign=3D"middle" =
-style=3D"height:32;line-height:0px;"><a href=3D"https://www.facebook.com/n=
-/?find-friends%2Fbrowser%2F&amp;medium=3Demail&amp;mid=3D52947f39a2d22G5af=
-59f36f342G529483d302ff4G32fGf096&amp;bcode=3D1.1452765124.AblUt6-7EEgEO7a5=
-&amp;n_m=3Dmindpasstest%40laposte.net&amp;lloc=3Dlogo" =
-style=3D"color:#3b5998;text-decoration:none;"><img =
-src=3D"https://fbstatic-a.akamaihd.net/rsrc.php/v2/yk/r/_2faPUZhPI6.png" =
-width=3D"32" height=3D"32" style=3D"border:0;" /></a></td><td width=3D"15" =
-style=3D"display:block;width:15px;">&nbsp;&nbsp;&nbsp;</td><td =
-width=3D"100%" style=3D""><a href=3D"https://www.facebook.com/n/?find-frie=
-nds%2Fbrowser%2F&amp;medium=3Demail&amp;mid=3D52947f39a2d22G5af59f36f342G5=
-29483d302ff4G32fGf096&amp;bcode=3D1.1452765124.AblUt6-7EEgEO7a5&amp;n_m=3D=
-mindpasstest%40laposte.net&amp;lloc=3Dlogo" =
-style=3D"color:#3b5998;text-decoration:none;font-family:Helvetica =
-Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;font-size:19p=
-x;line-height:32px;">Retrouvez plus d=E2=80=99amis.</a></td></tr><tr =
-style=3D"border-bottom:solid 1px #e5e5e5;"><td height=3D"16" =
-style=3D"line-height:16px;" colspan=3D"3">&nbsp;</td></tr></table></td><td =
-width=3D"15" =
-style=3D"display:block;width:15px;">&nbsp;&nbsp;&nbsp;</td></tr><tr><td =
-width=3D"15" =
-style=3D"display:block;width:15px;">&nbsp;&nbsp;&nbsp;</td><td =
-style=3D""><table cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
-style=3D"border-collapse:collapse;"><tr style=3D""><td height=3D"28" =
-style=3D"line-height:28px;">&nbsp;</td></tr><tr><td style=3D""><span =
-style=3D"font-family:Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana=
-,arial,sans-serif;font-size:16px;line-height:21px;color:#141823;">La =
-fa=C3=A7on la plus rapide de retrouver tous vos amis sur Facebook est =
-d=E2=80=99importer vos contacts de bo=C3=AEte mail. Une fois vos contacts =
-import=C3=A9s, vous pourrez les afficher, les g=C3=A9rer ou les supprimer =
-quand vous le souhaitez.</span></td></tr><tr style=3D""><td height=3D"14" =
-style=3D"line-height:14px;">&nbsp;</td></tr><tr><td style=3D""><table =
-cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
-style=3D"border-collapse:collapse;"><tr><td style=3D"font-size:11px;font-f=
-amily:LucidaGrande,tahoma,verdana,arial,sans-serif;border:solid 1px =
-#e5e5e5;border-radius:2px;padding:10px;display:block;"><table =
-cellspacing=3D"0" cellpadding=3D"0" align=3D"center" =
-style=3D"border-collapse:collapse;"><tr style=3D""><td height=3D"10" =
-style=3D"line-height:10px;">&nbsp;</td></tr><tr><td style=3D"padding:0px =
-5px;"><a href=3D"https://www.facebook.com/n/?find-friends%2F&amp;ci_force_=
-domain=3Dlaposte.net&amp;medium=3Demail&amp;mid=3D52947f39a2d22G5af59f36f3=
-42G529483d302ff4G32fGf096&amp;bcode=3D1.1452765124.AblUt6-7EEgEO7a5&amp;n_=
-m=3Dmindpasstest%40laposte.net&amp;lloc=3Dci_icon" =
-style=3D"color:#3b5998;text-decoration:none;"><img =
-src=3D"https://fbstatic-a.akamaihd.net/rsrc.php/v2/yk/r/SuObvp619Se.png" =
-style=3D"border:0;" /></a></td><td width=3D"10" =
-style=3D"display:block;width:10px;">&nbsp;&nbsp;&nbsp;</td><td =
-style=3D"padding:0px 5px;"><a href=3D"https://www.facebook.com/n/?find-fri=
-ends%2F&amp;ci_force_domain=3Dhotmail.fr&amp;medium=3Demail&amp;mid=3D5294=
-7f39a2d22G5af59f36f342G529483d302ff4G32fGf096&amp;bcode=3D1.1452765124.Abl=
-Ut6-7EEgEO7a5&amp;n_m=3Dmindpasstest%40laposte.net&amp;lloc=3Dci_icon" =
-style=3D"color:#3b5998;text-decoration:none;"><img =
-src=3D"https://fbstatic-a.akamaihd.net/rsrc.php/v2/y7/r/uJp--bC2lfN.png" =
-style=3D"border:0;" /></a></td><td width=3D"10" =
-style=3D"display:block;width:10px;">&nbsp;&nbsp;&nbsp;</td><td =
-style=3D"padding:0px 5px;"><a href=3D"https://www.facebook.com/n/?find-fri=
-ends%2F&amp;ci_force_domain=3Dyahoo.fr&amp;medium=3Demail&amp;mid=3D52947f=
-39a2d22G5af59f36f342G529483d302ff4G32fGf096&amp;bcode=3D1.1452765124.AblUt=
-6-7EEgEO7a5&amp;n_m=3Dmindpasstest%40laposte.net&amp;lloc=3Dci_icon" =
-style=3D"color:#3b5998;text-decoration:none;"><img =
-src=3D"https://fbstatic-a.akamaihd.net/rsrc.php/v2/yQ/r/xw1RqifKmjN.png" =
-style=3D"border:0;" /></a></td><td width=3D"10" =
-style=3D"display:block;width:10px;">&nbsp;&nbsp;&nbsp;</td><td =
-style=3D"padding:0px 5px;"><a href=3D"https://www.facebook.com/n/?find-fri=
-ends%2F&amp;ci_force_domain=3Dorange.fr&amp;medium=3Demail&amp;mid=3D52947=
-f39a2d22G5af59f36f342G529483d302ff4G32fGf096&amp;bcode=3D1.1452765124.AblU=
-t6-7EEgEO7a5&amp;n_m=3Dmindpasstest%40laposte.net&amp;lloc=3Dci_icon" =
-style=3D"color:#3b5998;text-decoration:none;"><img =
-src=3D"https://fbstatic-a.akamaihd.net/rsrc.php/v2/yf/r/Qbinnozl8aT.png" =
-style=3D"border:0;" /></a></td><td width=3D"10" =
-style=3D"display:block;width:10px;">&nbsp;&nbsp;&nbsp;</td><td =
-style=3D"padding:0px 5px;"><a href=3D"https://www.facebook.com/n/?find-fri=
-ends%2F&amp;ci_force_domain=3DWLM&amp;medium=3Demail&amp;mid=3D52947f39a2d=
-22G5af59f36f342G529483d302ff4G32fGf096&amp;bcode=3D1.1452765124.AblUt6-7EE=
-gEO7a5&amp;n_m=3Dmindpasstest%40laposte.net&amp;lloc=3Dci_icon" =
-style=3D"color:#3b5998;text-decoration:none;"><img =
-src=3D"https://fbstatic-a.akamaihd.net/rsrc.php/v2/yi/r/MIgnV-oEJdu.png" =
-style=3D"border:0;" /></a></td><td width=3D"10" =
-style=3D"display:block;width:10px;">&nbsp;&nbsp;&nbsp;</td></tr><tr =
-style=3D""><td height=3D"10" style=3D"line-height:10px;">&nbsp;</td></tr><=
-/table></td></tr></table></td></tr><tr style=3D""><td height=3D"14" =
-style=3D"line-height:14px;">&nbsp;</td></tr></table></td><td width=3D"15" =
-style=3D"display:block;width:15px;">&nbsp;&nbsp;&nbsp;</td></tr><tr><td =
-width=3D"15" =
-style=3D"display:block;width:15px;">&nbsp;&nbsp;&nbsp;</td><td =
-style=3D""><table cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
-style=3D"border-collapse:collapse;"><tr style=3D""><td height=3D"2" =
-style=3D"line-height:2px;" colspan=3D"3">&nbsp;</td></tr><tr><td =
-class=3D"mb_blk" style=3D""><a href=3D"https://www.facebook.com/n/?medium=
-=3Demail&amp;mid=3D52947f39a2d22G5af59f36f342G529483d302ff4G32fGf096&amp;b=
-code=3D1.1452765124.AblUt6-7EEgEO7a5&amp;n_m=3Dmindpasstest%40laposte.net&=
-amp;lloc=3D2nd_cta" style=3D"color:#3b5998;text-decoration:none;"><table =
-cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
-style=3D"border-collapse:collapse;"><tr><td style=3D"border-collapse:colla=
-pse;border-radius:2px;text-align:center;display:block;border:solid 1px =
-#c9ccd1;box-shadow:0 1px 0 rgba(0, 0, 0, =
-0.04);background:#f6f7f8;padding:7px 16px 11px 16px;"><a =
-href=3D"https://www.facebook.com/n/?medium=3Demail&amp;mid=3D52947f39a2d22=
-G5af59f36f342G529483d302ff4G32fGf096&amp;bcode=3D1.1452765124.AblUt6-7EEgE=
-O7a5&amp;n_m=3Dmindpasstest%40laposte.net&amp;lloc=3D2nd_cta" =
-style=3D"color:#3b5998;text-decoration:none;display:block;"><center><font =
-size=3D"3"><span style=3D"font-family:Helvetica Neue,Helvetica,Lucida =
-Grande,tahoma,verdana,arial,sans-serif;white-space:nowrap;font-weight:bold=
-;vertical-align:middle;color:#525252;text-shadow:0 1px 0 =
-#ffffff;font-size:14px;line-height:14px;">Acc=C3=A9dez&nbsp;=C3=A0&nbsp;Fa=
-cebook</span></font></center></a></td></tr></table></a></td><td =
-width=3D"10" style=3D"display:block;width:10px;" =
-class=3D"mb_hide">&nbsp;&nbsp;&nbsp;</td><td class=3D"mb_blk" =
-style=3D""><a href=3D"https://www.facebook.com/n/?find-friends%2F&amp;medi=
-um=3Demail&amp;mid=3D52947f39a2d22G5af59f36f342G529483d302ff4G32fGf096&amp=
-;bcode=3D1.1452765124.AblUt6-7EEgEO7a5&amp;n_m=3Dmindpasstest%40laposte.ne=
-t&amp;lloc=3D1st_cta" style=3D"color:#3b5998;text-decoration:none;"><table =
-cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
-style=3D"border-collapse:collapse;"><tr><td style=3D"border-collapse:colla=
-pse;border-radius:2px;text-align:center;display:block;border:solid 1px =
-#344c80;box-shadow:inset 0 1px 1px rgba(255, 255, 255, 0.1),0 1px 0 =
-rgba(0, 0, 0, 0.1);background:#4c649b;padding:7px 16px 11px 16px;"><a =
-href=3D"https://www.facebook.com/n/?find-friends%2F&amp;medium=3Demail&amp=
-;mid=3D52947f39a2d22G5af59f36f342G529483d302ff4G32fGf096&amp;bcode=3D1.145=
-2765124.AblUt6-7EEgEO7a5&amp;n_m=3Dmindpasstest%40laposte.net&amp;lloc=3D1=
-st_cta" =
-style=3D"color:#3b5998;text-decoration:none;display:block;"><center><font =
-size=3D"3"><span style=3D"font-family:Helvetica Neue,Helvetica,Lucida =
-Grande,tahoma,verdana,arial,sans-serif;white-space:nowrap;font-weight:bold=
-;vertical-align:middle;color:#ffffff;text-shadow:0 -1px 0 =
-#415686;font-size:14px;line-height:14px;">Retrouver&nbsp;des&nbsp;amis</sp=
-an></font></center></a></td></tr></table></a></td><td width=3D"100%" =
-class=3D"mb_hide" style=3D""></td></tr><tr style=3D""><td height=3D"32" =
-style=3D"line-height:32px;" colspan=3D"3">&nbsp;</td></tr></table></td><td =
-width=3D"15" =
-style=3D"display:block;width:15px;">&nbsp;&nbsp;&nbsp;</td></tr><tr><td =
-width=3D"15" =
-style=3D"display:block;width:15px;">&nbsp;&nbsp;&nbsp;</td><td =
-style=3D""><table cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
-style=3D"border-collapse:collapse;"><tr style=3D"border-top:solid 1px =
-#e5e5e5;"><td height=3D"16" =
-style=3D"line-height:16px;">&nbsp;</td></tr><tr><td =
-style=3D"font-family:Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana=
-,arial,sans-serif;font-size:11px;color:#aaaaaa;line-height:16px;">Ce =
-message a =C3=A9t=C3=A9 envoy=C3=A9 =C3=A0 <a =
-href=3D"mailto:mindpasstest&#064;laposte.net" style=3D"color:#3b5998;text-=
-decoration:none;">mindpasstest&#064;laposte.net</a>. Si vous ne souhaitez =
-plus recevoir ces messages de la part de Facebook, veuillez <a =
-href=3D"https://www.facebook.com/o.php?k=3DAS3JSqcEZDBfD1Kr&amp;u=3D100010=
-984665922&amp;mid=3D52947f39a2d22G5af59f36f342G529483d302ff4G32fGf096" =
-style=3D"color:#3b5998;text-decoration:none;">vous d=C3=A9sabonner</a>.<br =
-/>Facebook, Inc., Attention: Community Support, Menlo Park, CA =
-94025</td></tr></table></td><td width=3D"15" =
-style=3D"display:block;width:15px;">&nbsp;&nbsp;&nbsp;</td></tr><tr =
-style=3D""><td height=3D"20" style=3D"line-height:20px;" =
-colspan=3D"3">&nbsp;</td></tr></table><span style=3D""><img =
-src=3D"https://www.facebook.com/email_open_log_pic.php?mid=3D52947f39a2d22=
-G5af59f36f342G529483d302ff4G32fGf096" =
-style=3D"border:0;width:1px;height:1px;" =
-/></span></td></tr></table></body></html>
+<html style=3D"font-family: Verdana, sans-serif; font-weight: normal;">
+        <head>
+            <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dutf-8" />
+            <meta name=3D"viewport" content=3D"initial-scale=3D1.0" />
+                    </head>
 
+        <body>
 
+        
+        <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"wi=
+dth: 100%; padding: 0; border: 0; color: #333333; font-size: 13px;">
+            <tr>
+                <td bgcolor=3D"#f7f7f7" align=3D"center">
+                                            <table cellspacing=3D"0" cellpa=
+dding=3D"0" border=3D"0" style=3D"width: 640px; padding: 0; border: 0; colo=
+r: #333333; font-size: 13px;" width=3D"640">
+                                            <tr>
+                            <td>
+                                <table align=3D"center" cellspacing=3D"0" c=
+ellpadding=3D"0" border=3D"0" style=3D"color: #444444; font-size: 13px; mar=
+gin-top: 10px; padding: 0; border: 0;" width=3D"100%">
+                                    <tr>
+                                        <td class=3D"dm-brand-background" h=
+eight=3D"60" style=3D"height: 60px; padding-left: 20px; background-color: #=
+0066DC;" valign=3D"middle" bgcolor=3D"#0066DC">
+                                            <a href=3D"http://mandrillapp.c=
+om/track/click/30212984/www.dailymotion.com?p=3DeyJzIjoia3dEVFVydWlCaS1QLXR=
+naTRtZ3NBdGpGODJBIiwidiI6MSwicCI6IntcInVcIjozMDIxMjk4NCxcInZcIjoxLFwidXJsXC=
+I6XCJodHRwOlxcXC9cXFwvd3d3LmRhaWx5bW90aW9uLmNvbVxcXC9hbGVydFxcXC9jXFxcL1NHO=
+TNWRzlWY0d4dllXUSUzRFxcXC8wXFxcL01BJTNEJTNEXFxcL01qQXhOaTB3TVMwd05nJTNEJTNE=
+XFxcL3BpeC5naWY_bD1hSFIwY0RvdkwzZDNkeTVrWVdsc2VXMXZkR2x2Ymk1amIyMHZcIixcIml=
+kXCI6XCJmMTZiZWJlNTMwNWE0OWUwODg0YjZmYzg0NTc3ODUwM1wiLFwidXJsX2lkc1wiOltcIj=
+QxZDRlZjI2N2EwMmZkOGM2ZDYyY2E1NTY2Y2YxODk4YjU2OWFhNTVcIl19In0" style=3D"tex=
+t-decoration: none; color: #FFF;" target=3D"_blank">
+                                                <img src=3D"http://static1.=
+dmcdn.net/images/newsletter/template/header-logo-new.png.v28e694cd21698f709=
+" alt=3D"Dailymotion" border=3D"0" style=3D"display: block; border: 0;" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width=3D"100%" align=3D"=
+center" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"color: #4=
+44444; font-size: 13px; padding: 0; border: 0;">
+                                                <tr>
+                                                    <td style=3D"padding: 0=
+">
+                                                            <table width=3D=
+"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"color: #44=
+4444; line-height: 18px; background: #FFFFFF; padding: 0; border: 0; font-s=
+ize: 13px;">
+        <tr>
+            <td>
+                <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" wid=
+th=3D"100%" bgcolor=3D"#FFF" style=3D"padding: 0; border: 0; color: #333333=
+; font-size: 13px;">
+    <tr>
+        <td style=3D"padding: 20px">
+            <table class=3D"force-row" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" align=3D"left" style=3D"width: 204px; padding: 0; border: 0; c=
+olor: #333333; font-size: 13px;" width=3D"204">
+                <tr>
+                    <td class=3D"col col-padding col-border-bottom" valign=
+=3D"top">
+                                                    <h2 style=3D"margin: 0 =
+0 20px 0; font-size: 20px; color: #000000; font-weight: normal;">Gagnez du =
+temps</h2>
+                                                                           =
+                                 <img src=3D"http://static1.dmcdn.net/image=
+s/newsletter/how_to_upload/block-1.png.v761d83f3c1aaa86d9" alt=3D"Gagnez du=
+ temps" width=3D"100%" style=3D"margin-bottom: 20px; border: 0;" border=3D"=
+0" />
+                                                                           =
+ <div>Notre <a href=3D"http://mandrillapp.com/track/click/30212984/www.dail=
+ymotion.com?p=3DeyJzIjoiY1EwaXR4V01SUlRpalpCTnBnRzg2OGlNM080IiwidiI6MSwicCI=
+6IntcInVcIjozMDIxMjk4NCxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmRhaW=
+x5bW90aW9uLmNvbVxcXC9lblxcXC9leHRyYXNcXFwvbWFzc191cGxvYWRlcj91dG1fc291cmNlP=
+W5vdGlmaWNhdGlvbiZ1dG1fbWVkaXVtPWRpcmVjdCZ1dG1fY2FtcGFpZ249aG93dG91cGxvYWRc=
+IixcImlkXCI6XCJmMTZiZWJlNTMwNWE0OWUwODg0YjZmYzg0NTc3ODUwM1wiLFwidXJsX2lkc1w=
+iOltcIjQxZDRlZjI2N2EwMmZkOGM2ZDYyY2E1NTY2Y2YxODk4YjU2OWFhNTVcIl19In0" style=
+=3D"text-decoration: none; color: #0079B8">Mass Uploader</a> est une applic=
+ation qui vous permet de publier vos vid=C3=A9os sur votre cha=C3=AEne sans=
+ vous rendre sur le site. G=C3=A9rez en toute simplicit=C3=A9 tous les aspe=
+cts de la publication de plusieurs vid=C3=A9os en m=C3=AAme temps directeme=
+nt sur Dailymotion.</div>
+                                            </td>
+                    <td width=3D"20" style=3D"width: 20px">&nbsp;</td>
+                </tr>
+            </table>
+            <table class=3D"force-row" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" align=3D"left" style=3D"width: 204px; padding: 0; border: 0; c=
+olor: #333333; font-size: 13px;" width=3D"204">
+                <tr>
+                    <td class=3D"col col-padding col-border-bottom" valign=
+=3D"top">
+                                                    <h2 style=3D"margin: 0 =
+0 20px 0; font-size: 20px; color: #000000; font-weight: normal;">O=C3=B9 qu=
+e vous soyez</h2>
+                                                                           =
+                                 <img src=3D"http://static1.dmcdn.net/image=
+s/newsletter/how_to_upload/block-2.png.v62dc26690fb3aedb9" alt=3D"O=C3=B9 q=
+ue vous soyez" width=3D"100%" style=3D"margin-bottom: 20px; border: 0;" bor=
+der=3D"0" />
+                                                                           =
+ <div>Publiez vos vid=C3=A9os directement depuis votre mobile via notre app=
+lication Android. Une fois que votre vid=C3=A9o est pr=C3=AAte, il vous suf=
+fit de cliquer sur le bouton de partage, puis sur l'ic=C3=B4ne Dailymotion.=
+ Vous n'avez plus qu'=C3=A0 ajouter un titre, un descriptif et votre vid=C3=
+=A9o est pr=C3=AAte =C3=A0 =C3=AAtre publi=C3=A9e !<a href=3D"http://mandri=
+llapp.com/track/click/30212984/play.google.com?p=3DeyJzIjoiODhTdU42YnRLWHhz=
+S2FuM3dXMEJfZi13eEhZIiwidiI6MSwicCI6IntcInVcIjozMDIxMjk4NCxcInZcIjoxLFwidXJ=
+sXCI6XCJodHRwczpcXFwvXFxcL3BsYXkuZ29vZ2xlLmNvbVxcXC9zdG9yZVxcXC9hcHBzXFxcL2=
+RldGFpbHM_aWQ9Y29tLmRhaWx5bW90aW9uLmRhaWx5bW90aW9uJnV0bV9zb3VyY2U9bm90aWZpY=
+2F0aW9uJnV0bV9tZWRpdW09ZGlyZWN0JnV0bV9jYW1wYWlnbj1ob3d0b3VwbG9hZFwiLFwiaWRc=
+IjpcImYxNmJlYmU1MzA1YTQ5ZTA4ODRiNmZjODQ1Nzc4NTAzXCIsXCJ1cmxfaWRzXCI6W1wiYWR=
+hMmMxYmYzZWVmMDAyNDcwM2IyYjU3ZjJjZjI3N2E1NjAyMmI1NVwiXX0ifQ" style=3D"text-=
+decoration: none; color: #0079B8">T=C3=A9l=C3=A9chargez l'application</a>.<=
+/div>
+                                            </td>
+                    <td width=3D"20" style=3D"width: 20px">&nbsp;</td>
+                </tr>
+            </table>
+            <table class=3D"force-row" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" align=3D"left" style=3D"width: 192px; padding: 0; border: 0; c=
+olor: #333333; font-size: 13px;" width=3D"192">
+                <tr>
+                    <td class=3D"col col-padding" valign=3D"top">
+                                                    <h2 style=3D"margin: 0 =
+0 20px 0; font-size: 20px; color: #000000; font-weight: normal;">La bo=C3=
+=AEte =C3=A0 outils</h2>
+                                                                           =
+                                 <img src=3D"http://static1.dmcdn.net/image=
+s/newsletter/how_to_upload/block-3.png.vcface42052eee2939" alt=3D"La bo=C3=
+=AEte =C3=A0 outils" width=3D"100%" style=3D"margin-bottom: 20px; border: 0=
+;" border=3D"0" />
+                                                                           =
+ <div>Filmer, =C3=A9diter et partager toutes vos vid=C3=A9os depuis votre i=
+Phone. Impressionner vos amis en rajoutant des filtres, des effets sp=C3=A9=
+ciaux etc. L'application Dailymotion Cam=C3=A9ra est une v=C3=A9ritable bo=
+=C3=AEte =C3=A0 outils pour tous les vid=C3=A9astes. <a href=3D"http://mand=
+rillapp.com/track/click/30212984/itunes.apple.com?p=3DeyJzIjoiUWpzdG1fLW94T=
+HctYU1naHhOdHI5NFZHdkc4IiwidiI6MSwicCI6IntcInVcIjozMDIxMjk4NCxcInZcIjoxLFwi=
+dXJsXCI6XCJodHRwczpcXFwvXFxcL2l0dW5lcy5hcHBsZS5jb21cXFwvdXNcXFwvYXBwXFxcL2R=
+haWx5bW90aW9uLWNhbWVyYS1jYXB0dXJlXFxcL2lkNjcxODU3NDgzP210PTgmdXRtX3NvdXJjZT=
+1ub3RpZmljYXRpb24mdXRtX21lZGl1bT1kaXJlY3QmdXRtX2NhbXBhaWduPWhvd3RvdXBsb2FkX=
+CIsXCJpZFwiOlwiZjE2YmViZTUzMDVhNDllMDg4NGI2ZmM4NDU3Nzg1MDNcIixcInVybF9pZHNc=
+IjpbXCI4N2YwNDhhZmQyMzg0ZmRjZDU4YzE3MDNiNmU3OGZiMWQ2ZTVmN2Q4XCJdfSJ9" style=
+=3D"text-decoration: none; color: #0079B8">T=C3=A9l=C3=A9chargez l'applicat=
+ion</a>.</div>
+                                            </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+            </td>
+        </tr>
+    </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor=3D"#dddddd">
+                                            <table align=3D"center" cellspa=
+cing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"92%" bgcolor=3D"#dddddd"=
+ style=3D"padding: 0; border: 0; color: #333333; font-size: 13px;">
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding: 10px 0">
+                                                        <table class=3D"for=
+ce-row" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"left" sty=
+le=3D"width: 40%; padding: 0; border: 0; color: #333333; font-size: 13px;" =
+width=3D"40%">
+                                                            <tr>
+                                                                <td class=
+=3D"col">
+                                                                    <span s=
+tyle=3D"color: #404040; font-size: 13px">
+                                                                        Fol=
+low us on                                                                  =
+  </span>
+                                                                    <a href=
+=3D"http://mandrillapp.com/track/click/30212984/www.dailymotion.com?p=3DeyJ=
+zIjoieWFSc0tTUFZaY2tSczNCeDNjemlsWnVPUUZFIiwidiI6MSwicCI6IntcInVcIjozMDIxMj=
+k4NCxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmRhaWx5bW90aW9uLmNvbVxcX=
+C9hbGVydFxcXC9jXFxcL1NHOTNWRzlWY0d4dllXUSUzRFxcXC8wXFxcL01BJTNEJTNEXFxcL01q=
+QXhOaTB3TVMwd05nJTNEJTNEXFxcL3BpeC5naWY_bD1hSFIwY0RvdkwzZDNkeTVtWVdObFltOXZ=
+heTVqYjIwdlpHRnBiSGx0YjNScGIyNCUzRFwiLFwiaWRcIjpcImYxNmJlYmU1MzA1YTQ5ZTA4OD=
+RiNmZjODQ1Nzc4NTAzXCIsXCJ1cmxfaWRzXCI6W1wiNDFkNGVmMjY3YTAyZmQ4YzZkNjJjYTU1N=
+jZjZjE4OThiNTY5YWE1NVwiXX0ifQ" style=3D"color: #404040; padding-left: 10px"=
+ target=3D"_blank"><img src=3D"http://static1.dmcdn.net/images/newsletter/t=
+emplate/facebook.png.vf7ede5cf0e635c269" alt=3D"Facebook" height=3D"30" wid=
+th=3D"30" style=3D"border: 0;" align=3D"absmiddle" border=3D"0" /></a>
+                                                                    <a href=
+=3D"http://mandrillapp.com/track/click/30212984/www.dailymotion.com?p=3DeyJ=
+zIjoiZzAyem8tZElyX1N4V19fNFM4cDlYS29YTWxjIiwidiI6MSwicCI6IntcInVcIjozMDIxMj=
+k4NCxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmRhaWx5bW90aW9uLmNvbVxcX=
+C9hbGVydFxcXC9jXFxcL1NHOTNWRzlWY0d4dllXUSUzRFxcXC8wXFxcL01BJTNEJTNEXFxcL01q=
+QXhOaTB3TVMwd05nJTNEJTNEXFxcL3BpeC5naWY_bD1hSFIwY0RvdkwzZDNkeTUwZDJsMGRHVnl=
+MbU52YlM5RVlXbHNlVzF2ZEdsdmJsVlRRUSUzRCUzRFwiLFwiaWRcIjpcImYxNmJlYmU1MzA1YT=
+Q5ZTA4ODRiNmZjODQ1Nzc4NTAzXCIsXCJ1cmxfaWRzXCI6W1wiNDFkNGVmMjY3YTAyZmQ4YzZkN=
+jJjYTU1NjZjZjE4OThiNTY5YWE1NVwiXX0ifQ" style=3D"color: #404040; padding-lef=
+t: 10px" target=3D"_blank"><img src=3D"http://static1.dmcdn.net/images/news=
+letter/template/twitter.png.v8c991bd4d54aeef59" alt=3D"Twitter" height=3D"3=
+0" width=3D"30" style=3D"border: 0;" align=3D"absmiddle" border=3D"0" /></a=
+>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table class=3D"for=
+ce-row" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 60=
+%; padding: 0; border: 0; color: #333333; font-size: 13px;" width=3D"60%">
+                                                            <tr>
+                                                                <td class=
+=3D"col col-padding" align=3D"right">
+                                                                    <span s=
+tyle=3D"color: #404040; font-size: 13px">
+                                                                        T=
+=C3=A9l=C3=A9charger l'application                                         =
+                           </span>
+                                                                    <a href=
+=3D"http://mandrillapp.com/track/click/30212984/www.dailymotion.com?p=3DeyJ=
+zIjoicXhncmwzR0prM1ZOWkhfNnI4akFoUFhZVFNvIiwidiI6MSwicCI6IntcInVcIjozMDIxMj=
+k4NCxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmRhaWx5bW90aW9uLmNvbVxcX=
+C9hbGVydFxcXC9jXFxcL1NHOTNWRzlWY0d4dllXUSUzRFxcXC8wXFxcL01BJTNEJTNEXFxcL01q=
+QXhOaTB3TVMwd05nJTNEJTNEXFxcL3BpeC5naWY_bD1hSFIwY0RvdkwybDBkVzVsY3k1aGNIQnN=
+aUzVqYjIwdllYQndMMlJoYVd4NWJXOTBhVzl1TDJsa016TTJPVGM0TURReFwiLFwiaWRcIjpcIm=
+YxNmJlYmU1MzA1YTQ5ZTA4ODRiNmZjODQ1Nzc4NTAzXCIsXCJ1cmxfaWRzXCI6W1wiNDFkNGVmM=
+jY3YTAyZmQ4YzZkNjJjYTU1NjZjZjE4OThiNTY5YWE1NVwiXX0ifQ" style=3D"text-decora=
+tion: none; color: #404040; padding-left: 10px;" target=3D"_blank"><img src=
+=3D"http://static1.dmcdn.net/images/newsletter/template/appstore.png.v58d77=
+f11c34ccce89" alt=3D"App Store" height=3D"30" width=3D"30" style=3D"border:=
+ 0;" align=3D"absmiddle" border=3D"0" /></a>
+                                                                    <a href=
+=3D"http://mandrillapp.com/track/click/30212984/www.dailymotion.com?p=3DeyJ=
+zIjoic0laeFFPTDJxZEMyY1BFcGdNVEd4SWtnUU1vIiwidiI6MSwicCI6IntcInVcIjozMDIxMj=
+k4NCxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmRhaWx5bW90aW9uLmNvbVxcX=
+C9hbGVydFxcXC9jXFxcL1NHOTNWRzlWY0d4dllXUSUzRFxcXC8wXFxcL01BJTNEJTNEXFxcL01q=
+QXhOaTB3TVMwd05nJTNEJTNEXFxcL3BpeC5naWY_bD1hSFIwY0hNNkx5OXdiR0Y1TG1kdmIyZHN=
+aUzVqYjIwdmMzUnZjbVV2WVhCd2N5OWtaWFJoYVd4elAybGtQV052YlM1a1lXbHNlVzF2ZEdsdm=
+JpNWtZV2xzZVcxdmRHbHZiZyUzRCUzRFwiLFwiaWRcIjpcImYxNmJlYmU1MzA1YTQ5ZTA4ODRiN=
+mZjODQ1Nzc4NTAzXCIsXCJ1cmxfaWRzXCI6W1wiNDFkNGVmMjY3YTAyZmQ4YzZkNjJjYTU1NjZj=
+ZjE4OThiNTY5YWE1NVwiXX0ifQ" style=3D"text-decoration: none; color: #404040;=
+ padding-left: 10px;" target=3D"_blank"><img src=3D"http://static1.dmcdn.ne=
+t/images/newsletter/template/googleplay.png.v3a0c977311f74e5e9" alt=3D"Goog=
+le Play" height=3D"30" width=3D"30" style=3D"border: 0;" align=3D"absmiddle=
+" border=3D"0" /></a>
+                                                                    <a href=
+=3D"http://mandrillapp.com/track/click/30212984/www.dailymotion.com?p=3DeyJ=
+zIjoiVGJTbWV2S2lyVXdpZkhqYkc5NGwyNVNfMHdnIiwidiI6MSwicCI6IntcInVcIjozMDIxMj=
+k4NCxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmRhaWx5bW90aW9uLmNvbVxcX=
+C9hbGVydFxcXC9jXFxcL1NHOTNWRzlWY0d4dllXUSUzRFxcXC8wXFxcL01BJTNEJTNEXFxcL01q=
+QXhOaTB3TVMwd05nJTNEJTNEXFxcL3BpeC5naWY_bD1hSFIwY0RvdkwzZDNkeTUzYVc1a2IzZHp=
+jR2h2Ym1VdVkyOXRMMlZ1TFZWVEwyRndjSE12WlRkbVkySXhPVGN0WTJNeVpTMWxNREV4TFRnMU=
+5HTXRNREF5TXpka1pUSmtZamxsXCIsXCJpZFwiOlwiZjE2YmViZTUzMDVhNDllMDg4NGI2ZmM4N=
+DU3Nzg1MDNcIixcInVybF9pZHNcIjpbXCI0MWQ0ZWYyNjdhMDJmZDhjNmQ2MmNhNTU2NmNmMTg5=
+OGI1NjlhYTU1XCJdfSJ9" style=3D"text-decoration: none; color: #404040; paddi=
+ng-left: 10px;" target=3D"_blank"><img src=3D"http://static1.dmcdn.net/imag=
+es/newsletter/template/windowsstore.png.v7d3b3d400ba6b7c49" alt=3D"Windows =
+Store" height=3D"30" width=3D"30" style=3D"border: 0;" align=3D"absmiddle" =
+border=3D"0" /></a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
 
---b1_cbd536b0e6f81f4536af19d2881ba230--
+                                <table align=3D"center" cellspacing=3D"0" c=
+ellpadding=3D"0" border=3D"0" style=3D"color: #404040; font-size: 11px; mar=
+gin-bottom: 20px; padding: 0; border: 0;" width=3D"100%">
+                                    <tr>
+                                        <td style=3D"line-height: 18px;">
+                                                                           =
+                                                     <table cellspacing=3D"=
+0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D"padding: 0; borde=
+r: 0; color: #333333; font-size: 13px;">
+                                                <tr>
+                                                    <td style=3D"padding: 2=
+0px">
+                                                        
+                                                                           =
+                                                                           =
+                      <a href=3D"http://mandrillapp.com/track/click/3021298=
+4/www.dailymotion.com?p=3DeyJzIjoid1R3b0k2OUp0T0lEVkdTNHVHMEQzaTNMYm9JIiwid=
+iI6MSwicCI6IntcInVcIjozMDIxMjk4NCxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwv=
+d3d3LmRhaWx5bW90aW9uLmNvbVxcXC9zZXR0aW5nc1xcXC9ub3RpZmljYXRpb25zP3V0bV9zb3V=
+yY2U9bm90aWZpY2F0aW9uJnV0bV9tZWRpdW09ZGlyZWN0JnV0bV9jYW1wYWlnbj1ob3d0b3VwbG=
+9hZFwiLFwiaWRcIjpcImYxNmJlYmU1MzA1YTQ5ZTA4ODRiNmZjODQ1Nzc4NTAzXCIsXCJ1cmxfa=
+WRzXCI6W1wiZjU3YmZkYzQzY2Y0Zjk5Y2ZmNDE0ZGQzNGI5OTI2MWNmZjMzN2JjNVwiXX0ifQ" =
+style=3D"color: #3784CC">Manage your alerts.</a>
+                                                                           =
+                                                                           =
+              </td>
+                                                </tr>
+                                            </table>
+                                                                           =
+                                                                           =
+              </td>
+                                    </tr>
+                                </table>
+                                                            </td>
+                        </tr>
+                    </table>
+                </table></td>
+            </tr>
+        </table>
+        <img src=3D"http://mandrillapp.com/track/open.php?u=3D30212984&id=
+=3Df16bebe5305a49e0884b6fc845778503" height=3D"1" width=3D"1"></body>
+    </html>
+
+--_av-vWXS9eXstClJwi-nQx_UkQ--
 
