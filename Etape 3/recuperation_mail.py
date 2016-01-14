@@ -47,8 +47,8 @@ for i in range(len(subject)):
     elif subject[i] == "_":
         subject = subject[:i] + " " + subject[i+1:]
 # suppression des entêtes de merde avec une regexp
-subject = re.sub('(\n)*\%\?(UTF|utf)\-8\?(Q|q)\? *', '', subject, re.IGNORECASE)
-subject = re.sub('\?\%(\r\n)*', '', subject, re.IGNORECASE)
+subject = re.sub('(\n)*\%\?(UTF|utf)\-8\?(Q|B|q|b)\? *', '', subject)
+subject = re.sub('\?\%(\r\n)*', '', subject)
 subject=urllib.parse.unquote(subject) 
 print(subject) # <<<mail['Subject']>>> modifié avec le bon décodage et sans superflu
 """ fin méthode Alex """
