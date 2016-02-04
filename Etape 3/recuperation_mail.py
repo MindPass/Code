@@ -35,11 +35,11 @@ f.feed(raw_email)
 rootMessage = f.close()
 
 if(rootMessage.is_multipart()):
-    corps=rootMessage.get_payload(0).get_payload(decode=True).decode('utf-8')
-    # Récupérer le corps du mail en plain/text bien décodé
+	corps=rootMessage.get_payload(0).get_payload(decode=True).decode('utf-8')
+	# Récupérer le corps du mail en plain/text bien décodé
 else:
-    corps=rootMessage.get_payload(decode=True).decode('latin-1').encode('utf-8').decode('utf-8')
-     
+	corps=rootMessage.get_payload(decode=True).decode('latin-1').encode('utf-8').decode('utf-8')
+	 
 """ si on veut tester dans un txt
 open("laposte.txt","w").close()
 email = open("laposte.txt", "w")
@@ -51,10 +51,10 @@ email.close()
 # suppression des entêtes de merde avec une regexp
 subject=rootMessage.get('Subject')
 for i in range(len(subject)):
-    if subject[i] == "=":
-        subject = subject[:i] + "%" + subject[i+1:]
-    elif subject[i] == "_":
-        subject = subject[:i] + " " + subject[i+1:]
+	if subject[i] == "=":
+		subject = subject[:i] + "%" + subject[i+1:]
+	elif subject[i] == "_":
+		subject = subject[:i] + " " + subject[i+1:]
 subject = re.sub('(\n)*\%\?(UTF|utf)\-8\?(Q|B|q|b)\? *', '', subject)
 subject = re.sub('\?\%(\r\n)*', '', subject)
 subject=urllib.parse.unquote(subject) 
@@ -68,4 +68,4 @@ print (corps)
 
 #print( "Le nombre de messages est : " + str(nombreMailsInbox) )
 
-    
+	

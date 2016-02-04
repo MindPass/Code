@@ -1,4 +1,6 @@
-# coding: utf8
+# -*- coding: utf-8 -*-
+
+
 import imaplib, urllib.parse, re, sqlite3
 from email.parser import FeedParser
 
@@ -33,7 +35,7 @@ nombreMailsInbox = len(listeMailsInbox)
 print("Nombre de mail:%s" % nombreMailsInbox)
 
 for k in range(nombreMailsInbox):
-    
+   
     latest_email_id = listeMailsInbox[k]
     id_message=latest_email_id.decode('utf-8')
     

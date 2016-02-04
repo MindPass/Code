@@ -6,10 +6,10 @@ conn = sqlite3.connect(fichierDonnees)
 cur = conn.cursor()
 
 # SUPPRIMER ET RECREEER LA BDD
-cur.execute ("CREATE TABLE IF NOT EXISTS mails (id TEXT, expéditeur TEXT, sujet TEXT, contenu TEXT, date TEXT)")
+cur.execute ("CREATE TABLE IF NOT EXISTS test (id TEXT, expéditeur TEXT, sujet TEXT, contenu TEXT, date TEXT)")
 
 # INSERER UNE NOUVELLE LIGNE
-"""
+
 values=[
         ('1','Fraisebook',' Une nouvelle fraise', 'voila', '15 janvier'),
         ('2','Fraisebook',' Une nouvelle fraise', 'voila', '15 janvier'),
@@ -18,7 +18,7 @@ values=[
         ('5','Fraisebook',' Une nouvelle fraise', 'voila', '15 janvier'),
         ]
 cur.executemany("INSERT INTO mails (id, expéditeur, sujet, contenu, date) VALUES(?,?,?,?,?)", values)
-"""
+
 
 # COMMIT
 conn.commit()
