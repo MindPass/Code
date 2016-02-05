@@ -23,13 +23,30 @@ class Table(object):
 		self.conn=sqlite3.connect(Table.bdd)
 		self.cur=self.conn.cursor()
 		self.cur.execute ("CREATE TABLE IF NOT EXISTS "+self.name+\
-			" (id TEXT, expéditeur TEXT, sujet TEXT, contenu TEXT, date TEXT)")
+			" (id TEXT, expediteur TEXT, sujet TEXT, contenu TEXT, date TEXT)")
 		#se prémunir d'une injection SQL reste à faire
 
-	def addMail(self, id_message, expediteur, sujet, contenu, date):
-		self.cur.execute("INSERT INTO "+self.name+" (id, expéditeur, sujet, contenu, date) VALUES(?,?,?,?,?)",\
-			(id_message, expediteur, sujet, contenu, date))
-		#se prémunir d'une injection SQL reste à faire
+	def addMail(self, arg):
+		"""
+		Prend une liste, tuple ou dictionnaire en paramètre.
+		"""
+		if(isinstance(arg, list) or isinstance(arg, tuple)):
+			self.cur.execute("INSERT INTO "+self.name+" (id, expediteur, sujet, contenu, date) VALUES(?,?,?,?,?)",\
+				(arg[0], arg[1], arg[2], arg[3], arg[4]))
+		elif(isinstance(arg, dict)):
+			self.cur.execute("INSERT INTO "+self.name+" (id, expediteur, sujet, contenu, date) VALUES(?,?,?,?,?)",\
+				(arg["id"], arg["expediteur"], arg["sujet"], arg["contenu"], arg["date"]))
+		else:
+			print("L'argument passé à addMail n'est pas du bon type")
+
+
+	def getId(self):
+		self.cur.execute("SELECT id FROM "+self.name)
+		self.tab=self.cur.fetchall()
+		self.liste_id=[]
+		for element in self.tab:
+		    self.liste_id.append(element[0])
+		return(self.liste_id)
 
 	def saveAndClose(self):
 		self.conn.commit()

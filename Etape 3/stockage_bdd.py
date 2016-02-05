@@ -12,7 +12,7 @@ mdp=input('Entrez le mdp: ') # à garder pendant le développement
 fichierDonnees = "maBaseDeDonnees.sq3"
 conn = sqlite3.connect(fichierDonnees)
 cur = conn.cursor()
-cur.execute ("CREATE TABLE IF NOT EXISTS mails (id TEXT, expéditeur TEXT, sujet TEXT, contenu TEXT, date TEXT)")
+cur.execute ("CREATE TABLE IF NOT EXISTS mails (id TEXT, expediteur TEXT, sujet TEXT, contenu TEXT, date TEXT)")
 
 # RECUPERATION DES ID
 cur.execute("SELECT id FROM mails")
@@ -74,7 +74,7 @@ for k in range(nombreMailsInbox):
         date =rootMessage.get('Date')
         exp=rootMessage.get('From')
         
-        cur.execute("INSERT INTO mails (id, expéditeur, sujet, contenu, date) VALUES(?,?,?,?,?)",(id_message, exp, subject, corps, date))
+        cur.execute("INSERT INTO mails (id, expediteur, sujet, contenu, date) VALUES(?,?,?,?,?)",(id_message, exp, subject, corps, date))
         
         print("From:"+exp+" ID:"+id_message)
     

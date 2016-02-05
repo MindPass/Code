@@ -4,5 +4,6 @@ from librairie import *
 
 
 table= Table("mindpasstest_laposte")
-table.addMail("11", "martial","frites","très bon", "20/58/25")
+table.addMail(["12","un_autre","chocolaté","content","152124"])
+print(table.getId())
 table.saveAndClose()
