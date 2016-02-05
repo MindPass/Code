@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import sqlite3
+import imaplib, urllib.parse, re, sqlite3
+from email.parser import FeedParser
 
 class Table(object):
 	"""docstring for Table
@@ -53,6 +54,7 @@ class Table(object):
 	def close(self):
 		self.cur.close()
 		self.conn.close()
+
 
 def Table_Externe(object):
 
