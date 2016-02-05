@@ -11,7 +11,7 @@ class Table(object):
 	-bdd est le fichier .sq3 contenant les données.
 	D'instance:
 	-name, qui peut être l'adresse donnée.
-	-conn et cur, sont des variables permettant de se conecter à une bdd en sqlite (.sq3).
+	-conn et cur, sont des variables permettant de se conecter à la bdd en sqlite (.sq3).
 	"""
 
 	bdd="MaBaseDeDonnes.sq3"
@@ -26,7 +26,7 @@ class Table(object):
 			" (id TEXT, expediteur TEXT, sujet TEXT, contenu TEXT, date TEXT)")
 		#se prémunir d'une injection SQL reste à faire
 
-	def addMail(self, arg):
+	def add_mail(self, arg):
 		"""
 		Prend une liste, tuple ou dictionnaire en paramètre.
 		"""
@@ -39,8 +39,7 @@ class Table(object):
 		else:
 			print("L'argument passé à addMail n'est pas du bon type")
 
-
-	def getId(self):
+	def get_id(self):
 		self.cur.execute("SELECT id FROM "+self.name)
 		self.tab=self.cur.fetchall()
 		self.liste_id=[]
@@ -48,9 +47,12 @@ class Table(object):
 		    self.liste_id.append(element[0])
 		return(self.liste_id)
 
-	def saveAndClose(self):
+	def save(self):
 		self.conn.commit()
+	
+	def close(self):
 		self.cur.close()
 		self.conn.close()
 
+def Table_Externe(object):
 
