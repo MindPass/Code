@@ -5,6 +5,7 @@
 ---
 
 Aide-mémoire pour rédiger un ReadMe.md (MarkDown).
+- [x] Ce lien est parfait pour connâitre comment insérer ceci : :+1: :sparkles: :camel: :tada: :rocket: :metal: :octocat:. C'est **[ICI](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)**
 
 Liste à puces :
 
@@ -24,7 +25,7 @@ def __init__(self):
   vous_connaissez_la_musique
 ```
 
-Copyright © 2016 [@alexandredomain](https://github.com/alexandredomain). Tous droits réservés. ♥
+Copyright © 2016 @alexandredomain. Tous droits réservés.
 
 ---
 
