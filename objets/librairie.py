@@ -38,7 +38,7 @@ class Table(object):
 			self.cur.execute("INSERT INTO "+self.name+" (id, expediteur, sujet, contenu, date) VALUES(?,?,?,?,?)",\
 				(arg["id"], arg["expediteur"], arg["sujet"], arg["contenu"], arg["date"]))
 		else:
-			print("L'argument passé à addMail n'est pas du bon type")
+			print("L'argument passé à add_mail n'est pas du bon type")
 
 	def liste_id(self):
 		self.cur.execute("SELECT id FROM "+self.name)
@@ -74,7 +74,12 @@ class TableExterne(object):
 	def liste_id(self):
 		result, data = self.imap_conn.search(None, "ALL") # result vaut 'OK' si la requête a aboutie
 		ids = data[0] # data est une liste à un élément, contenant les id des mails
-		liste_mails_inbox = ids.split() # ids est une string d'id séparés par un espace
+		liste_mails_inbox = ids.split()
+		
+		for k in range(len(liste_mails_inbox)):
+			if(type(liste_mails_inbox[k])=="bytes"):
+				liste_mails_inbox[k] =liste_mails_inbox[k].decode('utf-8')
+			 # ids est une string d'id séparés par un espace
 		return(liste_mails_inbox)
 
 	def raw_email(self, email_id):
@@ -113,7 +118,7 @@ class TableExterne(object):
 		exp=rootMessage.get('From')
 
 		email_liste=[]
-		email_liste.extend((email_id,exp, corps, date))
+		email_liste.extend((email_id, exp, subject, corps, date))
 
 		return(email_liste)
 

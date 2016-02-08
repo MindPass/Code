@@ -19,7 +19,9 @@ for id_email in tableExterne.liste_id():
 	if(id_email not in table.liste_id()):
 		try:
 			table.add_mail(tableExterne.email_as_list(id_email))
+			print(id_email)
 		except Exception as e:
+			print("Il y a eu une erreur pour l'id suivant:" +id_email)
 			fichier_erreurs.write(str(id_email)+"-Erreur : %s \n" % e)
 
 
