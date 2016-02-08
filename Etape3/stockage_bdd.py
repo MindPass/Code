@@ -25,12 +25,15 @@ for element in tab:
 imap_conn = imaplib.IMAP4_SSL('imap.laposte.net')
 imap_conn.debug = 4
 imap_conn.login(user,mdp)
-dansInbox=imap_conn.select('INBOX')
+imap_conn.select('INBOX') #renvoie ('OK', b'nombredemaildanslaboite')
 
-result, data = imap_conn.search(None, "ALL")
-ids = data[0] # data is a list.
-listeMailsInbox = ids.split() # ids is a space separated string
+
+
+result, data = imap_conn.search(None, "ALL") # result vaut 'OK' si la requête a aboutie
+ids = data[0] # data est une liste à un élément, contenant les id des mails
+listeMailsInbox = ids.split() # ids est une string d'id séparés par un espace
 nombreMailsInbox = len(listeMailsInbox)
+
 
 print("Nombre de mail:%s" % nombreMailsInbox)
 
@@ -58,7 +61,7 @@ for k in range(nombreMailsInbox):
         else:
             corps=rootMessage.get_payload(decode=True).decode('utf-8')
 
-        """ méthode Alex """
+        #méthode Alex 
         # suppression des entêtes de merde avec une regexp
         subject=rootMessage.get('Subject')
         for i in range(len(subject)):
@@ -69,7 +72,7 @@ for k in range(nombreMailsInbox):
         subject = re.sub('(\n)*\%\?(UTF|utf)\-8\?(Q|B|q|b)\? *', '', subject)
         subject = re.sub('\?\%(\r\n)*', '', subject)
         subject=urllib.parse.unquote(subject) 
-        """fin méthode Alex """
+        #fin méthode Alex
         
         date =rootMessage.get('Date')
         exp=rootMessage.get('From')

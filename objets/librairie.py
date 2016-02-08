@@ -23,8 +23,8 @@ class Table(object):
 		self.name = name
 		self.conn=sqlite3.connect(Table.bdd)
 		self.cur=self.conn.cursor()
-		self.cur.execute ("CREATE TABLE IF NOT EXISTS "+self.name+\
-			" (id TEXT, expediteur TEXT, sujet TEXT, contenu TEXT, date TEXT)")
+		cmd="CREATE TABLE IF NOT EXISTS %s (id TEXT, expediteur TEXT, sujet TEXT, contenu TEXT, date TEXT)" % name
+		self.cur.execute (cmd)
 		#se prémunir d'une injection SQL reste à faire
 
 	def add_mail(self, arg):
@@ -40,13 +40,13 @@ class Table(object):
 		else:
 			print("L'argument passé à addMail n'est pas du bon type")
 
-	def get_id(self):
+	def liste_id(self):
 		self.cur.execute("SELECT id FROM "+self.name)
-		self.tab=self.cur.fetchall()
-		self.liste_id=[]
-		for element in self.tab:
-		    self.liste_id.append(element[0])
-		return(self.liste_id)
+		tab=self.cur.fetchall()
+		liste_id=[]
+		for element in tab:
+			liste_id.append(element[0])
+		return(liste_id)
 
 	def save(self):
 		self.conn.commit()
@@ -56,5 +56,95 @@ class Table(object):
 		self.conn.close()
 
 
-def Table_Externe(object):
+class TableExterne(object):
+	"""docstring for TableExterne
+
+
+	"""
+	def __init__(self, connexion, user, mdp):
+		self.connexion = connexion
+		self.user= user
+		self.mdp= mdp
+
+		self.imap_conn = imaplib.IMAP4_SSL(connexion)
+		self.imap_conn.debug = 4
+		self.imap_conn.login(user,mdp)
+		self.imap_conn.select('INBOX') #renvoie ('OK', b'nombredemaildanslaboite')
+
+	def liste_id(self):
+		result, data = self.imap_conn.search(None, "ALL") # result vaut 'OK' si la requête a aboutie
+		ids = data[0] # data est une liste à un élément, contenant les id des mails
+		liste_mails_inbox = ids.split() # ids est une string d'id séparés par un espace
+		return(liste_mails_inbox)
+
+	def raw_email(self, email_id):
+		result, data = self.imap_conn.fetch(email_id, "(RFC822)") 
+		# fetch the email body (RFC822) for the given ID
+		raw_email = data[0][1].decode('utf-8')
+		return(raw_email)
+
+	def email_as_list(self, email_id):
+		raw_email=self.raw_email(email_id)
+		f = FeedParser()
+		f.feed(raw_email)
+		rootMessage = f.close()
+		
+		if(rootMessage.is_multipart()):
+			corps=rootMessage.get_payload(0).get_payload(decode=True).decode('utf-8')
+			# Récupérer le corps du mail en plain/text bien décodé
+		else:
+			corps=rootMessage.get_payload(decode=True).decode('utf-8')
+
+		subject=rootMessage.get('Subject') 
+		#méthode Alex 
+		# suppression des entêtes inutiles avec une regexp
+		subject=rootMessage.get('Subject')
+		for i in range(len(subject)):
+			if subject[i] == "=":
+				subject = subject[:i] + "%" + subject[i+1:]
+			elif subject[i] == "_":
+				subject = subject[:i] + " " + subject[i+1:]
+		subject = re.sub('(\n)*\%\?(UTF|utf)\-8\?(Q|B|q|b)\? *', '', subject)
+		subject = re.sub('\?\%(\r\n)*', '', subject)
+		subject=urllib.parse.unquote(subject) 
+		#fin méthode Alex
+
+		date =rootMessage.get('Date')
+		exp=rootMessage.get('From')
+
+		email_liste=[]
+		email_liste.extend((email_id,exp, corps, date))
+
+		return(email_liste)
+
+
+	def close(self):
+		self.imap_conn.close()
+		self.imap_conn.logout()
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
