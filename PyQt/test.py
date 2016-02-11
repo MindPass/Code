@@ -17,8 +17,6 @@ class Ui_Dialog(object):
         self.progressBar = QtWidgets.QProgressBar(Dialog)
         self.progressBar.setGeometry(QtCore.QRect(160, 290, 461, 101))
         self.progressBar.setProperty("value", 24)
-        effect	= self.QGraphicsBlurEffect() 
-        effect.setBlurRadius(3)
         self.progressBar.setObjectName("progressBar")
 
         self.retranslateUi(Dialog)
