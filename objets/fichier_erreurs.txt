@@ -110,3 +110,5 @@ b'113'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 55: ordinal not
 b'114'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 195: ordinal not in range(128) 
 b'115'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
 b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
+b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
+b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
