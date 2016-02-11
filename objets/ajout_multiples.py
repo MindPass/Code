@@ -21,11 +21,10 @@ for id_email in tableExterne.liste_id():
 			table.add_mail(tableExterne.email_as_list(id_email))
 			print(id_email)
 		except Exception as e:
-			print("Il y a eu une erreur pour l'id suivant:" +id_email)
+			print("Il y a eu une erreur pour l'id suivant:"+ str(id_email))
 			fichier_erreurs.write(str(id_email)+"-Erreur : %s \n" % e)
 
-
-fichier_erreurs.close()
 table.save()
+fichier_erreurs.close()
 table.close()
 tableExterne.close()
