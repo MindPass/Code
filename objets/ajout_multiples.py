@@ -15,7 +15,7 @@ tableExterne = TableExterne('imap.laposte.net', user_email, mdp)
 fichier_erreurs = open('fichier_erreurs.txt', 'a')
 
 for id_email in tableExterne.liste_id():
-    if (id_email not in table.liste_id()):
+    if id_email not in table.liste_id():
         try:
             table.add_mail(tableExterne.email_as_list(id_email))
             print(id_email)

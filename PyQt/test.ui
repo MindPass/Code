@@ -54,17 +54,17 @@
     </item>
    </layout>
   </widget>
-  <widget class="QDial" name="dial">
+  <widget class="QProgressBar" name="progressBar">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>590</y>
-     <width>50</width>
-     <height>64</height>
+     <y>600</y>
+     <width>471</width>
+     <height>41</height>
     </rect>
    </property>
-   <property name="invertedAppearance">
-    <bool>false</bool>
+   <property name="value">
+    <number>24</number>
    </property>
   </widget>
  </widget>

@@ -112,3 +112,5 @@ b'115'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not
 b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
 b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
 b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
+b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
+b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
