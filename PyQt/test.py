@@ -6,7 +6,9 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5 import QtWidgets
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -15,6 +17,8 @@ class Ui_Dialog(object):
         self.progressBar = QtWidgets.QProgressBar(Dialog)
         self.progressBar.setGeometry(QtCore.QRect(160, 290, 461, 101))
         self.progressBar.setProperty("value", 24)
+        effect	= self.QGraphicsBlurEffect() 
+        effect.setBlurRadius(3)
         self.progressBar.setObjectName("progressBar")
 
         self.retranslateUi(Dialog)
