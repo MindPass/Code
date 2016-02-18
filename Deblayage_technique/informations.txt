@@ -1,0 +1,5 @@
+extension à implémenter:
+
+@outlook.com
+@laposte.net
+@gmail.com
