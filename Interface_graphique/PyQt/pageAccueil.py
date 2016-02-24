@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 43))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         self.menuMindPass = QtWidgets.QMenu(self.menubar)
         self.menuMindPass.setObjectName("menuMindPass")

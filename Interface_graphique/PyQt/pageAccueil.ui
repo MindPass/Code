@@ -166,7 +166,7 @@ display: none;
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>43</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMindPass">
@@ -249,5 +249,22 @@ display: none;
   </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionFermer</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

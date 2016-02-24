@@ -21,6 +21,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
         fenetre.setupUi(self, self)
 
         if fenetre == Ui_MainWindow:
+            self.actionFermer.triggered.connect(self.close)
             self.pushButton.setAutoDefault(True)  # Taper sur entrée revient à cliquer
             self.pushButton.clicked.connect(self.check_login)
         elif fenetre == Ui_Form:
@@ -33,7 +34,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
         Returns: None
 
         """
-        print("-----------" + self.lineEdit_id.displayText())
+        print(self.lineEdit_id.displayText())
 
         condition = self.lineEdit_id.displayText() == 'a' and self.lineEdit_mdp.displayText() == 'b'
 

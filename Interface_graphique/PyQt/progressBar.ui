@@ -45,6 +45,9 @@ QProgressBar::chunk {
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
+   <property name="format">
+    <string>%p%</string>
+   </property>
   </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
