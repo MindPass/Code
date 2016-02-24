@@ -6,6 +6,9 @@ import re
 import sqlite3
 from email.parser import FeedParser
 
+def salut():
+    print("salut")
+
 
 class Table(object):
     """docstring for Table
