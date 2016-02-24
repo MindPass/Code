@@ -11,21 +11,19 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1008, 638)
+        Form.resize(800, 200)
         Form.setStyleSheet("")
         self.progressBar = QtWidgets.QProgressBar(Form)
-        self.progressBar.setGeometry(QtCore.QRect(200, 60, 631, 41))
-        self.progressBar.setAccessibleName("")
-        self.progressBar.setStyleSheet("QProgressBar {\n"
-"background-color: lightgrey;\n"
-"border: 2px solid purple;\n"
-"border-radius: 10px;\n"
-"}\n"
-"\n"
-"QProgressBar::chunk {\n"
-"\n"
-"}")
+        self.progressBar.setGeometry(QtCore.QRect(100, 60, 600, 40))
+        
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Form.setWindowIcon(icon)
 
+        with open("style/progressBar.css","r") as feuilleDeStyle:
+            self.progressBar.setStyleSheet(feuilleDeStyle.read())
+        
+        self.progressBar.setAccessibleName("")
         self.progressBar.setAlignment(QtCore.Qt.AlignCenter)
         self.progressBar.setObjectName("progressBar")
 
@@ -34,7 +32,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "MindPass - Scan en cours..."))
         self.progressBar.setFormat(_translate("Form", "%p%"))
 
 

@@ -27,8 +27,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
             self.actionFermer.triggered.connect(self.close)
             self.pushButton.setAutoDefault(True)  # Taper sur entrée revient à cliquer
             self.pushButton.clicked.connect(self.check_login)
-            with open("pageAccueil.css","r") as feuilleDeStyle:
-                self.setStyleSheet(feuilleDeStyle.read())
+            
 
         elif fenetre == Ui_Form:
             user_email = self.login + "@laposte.net"

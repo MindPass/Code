@@ -14,9 +14,14 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 500)
         MainWindow.setMinimumSize(QtCore.QSize(800, 500))
         MainWindow.setMaximumSize(QtCore.QSize(800, 500))
+        
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
+        
+        with open("style/pageAccueil.css","r") as feuilleDeStyle:
+            MainWindow.setStyleSheet(feuilleDeStyle.read())
+            
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
