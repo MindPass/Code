@@ -24,15 +24,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
             self.actionFermer.triggered.connect(self.close)
             self.pushButton.setAutoDefault(True)  # Taper sur entrée revient à cliquer
             self.pushButton.clicked.connect(self.check_login)
+            with open("pageAccueil.css","r") as feuilleDeStyle:
+                self.setStyleSheet(feuilleDeStyle.read())
+
         elif fenetre == Ui_Form:
             pass
 
     def check_login(self):
         """
-
         Verifier l'existence des identifiants.
         Returns: None
-
         """
         print(self.lineEdit_id.displayText())
 
