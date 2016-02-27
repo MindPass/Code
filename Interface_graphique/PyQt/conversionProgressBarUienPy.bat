@@ -1,1 +1,1 @@
-C:\pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat -x progressBar.ui -o progressBar.py
+C:\pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat -x UI/progressBar.ui -o progressBar.py

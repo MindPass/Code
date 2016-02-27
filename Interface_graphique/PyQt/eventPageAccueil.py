@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+
 sys.path.append('../../Traitements_mail/objets/')
 from librairie import *
 
@@ -21,13 +22,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
         """
         QtWidgets.QMainWindow.__init__(self)  # création de la fenêtre principale
         fenetre.setupUi(self, self)
-        self.show()
 
         if fenetre == Ui_MainWindow:
+            #self.lineEdit_mdp.setEchoMode(QtWidgets.QLineEdit.Password)  # Affichage en mode password
             self.actionFermer.triggered.connect(self.close)
             self.pushButton.setAutoDefault(True)  # Taper sur entrée revient à cliquer
             self.pushButton.clicked.connect(self.check_login)
-            
+
 
         elif fenetre == Ui_Form:
             user_email = self.login + "@laposte.net"
@@ -55,17 +56,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
                         print("Il y a eu une erreur pour l'id suivant:" + str(id_email))
                         fichier_erreurs.write(str(id_email) + "-Erreur : %s \n" % e)
                 count += 1
-                ratio = int(count/len(liste_externe_id)*100)
+                ratio = int(count / len(liste_externe_id) * 100)
                 self.progressBar.setValue(ratio)
                 QtWidgets.QApplication.processEvents()
-
 
             table.save()
             fichier_erreurs.close()
             table.close()
             tableExterne.close()
-
-
 
     def check_login(self):
         """
@@ -85,4 +83,5 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     accueilWindow = MainWindow(Ui_MainWindow)
+    accueilWindow.show()
     sys.exit(app.exec_())

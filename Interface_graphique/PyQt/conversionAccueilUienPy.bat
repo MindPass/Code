@@ -1,1 +1,1 @@
-C:\pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat -x pageAccueil.ui -o pageAccueil.py
+C:\pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat -x UI/pageAccueil.ui -o pageAccueil.py

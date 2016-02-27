@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'pageAccueil.ui'
+# Form implementation generated from reading ui file 'UI/pageAccueil.ui'
 #
 # Created by: PyQt5 UI code generator 5.5.1
 #
@@ -14,14 +14,52 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 500)
         MainWindow.setMinimumSize(QtCore.QSize(800, 500))
         MainWindow.setMaximumSize(QtCore.QSize(800, 500))
-        
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        
-        with open("style/pageAccueil.css","r") as feuilleDeStyle:
-            MainWindow.setStyleSheet(feuilleDeStyle.read())
-            
+        MainWindow.setStyleSheet("QMainWindow {\n"
+"background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"color: white;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"background: rgba(255,255,255,100);\n"
+"border: none;\n"
+"border-radius: 5px;\n"
+"color: white;\n"
+"padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover {\n"
+"background: rgba(255,255,255,75);\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"    border-radius: 2px;\n"
+"    padding: 0.2em 0.2em 0.3em 0.2em;\n"
+"    border: 1px solid rgba(100, 100, 100, 200);\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #f4f4f4, stop:0.1 #8F8F8F, stop:1 #a1a1a1);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 1px solid rgba(255, 255, 255, 255);\n"
+"\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    border-radius: 2px;\n"
+"    padding: 0.2em 0.2em 0.3em 0.2em;\n"
+"    border: 1px solid rgba(100, 100, 100, 200);\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #a1a1a1, stop:0.1 #8F8F8F, stop:1 #f4f4f4);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QStatusBar {\n"
+"display: none;\n"
+"}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -89,6 +127,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(MainWindow)
+        self.actionFermer.triggered.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
