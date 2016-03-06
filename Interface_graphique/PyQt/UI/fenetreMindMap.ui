@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>mindMap</class>
- <widget class="QWidget" name="mindMap">
+ <class>fenetreMindMap</class>
+ <widget class="QWidget" name="fenetreMindMap">
   <property name="geometry">
    <rect>
     <x>0</x>

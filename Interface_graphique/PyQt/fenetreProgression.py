@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'UI/progressBar.ui'
+# Form implementation generated from reading ui file '../UI/fenetreProgression.ui'
 #
 # Created by: PyQt5 UI code generator 5.5.1
 #
@@ -8,14 +8,14 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(1011, 645)
-        Form.setMinimumSize(QtCore.QSize(1011, 645))
-        Form.setMaximumSize(QtCore.QSize(1011, 645))
-        Form.setStyleSheet("")
-        self.verticalLayoutWidget = QtWidgets.QWidget(Form)
+class Ui_fenetreProgression(object):
+    def setupUi(self, fenetreProgression):
+        fenetreProgression.setObjectName("fenetreProgression")
+        fenetreProgression.resize(1011, 645)
+        fenetreProgression.setMinimumSize(QtCore.QSize(1011, 645))
+        fenetreProgression.setMaximumSize(QtCore.QSize(1011, 645))
+        fenetreProgression.setStyleSheet("")
+        self.verticalLayoutWidget = QtWidgets.QWidget(fenetreProgression)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(30, 30, 951, 571))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
@@ -49,7 +49,6 @@ class Ui_Form(object):
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
-        self.progressBar.raise_()
         self.horizontalLayout.addWidget(self.frame)
         self.flecheDroite = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.flecheDroite.setObjectName("flecheDroite")
@@ -59,23 +58,23 @@ class Ui_Form(object):
         self.horizontalLayout.setStretch(2, 10)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(fenetreProgression)
+        QtCore.QMetaObject.connectSlotsByName(fenetreProgression)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, fenetreProgression):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.progressBar.setFormat(_translate("Form", "%p%"))
-        self.felcheGauche.setText(_translate("Form", "flecheGauche"))
-        self.flecheDroite.setText(_translate("Form", "flecheDroite"))
+        fenetreProgression.setWindowTitle(_translate("fenetreProgression", "Form"))
+        self.progressBar.setFormat(_translate("fenetreProgression", "%p%"))
+        self.felcheGauche.setText(_translate("fenetreProgression", "flecheGauche"))
+        self.flecheDroite.setText(_translate("fenetreProgression", "flecheDroite"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
+    fenetreProgression = QtWidgets.QWidget()
+    ui = Ui_fenetreProgression()
+    ui.setupUi(fenetreProgression)
+    fenetreProgression.show()
     sys.exit(app.exec_())
 

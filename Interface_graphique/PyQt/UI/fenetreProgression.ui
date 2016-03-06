@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>fenetreProgression</class>
+ <widget class="QWidget" name="fenetreProgression">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -103,7 +103,6 @@ QProgressBar::chunk {
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <zorder>progressBar</zorder>
        </widget>
       </item>
       <item>

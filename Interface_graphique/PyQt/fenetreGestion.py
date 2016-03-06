@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'UI/pageGestion.ui'
+# Form implementation generated from reading ui file '../UI/fenetreGestion.ui'
 #
 # Created by: PyQt5 UI code generator 5.5.1
 #
@@ -8,11 +8,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_PageGestion(object):
-    def setupUi(self, PageGestion):
-        PageGestion.setObjectName("PageGestion")
-        PageGestion.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(PageGestion)
+class Ui_fenetreGestion(object):
+    def setupUi(self, fenetreGestion):
+        fenetreGestion.setObjectName("fenetreGestion")
+        fenetreGestion.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(fenetreGestion)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(30, 40, 434, 141))
@@ -73,37 +73,37 @@ class Ui_PageGestion(object):
 "rgb(0, 0, 127);\n"
 "}")
         self.categorie1.setObjectName("categorie1")
-        PageGestion.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(PageGestion)
+        fenetreGestion.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(fenetreGestion)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
-        PageGestion.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(PageGestion)
+        fenetreGestion.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(fenetreGestion)
         self.statusbar.setObjectName("statusbar")
-        PageGestion.setStatusBar(self.statusbar)
+        fenetreGestion.setStatusBar(self.statusbar)
 
-        self.retranslateUi(PageGestion)
+        self.retranslateUi(fenetreGestion)
         self.affichageMdp.setCurrentIndex(1)
-        QtCore.QMetaObject.connectSlotsByName(PageGestion)
+        QtCore.QMetaObject.connectSlotsByName(fenetreGestion)
 
-    def retranslateUi(self, PageGestion):
+    def retranslateUi(self, fenetreGestion):
         _translate = QtCore.QCoreApplication.translate
-        PageGestion.setWindowTitle(_translate("PageGestion", "Page de Gestion"))
-        self.label.setText(_translate("PageGestion", "Site"))
-        self.affichageMdp.setTabText(self.affichageMdp.indexOf(self.tab), _translate("PageGestion", "Tab 1"))
-        self.affichageMdp.setTabText(self.affichageMdp.indexOf(self.tab_2), _translate("PageGestion", "Tab 2"))
-        self.label_2.setText(_translate("PageGestion", "Login"))
-        self.label_3.setText(_translate("PageGestion", "Catégories"))
-        self.lineEdit.setText(_translate("PageGestion", "Créer catégorie"))
-        self.categorie1.setText(_translate("PageGestion", "Important"))
+        fenetreGestion.setWindowTitle(_translate("fenetreGestion", "Page de Gestion"))
+        self.label.setText(_translate("fenetreGestion", "Site"))
+        self.affichageMdp.setTabText(self.affichageMdp.indexOf(self.tab), _translate("fenetreGestion", "Tab 1"))
+        self.affichageMdp.setTabText(self.affichageMdp.indexOf(self.tab_2), _translate("fenetreGestion", "Tab 2"))
+        self.label_2.setText(_translate("fenetreGestion", "Login"))
+        self.label_3.setText(_translate("fenetreGestion", "Catégories"))
+        self.lineEdit.setText(_translate("fenetreGestion", "Créer catégorie"))
+        self.categorie1.setText(_translate("fenetreGestion", "Important"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    PageGestion = QtWidgets.QMainWindow()
-    ui = Ui_PageGestion()
-    ui.setupUi(PageGestion)
-    PageGestion.show()
+    fenetreGestion = QtWidgets.QMainWindow()
+    ui = Ui_fenetreGestion()
+    ui.setupUi(fenetreGestion)
+    fenetreGestion.show()
     sys.exit(app.exec_())
 

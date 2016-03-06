@@ -6,11 +6,11 @@ sys.path.append('../../Traitements_mail/objets/')
 from librairie import *
 
 from PyQt5 import QtWidgets
-from pageAccueil import Ui_MainWindow
-from progressBar import Ui_Form
+from fenetreAccueil import Ui_fenetreAccueil
+from fenetreProgression import Ui_fenetreProgression
 
 
-class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
+class MainWindow(QtWidgets.QMainWindow, Ui_fenetreAccueil, Ui_fenetreProgression):
     def __init__(self, fenetre):
         """
 
@@ -23,14 +23,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
         QtWidgets.QMainWindow.__init__(self)  # création de la fenêtre principale
         fenetre.setupUi(self, self)
 
-        if fenetre == Ui_MainWindow:
+        if fenetre == Ui_fenetreAccueil:
             #self.lineEdit_mdp.setEchoMode(QtWidgets.QLineEdit.Password)  # Affichage en mode password
             self.actionFermer.triggered.connect(self.close)
             self.pushButton.setAutoDefault(True)  # Taper sur entrée revient à cliquer
             self.pushButton.clicked.connect(self.check_login)
 
 
-        elif fenetre == Ui_Form:
+        elif fenetre == Ui_fenetreProgression:
             user_email = self.login + "@laposte.net"
             mdp = self.login_mdp
             # à garder pendant le développement
@@ -77,11 +77,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, Ui_Form):
 
         if condition:  # on cache la page d'acceuil et on passe à la progressBar
             self.hide()
-            MainWindow.__init__(self, Ui_Form)
+            MainWindow.__init__(self, Ui_fenetreProgression)
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    accueilWindow = MainWindow(Ui_MainWindow)
+    accueilWindow = MainWindow(Ui_fenetreAccueil)
     accueilWindow.show()
     sys.exit(app.exec_())

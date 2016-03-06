@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PageGestion</class>
- <widget class="QMainWindow" name="PageGestion">
+ <class>fenetreGestion</class>
+ <widget class="QMainWindow" name="fenetreGestion">
   <property name="geometry">
    <rect>
     <x>0</x>
