@@ -17,7 +17,7 @@ class Ui_fenetreAccueil(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fenetreAccueil.setWindowIcon(icon)
-        fenetreAccueil.setStyleSheet("")
+        fenetreAccueil.setStyleSheet("style/pageAccueil.css")
         self.centralwidget = QtWidgets.QWidget(fenetreAccueil)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
