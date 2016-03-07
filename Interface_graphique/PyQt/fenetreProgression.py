@@ -32,16 +32,16 @@ class Ui_fenetreProgression(object):
 "QProgressBar::chunk {\n"
 "\n"
 "}")
-        self.progressBar.setProperty("value", 24)
+        self.progressBar.setProperty("value", 0)
         self.progressBar.setAlignment(QtCore.Qt.AlignCenter)
         self.progressBar.setObjectName("progressBar")
         self.verticalLayout.addWidget(self.progressBar)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.felcheGauche = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.felcheGauche.setObjectName("felcheGauche")
-        self.horizontalLayout.addWidget(self.felcheGauche)
+        self.flecheGauche = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.flecheGauche.setObjectName("flecheGauche")
+        self.horizontalLayout.addWidget(self.flecheGauche)
         self.frame = QtWidgets.QFrame(self.verticalLayoutWidget)
         self.frame.setEnabled(True)
         self.frame.setMinimumSize(QtCore.QSize(779, 536))
@@ -63,9 +63,9 @@ class Ui_fenetreProgression(object):
 
     def retranslateUi(self, fenetreProgression):
         _translate = QtCore.QCoreApplication.translate
-        fenetreProgression.setWindowTitle(_translate("fenetreProgression", "Form"))
+        fenetreProgression.setWindowTitle(_translate("fenetreProgression", "Progression"))
         self.progressBar.setFormat(_translate("fenetreProgression", "%p%"))
-        self.felcheGauche.setText(_translate("fenetreProgression", "flecheGauche"))
+        self.flecheGauche.setText(_translate("fenetreProgression", "flecheGauche"))
         self.flecheDroite.setText(_translate("fenetreProgression", "flecheDroite"))
 
 
