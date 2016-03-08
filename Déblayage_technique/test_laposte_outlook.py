@@ -15,7 +15,7 @@ dansInbox=imap_conn.select('INBOX')
 result, data = imap_conn.search(None, "ALL")
 ids = data[0] # data is a list.
 listeMailsInbox = ids.split() # ids is a space separated string
-latest_email_id = listeMailsInbox[-1] # get the latest
+latest_email_id = listeMailsInbox[16] # get the 17th
 result, data = imap_conn.fetch(latest_email_id, "(RFC822)") # fetch the email body (RFC822) for the given ID
 
 nombreMailsInbox = len(listeMailsInbox)
