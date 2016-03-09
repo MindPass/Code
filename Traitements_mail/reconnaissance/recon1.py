@@ -20,7 +20,13 @@ with con:
     i=0
     for row in rows:
         mailist_cache.append(row)
-        curr.execute("INSERT INTO mails (id, login, pass, category) VALUES(?,?,?,?)",(mailist_cache[i][0], mailist_cache[i][1], mailist_cache[i][0], mailist_cache[i][0]))
+        curr.execute("SELECT id FROM mails")
+        tab=curr.fetchall()
+        liste_id=[]
+        for element in tab:
+            liste_id.append(element[0])
+        if(mailist_cache[i][0] not in liste_id):
+            curr.execute("INSERT INTO mails (id, login, pass, category) VALUES(?,?,?,?)",(mailist_cache[i][0], mailist_cache[i][1], mailist_cache[i][0], mailist_cache[i][0]))
         i+=1
 
 
