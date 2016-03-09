@@ -525,6 +525,7 @@ b'210'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1995: invalid c
 b'213'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1993: invalid continuation byte 
 b'216'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1995: invalid continuation byte 
 b'219'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1992: invalid continuation byte 
+<<<<<<< HEAD
 b'223'-Erreur : Error binding parameter 3 - probably unsupported type. 
 b'224'-Erreur : Error binding parameter 3 - probably unsupported type. 
 b'225'-Erreur : Error binding parameter 3 - probably unsupported type. 
@@ -537,3 +538,30 @@ b'225'-Erreur : Error binding parameter 3 - probably unsupported type.
 b'226'-Erreur : Error binding parameter 3 - probably unsupported type. 
 b'228'-Erreur : Error binding parameter 3 - probably unsupported type. 
 b'229'-Erreur : Error binding parameter 3 - probably unsupported type. 
+=======
+b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
+b'133'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2004: invalid continuation byte 
+b'137'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2006: invalid continuation byte 
+b'143'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2003: invalid continuation byte 
+b'148'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2003: invalid continuation byte 
+b'163'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2004: invalid continuation byte 
+b'167'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2006: invalid continuation byte 
+b'170'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2003: invalid continuation byte 
+b'173'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 79: invalid continuation byte 
+b'177'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2006: invalid continuation byte 
+b'181'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2003: invalid continuation byte 
+b'183'-Erreur : 'utf-8' codec can't decode byte 0xc9 in position 84: invalid continuation byte 
+b'185'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2006: invalid continuation byte 
+b'190'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2004: invalid continuation byte 
+b'193'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2006: invalid continuation byte 
+b'196'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 2003: invalid continuation byte 
+b'197'-Erreur : 'utf-8' codec can't decode byte 0xc9 in position 84: invalid continuation byte 
+b'200'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1994: invalid continuation byte 
+b'204'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1995: invalid continuation byte 
+b'207'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1992: invalid continuation byte 
+b'210'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1995: invalid continuation byte 
+b'213'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1993: invalid continuation byte 
+b'216'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1995: invalid continuation byte 
+b'219'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1992: invalid continuation byte 
+b'222'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1992: invalid continuation byte 
+>>>>>>> ec21bc254813273dc9307d0880332d9ded329c25

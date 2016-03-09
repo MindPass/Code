@@ -6,88 +6,63 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Page de Gestion</string>
+   <string>Page de Gestion - MindPass</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+border: none;
+background: rgba(255,255,255,50);
+}
+
+QMainWindow {
+background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));
+}
+
+QLineEdit {
+	background: rgba(255,255,255,100);
+	border: none;
+	border-radius: 5px;
+	color: white;
+	padding-left: 10px;
+}
+
+QLabel {
+background: none;
+color: white;
+}
+
+Line {
+background: none;
+border: 1px solid bottom;
+}
+
+#label_3 {
+color: white;
+}
+
+
+siteLayout_3 {
+background: rgba(255,255,255,25);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>434</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="siteLayout" columnstretch="200,200,200" rowminimumheight="0">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="styleSheet">
-        <string notr="true">QGridLayout{
-rgb(90, 93, 255);
-}</string>
-       </property>
-       <property name="text">
-        <string>Site</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QTabWidget" name="affichageMdp">
-       <property name="cursor">
-        <cursorShape>ArrowCursor</cursorShape>
-       </property>
-       <property name="currentIndex">
-        <number>1</number>
-       </property>
-       <widget class="QWidget" name="tab">
-        <attribute name="title">
-         <string>Tab 1</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="tab_2">
-        <attribute name="title">
-         <string>Tab 2</string>
-        </attribute>
-       </widget>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="label_2">
-       <property name="styleSheet">
-        <string notr="true">QGridLayout {
-background-color: lightgrey;
-border: 2px solid purple;
-border-radius: 10px;
-}
-</string>
-       </property>
-       <property name="text">
-        <string>Login</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>30</y>
-      <width>131</width>
-      <height>31</height>
+      <x>950</x>
+      <y>20</y>
+      <width>211</width>
+      <height>35</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">
@@ -97,10 +72,10 @@ border-radius: 10px;
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>60</y>
-      <width>151</width>
-      <height>16</height>
+      <x>949</x>
+      <y>50</y>
+      <width>231</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="orientation">
@@ -110,23 +85,26 @@ border-radius: 10px;
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>150</y>
-      <width>141</width>
-      <height>20</height>
+      <x>950</x>
+      <y>70</y>
+      <width>221</width>
+      <height>35</height>
      </rect>
     </property>
     <property name="text">
      <string>Créer catégorie</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="categorie1">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>100</y>
-      <width>111</width>
-      <height>31</height>
+      <x>950</x>
+      <y>110</y>
+      <width>191</width>
+      <height>35</height>
      </rect>
     </property>
     <property name="font">
@@ -145,18 +123,200 @@ rgb(0, 0, 127);
      <string>Important</string>
     </property>
    </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>901</width>
+      <height>691</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>901</width>
+       <height>691</height>
+      </rect>
+     </property>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>880</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="siteLayout_2" columnstretch="100,100,100,12">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="lineEdit_3">
+         <property name="text">
+          <string>Mot de passe 1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">QGridLayout{
+rgb(90, 93, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>Site 1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit_2">
+         <property name="inputMask">
+          <string/>
+         </property>
+         <property name="text">
+          <string>Identifiant 1</string>
+         </property>
+         <property name="maxLength">
+          <number>32767</number>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QScrollBar" name="verticalScrollBar">
+      <property name="geometry">
+       <rect>
+        <x>880</x>
+        <y>0</y>
+        <width>20</width>
+        <height>741</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>880</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="siteLayout_3" columnstretch="100,100,100,12">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="lineEdit_4">
+         <property name="text">
+          <string>Mot de passe 2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="styleSheet">
+          <string notr="true">QGridLayout{
+rgb(90, 93, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>Site 2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit_5">
+         <property name="inputMask">
+          <string/>
+         </property>
+         <property name="text">
+          <string>Identifiant 2</string>
+         </property>
+         <property name="maxLength">
+          <number>32767</number>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QCheckBox" name="checkBox_2">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>21</height>
+     <width>1200</width>
+     <height>38</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
