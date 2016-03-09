@@ -2,7 +2,10 @@
 
 import sqlite3 as sq3
 
-
+output = "output.sq3"
+conn = sq3.connect(output)
+curr = conn.cursor()
+curr.execute ("CREATE TABLE IF NOT EXISTS mails (id TEXT, login TEXT, pass TEXT, category TEXT)")
 
 mailist_cache=[]
 con = sq3.connect('test.sq3')
@@ -14,6 +17,16 @@ with con:
 
     rows = cur.fetchall()
 
+    i=0
     for row in rows:
         mailist_cache.append(row)
+        curr.execute("INSERT INTO mails (id, login, pass, category) VALUES(?,?,?,?)",(mailist_cache[i][0], mailist_cache[i][1], mailist_cache[i][0], mailist_cache[i][0]))
+        i+=1
 
+
+
+# ENREGISTREMENT
+conn.commit()
+# FERMETURE
+cur.close()
+conn.close()
