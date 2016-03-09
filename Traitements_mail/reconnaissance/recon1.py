@@ -10,7 +10,7 @@ con = sq3.connect('test.sq3')
 with con:    
     
     cur = con.cursor()    
-    cur.execute("SELECT * FROM mindpasstest_laposte")
+    cur.execute("SELECT id, contenu FROM mindpasstest_laposte WHERE contenu LIKE '%login%' OR contenu LIKE '%password%';")
 
     rows = cur.fetchall()
 
