@@ -110,27 +110,10 @@ class TableExterne(object):
             try:
                 corps = rootMessage.get_payload(0).get_payload(decode=True).decode('utf-8')
             except Exception:
-                corps = rootMessage.get_payload(0).get_payload(decode=True)
+                print("Multipart erreur: "+ str(e))
 
-                # faire une regex ici
-                #
-                #
-                #
-                #
-                encodage=""
-
-                for element in encodage:
-                    try:
-                        corsp = corps.decode(element)
-                        break
-                #
-                #
-                #
-
-
-        # Récupérer le corps du mail en plain/text bien décodé
         else:
-            corps = rootMessage.get_payload(decode=True).decode('utf-8')
+            corps = rootMessage.get_payload()
 
         subject = rootMessage.get('Subject')
         # méthode Alex
