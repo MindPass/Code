@@ -8,10 +8,9 @@ import html
 import urllib.parse
 from email.parser import FeedParser
 
-
 # user=input('entrez le pseudo: ')+"@outlook.com"
-#user = input('entrez le pseudo: ') + "@laposte.net"
-#mdp = input('Entrez le mdp: ')  # à garder pendant le développement
+# user = input('entrez le pseudo: ') + "@laposte.net"
+# mdp = input('Entrez le mdp: ')  # à garder pendant le développement
 user = "mindpasstest@laposte.net"
 mdp = "Verv00rt"
 
@@ -60,30 +59,24 @@ f = FeedParser()
 f.feed(raw_email)
 rootMessage = f.close()
 
-
 if rootMessage.is_multipart():
     try:
         corps = rootMessage.get_payload(0)
-        if 'text/html' in re.findall(r'text/html', corps):
-            fichier_mail = open("test16.html", "w")
-            fichier_mail.write(html.unescape(corps))
-            fichier_mail.close()
     except Exception as e:
-        print("Multipart: "+str(e))
-    # Récupérer le corps du mail en plain/text bien décodé
+        print("Multipart: " + str(e))
+        # Récupérer le corps du mail en plain/text bien décodé
 else:
     try:
         corps = rootMessage.get_payload()
-
-        if('text/html' in re.findall(r'text/html',corps)):
-            fichier_mail = open("test16.html", "w")
-            fichier_mail.write(html.unescape(corps))
-            fichier_mail.close()
-
+        if ('text/html' in re.findall(r'text/html', corps)):
+            corps = html.unescape(corps)
 
     except Exception as e:
-        print("Non multipart:"+str(e))
+        print("Non multipart:" + str(e))
 
+fichier_mail = open('test16.html', 'w')
+fichier_mail.write(str(corps))
+fichier_mail.close()
 
 exp = rootMessage.get('From')
 print("From:" + exp + " ID:" + id_message)
