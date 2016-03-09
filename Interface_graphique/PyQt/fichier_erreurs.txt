@@ -525,3 +525,15 @@ b'210'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1995: invalid c
 b'213'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1993: invalid continuation byte 
 b'216'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1995: invalid continuation byte 
 b'219'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1992: invalid continuation byte 
+b'223'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'224'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'225'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'226'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'228'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'229'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'223'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'224'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'225'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'226'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'228'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'229'-Erreur : Error binding parameter 3 - probably unsupported type. 

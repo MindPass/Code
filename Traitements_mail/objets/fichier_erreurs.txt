@@ -1,132 +1,796 @@
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'1'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 29: ordinal not in range(128) 
-b'2'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 486: ordinal not in range(128) 
-b'3'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 43: ordinal not in range(128) 
-b'5'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 100: ordinal not in range(128) 
-b'6'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 156: ordinal not in range(128) 
-b'7'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 2042: ordinal not in range(128) 
-b'8'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 504: ordinal not in range(128) 
-b'9'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'10'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 207: ordinal not in range(128) 
-b'11'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 94: ordinal not in range(128) 
-b'12'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'13'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'14'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'15'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'16'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'17'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 6312: ordinal not in range(128) 
-b'19'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 127: ordinal not in range(128) 
-b'20'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 74: ordinal not in range(128) 
-b'21'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 421: ordinal not in range(128) 
-b'22'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 344: ordinal not in range(128) 
-b'23'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 304: ordinal not in range(128) 
-b'24'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 27: ordinal not in range(128) 
-b'25'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 54: ordinal not in range(128) 
-b'26'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'27'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 96: ordinal not in range(128) 
-b'28'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 123: ordinal not in range(128) 
-b'29'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 30: ordinal not in range(128) 
-b'30'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'31'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 36: ordinal not in range(128) 
-b'32'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 65: ordinal not in range(128) 
-b'34'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'35'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 43: ordinal not in range(128) 
-b'36'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 524: ordinal not in range(128) 
-b'37'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'38'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 224: ordinal not in range(128) 
-b'39'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 99: ordinal not in range(128) 
-b'40'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'41'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 93: ordinal not in range(128) 
-b'42'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'43'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 127: ordinal not in range(128) 
-b'44'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'45'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 50: ordinal not in range(128) 
-b'46'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 579: ordinal not in range(128) 
-b'47'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'48'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 66: ordinal not in range(128) 
-b'50'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'51'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 553: ordinal not in range(128) 
-b'52'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 74: ordinal not in range(128) 
-b'53'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'54'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 172: ordinal not in range(128) 
-b'55'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'56'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 170: ordinal not in range(128) 
-b'58'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'59'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 533: ordinal not in range(128) 
-b'60'-Erreur : 'ascii' codec can't decode byte 0xf0 in position 102: ordinal not in range(128) 
-b'61'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'62'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 99: ordinal not in range(128) 
-b'63'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 144: ordinal not in range(128) 
-b'64'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'65'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 47: ordinal not in range(128) 
-b'66'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'67'-Erreur : 'ascii' codec can't decode byte 0xf0 in position 221: ordinal not in range(128) 
-b'68'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'69'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 496: ordinal not in range(128) 
-b'70'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 160: ordinal not in range(128) 
-b'71'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'72'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 191: ordinal not in range(128) 
-b'73'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 522: ordinal not in range(128) 
-b'74'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 154: ordinal not in range(128) 
-b'75'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'76'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 218: ordinal not in range(128) 
-b'77'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'78'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 24: ordinal not in range(128) 
-b'79'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 72: ordinal not in range(128) 
-b'80'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'81'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 184: ordinal not in range(128) 
-b'82'-Erreur : 'ascii' codec can't decode byte 0xc2 in position 91: ordinal not in range(128) 
-b'83'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 35: ordinal not in range(128) 
-b'84'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 5: ordinal not in range(128) 
-b'85'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 364: ordinal not in range(128) 
-b'86'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'87'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'88'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 229: ordinal not in range(128) 
-b'89'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 529: ordinal not in range(128) 
-b'90'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'91'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 161: ordinal not in range(128) 
-b'92'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 68: ordinal not in range(128) 
-b'93'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'94'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 88: ordinal not in range(128) 
-b'95'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'96'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 97: ordinal not in range(128) 
-b'97'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'98'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 192: ordinal not in range(128) 
-b'99'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 54: ordinal not in range(128) 
-b'100'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'101'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 108: ordinal not in range(128) 
-b'102'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 14: ordinal not in range(128) 
-b'103'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 37: ordinal not in range(128) 
-b'104'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'105'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 40: ordinal not in range(128) 
-b'106'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'107'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 185: ordinal not in range(128) 
-b'108'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 2757: ordinal not in range(128) 
-b'109'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'110'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 62: ordinal not in range(128) 
-b'111'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'112'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'113'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 55: ordinal not in range(128) 
-b'114'-Erreur : 'ascii' codec can't decode byte 0xe2 in position 195: ordinal not in range(128) 
-b'115'-Erreur : 'ascii' codec can't decode byte 0xc3 in position 45: ordinal not in range(128) 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
-b'17'-Erreur : 'utf-8' codec can't decode byte 0xe2 in position 6312: invalid continuation byte 
+b'17'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'133'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'137'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'143'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'148'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'163'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'167'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'170'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'173'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'177'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'181'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'183'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'185'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'190'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'193'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'196'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'197'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'200'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'204'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'207'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'210'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'213'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'216'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'219'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'222'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'227'-Erreur : Can't convert 'UnicodeDecodeError' object to str implicitly 
+b'17'-Erreur : local variable 'corps' referenced before assignment 
+b'133'-Erreur : local variable 'corps' referenced before assignment 
+b'137'-Erreur : local variable 'corps' referenced before assignment 
+b'143'-Erreur : local variable 'corps' referenced before assignment 
+b'148'-Erreur : local variable 'corps' referenced before assignment 
+b'163'-Erreur : local variable 'corps' referenced before assignment 
+b'167'-Erreur : local variable 'corps' referenced before assignment 
+b'170'-Erreur : local variable 'corps' referenced before assignment 
+b'173'-Erreur : local variable 'corps' referenced before assignment 
+b'177'-Erreur : local variable 'corps' referenced before assignment 
+b'181'-Erreur : local variable 'corps' referenced before assignment 
+b'183'-Erreur : local variable 'corps' referenced before assignment 
+b'185'-Erreur : local variable 'corps' referenced before assignment 
+b'190'-Erreur : local variable 'corps' referenced before assignment 
+b'193'-Erreur : local variable 'corps' referenced before assignment 
+b'196'-Erreur : local variable 'corps' referenced before assignment 
+b'197'-Erreur : local variable 'corps' referenced before assignment 
+b'200'-Erreur : local variable 'corps' referenced before assignment 
+b'204'-Erreur : local variable 'corps' referenced before assignment 
+b'207'-Erreur : local variable 'corps' referenced before assignment 
+b'210'-Erreur : local variable 'corps' referenced before assignment 
+b'213'-Erreur : local variable 'corps' referenced before assignment 
+b'216'-Erreur : local variable 'corps' referenced before assignment 
+b'219'-Erreur : local variable 'corps' referenced before assignment 
+b'222'-Erreur : local variable 'corps' referenced before assignment 
+b'227'-Erreur : local variable 'corps' referenced before assignment 
+b'1'-Erreur : name 'subject' is not defined 
+b'2'-Erreur : name 'subject' is not defined 
+b'3'-Erreur : name 'subject' is not defined 
+b'4'-Erreur : name 'subject' is not defined 
+b'5'-Erreur : name 'subject' is not defined 
+b'6'-Erreur : name 'subject' is not defined 
+b'7'-Erreur : name 'subject' is not defined 
+b'8'-Erreur : name 'subject' is not defined 
+b'9'-Erreur : name 'subject' is not defined 
+b'10'-Erreur : name 'subject' is not defined 
+b'11'-Erreur : name 'subject' is not defined 
+b'12'-Erreur : name 'subject' is not defined 
+b'13'-Erreur : name 'subject' is not defined 
+b'14'-Erreur : name 'subject' is not defined 
+b'15'-Erreur : name 'subject' is not defined 
+b'16'-Erreur : name 'subject' is not defined 
+b'17'-Erreur : name 'subject' is not defined 
+b'18'-Erreur : name 'subject' is not defined 
+b'19'-Erreur : name 'subject' is not defined 
+b'20'-Erreur : name 'subject' is not defined 
+b'21'-Erreur : name 'subject' is not defined 
+b'22'-Erreur : name 'subject' is not defined 
+b'23'-Erreur : name 'subject' is not defined 
+b'24'-Erreur : name 'subject' is not defined 
+b'25'-Erreur : name 'subject' is not defined 
+b'26'-Erreur : name 'subject' is not defined 
+b'27'-Erreur : name 'subject' is not defined 
+b'28'-Erreur : name 'subject' is not defined 
+b'29'-Erreur : name 'subject' is not defined 
+b'30'-Erreur : name 'subject' is not defined 
+b'31'-Erreur : name 'subject' is not defined 
+b'32'-Erreur : name 'subject' is not defined 
+b'33'-Erreur : name 'subject' is not defined 
+b'34'-Erreur : name 'subject' is not defined 
+b'35'-Erreur : name 'subject' is not defined 
+b'36'-Erreur : name 'subject' is not defined 
+b'37'-Erreur : name 'subject' is not defined 
+b'38'-Erreur : name 'subject' is not defined 
+b'39'-Erreur : name 'subject' is not defined 
+b'40'-Erreur : name 'subject' is not defined 
+b'41'-Erreur : name 'subject' is not defined 
+b'42'-Erreur : name 'subject' is not defined 
+b'43'-Erreur : name 'subject' is not defined 
+b'44'-Erreur : name 'subject' is not defined 
+b'45'-Erreur : name 'subject' is not defined 
+b'46'-Erreur : name 'subject' is not defined 
+b'47'-Erreur : name 'subject' is not defined 
+b'48'-Erreur : name 'subject' is not defined 
+b'49'-Erreur : name 'subject' is not defined 
+b'50'-Erreur : name 'subject' is not defined 
+b'51'-Erreur : name 'subject' is not defined 
+b'52'-Erreur : name 'subject' is not defined 
+b'53'-Erreur : name 'subject' is not defined 
+b'54'-Erreur : name 'subject' is not defined 
+b'55'-Erreur : name 'subject' is not defined 
+b'56'-Erreur : name 'subject' is not defined 
+b'57'-Erreur : name 'subject' is not defined 
+b'58'-Erreur : name 'subject' is not defined 
+b'59'-Erreur : name 'subject' is not defined 
+b'60'-Erreur : name 'subject' is not defined 
+b'61'-Erreur : name 'subject' is not defined 
+b'62'-Erreur : name 'subject' is not defined 
+b'63'-Erreur : name 'subject' is not defined 
+b'64'-Erreur : name 'subject' is not defined 
+b'65'-Erreur : name 'subject' is not defined 
+b'66'-Erreur : name 'subject' is not defined 
+b'67'-Erreur : name 'subject' is not defined 
+b'68'-Erreur : name 'subject' is not defined 
+b'69'-Erreur : name 'subject' is not defined 
+b'70'-Erreur : name 'subject' is not defined 
+b'71'-Erreur : name 'subject' is not defined 
+b'72'-Erreur : name 'subject' is not defined 
+b'73'-Erreur : name 'subject' is not defined 
+b'74'-Erreur : name 'subject' is not defined 
+b'75'-Erreur : name 'subject' is not defined 
+b'76'-Erreur : name 'subject' is not defined 
+b'77'-Erreur : name 'subject' is not defined 
+b'78'-Erreur : name 'subject' is not defined 
+b'79'-Erreur : name 'subject' is not defined 
+b'80'-Erreur : name 'subject' is not defined 
+b'81'-Erreur : name 'subject' is not defined 
+b'82'-Erreur : name 'subject' is not defined 
+b'83'-Erreur : name 'subject' is not defined 
+b'84'-Erreur : name 'subject' is not defined 
+b'85'-Erreur : name 'subject' is not defined 
+b'86'-Erreur : name 'subject' is not defined 
+b'87'-Erreur : name 'subject' is not defined 
+b'88'-Erreur : name 'subject' is not defined 
+b'89'-Erreur : name 'subject' is not defined 
+b'90'-Erreur : name 'subject' is not defined 
+b'91'-Erreur : name 'subject' is not defined 
+b'92'-Erreur : name 'subject' is not defined 
+b'93'-Erreur : name 'subject' is not defined 
+b'94'-Erreur : name 'subject' is not defined 
+b'95'-Erreur : name 'subject' is not defined 
+b'96'-Erreur : name 'subject' is not defined 
+b'97'-Erreur : name 'subject' is not defined 
+b'98'-Erreur : name 'subject' is not defined 
+b'99'-Erreur : name 'subject' is not defined 
+b'100'-Erreur : name 'subject' is not defined 
+b'101'-Erreur : name 'subject' is not defined 
+b'102'-Erreur : name 'subject' is not defined 
+b'103'-Erreur : name 'subject' is not defined 
+b'104'-Erreur : name 'subject' is not defined 
+b'105'-Erreur : name 'subject' is not defined 
+b'106'-Erreur : name 'subject' is not defined 
+b'107'-Erreur : name 'subject' is not defined 
+b'108'-Erreur : name 'subject' is not defined 
+b'109'-Erreur : name 'subject' is not defined 
+b'110'-Erreur : name 'subject' is not defined 
+b'111'-Erreur : name 'subject' is not defined 
+b'112'-Erreur : name 'subject' is not defined 
+b'113'-Erreur : name 'subject' is not defined 
+b'114'-Erreur : name 'subject' is not defined 
+b'115'-Erreur : name 'subject' is not defined 
+b'116'-Erreur : name 'subject' is not defined 
+b'117'-Erreur : name 'subject' is not defined 
+b'118'-Erreur : name 'subject' is not defined 
+b'119'-Erreur : name 'subject' is not defined 
+b'120'-Erreur : name 'subject' is not defined 
+b'121'-Erreur : name 'subject' is not defined 
+b'122'-Erreur : name 'subject' is not defined 
+b'123'-Erreur : name 'subject' is not defined 
+b'124'-Erreur : name 'subject' is not defined 
+b'125'-Erreur : name 'subject' is not defined 
+b'126'-Erreur : name 'subject' is not defined 
+b'127'-Erreur : name 'subject' is not defined 
+b'128'-Erreur : name 'subject' is not defined 
+b'129'-Erreur : name 'subject' is not defined 
+b'130'-Erreur : name 'subject' is not defined 
+b'131'-Erreur : name 'subject' is not defined 
+b'132'-Erreur : name 'subject' is not defined 
+b'133'-Erreur : name 'subject' is not defined 
+b'134'-Erreur : name 'subject' is not defined 
+b'135'-Erreur : name 'subject' is not defined 
+b'136'-Erreur : name 'subject' is not defined 
+b'137'-Erreur : name 'subject' is not defined 
+b'138'-Erreur : name 'subject' is not defined 
+b'139'-Erreur : name 'subject' is not defined 
+b'140'-Erreur : name 'subject' is not defined 
+b'141'-Erreur : name 'subject' is not defined 
+b'142'-Erreur : name 'subject' is not defined 
+b'143'-Erreur : name 'subject' is not defined 
+b'144'-Erreur : name 'subject' is not defined 
+b'145'-Erreur : name 'subject' is not defined 
+b'146'-Erreur : name 'subject' is not defined 
+b'147'-Erreur : name 'subject' is not defined 
+b'148'-Erreur : name 'subject' is not defined 
+b'149'-Erreur : name 'subject' is not defined 
+b'150'-Erreur : name 'subject' is not defined 
+b'151'-Erreur : name 'subject' is not defined 
+b'152'-Erreur : name 'subject' is not defined 
+b'153'-Erreur : name 'subject' is not defined 
+b'154'-Erreur : name 'subject' is not defined 
+b'155'-Erreur : name 'subject' is not defined 
+b'156'-Erreur : name 'subject' is not defined 
+b'157'-Erreur : name 'subject' is not defined 
+b'158'-Erreur : name 'subject' is not defined 
+b'159'-Erreur : name 'subject' is not defined 
+b'160'-Erreur : name 'subject' is not defined 
+b'161'-Erreur : name 'subject' is not defined 
+b'162'-Erreur : name 'subject' is not defined 
+b'163'-Erreur : name 'subject' is not defined 
+b'164'-Erreur : name 'subject' is not defined 
+b'165'-Erreur : name 'subject' is not defined 
+b'166'-Erreur : name 'subject' is not defined 
+b'167'-Erreur : name 'subject' is not defined 
+b'168'-Erreur : name 'subject' is not defined 
+b'169'-Erreur : name 'subject' is not defined 
+b'170'-Erreur : name 'subject' is not defined 
+b'171'-Erreur : name 'subject' is not defined 
+b'172'-Erreur : name 'subject' is not defined 
+b'173'-Erreur : name 'subject' is not defined 
+b'174'-Erreur : name 'subject' is not defined 
+b'175'-Erreur : name 'subject' is not defined 
+b'176'-Erreur : name 'subject' is not defined 
+b'177'-Erreur : name 'subject' is not defined 
+b'178'-Erreur : name 'subject' is not defined 
+b'179'-Erreur : name 'subject' is not defined 
+b'180'-Erreur : name 'subject' is not defined 
+b'181'-Erreur : name 'subject' is not defined 
+b'182'-Erreur : name 'subject' is not defined 
+b'183'-Erreur : name 'subject' is not defined 
+b'184'-Erreur : name 'subject' is not defined 
+b'185'-Erreur : name 'subject' is not defined 
+b'186'-Erreur : name 'subject' is not defined 
+b'187'-Erreur : name 'subject' is not defined 
+b'188'-Erreur : name 'subject' is not defined 
+b'189'-Erreur : name 'subject' is not defined 
+b'190'-Erreur : name 'subject' is not defined 
+b'191'-Erreur : name 'subject' is not defined 
+b'192'-Erreur : name 'subject' is not defined 
+b'193'-Erreur : name 'subject' is not defined 
+b'194'-Erreur : name 'subject' is not defined 
+b'195'-Erreur : name 'subject' is not defined 
+b'196'-Erreur : name 'subject' is not defined 
+b'197'-Erreur : name 'subject' is not defined 
+b'198'-Erreur : name 'subject' is not defined 
+b'199'-Erreur : name 'subject' is not defined 
+b'200'-Erreur : name 'subject' is not defined 
+b'201'-Erreur : name 'subject' is not defined 
+b'202'-Erreur : name 'subject' is not defined 
+b'203'-Erreur : name 'subject' is not defined 
+b'204'-Erreur : name 'subject' is not defined 
+b'205'-Erreur : name 'subject' is not defined 
+b'206'-Erreur : name 'subject' is not defined 
+b'207'-Erreur : name 'subject' is not defined 
+b'208'-Erreur : name 'subject' is not defined 
+b'209'-Erreur : name 'subject' is not defined 
+b'210'-Erreur : name 'subject' is not defined 
+b'211'-Erreur : name 'subject' is not defined 
+b'212'-Erreur : name 'subject' is not defined 
+b'213'-Erreur : name 'subject' is not defined 
+b'214'-Erreur : name 'subject' is not defined 
+b'215'-Erreur : name 'subject' is not defined 
+b'216'-Erreur : name 'subject' is not defined 
+b'217'-Erreur : name 'subject' is not defined 
+b'218'-Erreur : name 'subject' is not defined 
+b'219'-Erreur : name 'subject' is not defined 
+b'220'-Erreur : name 'subject' is not defined 
+b'221'-Erreur : name 'subject' is not defined 
+b'222'-Erreur : name 'subject' is not defined 
+b'223'-Erreur : name 'subject' is not defined 
+b'224'-Erreur : name 'subject' is not defined 
+b'225'-Erreur : name 'subject' is not defined 
+b'226'-Erreur : name 'subject' is not defined 
+b'227'-Erreur : name 'subject' is not defined 
+b'228'-Erreur : name 'subject' is not defined 
+b'229'-Erreur : name 'subject' is not defined 
+1-Erreur : Error binding parameter 3 - probably unsupported type. 
+2-Erreur : Error binding parameter 3 - probably unsupported type. 
+3-Erreur : Error binding parameter 3 - probably unsupported type. 
+4-Erreur : Error binding parameter 3 - probably unsupported type. 
+5-Erreur : Error binding parameter 3 - probably unsupported type. 
+6-Erreur : Error binding parameter 3 - probably unsupported type. 
+8-Erreur : Error binding parameter 3 - probably unsupported type. 
+9-Erreur : Error binding parameter 3 - probably unsupported type. 
+10-Erreur : Error binding parameter 3 - probably unsupported type. 
+11-Erreur : Error binding parameter 3 - probably unsupported type. 
+12-Erreur : Error binding parameter 3 - probably unsupported type. 
+13-Erreur : Error binding parameter 3 - probably unsupported type. 
+14-Erreur : Error binding parameter 3 - probably unsupported type. 
+15-Erreur : Error binding parameter 3 - probably unsupported type. 
+16-Erreur : Error binding parameter 3 - probably unsupported type. 
+18-Erreur : Error binding parameter 3 - probably unsupported type. 
+19-Erreur : Error binding parameter 3 - probably unsupported type. 
+20-Erreur : Error binding parameter 3 - probably unsupported type. 
+21-Erreur : Error binding parameter 3 - probably unsupported type. 
+22-Erreur : Error binding parameter 3 - probably unsupported type. 
+23-Erreur : Error binding parameter 3 - probably unsupported type. 
+24-Erreur : Error binding parameter 3 - probably unsupported type. 
+25-Erreur : Error binding parameter 3 - probably unsupported type. 
+26-Erreur : Error binding parameter 3 - probably unsupported type. 
+27-Erreur : Error binding parameter 3 - probably unsupported type. 
+28-Erreur : Error binding parameter 3 - probably unsupported type. 
+29-Erreur : Error binding parameter 3 - probably unsupported type. 
+30-Erreur : Error binding parameter 3 - probably unsupported type. 
+31-Erreur : Error binding parameter 3 - probably unsupported type. 
+32-Erreur : Error binding parameter 3 - probably unsupported type. 
+33-Erreur : Error binding parameter 3 - probably unsupported type. 
+34-Erreur : Error binding parameter 3 - probably unsupported type. 
+35-Erreur : Error binding parameter 3 - probably unsupported type. 
+36-Erreur : Error binding parameter 3 - probably unsupported type. 
+37-Erreur : Error binding parameter 3 - probably unsupported type. 
+38-Erreur : Error binding parameter 3 - probably unsupported type. 
+39-Erreur : Error binding parameter 3 - probably unsupported type. 
+40-Erreur : Error binding parameter 3 - probably unsupported type. 
+41-Erreur : Error binding parameter 3 - probably unsupported type. 
+42-Erreur : Error binding parameter 3 - probably unsupported type. 
+43-Erreur : Error binding parameter 3 - probably unsupported type. 
+44-Erreur : Error binding parameter 3 - probably unsupported type. 
+45-Erreur : Error binding parameter 3 - probably unsupported type. 
+46-Erreur : Error binding parameter 3 - probably unsupported type. 
+47-Erreur : Error binding parameter 3 - probably unsupported type. 
+48-Erreur : Error binding parameter 3 - probably unsupported type. 
+50-Erreur : Error binding parameter 3 - probably unsupported type. 
+51-Erreur : Error binding parameter 3 - probably unsupported type. 
+52-Erreur : Error binding parameter 3 - probably unsupported type. 
+53-Erreur : Error binding parameter 3 - probably unsupported type. 
+54-Erreur : Error binding parameter 3 - probably unsupported type. 
+55-Erreur : Error binding parameter 3 - probably unsupported type. 
+56-Erreur : Error binding parameter 3 - probably unsupported type. 
+58-Erreur : Error binding parameter 3 - probably unsupported type. 
+59-Erreur : Error binding parameter 3 - probably unsupported type. 
+60-Erreur : Error binding parameter 3 - probably unsupported type. 
+61-Erreur : Error binding parameter 3 - probably unsupported type. 
+62-Erreur : Error binding parameter 3 - probably unsupported type. 
+63-Erreur : Error binding parameter 3 - probably unsupported type. 
+64-Erreur : Error binding parameter 3 - probably unsupported type. 
+65-Erreur : Error binding parameter 3 - probably unsupported type. 
+66-Erreur : Error binding parameter 3 - probably unsupported type. 
+67-Erreur : Error binding parameter 3 - probably unsupported type. 
+68-Erreur : Error binding parameter 3 - probably unsupported type. 
+69-Erreur : Error binding parameter 3 - probably unsupported type. 
+70-Erreur : Error binding parameter 3 - probably unsupported type. 
+71-Erreur : Error binding parameter 3 - probably unsupported type. 
+72-Erreur : Error binding parameter 3 - probably unsupported type. 
+73-Erreur : Error binding parameter 3 - probably unsupported type. 
+74-Erreur : Error binding parameter 3 - probably unsupported type. 
+75-Erreur : Error binding parameter 3 - probably unsupported type. 
+76-Erreur : Error binding parameter 3 - probably unsupported type. 
+77-Erreur : Error binding parameter 3 - probably unsupported type. 
+78-Erreur : Error binding parameter 3 - probably unsupported type. 
+79-Erreur : Error binding parameter 3 - probably unsupported type. 
+80-Erreur : Error binding parameter 3 - probably unsupported type. 
+81-Erreur : Error binding parameter 3 - probably unsupported type. 
+82-Erreur : Error binding parameter 3 - probably unsupported type. 
+83-Erreur : Error binding parameter 3 - probably unsupported type. 
+84-Erreur : Error binding parameter 3 - probably unsupported type. 
+85-Erreur : Error binding parameter 3 - probably unsupported type. 
+86-Erreur : Error binding parameter 3 - probably unsupported type. 
+87-Erreur : Error binding parameter 3 - probably unsupported type. 
+88-Erreur : Error binding parameter 3 - probably unsupported type. 
+89-Erreur : Error binding parameter 3 - probably unsupported type. 
+90-Erreur : Error binding parameter 3 - probably unsupported type. 
+91-Erreur : Error binding parameter 3 - probably unsupported type. 
+92-Erreur : Error binding parameter 3 - probably unsupported type. 
+93-Erreur : Error binding parameter 3 - probably unsupported type. 
+94-Erreur : Error binding parameter 3 - probably unsupported type. 
+95-Erreur : Error binding parameter 3 - probably unsupported type. 
+96-Erreur : Error binding parameter 3 - probably unsupported type. 
+97-Erreur : Error binding parameter 3 - probably unsupported type. 
+98-Erreur : Error binding parameter 3 - probably unsupported type. 
+99-Erreur : Error binding parameter 3 - probably unsupported type. 
+100-Erreur : Error binding parameter 3 - probably unsupported type. 
+101-Erreur : Error binding parameter 3 - probably unsupported type. 
+102-Erreur : Error binding parameter 3 - probably unsupported type. 
+103-Erreur : Error binding parameter 3 - probably unsupported type. 
+104-Erreur : Error binding parameter 3 - probably unsupported type. 
+105-Erreur : Error binding parameter 3 - probably unsupported type. 
+106-Erreur : Error binding parameter 3 - probably unsupported type. 
+107-Erreur : Error binding parameter 3 - probably unsupported type. 
+108-Erreur : Error binding parameter 3 - probably unsupported type. 
+109-Erreur : Error binding parameter 3 - probably unsupported type. 
+110-Erreur : Error binding parameter 3 - probably unsupported type. 
+111-Erreur : Error binding parameter 3 - probably unsupported type. 
+112-Erreur : Error binding parameter 3 - probably unsupported type. 
+113-Erreur : Error binding parameter 3 - probably unsupported type. 
+114-Erreur : Error binding parameter 3 - probably unsupported type. 
+115-Erreur : Error binding parameter 3 - probably unsupported type. 
+116-Erreur : Error binding parameter 3 - probably unsupported type. 
+117-Erreur : Error binding parameter 3 - probably unsupported type. 
+118-Erreur : Error binding parameter 3 - probably unsupported type. 
+119-Erreur : Error binding parameter 3 - probably unsupported type. 
+120-Erreur : Error binding parameter 3 - probably unsupported type. 
+123-Erreur : Error binding parameter 3 - probably unsupported type. 
+124-Erreur : Error binding parameter 3 - probably unsupported type. 
+125-Erreur : Error binding parameter 3 - probably unsupported type. 
+1-Erreur : Error binding parameter 3 - probably unsupported type. 
+2-Erreur : Error binding parameter 3 - probably unsupported type. 
+3-Erreur : Error binding parameter 3 - probably unsupported type. 
+4-Erreur : Error binding parameter 3 - probably unsupported type. 
+5-Erreur : Error binding parameter 3 - probably unsupported type. 
+6-Erreur : Error binding parameter 3 - probably unsupported type. 
+8-Erreur : Error binding parameter 3 - probably unsupported type. 
+9-Erreur : Error binding parameter 3 - probably unsupported type. 
+10-Erreur : Error binding parameter 3 - probably unsupported type. 
+11-Erreur : Error binding parameter 3 - probably unsupported type. 
+12-Erreur : Error binding parameter 3 - probably unsupported type. 
+13-Erreur : Error binding parameter 3 - probably unsupported type. 
+14-Erreur : Error binding parameter 3 - probably unsupported type. 
+15-Erreur : Error binding parameter 3 - probably unsupported type. 
+16-Erreur : Error binding parameter 3 - probably unsupported type. 
+18-Erreur : Error binding parameter 3 - probably unsupported type. 
+19-Erreur : Error binding parameter 3 - probably unsupported type. 
+20-Erreur : Error binding parameter 3 - probably unsupported type. 
+21-Erreur : Error binding parameter 3 - probably unsupported type. 
+22-Erreur : Error binding parameter 3 - probably unsupported type. 
+23-Erreur : Error binding parameter 3 - probably unsupported type. 
+24-Erreur : Error binding parameter 3 - probably unsupported type. 
+25-Erreur : Error binding parameter 3 - probably unsupported type. 
+26-Erreur : Error binding parameter 3 - probably unsupported type. 
+27-Erreur : Error binding parameter 3 - probably unsupported type. 
+28-Erreur : Error binding parameter 3 - probably unsupported type. 
+29-Erreur : Error binding parameter 3 - probably unsupported type. 
+30-Erreur : Error binding parameter 3 - probably unsupported type. 
+31-Erreur : Error binding parameter 3 - probably unsupported type. 
+32-Erreur : Error binding parameter 3 - probably unsupported type. 
+33-Erreur : Error binding parameter 3 - probably unsupported type. 
+34-Erreur : Error binding parameter 3 - probably unsupported type. 
+35-Erreur : Error binding parameter 3 - probably unsupported type. 
+36-Erreur : Error binding parameter 3 - probably unsupported type. 
+37-Erreur : Error binding parameter 3 - probably unsupported type. 
+38-Erreur : Error binding parameter 3 - probably unsupported type. 
+39-Erreur : Error binding parameter 3 - probably unsupported type. 
+40-Erreur : Error binding parameter 3 - probably unsupported type. 
+41-Erreur : Error binding parameter 3 - probably unsupported type. 
+42-Erreur : Error binding parameter 3 - probably unsupported type. 
+43-Erreur : Error binding parameter 3 - probably unsupported type. 
+44-Erreur : Error binding parameter 3 - probably unsupported type. 
+45-Erreur : Error binding parameter 3 - probably unsupported type. 
+46-Erreur : Error binding parameter 3 - probably unsupported type. 
+47-Erreur : Error binding parameter 3 - probably unsupported type. 
+48-Erreur : Error binding parameter 3 - probably unsupported type. 
+50-Erreur : Error binding parameter 3 - probably unsupported type. 
+51-Erreur : Error binding parameter 3 - probably unsupported type. 
+52-Erreur : Error binding parameter 3 - probably unsupported type. 
+53-Erreur : Error binding parameter 3 - probably unsupported type. 
+54-Erreur : Error binding parameter 3 - probably unsupported type. 
+55-Erreur : Error binding parameter 3 - probably unsupported type. 
+56-Erreur : Error binding parameter 3 - probably unsupported type. 
+58-Erreur : Error binding parameter 3 - probably unsupported type. 
+59-Erreur : Error binding parameter 3 - probably unsupported type. 
+60-Erreur : Error binding parameter 3 - probably unsupported type. 
+61-Erreur : Error binding parameter 3 - probably unsupported type. 
+62-Erreur : Error binding parameter 3 - probably unsupported type. 
+63-Erreur : Error binding parameter 3 - probably unsupported type. 
+64-Erreur : Error binding parameter 3 - probably unsupported type. 
+65-Erreur : Error binding parameter 3 - probably unsupported type. 
+66-Erreur : Error binding parameter 3 - probably unsupported type. 
+67-Erreur : Error binding parameter 3 - probably unsupported type. 
+68-Erreur : Error binding parameter 3 - probably unsupported type. 
+69-Erreur : Error binding parameter 3 - probably unsupported type. 
+70-Erreur : Error binding parameter 3 - probably unsupported type. 
+71-Erreur : Error binding parameter 3 - probably unsupported type. 
+72-Erreur : Error binding parameter 3 - probably unsupported type. 
+73-Erreur : Error binding parameter 3 - probably unsupported type. 
+74-Erreur : Error binding parameter 3 - probably unsupported type. 
+75-Erreur : Error binding parameter 3 - probably unsupported type. 
+76-Erreur : Error binding parameter 3 - probably unsupported type. 
+77-Erreur : Error binding parameter 3 - probably unsupported type. 
+78-Erreur : Error binding parameter 3 - probably unsupported type. 
+79-Erreur : Error binding parameter 3 - probably unsupported type. 
+80-Erreur : Error binding parameter 3 - probably unsupported type. 
+81-Erreur : Error binding parameter 3 - probably unsupported type. 
+82-Erreur : Error binding parameter 3 - probably unsupported type. 
+83-Erreur : Error binding parameter 3 - probably unsupported type. 
+84-Erreur : Error binding parameter 3 - probably unsupported type. 
+85-Erreur : Error binding parameter 3 - probably unsupported type. 
+86-Erreur : Error binding parameter 3 - probably unsupported type. 
+87-Erreur : Error binding parameter 3 - probably unsupported type. 
+88-Erreur : Error binding parameter 3 - probably unsupported type. 
+89-Erreur : Error binding parameter 3 - probably unsupported type. 
+90-Erreur : Error binding parameter 3 - probably unsupported type. 
+91-Erreur : Error binding parameter 3 - probably unsupported type. 
+92-Erreur : Error binding parameter 3 - probably unsupported type. 
+93-Erreur : Error binding parameter 3 - probably unsupported type. 
+94-Erreur : Error binding parameter 3 - probably unsupported type. 
+95-Erreur : Error binding parameter 3 - probably unsupported type. 
+96-Erreur : Error binding parameter 3 - probably unsupported type. 
+97-Erreur : Error binding parameter 3 - probably unsupported type. 
+98-Erreur : Error binding parameter 3 - probably unsupported type. 
+99-Erreur : Error binding parameter 3 - probably unsupported type. 
+100-Erreur : Error binding parameter 3 - probably unsupported type. 
+101-Erreur : Error binding parameter 3 - probably unsupported type. 
+102-Erreur : Error binding parameter 3 - probably unsupported type. 
+103-Erreur : Error binding parameter 3 - probably unsupported type. 
+104-Erreur : Error binding parameter 3 - probably unsupported type. 
+105-Erreur : Error binding parameter 3 - probably unsupported type. 
+106-Erreur : Error binding parameter 3 - probably unsupported type. 
+107-Erreur : Error binding parameter 3 - probably unsupported type. 
+108-Erreur : Error binding parameter 3 - probably unsupported type. 
+109-Erreur : Error binding parameter 3 - probably unsupported type. 
+110-Erreur : Error binding parameter 3 - probably unsupported type. 
+111-Erreur : Error binding parameter 3 - probably unsupported type. 
+112-Erreur : Error binding parameter 3 - probably unsupported type. 
+113-Erreur : Error binding parameter 3 - probably unsupported type. 
+114-Erreur : Error binding parameter 3 - probably unsupported type. 
+115-Erreur : Error binding parameter 3 - probably unsupported type. 
+116-Erreur : Error binding parameter 3 - probably unsupported type. 
+117-Erreur : Error binding parameter 3 - probably unsupported type. 
+118-Erreur : Error binding parameter 3 - probably unsupported type. 
+119-Erreur : Error binding parameter 3 - probably unsupported type. 
+120-Erreur : Error binding parameter 3 - probably unsupported type. 
+123-Erreur : Error binding parameter 3 - probably unsupported type. 
+124-Erreur : Error binding parameter 3 - probably unsupported type. 
+125-Erreur : Error binding parameter 3 - probably unsupported type. 
+126-Erreur : Error binding parameter 3 - probably unsupported type. 
+127-Erreur : Error binding parameter 3 - probably unsupported type. 
+128-Erreur : Error binding parameter 3 - probably unsupported type. 
+129-Erreur : Error binding parameter 3 - probably unsupported type. 
+130-Erreur : Error binding parameter 3 - probably unsupported type. 
+131-Erreur : Error binding parameter 3 - probably unsupported type. 
+132-Erreur : Error binding parameter 3 - probably unsupported type. 
+134-Erreur : Error binding parameter 3 - probably unsupported type. 
+135-Erreur : Error binding parameter 3 - probably unsupported type. 
+136-Erreur : Error binding parameter 3 - probably unsupported type. 
+138-Erreur : Error binding parameter 3 - probably unsupported type. 
+139-Erreur : Error binding parameter 3 - probably unsupported type. 
+140-Erreur : Error binding parameter 3 - probably unsupported type. 
+141-Erreur : Error binding parameter 3 - probably unsupported type. 
+142-Erreur : Error binding parameter 3 - probably unsupported type. 
+144-Erreur : Error binding parameter 3 - probably unsupported type. 
+145-Erreur : Error binding parameter 3 - probably unsupported type. 
+146-Erreur : Error binding parameter 3 - probably unsupported type. 
+147-Erreur : Error binding parameter 3 - probably unsupported type. 
+149-Erreur : Error binding parameter 3 - probably unsupported type. 
+150-Erreur : Error binding parameter 3 - probably unsupported type. 
+151-Erreur : Error binding parameter 3 - probably unsupported type. 
+152-Erreur : Error binding parameter 3 - probably unsupported type. 
+153-Erreur : Error binding parameter 3 - probably unsupported type. 
+154-Erreur : Error binding parameter 3 - probably unsupported type. 
+155-Erreur : Error binding parameter 3 - probably unsupported type. 
+156-Erreur : Error binding parameter 3 - probably unsupported type. 
+157-Erreur : Error binding parameter 3 - probably unsupported type. 
+158-Erreur : Error binding parameter 3 - probably unsupported type. 
+159-Erreur : Error binding parameter 3 - probably unsupported type. 
+160-Erreur : Error binding parameter 3 - probably unsupported type. 
+161-Erreur : Error binding parameter 3 - probably unsupported type. 
+162-Erreur : Error binding parameter 3 - probably unsupported type. 
+164-Erreur : Error binding parameter 3 - probably unsupported type. 
+165-Erreur : Error binding parameter 3 - probably unsupported type. 
+166-Erreur : Error binding parameter 3 - probably unsupported type. 
+168-Erreur : Error binding parameter 3 - probably unsupported type. 
+169-Erreur : Error binding parameter 3 - probably unsupported type. 
+171-Erreur : Error binding parameter 3 - probably unsupported type. 
+172-Erreur : Error binding parameter 3 - probably unsupported type. 
+174-Erreur : Error binding parameter 3 - probably unsupported type. 
+175-Erreur : Error binding parameter 3 - probably unsupported type. 
+176-Erreur : Error binding parameter 3 - probably unsupported type. 
+178-Erreur : Error binding parameter 3 - probably unsupported type. 
+179-Erreur : Error binding parameter 3 - probably unsupported type. 
+180-Erreur : Error binding parameter 3 - probably unsupported type. 
+182-Erreur : Error binding parameter 3 - probably unsupported type. 
+184-Erreur : Error binding parameter 3 - probably unsupported type. 
+186-Erreur : Error binding parameter 3 - probably unsupported type. 
+187-Erreur : Error binding parameter 3 - probably unsupported type. 
+188-Erreur : Error binding parameter 3 - probably unsupported type. 
+189-Erreur : Error binding parameter 3 - probably unsupported type. 
+191-Erreur : Error binding parameter 3 - probably unsupported type. 
+192-Erreur : Error binding parameter 3 - probably unsupported type. 
+194-Erreur : Error binding parameter 3 - probably unsupported type. 
+195-Erreur : Error binding parameter 3 - probably unsupported type. 
+198-Erreur : Error binding parameter 3 - probably unsupported type. 
+199-Erreur : Error binding parameter 3 - probably unsupported type. 
+201-Erreur : Error binding parameter 3 - probably unsupported type. 
+202-Erreur : Error binding parameter 3 - probably unsupported type. 
+203-Erreur : Error binding parameter 3 - probably unsupported type. 
+205-Erreur : Error binding parameter 3 - probably unsupported type. 
+206-Erreur : Error binding parameter 3 - probably unsupported type. 
+208-Erreur : Error binding parameter 3 - probably unsupported type. 
+209-Erreur : Error binding parameter 3 - probably unsupported type. 
+211-Erreur : Error binding parameter 3 - probably unsupported type. 
+212-Erreur : Error binding parameter 3 - probably unsupported type. 
+214-Erreur : Error binding parameter 3 - probably unsupported type. 
+215-Erreur : Error binding parameter 3 - probably unsupported type. 
+217-Erreur : Error binding parameter 3 - probably unsupported type. 
+218-Erreur : Error binding parameter 3 - probably unsupported type. 
+220-Erreur : Error binding parameter 3 - probably unsupported type. 
+221-Erreur : Error binding parameter 3 - probably unsupported type. 
+223-Erreur : Error binding parameter 3 - probably unsupported type. 
+224-Erreur : Error binding parameter 3 - probably unsupported type. 
+225-Erreur : Error binding parameter 3 - probably unsupported type. 
+226-Erreur : Error binding parameter 3 - probably unsupported type. 
+228-Erreur : Error binding parameter 3 - probably unsupported type. 
+229-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'1'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'2'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'3'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'4'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'5'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'6'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'8'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'9'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'10'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'11'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'12'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'13'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'14'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'15'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'16'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'18'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'19'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'20'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'21'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'22'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'23'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'24'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'25'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'26'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'27'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'28'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'29'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'30'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'31'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'32'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'33'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'34'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'35'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'36'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'37'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'38'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'39'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'40'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'41'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'42'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'43'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'44'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'45'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'46'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'47'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'48'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'50'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'51'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'52'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'53'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'54'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'55'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'56'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'58'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'59'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'60'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'61'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'62'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'63'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'64'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'65'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'66'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'67'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'68'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'69'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'70'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'71'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'72'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'73'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'74'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'75'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'76'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'77'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'78'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'79'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'80'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'81'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'82'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'83'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'84'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'85'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'86'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'87'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'88'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'89'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'90'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'91'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'92'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'93'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'94'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'95'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'96'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'97'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'98'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'99'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'100'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'101'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'102'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'103'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'104'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'105'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'106'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'107'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'108'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'109'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'110'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'111'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'112'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'113'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'114'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'115'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'116'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'117'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'118'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'119'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'120'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'123'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'124'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'125'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'126'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'127'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'128'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'129'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'130'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'131'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'132'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'134'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'135'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'136'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'138'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'139'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'140'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'141'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'142'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'144'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'145'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'146'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'147'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'149'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'150'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'151'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'152'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'153'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'154'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'155'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'156'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'157'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'158'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'159'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'160'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'161'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'162'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'164'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'165'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'166'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'168'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'169'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'171'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'172'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'174'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'175'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'176'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'178'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'179'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'180'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'182'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'184'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'186'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'187'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'188'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'189'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'191'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'192'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'194'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'195'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'198'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'199'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'201'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'202'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'203'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'205'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'206'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'208'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'209'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'211'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'212'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'214'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'215'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'217'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'218'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'220'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'221'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'223'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'224'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'225'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'226'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'228'-Erreur : Error binding parameter 3 - probably unsupported type. 
+b'229'-Erreur : Error binding parameter 3 - probably unsupported type. 

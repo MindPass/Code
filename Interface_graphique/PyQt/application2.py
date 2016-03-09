@@ -61,7 +61,7 @@ class FenetreProgression(Ui_fenetreProgression):
                 try:
                     table.add_mail(tableExterne.email_as_list(id_email))
                 except Exception as e:
-                    print("Il y a eu une erreur pour l'id suivant:" + str(id_email))
+                    print("ID erreur:" + str(id_email) + ": "+ str(e))
                     fichier_erreurs.write(str(id_email) + "-Erreur : %s \n" % e)
             count += 1
             ratio = int(count / len(liste_externe_id) * 100)
