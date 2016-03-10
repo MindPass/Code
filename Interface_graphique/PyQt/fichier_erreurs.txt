@@ -764,3 +764,5 @@ b'226'-Erreur : Error binding parameter 3 - probably unsupported type.
 b'228'-Erreur : Error binding parameter 3 - probably unsupported type. 
 b'229'-Erreur : Error binding parameter 3 - probably unsupported type. 
 b'230'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1993: invalid continuation byte 
+b'230'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1993: invalid continuation byte 
+b'230'-Erreur : 'utf-8' codec can't decode byte 0xe9 in position 1993: invalid continuation byte 
