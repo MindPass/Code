@@ -2,10 +2,23 @@
 
 
 import imaplib
-import quopri
-from email.parser import Parser
 import email
-import html
+import codecs
+
+format_mail_voulu = "html"  # mettre "plain" si on veut le recupérer en text/plain, html sinon
+id_mail_voulu = 18
+
+def print_(arg):
+    """
+    Args:
+        arg: la valeur à afficher
+
+    Returns: la valeur à afficher ainsi qu'une série de '-', afin d'espacer l'affichage
+
+    """
+    print(arg)
+    print("-------------------------------------")
+
 
 # user=input('entrez le pseudo: ')+"@outlook.com"
 # user = input('entrez le pseudo: ') + "@laposte.net"
@@ -24,44 +37,46 @@ ids = data[0]  # data est une liste à un élément, contenant les id des mails
 listeMailsInbox = ids.split()  # ids est une string d'id séparés par un espace
 nombreMailsInbox = len(listeMailsInbox)
 
-#print("Nombre de mail:%s" % nombreMailsInbox)
+print_("Nombre de mail:%s" % nombreMailsInbox)
 
-k = 16  # cas problématique
-
-latest_email_id = listeMailsInbox[k]
-id_message = latest_email_id.decode('utf-8')
-
-# Vérification que ce mail n'a pas déjà été enregistré
-
-result, data = imap_conn.fetch(latest_email_id, "(RFC822)")
-# fetch the email body (RFC822) for the given ID
-
-raw_email = data[0][1]
+byte_id = listeMailsInbox[id_mail_voulu]
+result, data = imap_conn.fetch(byte_id, "(RFC822)")
+raw_email = data[0][1]  # en bits
 str_email = email.message_from_bytes(raw_email)
 
 
-if (str_email.is_multipart()):
-	for part in str_email.get_payload():
-		charset = part.get_content_charset()
-		fichier_print=part.get_payload(decode=True).decode(charset)
+print_(str_email.get_all("Subject"))
+print_(str_email.get_boundary())
+
+if str_email.is_multipart():
+    alrdy_saved_in_format = False
+    for part in str_email.get_payload():
+        if not alrdy_saved_in_format:
+            charset = part.get_content_charset()
+            try:
+                fichier_print = part.get_payload(decode=True).decode(charset, 'replace')
+            except AttributeError:
+                print_(".decode(charset) n'a pas fonctionné.")
+
+        if part.get_content_type() == ("text/"+format_mail_voulu):
+            alrdy_saved_in_format = True
 else:
-	charset = str_email.get_content_charset()
-	fichier_print=str_email.get_payload(decode=True).decode(charset)
+    charset = str_email.get_content_charset()
+    try:
+        fichier_print = str_email.get_payload(decode=True).decode(charset)
+    except AttributeError:
+        print_("NON multipart .decode(charset) n'a pas fonctionné")
 
-"""
-raw_email_qpri = quopri.decodestring(raw_email)
-chaine =  raw_email_qpri.decode('utf-8','replace')
-"""
+
+print_(str(email.iterators._structure(str_email)))  # structure du mail
+
 print(charset)
+if charset == "utf-8":
+    charset += "-sig"  # ajout du BOM
 
-
-# .decode('utf-8') for python 3.x compatibility (bytes -> str)
-# http://stackoverflow.com/questions/4040074/python-email-encoding-problem
-
-fichier_mail = open('test16.html', 'w')
-fichier_mail.write(fichier_print)
-fichier_mail.close()
-
+file = codecs.open("test16.html", "w", charset)
+file.write(fichier_print)
+file.close()
 
 imap_conn.close()
 imap_conn.logout()

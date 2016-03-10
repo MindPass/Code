@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from librairie import *
-import quopri
 
 
 user_email = input('entrez le pseudo: ') + "@laposte.net"
@@ -23,8 +22,8 @@ for id_email in tableExterne.liste_id():
             table.add_mail(tableExterne.email_as_list(id_email))
             print(id_email)
         except Exception as e:
-            print("Il y a eu une erreur pour l'id suivant:" + str(id_email))
-            fichier_erreurs.write(str(id_email) + "-Erreur : %s \n" % e)
+            print("ERREUR POUR l'ID " + str(id_email)+" : "+str(e))
+            fichier_erreurs.write("ERREUR POUR l'ID " + str(id_email)+" : "+str(e))
 
 table.save()
 fichier_erreurs.close()

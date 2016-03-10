@@ -4,10 +4,7 @@ import imaplib
 import urllib.parse
 import re
 import sqlite3
-from email.parser import FeedParser
-
-def salut():
-    print("salut")
+import email
 
 
 class Table(object):
@@ -38,13 +35,13 @@ class Table(object):
     # se prémunir d'une injection SQL reste à faire
 
     def add_mail(self, arg):
-        """
-		Prend une liste, tuple ou dictionnaire en paramètre.
+        """Prend une liste, tuple ou dictionnaire en paramètre.
 		"""
-        if (isinstance(arg, list) or isinstance(arg, tuple)):
+
+        if isinstance(arg, list) or isinstance(arg, tuple):
             self.cur.execute("INSERT INTO " + self.name + " (id, expediteur, sujet, contenu, date) VALUES(?,?,?,?,?)",
                              (arg[0], arg[1], arg[2], arg[3], arg[4]))
-        elif (isinstance(arg, dict)):
+        elif isinstance(arg, dict):
             self.cur.execute("INSERT INTO " + self.name + " (id, expediteur, sujet, contenu, date) VALUES(?,?,?,?,?)",
                              (arg["id"], arg["expediteur"], arg["sujet"], arg["contenu"], arg["date"]))
         else:
@@ -56,7 +53,7 @@ class Table(object):
         liste_id = []
         for element in tab:
             liste_id.append(element[0])
-        return (liste_id)
+        return liste_id
 
     def save(self):
         self.conn.commit()
@@ -68,6 +65,8 @@ class Table(object):
 
 class TableExterne(object):
     """docstring for TableExterne
+
+
 	"""
 
     def __init__(self, connexion, user, mdp):
@@ -86,50 +85,38 @@ class TableExterne(object):
         liste_mails_inbox = ids.split()
 
         for k in range(len(liste_mails_inbox)):
-            if (type(liste_mails_inbox[k]) == "bytes"):
+            if type(liste_mails_inbox[k]) == "bytes":
                 liste_mails_inbox[k] = liste_mails_inbox[k].decode('utf-8')
                 # ids est une string d'id séparés par un espace
-        return (liste_mails_inbox)
+        return liste_mails_inbox
 
     def raw_email(self, email_id):
         result, data = self.imap_conn.fetch(email_id, "(RFC822)")
         # fetch the email body (RFC822) for the given ID
-        raw_email = data[0][1].decode('utf-8')
-        return (raw_email)
+        raw_email = data[0][1]
+        return raw_email
 
     def email_as_list(self, email_id):
         raw_email = self.raw_email(email_id)
-        f = FeedParser()
-        f.feed(raw_email)
-        rootMessage = f.close()
 
-        if (rootMessage.is_multipart()):
-            corps = rootMessage.get_payload(0).get_payload(decode=True).decode('utf-8')
-        # Récupérer le corps du mail en plain/text bien décodé
+        str_email = email.message_from_bytes(raw_email)
+
+        if str_email.is_multipart():
+            for part in str_email.get_payload():
+                charset = part.get_content_charset()
+                corps = part.get_payload(decode=True).decode(charset)
         else:
-            corps = rootMessage.get_payload(decode=True).decode('utf-8')
+            charset = str_email.get_content_charset()
+            corps = str_email.get_payload(decode=True).decode(charset)
 
-        subject = rootMessage.get('Subject')
-        # méthode Alex
-        # suppression des entêtes inutiles avec une regexp
-        subject = rootMessage.get('Subject')
-        for i in range(len(subject)):
-            if subject[i] == "=":
-                subject = subject[:i] + "%" + subject[i + 1:]
-            elif subject[i] == "_":
-                subject = subject[:i] + " " + subject[i + 1:]
-        subject = re.sub('(\n)*\%\?(UTF|utf)\-8\?(Q|B|q|b)\? *', '', subject)
-        subject = re.sub('\?\%(\r\n)*', '', subject)
-        subject = urllib.parse.unquote(subject)
-        # fin méthode Alex
-
-        date = rootMessage.get('Date')
-        exp = rootMessage.get('From')
+        date = str_email.get('Date')
+        exp = str_email.get('From')
+        subject = str_email.get('Subject')
 
         email_liste = []
         email_liste.extend((email_id, exp, subject, corps, date))
 
-        return (email_liste)
+        return email_liste
 
     def close(self):
         self.imap_conn.close()
