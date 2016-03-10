@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from librairie import *
+import quopri
+
 
 user_email = input('entrez le pseudo: ') + "@laposte.net"
 mdp = input('Entrez le mdp: ')

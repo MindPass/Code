@@ -2,10 +2,7 @@
 
 
 import imaplib
-import re
-import sqlite3
-import html
-import urllib.parse
+import quopri
 from email.parser import FeedParser
 
 # user=input('entrez le pseudo: ')+"@outlook.com"
@@ -13,19 +10,6 @@ from email.parser import FeedParser
 # mdp = input('Entrez le mdp: ')  # à garder pendant le développement
 user = "mindpasstest@laposte.net"
 mdp = "Verv00rt"
-
-# OUVERTURE BDD
-fichierDonnees = "maBaseDeDonneesTEST16.sq3"
-conn = sqlite3.connect(fichierDonnees)
-cur = conn.cursor()
-cur.execute("CREATE TABLE IF NOT EXISTS mails (id TEXT, expediteur TEXT, sujet TEXT, contenu TEXT, date TEXT)")
-
-# RECUPERATION DES ID
-cur.execute("SELECT id FROM mails")
-tab = cur.fetchall()
-liste_id = []
-for element in tab:
-    liste_id.append(element[0])
 
 # imap_conn = imaplib.IMAP4_SSL('imap-mail.outlook.com')
 imap_conn = imaplib.IMAP4_SSL('imap.laposte.net')
@@ -51,49 +35,18 @@ result, data = imap_conn.fetch(latest_email_id, "(RFC822)")
 # fetch the email body (RFC822) for the given ID
 
 
-raw_email = data[0][1].decode('utf-8')
+raw_email = data[0][1]
+raw_email_qpri = quopri.decodestring(raw_email)
+
+print(raw_email)
 
 # .decode('utf-8') for python 3.x compatibility (bytes -> str)
 # http://stackoverflow.com/questions/4040074/python-email-encoding-problem
-f = FeedParser()
-f.feed(raw_email)
-rootMessage = f.close()
-
-if rootMessage.is_multipart():
-    try:
-        corps = rootMessage.get_payload(0)
-    except Exception as e:
-        print("Multipart: " + str(e))
-        # Récupérer le corps du mail en plain/text bien décodé
-else:
-    try:
-        corps = rootMessage.get_payload()
-        if ('text/html' in re.findall(r'text/html', corps)):
-            corps = html.unescape(corps)
-
-    except Exception as e:
-        print("Non multipart:" + str(e))
 
 fichier_mail = open('test16.html', 'w')
-fichier_mail.write(str(corps))
+fichier_mail.write(str(raw_email_qpri))
 fichier_mail.close()
 
-exp = rootMessage.get('From')
-print("From:" + exp + " ID:" + id_message)
 
-enc = rootMessage.get('Content-Transfer-Encoding')
-
-print(enc)
-
-cont = rootMessage.get('Content-Type')
-print(cont)
-
-print(id_message)
-
-# ENREGISTREMENT
-conn.commit()
-# FERMETURE
-cur.close()
-conn.close()
 imap_conn.close()
 imap_conn.logout()
