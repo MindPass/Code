@@ -14,10 +14,13 @@ class Ui_fenetreAccueil(object):
         fenetreAccueil.resize(800, 500)
         fenetreAccueil.setMinimumSize(QtCore.QSize(800, 500))
         fenetreAccueil.setMaximumSize(QtCore.QSize(800, 500))
+        
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fenetreAccueil.setWindowIcon(icon)
-        fenetreAccueil.setStyleSheet("")
+        with open("style/pageAccueil.css","r") as feuilleDeStyle:
+            fenetreAccueil.setStyleSheet(feuilleDeStyle.read()) 
+        
         self.centralwidget = QtWidgets.QWidget(fenetreAccueil)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -83,7 +86,6 @@ class Ui_fenetreAccueil(object):
         self.menubar.addAction(self.menuMindPass.menuAction())
         self.menubar.addAction(self.menuOutils.menuAction())
         self.menubar.addAction(self.menuAide.menuAction())
-
         self.retranslateUi(fenetreAccueil)
         self.actionFermer.triggered.connect(fenetreAccueil.close)
         QtCore.QMetaObject.connectSlotsByName(fenetreAccueil)
