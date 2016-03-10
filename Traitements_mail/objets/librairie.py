@@ -16,6 +16,7 @@ def print_(arg):
     print(arg)
     print("-------------------------------------")
 
+
 class Table(object):
     """docstring for Table
     Définit une table dans la bdd, destinée à contenir les mails d'une adresse donnée; classe
@@ -107,7 +108,7 @@ class TableExterne(object):
 
     def email_as_list(self, email_id):
         raw_email = self.raw_email(email_id)
-        str_email = email.message_from_bytes(raw_email) # str_email est  de type message
+        str_email = email.message_from_bytes(raw_email)  # str_email est  de type message
 
         format_mail_voulu = "html"  # mettre "plain" si on veut le recupérer en text/plain, html sinon
 
@@ -118,10 +119,18 @@ class TableExterne(object):
                     charset = part.get_content_charset()
                     try:
                         corps = part.get_payload(decode=True).decode(charset, 'replace')
-                    except AttributeError:
-                        print_(".decode(charset) n'a pas fonctionné.")
+                    except AttributeError as e:
+                        # si decode n'a pas marché, alors part est multipart: on recommence
+                        for sub_part in part.get_payload():
+                            if sub_part.get_content_type() == 'text/plain':
+                                charset = sub_part.get_content_charset()
+                                corps = sub_part.get_payload(decode=True).decode(charset, 'replace')
+                                break
+                            elif sub_part.get_content_type() == 'text/html':
+                                charset = sub_part.get_content_charset()
+                                corps = sub_part.get_payload(decode=True).decode(charset, 'replace')
 
-                if part.get_content_type() == ("text/"+format_mail_voulu):
+                if part.get_content_type() == ("text/" + format_mail_voulu):
                     alrdy_saved_in_format = True
         else:
             charset = str_email.get_content_charset()
@@ -130,11 +139,41 @@ class TableExterne(object):
             except AttributeError:
                 print_("NON multipart .decode(charset) n'a pas fonctionné")
 
-        date = str_email.get('Date')
-        exp = str_email.get('From')
-        subject = str_email.get('Subject')
+        ### SUJET
+        mime_subject = str_email.get('Subject')
+        # sujet du mail, possiblement encodé par le protocole MIME
+        subject_encoded, encoding = email.header.decode_header(mime_subject)[0]
+        # liste contenant un seul tuple  ('sujet', None) si sujet non encodé
 
+        if encoding is None:
+            subject = subject_encoded
+        else:
+            subject = subject_encoded.decode(encoding)
+        ##
+
+        ### EXPEDITEUR
+        mime_exp = str_email.get('From')
+
+        if len(email.header.decode_header(mime_exp)) != 1:
+            exp = ""
+            for element in email.header.decode_header(mime_exp):
+                exp_encoded, encoding = element
+                if encoding is None:
+                    exp += exp_encoded.decode('utf-8')
+                else:
+                    exp += exp_encoded.decode(encoding)
+
+        else:
+            exp_encoded, encoding = email.header.decode_header(mime_exp)[0]
+            if encoding is None:
+                exp = exp_encoded
+            else:
+                exp = exp_encoded.decode(encoding)
+        ##
+
+        date = str_email.get('Date')
         email_liste = []
+
         if type(email_id) == "<class 'bytes'>":
             email_id = email_id.decode('utf-8')
         email_liste.extend((email_id, exp, subject, corps, date))

@@ -18,7 +18,7 @@ class Ui_fenetreAccueil(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fenetreAccueil.setWindowIcon(icon)
-        with open("style/pageAccueil.css","r") as feuilleDeStyle:
+        with open("style/fenetreAccueil.css", "r") as feuilleDeStyle:
             fenetreAccueil.setStyleSheet(feuilleDeStyle.read()) 
         
         self.centralwidget = QtWidgets.QWidget(fenetreAccueil)

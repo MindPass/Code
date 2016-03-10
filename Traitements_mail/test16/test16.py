@@ -6,7 +6,8 @@ import email
 import codecs
 
 format_mail_voulu = "html"  # mettre "plain" si on veut le recupérer en text/plain, html sinon
-id_mail_voulu = 18
+id_mail_voulu = 19
+
 
 def print_(arg):
     """
@@ -45,8 +46,43 @@ raw_email = data[0][1]  # en bits
 str_email = email.message_from_bytes(raw_email)
 
 
-print_(str_email.get_all("Subject"))
-print_(str_email.get_boundary())
+
+### SUJET
+mime_subject = str_email.get('Subject')
+# sujet du mail, possiblement encodé par le protocole MIME
+subject_encoded, encoding = email.header.decode_header(mime_subject)[0]
+# liste contenant un seul tuple  ('sujet', None) si sujet non encodé
+
+if encoding is None:
+    subject = subject_encoded
+else:
+    subject = subject_encoded.decode(encoding)
+print_(subject)
+##
+
+### EXPEDITEUR
+mime_exp = str_email.get('From')
+
+print_(email.header.decode_header(mime_exp))
+
+if len(email.header.decode_header(mime_exp)) != 1:
+    exp = ""
+    for element in email.header.decode_header(mime_exp):
+        exp_encoded, encoding = element
+        if encoding is None:
+            exp += exp_encoded.decode('utf-8')
+        else:
+            exp += exp_encoded.decode(encoding)
+
+else:
+    exp_encoded, encoding = email.header.decode_header(mime_exp)[0]
+    if encoding is None:
+        exp = exp_encoded
+    else:
+        exp = exp_encoded.decode(encoding)
+
+print_(exp)
+##
 
 if str_email.is_multipart():
     alrdy_saved_in_format = False
@@ -55,22 +91,29 @@ if str_email.is_multipart():
             charset = part.get_content_charset()
             try:
                 fichier_print = part.get_payload(decode=True).decode(charset, 'replace')
-            except AttributeError:
-                print_(".decode(charset) n'a pas fonctionné.")
+            except AttributeError as e:
+                # si decode n'a pas marché, alors part est multipart: on recommence
+                for sub_part in part.get_payload():
+                    if sub_part.get_content_type() == 'text/plain':
+                        charset = sub_part.get_content_charset()
+                        fichier_print = sub_part.get_payload(decode=True).decode(charset, 'replace')
+                        break
+                    elif sub_part.get_content_type() == 'text/html':
+                        charset = sub_part.get_content_charset()
+                        fichier_print = sub_part.get_payload(decode=True).decode(charset, 'replace')
 
-        if part.get_content_type() == ("text/"+format_mail_voulu):
+        if part.get_content_type() == ("text/" + format_mail_voulu):
             alrdy_saved_in_format = True
 else:
     charset = str_email.get_content_charset()
     try:
-        fichier_print = str_email.get_payload(decode=True).decode(charset)
+        fichier_print = str_email.get_payload(decode=True).decode(charset, 'replace')
     except AttributeError:
-        print_("NON multipart .decode(charset) n'a pas fonctionné")
+        print_("NON multipart: .decode(charset) n'a pas fonctionné")
+
+print_(str(email.iterators._structure(str_email)))  # affiche la structure du mail
 
 
-print_(str(email.iterators._structure(str_email)))  # structure du mail
-
-print(charset)
 if charset == "utf-8":
     charset += "-sig"  # ajout du BOM
 
