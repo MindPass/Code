@@ -6,7 +6,6 @@ import re
 import sqlite3
 from email.parser import FeedParser
 
-
 def salut():
     print("salut")
 
@@ -15,7 +14,6 @@ class Table(object):
     """docstring for Table
     Définit une table dans la bdd, destinée à contenir les mails d'une adresse donnée; classe
     utile si l'utilisateur nous en fournit plusieurs.
-
     Attributs,
     De classe:
     -bdd est le fichier .sq3 contenant les données.
@@ -41,10 +39,7 @@ class Table(object):
 
     def add_mail(self, arg):
         """
-
 		Prend une liste, tuple ou dictionnaire en paramètre.
-
-
 		"""
         if (isinstance(arg, list) or isinstance(arg, tuple)):
             self.cur.execute("INSERT INTO " + self.name + " (id, expediteur, sujet, contenu, date) VALUES(?,?,?,?,?)",
@@ -73,8 +68,6 @@ class Table(object):
 
 class TableExterne(object):
     """docstring for TableExterne
-
-
 	"""
 
     def __init__(self, connexion, user, mdp):
@@ -101,27 +94,22 @@ class TableExterne(object):
     def raw_email(self, email_id):
         result, data = self.imap_conn.fetch(email_id, "(RFC822)")
         # fetch the email body (RFC822) for the given ID
-        try:
-            raw_email = data[0][1].decode('utf-8')
-            return raw_email
-        except Exception as e:
-            print("raw_email non decodé: " + str(e))
+        raw_email = data[0][1].decode('utf-8')
+        return (raw_email)
 
     def email_as_list(self, email_id):
         raw_email = self.raw_email(email_id)
-
         f = FeedParser()
         f.feed(raw_email)
         rootMessage = f.close()
 
         if (rootMessage.is_multipart()):
-            try:
-                corps = rootMessage.get_payload(0)
-            except Exception:
-                print("Multipart erreur: " + str(e))
+            corps = rootMessage.get_payload(0).get_payload(decode=True).decode('utf-8')
+        # Récupérer le corps du mail en plain/text bien décodé
         else:
-            corps = rootMessage.get_payload()
+            corps = rootMessage.get_payload(decode=True).decode('utf-8')
 
+        subject = rootMessage.get('Subject')
         # méthode Alex
         # suppression des entêtes inutiles avec une regexp
         subject = rootMessage.get('Subject')
@@ -141,7 +129,7 @@ class TableExterne(object):
         email_liste = []
         email_liste.extend((email_id, exp, subject, corps, date))
 
-        return email_liste
+        return (email_liste)
 
     def close(self):
         self.imap_conn.close()
