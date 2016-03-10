@@ -1,11 +1,20 @@
 # -*- coding: utf-8 -*-
 
 import imaplib
-import urllib.parse
-import re
 import sqlite3
 import email
 
+
+def print_(arg):
+    """
+    Args:
+        arg: la valeur à afficher
+
+    Returns: la valeur à afficher ainsi qu'une série de '-', afin d'espacer l'affichage
+
+    """
+    print(arg)
+    print("-------------------------------------")
 
 class Table(object):
     """docstring for Table
@@ -19,7 +28,7 @@ class Table(object):
     -conn et cur, sont des variables permettant de se conecter à la bdd en sqlite (.sq3).
     """
 
-    bdd = "MaBaseDeDonnes.sq3"
+    bdd = "bdd.sq3"
 
     def __init__(self, name):
         """Constructeur
@@ -29,7 +38,7 @@ class Table(object):
         self.name = name
         self.conn = sqlite3.connect(Table.bdd)
         self.cur = self.conn.cursor()
-        cmd = "CREATE TABLE IF NOT EXISTS %s (id TEXT, expediteur TEXT, sujet TEXT, contenu TEXT, date TEXT)" % name
+        cmd = "CREATE TABLE IF NOT EXISTS %s (id INT, expediteur TEXT, sujet TEXT, contenu TEXT, date TEXT)" % name
         self.cur.execute(cmd)
 
     # se prémunir d'une injection SQL reste à faire
@@ -98,22 +107,36 @@ class TableExterne(object):
 
     def email_as_list(self, email_id):
         raw_email = self.raw_email(email_id)
+        str_email = email.message_from_bytes(raw_email) # str_email est  de type message
 
-        str_email = email.message_from_bytes(raw_email)
+        format_mail_voulu = "html"  # mettre "plain" si on veut le recupérer en text/plain, html sinon
 
         if str_email.is_multipart():
+            alrdy_saved_in_format = False
             for part in str_email.get_payload():
-                charset = part.get_content_charset()
-                corps = part.get_payload(decode=True).decode(charset)
+                if not alrdy_saved_in_format:
+                    charset = part.get_content_charset()
+                    try:
+                        corps = part.get_payload(decode=True).decode(charset, 'replace')
+                    except AttributeError:
+                        print_(".decode(charset) n'a pas fonctionné.")
+
+                if part.get_content_type() == ("text/"+format_mail_voulu):
+                    alrdy_saved_in_format = True
         else:
             charset = str_email.get_content_charset()
-            corps = str_email.get_payload(decode=True).decode(charset)
+            try:
+                corps = str_email.get_payload(decode=True).decode(charset)
+            except AttributeError:
+                print_("NON multipart .decode(charset) n'a pas fonctionné")
 
         date = str_email.get('Date')
         exp = str_email.get('From')
         subject = str_email.get('Subject')
 
         email_liste = []
+        if type(email_id) == "<class 'bytes'>":
+            email_id = email_id.decode('utf-8')
         email_liste.extend((email_id, exp, subject, corps, date))
 
         return email_liste
