@@ -8,15 +8,21 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1200, 900)
+class Ui_fenetreGestion(object):
+    def setupUi(self, fenetreGestion):
+        fenetreGestion.setObjectName("fenetreGestion")
+        fenetreGestion.resize(1200, 900)
+        fenetreGestion.setMinimumSize(QtCore.QSize(1200, 900))
+        fenetreGestion.setMaximumSize(QtCore.QSize(1200, 900))
+        
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        fenetreGestion.setWindowIcon(icon)
         
         with open("style/fenetreGestion.css", "r") as feuilleDeStyle:        
-            MainWindow.setStyleSheet(feuilleDeStyle.read())
+            fenetreGestion.setStyleSheet(feuilleDeStyle.read())
             
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget(fenetreGestion)
         self.centralwidget.setObjectName("centralwidget")
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setGeometry(QtCore.QRect(10, 70, 881, 750))
@@ -72,18 +78,18 @@ class Ui_MainWindow(object):
         self.lineEdit.setGeometry(QtCore.QRect(950, 130, 230, 45))
         self.lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit.setObjectName("lineEdit")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        fenetreGestion.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(fenetreGestion)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1200, 38))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
+        fenetreGestion.setMenuBar(self.menubar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(fenetreGestion)
+        QtCore.QMetaObject.connectSlotsByName(fenetreGestion)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, fenetreGestion):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        fenetreGestion.setWindowTitle(_translate("MainWindow", "Gestion - MindPass"))
         self.label.setText(_translate("MainWindow", "Site 1"))
         self.lineEdit_2.setText(_translate("MainWindow", "Identifiant"))
         self.lineEdit_3.setText(_translate("MainWindow", "Mot de passe"))
@@ -94,9 +100,9 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    fenetreGestion = QtWidgets.QMainWindow()
+    ui = Ui_fenetreGestion()
+    ui.setupUi(fenetreGestion)
+    fenetreGestion.show()
     sys.exit(app.exec_())
 
