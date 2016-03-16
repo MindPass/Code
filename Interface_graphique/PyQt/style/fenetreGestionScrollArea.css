@@ -1,0 +1,11 @@
+QWidget {
+    border: none;
+    border-radius: 5px;
+    background: rgba(255,255,255,50);
+}
+
+QLabel {
+    background-color: transparent;
+    background: transparent;
+    color: white;
+}
