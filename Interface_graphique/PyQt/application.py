@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-
+import sys
 from PyQt5 import QtWidgets
 from Interface_graphique.PyQt.fenetreAccueil import Ui_fenetreAccueil
 from Interface_graphique.PyQt.fenetreProgression import Ui_fenetreProgression
