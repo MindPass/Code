@@ -1,11 +1,52 @@
 QWidget {
     border: none;
     border-radius: 5px;
-    background: rgba(255,255,255,50);
+	background: rgba(255,255,255,50);
 }
 
 QLabel {
-    background-color: transparent;
-    background: transparent;
-    color: white;
+	background-color: transparent;
+	background: transparent;
+}
+
+QScrollBar:vertical {
+      background: transparent;
+      width: 15px;
+      margin: 16px 0 16px 0;
+      border: 0px solid transparent;
+      border-radius: 4px;
+}
+
+QScrollBar::handle:vertical {
+      background: white;
+      min-height: 20px;
+      border-radius: 4px;
+}
+
+QScrollBar::add-line:vertical {
+	  display: none;
+      border: none;
+      background: none;
+      color: none;
+}
+
+QScrollBar::sub-line:vertical {
+	  display: none;
+      border: none;
+      background: none;
+      color: none;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+	  display: none;
+      border: none;
+      background: none;
+      color: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	  display: none;
+      border: none;
+      background: none;
+      color: none;
 }
