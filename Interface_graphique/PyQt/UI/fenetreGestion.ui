@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>fenetreGestion</class>
+ <widget class="QMainWindow" name="fenetreGestion">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Fenêtre de Gestion - MindPass</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../ressources/MindPass-icone.png</normaloff>../ressources/MindPass-icone.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {
@@ -31,7 +35,7 @@ QLineEdit {
 }
 </string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="corps_gestion">
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
@@ -75,9 +79,9 @@ QLabel {
         <height>80</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout" stretch="100,120,120,10">
+      <layout class="QHBoxLayout" name="ligne" stretch="100,120,120,10">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="site_web">
          <property name="text">
           <string>Site 1</string>
          </property>
@@ -87,7 +91,7 @@ QLabel {
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2">
+        <widget class="QLineEdit" name="identifiant">
          <property name="text">
           <string>Identifiant</string>
          </property>
@@ -97,7 +101,7 @@ QLabel {
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_3">
+        <widget class="QLineEdit" name="mdp">
          <property name="text">
           <string>Mot de passe</string>
          </property>
@@ -107,7 +111,7 @@ QLabel {
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="categorie">
          <property name="text">
           <string notr="true"/>
          </property>
@@ -177,7 +181,7 @@ QLabel {
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>38</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

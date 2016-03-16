@@ -17,7 +17,8 @@ def print_(arg):
 conn = sqlite3.connect('../bdd.sq3')
 cur = conn.cursor()
 
-cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus (mail_adress TEXT, website TEXT, PRIMARY KEY (mail_adress))")
+cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus (adresse_mail TEXT, site_web TEXT, identifiant TEXT,"
+            " mdp TEXT, categorie TEXT, PRIMARY KEY (adresse_mail))")
 
 cur.execute("SELECT DISTINCT expediteur FROM mindpasstest_laposte")
 tableau = cur.fetchall()
@@ -33,7 +34,7 @@ for champs in tableau:
     domaine_temp = "www." + expediteur[0][1]
 
     if domaine_temp not in liste_domaines:
-        cur.execute("INSERT INTO sites_reconnus (mail_adress, website) VALUES(?, ?)", (mail_temp, domaine_temp))
+        cur.execute("INSERT INTO sites_reconnus (adresse_mail, site_web) VALUES(?, ?)", (mail_temp, domaine_temp))
         liste_mail.append(mail_temp)
         liste_domaines.append(domaine_temp)
 

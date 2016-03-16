@@ -12,24 +12,40 @@ class Ui_fenetreGestion(object):
     def setupUi(self, fenetreGestion):
         fenetreGestion.setObjectName("fenetreGestion")
         fenetreGestion.resize(1200, 900)
-        fenetreGestion.setMinimumSize(QtCore.QSize(1200, 900))
-        fenetreGestion.setMaximumSize(QtCore.QSize(1200, 900))
-        
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fenetreGestion.setWindowIcon(icon)
-        
-        with open("style/fenetreGestion.css", "r") as feuilleDeStyle:        
-            fenetreGestion.setStyleSheet(feuilleDeStyle.read())
-            
-        self.centralwidget = QtWidgets.QWidget(fenetreGestion)
-        self.centralwidget.setObjectName("centralwidget")
-        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        fenetreGestion.setStyleSheet("QMainWindow {\n"
+"    background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));\n"
+"}\n"
+"\n"
+"#catTitle {\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"    background: rgba(255,255,255,100);\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"    padding-left: 10px;\n"
+"}\n"
+"")
+        self.corps_gestion = QtWidgets.QWidget(fenetreGestion)
+        self.corps_gestion.setObjectName("corps_gestion")
+        self.scrollArea = QtWidgets.QScrollArea(self.corps_gestion)
         self.scrollArea.setGeometry(QtCore.QRect(10, 70, 881, 750))
-        
-        with open("style/fenetreGestionScrollArea.css", "r") as feuilleDeStyleScrollArea:        
-            self.scrollArea.setStyleSheet(feuilleDeStyleScrollArea.read())
-            
+        self.scrollArea.setStyleSheet("QWidget {\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    background: rgba(255,255,255,50);\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"    background-color: transparent;\n"
+"    background: transparent;\n"
+"}\n"
+"")
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
@@ -38,35 +54,35 @@ class Ui_fenetreGestion(object):
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.scrollAreaWidgetContents)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 881, 80))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(self.horizontalLayoutWidget)
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label")
-        self.horizontalLayout.addWidget(self.label)
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
-        self.lineEdit_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.horizontalLayout.addWidget(self.lineEdit_2)
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
-        self.lineEdit_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.horizontalLayout.addWidget(self.lineEdit_3)
-        self.checkBox = QtWidgets.QCheckBox(self.horizontalLayoutWidget)
-        self.checkBox.setText("")
-        self.checkBox.setObjectName("checkBox")
-        self.horizontalLayout.addWidget(self.checkBox)
-        self.horizontalLayout.setStretch(0, 100)
-        self.horizontalLayout.setStretch(1, 120)
-        self.horizontalLayout.setStretch(2, 120)
-        self.horizontalLayout.setStretch(3, 10)
+        self.ligne = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.ligne.setObjectName("ligne")
+        self.site_web = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        self.site_web.setAlignment(QtCore.Qt.AlignCenter)
+        self.site_web.setObjectName("site_web")
+        self.ligne.addWidget(self.site_web)
+        self.identifiant = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
+        self.identifiant.setAlignment(QtCore.Qt.AlignCenter)
+        self.identifiant.setObjectName("identifiant")
+        self.ligne.addWidget(self.identifiant)
+        self.mdp = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
+        self.mdp.setAlignment(QtCore.Qt.AlignCenter)
+        self.mdp.setObjectName("mdp")
+        self.ligne.addWidget(self.mdp)
+        self.categorie = QtWidgets.QCheckBox(self.horizontalLayoutWidget)
+        self.categorie.setText("")
+        self.categorie.setObjectName("categorie")
+        self.ligne.addWidget(self.categorie)
+        self.ligne.setStretch(0, 100)
+        self.ligne.setStretch(1, 120)
+        self.ligne.setStretch(2, 120)
+        self.ligne.setStretch(3, 10)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.line = QtWidgets.QFrame(self.centralwidget)
+        self.line = QtWidgets.QFrame(self.corps_gestion)
         self.line.setGeometry(QtCore.QRect(930, 70, 3, 750))
         self.line.setFrameShape(QtWidgets.QFrame.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.catTitle = QtWidgets.QLabel(self.centralwidget)
+        self.catTitle = QtWidgets.QLabel(self.corps_gestion)
         self.catTitle.setGeometry(QtCore.QRect(960, 50, 210, 60))
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -74,13 +90,13 @@ class Ui_fenetreGestion(object):
         self.catTitle.setAlignment(QtCore.Qt.AlignCenter)
         self.catTitle.setIndent(0)
         self.catTitle.setObjectName("catTitle")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit = QtWidgets.QLineEdit(self.corps_gestion)
         self.lineEdit.setGeometry(QtCore.QRect(950, 130, 230, 45))
         self.lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit.setObjectName("lineEdit")
-        fenetreGestion.setCentralWidget(self.centralwidget)
+        fenetreGestion.setCentralWidget(self.corps_gestion)
         self.menubar = QtWidgets.QMenuBar(fenetreGestion)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1200, 38))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1200, 21))
         self.menubar.setObjectName("menubar")
         fenetreGestion.setMenuBar(self.menubar)
 
@@ -89,12 +105,12 @@ class Ui_fenetreGestion(object):
 
     def retranslateUi(self, fenetreGestion):
         _translate = QtCore.QCoreApplication.translate
-        fenetreGestion.setWindowTitle(_translate("MainWindow", "Gestion - MindPass"))
-        self.label.setText(_translate("MainWindow", "Site 1"))
-        self.lineEdit_2.setText(_translate("MainWindow", "Identifiant"))
-        self.lineEdit_3.setText(_translate("MainWindow", "Mot de passe"))
-        self.catTitle.setText(_translate("MainWindow", "Catégories"))
-        self.lineEdit.setText(_translate("MainWindow", "Ajouter une catégorie"))
+        fenetreGestion.setWindowTitle(_translate("fenetreGestion", "Fenêtre de Gestion - MindPass"))
+        self.site_web.setText(_translate("fenetreGestion", "Site 1"))
+        self.identifiant.setText(_translate("fenetreGestion", "Identifiant"))
+        self.mdp.setText(_translate("fenetreGestion", "Mot de passe"))
+        self.catTitle.setText(_translate("fenetreGestion", "Catégories"))
+        self.lineEdit.setText(_translate("fenetreGestion", "Ajouter une catégorie"))
 
 
 if __name__ == "__main__":
