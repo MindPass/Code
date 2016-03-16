@@ -29,7 +29,7 @@ class Table(object):
     -conn et cur, sont des variables permettant de se conecter à la bdd en sqlite (.sq3).
     """
 
-    bdd = "bdd.sq3"
+    bdd = "../bdd.sq3"
 
     def __init__(self, name):
         """Constructeur

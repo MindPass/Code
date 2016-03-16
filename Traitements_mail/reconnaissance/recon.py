@@ -14,7 +14,7 @@ def print_(arg):
     print("-------------------------------------")
 
 
-conn = sqlite3.connect('../objets/bdd.sq3')
+conn = sqlite3.connect('../bdd.sq3')
 cur = conn.cursor()
 
 cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus (mail_adress TEXT, website TEXT, PRIMARY KEY (mail_adress))")
