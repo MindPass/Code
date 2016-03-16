@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from fenetreProgression import Ui_fenetreProgression
+from Interface_graphique.PyQt.fenetreProgression import Ui_fenetreProgression
 import time
 
 class PageProgression(Ui_fenetreProgression):

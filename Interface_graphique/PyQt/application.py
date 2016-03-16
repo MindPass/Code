@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-import sys
-from PyQt5 import QtWidgets
-from fenetreAccueil import Ui_fenetreAccueil
-from fenetreProgression import Ui_fenetreProgression
-from fenetreGestion import Ui_fenetreGestion
 
-sys.path.append('../../Traitements_mail/objets/')
-from librairie import *
+
+from PyQt5 import QtWidgets
+from Interface_graphique.PyQt.fenetreAccueil import Ui_fenetreAccueil
+from Interface_graphique.PyQt.fenetreProgression import Ui_fenetreProgression
+from Interface_graphique.PyQt.fenetreGestion import Ui_fenetreGestion
+
+from Traitement_mails.objets.librairie import *
 
 
 class FenetreAccueil(Ui_fenetreAccueil):
@@ -47,7 +47,8 @@ class FenetreProgression(Ui_fenetreProgression):
         l[1] = l[1].split('.')[0]
         nom_table = l[0] + '_' + l[1]  # vaut 'pseudo_laposte'
 
-        table = Table(nom_table)
+        bdd = "../../Traitement_mails/bdd.sq3"
+        table = Table(bdd, nom_table)
         tableExterne = TableExterne('imap.laposte.net', user_email, mdp)
         fichier_erreurs = open('fichier_erreurs.txt', 'a')
 
@@ -61,7 +62,7 @@ class FenetreProgression(Ui_fenetreProgression):
                 try:
                     table.add_mail(tableExterne.email_as_list(id_email))
                 except Exception as e:
-                    print("ID erreur:" + str(id_email) + ": "+ str(e))
+                    print("ID erreur:" + str(id_email) + ": " + str(e))
                     fichier_erreurs.write(str(id_email) + "-Erreur : %s \n" % e)
             count += 1
             ratio = int(count / len(liste_externe_id) * 100)
