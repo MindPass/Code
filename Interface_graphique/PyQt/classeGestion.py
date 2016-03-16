@@ -2,7 +2,7 @@ import sqlite3
 import sys
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
-from Interface_graphique.PyQt.fenetreGestion_test import Ui_fenetreGestion
+from Interface_graphique.PyQt.fenetreGestion import Ui_fenetreGestion
 
 def print_(arg):
     """
@@ -20,6 +20,7 @@ class ClasseGestion(Ui_fenetreGestion):
     def __init__(self, fenetre):
         self.fenetre = fenetre
         self.setupUi(self.fenetre)
+
         self.h_layouts = []
         self.afficher_sites()
 
@@ -45,6 +46,7 @@ class ClasseGestion(Ui_fenetreGestion):
     def ajouter_ligne(self, y, site_web, identifiant, mdp, categorie):
         self.h_layouts.append({"horizontalLayoutWidget": QtWidgets.QWidget(self.scrollAreaWidgetContents)})
         self.h_layouts[y]["horizontalLayoutWidget"].setGeometry(QtCore.QRect(0, y * 80, 881, 80))
+        self.scrollAreaWidgetContents.setMinimumSize(QtCore.QSize(0, (y+1)*80))
         self.h_layouts[y]["horizontalLayoutWidget"].setObjectName("horizontalLayoutWidget")
         self.h_layouts[y]["ligne"] = QtWidgets.QHBoxLayout(self.h_layouts[y]["horizontalLayoutWidget"])
         self.h_layouts[y]["ligne"].setObjectName("ligne")
@@ -71,7 +73,6 @@ class ClasseGestion(Ui_fenetreGestion):
         self.h_layouts[y]["ligne"].setStretch(1, 120)
         self.h_layouts[y]["ligne"].setStretch(2, 120)
         self.h_layouts[y]["ligne"].setStretch(3, 10)
-        QtCore.QMetaObject.connectSlotsByName(self.fenetre)
 
 
 if __name__ == "__main__":

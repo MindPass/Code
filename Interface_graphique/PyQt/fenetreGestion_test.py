@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '../UI/fenetreGestion_test.ui'
+# Form implementation generated from reading ui file '../UI/fenetreGestion.ui'
 #
 # Created by: PyQt5 UI code generator 5.5.1
 #
@@ -51,6 +51,31 @@ class Ui_fenetreGestion(object):
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 881, 750))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.horizontalLayoutWidget = QtWidgets.QWidget(self.scrollAreaWidgetContents)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 881, 80))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.ligne = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.ligne.setObjectName("ligne")
+        self.site_web = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        self.site_web.setAlignment(QtCore.Qt.AlignCenter)
+        self.site_web.setObjectName("site_web")
+        self.ligne.addWidget(self.site_web)
+        self.identifiant = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
+        self.identifiant.setAlignment(QtCore.Qt.AlignCenter)
+        self.identifiant.setObjectName("identifiant")
+        self.ligne.addWidget(self.identifiant)
+        self.mdp = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
+        self.mdp.setAlignment(QtCore.Qt.AlignCenter)
+        self.mdp.setObjectName("mdp")
+        self.ligne.addWidget(self.mdp)
+        self.categorie = QtWidgets.QCheckBox(self.horizontalLayoutWidget)
+        self.categorie.setText("")
+        self.categorie.setObjectName("categorie")
+        self.ligne.addWidget(self.categorie)
+        self.ligne.setStretch(0, 100)
+        self.ligne.setStretch(1, 120)
+        self.ligne.setStretch(2, 120)
+        self.ligne.setStretch(3, 10)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.line = QtWidgets.QFrame(self.corps_gestion)
         self.line.setGeometry(QtCore.QRect(930, 70, 3, 750))
@@ -81,6 +106,9 @@ class Ui_fenetreGestion(object):
     def retranslateUi(self, fenetreGestion):
         _translate = QtCore.QCoreApplication.translate
         fenetreGestion.setWindowTitle(_translate("fenetreGestion", "Fenêtre de Gestion - MindPass"))
+        self.site_web.setText(_translate("fenetreGestion", "Site 1"))
+        self.identifiant.setText(_translate("fenetreGestion", "Identifiant"))
+        self.mdp.setText(_translate("fenetreGestion", "Mot de passe"))
         self.catTitle.setText(_translate("fenetreGestion", "Catégories"))
         self.lineEdit.setText(_translate("fenetreGestion", "Ajouter une catégorie"))
 
