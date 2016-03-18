@@ -9,7 +9,6 @@ class ClassProgression(Ui_fenetreProgression):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
         fenetre.show()
-        self.loop(5)
 
     def change_bar_value(self, value):
         self.progressBar.setValue(value)

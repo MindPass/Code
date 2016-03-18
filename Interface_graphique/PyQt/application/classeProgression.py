@@ -11,10 +11,10 @@ bdd = "../../../Traitement_mails/bdd.sq3"
 
 
 class ClasseProgression(Ui_fenetreProgression):
-    def __init__(self, fenetre2, fenetre3):
-        self.setupUi(fenetre2)
+    def __init__(self, fenetre):
+        self.setupUi(fenetre)
 
-    def connexion(self, identifiants, fenetre2, fenetre3):
+    def connexion(self, identifiants):
         # self.afficher_messages()  # faire défiler des images
 
         # et se connecter en même temps
@@ -52,11 +52,9 @@ class ClasseProgression(Ui_fenetreProgression):
         table.close()
         tableExterne.close()
 
-        self.fenetre_suivante(fenetre2, fenetre3)
+        self.fenetre_suivante()
 
-    def fenetre_suivante(self, fenetre2, fenetre3):
+    def fenetre_suivante(self):
         print("Passage à la fenêtre de gestion !")
-        #time.sleep(2)
-        fenetre2.hide()
-        fenetre3.show()
+
 

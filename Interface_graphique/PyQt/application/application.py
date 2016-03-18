@@ -7,16 +7,19 @@ from classeProgression import ClasseProgression
 from classeGestion import ClasseGestion
 
 
+class MindPassApp(object):
+    def __init__(self):
+        self.fenetre = QtWidgets.QMainWindow()
+        ClasseAccueil.__init__(self, self.fenetre)
+        self.fenetre.show()
+
+    def fenetre_suivante(self):
+        pass
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
 
-    premiere_fenetre = QtWidgets.QMainWindow()
-    deuxieme_fenetre = QtWidgets.QMainWindow()
-    troisieme_fenetre = QtWidgets.QMainWindow()
-
-    fenetre_accueil = ClasseAccueil(premiere_fenetre, deuxieme_fenetre)
-    fenetre_progression = ClasseProgression(deuxieme_fenetre, troisieme_fenetre)
-    fenetre_gestion = ClasseGestion(troisieme_fenetre)
+    mindpass_app = MindPassApp()
 
     sys.exit(app.exec_())
