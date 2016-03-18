@@ -1,5 +1,7 @@
+import sys
+sys.path.append('../fenetres/')
 from PyQt5 import QtWidgets
-from Interface_graphique.PyQt.fenetres.fenetreProgression import Ui_fenetreProgression
+from fenetreProgression import Ui_fenetreProgression
 import time
 
 

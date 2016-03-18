@@ -1,8 +1,9 @@
 import sqlite3
 import sys
+sys.path.append('../fenetres/')
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
-from Interface_graphique.PyQt.fenetres.fenetreGestion import Ui_fenetreGestion
+from fenetreGestion import Ui_fenetreGestion
 
 bdd = "../../../Traitement_mails/bdd.sq3"
 
