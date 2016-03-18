@@ -3,6 +3,7 @@
 import sys
 
 sys.path.append('../../Traitements_mail/objets/')
+sys.path.append('../fenetres/')
 from librairie import *
 
 from PyQt5 import QtWidgets

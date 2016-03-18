@@ -46,7 +46,6 @@ raw_email = data[0][1]  # en bits
 str_email = email.message_from_bytes(raw_email)
 
 
-
 ### SUJET
 mime_subject = str_email.get('Subject')
 # sujet du mail, possiblement encodé par le protocole MIME

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>900</height>
+    <width>1145</width>
+    <height>857</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,23 +30,29 @@ QLineEdit {
     background: rgba(255,255,255,100);
     border: none;
     border-radius: 5px;
-    color: white;
+    color: black;
     padding-left: 10px;
 }
 </string>
   </property>
   <widget class="QWidget" name="corps_gestion">
-   <widget class="QScrollArea" name="scrollArea">
+   <widget class="QWidget" name="horizontalLayoutWidget_3">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
-      <width>881</width>
-      <height>750</height>
+      <y>10</y>
+      <width>1121</width>
+      <height>811</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QWidget {
+    <layout class="QHBoxLayout" name="horizontalLayout_gestion" stretch="8,2">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <item>
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="styleSheet">
+        <string notr="true">QWidget {
     border: none;
     border-radius: 5px;
 	background: rgba(255,255,255,50);
@@ -57,91 +63,120 @@ QLabel {
 	background: transparent;
 }
 </string>
-    </property>
-    <property name="verticalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOn</enum>
-    </property>
-    <property name="horizontalScrollBarPolicy">
-     <enum>Qt::ScrollBarAsNeeded</enum>
-    </property>
-    <property name="sizeAdjustPolicy">
-     <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>864</width>
-       <height>750</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>930</x>
-      <y>70</y>
-      <width>3</width>
-      <height>750</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="catTitle">
-    <property name="geometry">
-     <rect>
-      <x>960</x>
-      <y>50</y>
-      <width>210</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>13</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Catégories</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="indent">
-     <number>0</number>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>950</x>
-      <y>130</y>
-      <width>230</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ajouter une catégorie</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>890</width>
+          <height>809</height>
+         </rect>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>881</width>
+           <height>122</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="ligne" stretch="100,120,120,0">
+          <item>
+           <widget class="QLabel" name="site_web">
+            <property name="text">
+             <string>Site 1</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="identifiant">
+            <property name="text">
+             <string>Identifiant</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="mdp"/>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="categorie">
+            <property name="text">
+             <string notr="true"/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="Categories" stretch="0,0,2">
+       <item>
+        <widget class="QLabel" name="titre_cat">
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Catégories</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="indent">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollArea_cat">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_cat">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>219</width>
+            <height>742</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="ajouter_cat">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -149,10 +184,16 @@ QLabel {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
+     <width>1145</width>
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAide">
+    <property name="title">
+     <string>Aide</string>
+    </property>
+   </widget>
+   <addaction name="menuAide"/>
   </widget>
  </widget>
  <resources/>

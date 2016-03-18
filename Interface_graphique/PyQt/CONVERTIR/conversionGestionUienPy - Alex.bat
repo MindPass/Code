@@ -1,1 +1,1 @@
-"C:\Program Files\Pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat" -x ../UI/fenetreGestion_test.ui -o ../fenetreGestion_test.py
+"C:\Program Files\Pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat" -x ../UI/fenetreGestion_test.ui -o ../fenetres/fenetreGestion_test.py
