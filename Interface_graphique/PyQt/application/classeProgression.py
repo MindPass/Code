@@ -14,7 +14,7 @@ class ClasseProgression(Ui_fenetreProgression):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
 
-    def connexion(self, identifiants):
+    def lancement(self, identifiants):
         # self.afficher_messages()  # faire défiler des images
 
         # et se connecter en même temps
@@ -55,6 +55,6 @@ class ClasseProgression(Ui_fenetreProgression):
         self.fenetre_suivante()
 
     def fenetre_suivante(self):
-        print("Passage à la fenêtre de gestion !")
+        pass
 
 

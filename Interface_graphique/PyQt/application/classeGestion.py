@@ -1,10 +1,10 @@
-import sys
 import sqlite3
+import sys
 sys.path.append('../fenetres/')
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from fenetreGestion import Ui_fenetreGestion
-import time
+
 bdd = "../../../Traitement_mails/bdd.sq3"
 
 
@@ -23,10 +23,10 @@ def print_(arg):
 class ClasseGestion(Ui_fenetreGestion):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
-
-    def lancement(self):
         self.h_layouts = []
         self.label_cats = []
+
+    def lancement(self):
         self.afficher_sites()
         self.afficher_categories()
         self.ajouter_cat.setPlaceholderText("Ajouter une catégorie")
@@ -52,7 +52,6 @@ class ClasseGestion(Ui_fenetreGestion):
                 self.ajouter_categorie()
 
     def afficher_categories(self):
-        self.label_cats = []
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
         cur.execute('SELECT nom_categorie FROM categories')
@@ -130,3 +129,13 @@ class ClasseGestion(Ui_fenetreGestion):
         self.h_layouts[y]["ligne"].setStretch(1, 120)
         self.h_layouts[y]["ligne"].setStretch(2, 120)
         self.h_layouts[y]["ligne"].setStretch(3, 10)
+
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    fenetreGestion = QtWidgets.QMainWindow()
+
+    classGestion = ClasseGestion(fenetreGestion)
+
+    fenetreGestion.show()
+    sys.exit(app.exec_())

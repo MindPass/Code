@@ -19,6 +19,7 @@ class ClasseAccueil(Ui_fenetreAccueil):
         condition = identifiants == ["mindpasstest", "Verv00rt"]
 
         if condition:
+            self.identifiants = identifiants
             self.fenetre_suivante()
 
     def fenetre_suivante(self):
