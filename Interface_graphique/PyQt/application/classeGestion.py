@@ -1,5 +1,6 @@
 import sqlite3
 import sys
+from functools import partial
 sys.path.append('../fenetres/')
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
@@ -24,7 +25,7 @@ class ClasseGestion(Ui_fenetreGestion):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
         self.h_layouts = []
-        self.label_cats = []
+        self.lignes_cat = []
 
     def lancement(self):
         self.afficher_sites()
@@ -66,13 +67,29 @@ class ClasseGestion(Ui_fenetreGestion):
         conn.close()
 
     def ajouter_ligne_categorie(self, y, nom_categorie):
-        self.label_cats.append(nom_categorie)
-        self.label_cats[y] = QtWidgets.QLabel(self.scrollAreaWidgetContents_cat)
-        self.scrollAreaWidgetContents_cat.setMinimumSize(QtCore.QSize(0, (y + 1)*31))
-        self.label_cats[y].setGeometry(QtCore.QRect(10, y * 31, 201, 31))
-        self.label_cats[y].setObjectName("label_cat" + str(y))
-        self.label_cats[y].setText(nom_categorie)
-        self.label_cats[y].show()
+        self.lignes_cat.append({"horizontalLayoutWidget_2": QtWidgets.QWidget(self.scrollAreaWidgetContents_cat)})
+        self.scrollAreaWidgetContents_cat.setMinimumSize(QtCore.QSize(0, (y + 1) * 40+10))
+        self.lignes_cat[y]["horizontalLayoutWidget_2"].setGeometry(QtCore.QRect(10, y*40+10, 201, 41))
+        self.lignes_cat[y]["horizontalLayoutWidget_2"].setObjectName("horizontalLayoutWidget_2")
+        self.lignes_cat[y]["ligne_cat"] = QtWidgets.QHBoxLayout(self.lignes_cat[y]["horizontalLayoutWidget_2"])
+        self.lignes_cat[y]["ligne_cat"].setObjectName("ligne_cat")
+        self.lignes_cat[y]["label_cat"] = QtWidgets.QLabel(self.lignes_cat[y]["horizontalLayoutWidget_2"])
+        self.lignes_cat[y]["label_cat"].setObjectName("label_cat")
+        self.lignes_cat[y]["label_cat"].setText(nom_categorie)
+        self.lignes_cat[y]["ligne_cat"].addWidget(self.lignes_cat[y]["label_cat"])
+        self.lignes_cat[y]["pushButton_cat"] = QtWidgets.QPushButton(self.lignes_cat[y]["horizontalLayoutWidget_2"])
+        self.lignes_cat[y]["pushButton_cat"].setEnabled(True)
+        self.lignes_cat[y]["pushButton_cat"].setObjectName("pushButton_cat")
+        self.lignes_cat[y]["pushButton_cat"].setText('X')
+        self.lignes_cat[y]["ligne_cat"].addWidget(self.lignes_cat[y]["pushButton_cat"])
+        self.lignes_cat[y]["ligne_cat"].setStretch(0, 9)
+        self.lignes_cat[y]["ligne_cat"].setStretch(1, 1)
+
+        # Affichage du layout
+        self.lignes_cat[y]["horizontalLayoutWidget_2"].show()
+
+        # Appel de la fonction supprimer_cat de paramètre y
+        self.lignes_cat[y]["pushButton_cat"].clicked.connect(partial(self.supprimer_cat, y=y))
 
     def ajouter_categorie(self):
         conn = sqlite3.connect(bdd)
@@ -83,8 +100,30 @@ class ClasseGestion(Ui_fenetreGestion):
         conn.close()
 
         print("Catégorie ajoutée : " + self.ajouter_cat.displayText())
-        self.ajouter_ligne_categorie(len(self.label_cats), self.ajouter_cat.displayText())
+        self.ajouter_ligne_categorie(len(self.lignes_cat), self.ajouter_cat.displayText())
         self.ajouter_cat.setText("")
+
+    def supprimer_cat(self, y):
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute("DELETE FROM categories WHERE nom_categorie=?", (self.lignes_cat[y]["label_cat"].text(),))
+        conn.commit()
+        cur.close()
+        conn.close()
+
+        print_("Suppression de "+str(self.lignes_cat[y]["label_cat"].text()))
+
+        # destruction des layouts dans la scroll_area
+        self.scrollAreaWidgetContents_cat.deleteLater()
+        # on vide les attributs
+        self.lignes_cat = []
+        # On en recrée un vide
+        self.scrollAreaWidgetContents_cat = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 219, 742))
+        self.scrollAreaWidgetContents_cat.setObjectName("scrollAreaWidgetContents_cat")
+        self.scrollArea_cat.setWidget(self.scrollAreaWidgetContents_cat)
+
+        self.afficher_categories()
 
     def afficher_sites(self):
         conn = sqlite3.connect(bdd)
@@ -92,7 +131,6 @@ class ClasseGestion(Ui_fenetreGestion):
         cur.execute('SELECT site_web, identifiant, mdp, categorie FROM sites_reconnus')
         tab = cur.fetchall()
 
-        print(tab)
         for k in range(len(tab)):
             self.ajouter_ligne(k, tab[k][0], tab[k][1], tab[k][2], tab[k][3])
 
@@ -140,6 +178,7 @@ if __name__ == "__main__":
     fenetreGestion = QtWidgets.QMainWindow()
 
     classGestion = ClasseGestion(fenetreGestion)
+    classGestion.lancement()
 
     fenetreGestion.show()
     sys.exit(app.exec_())

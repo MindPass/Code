@@ -97,6 +97,22 @@ class Ui_fenetreGestion(object):
         self.scrollAreaWidgetContents_cat = QtWidgets.QWidget()
         self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 219, 742))
         self.scrollAreaWidgetContents_cat.setObjectName("scrollAreaWidgetContents_cat")
+
+        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.scrollAreaWidgetContents_cat)
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(10, 10, 201, 41))
+        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
+        self.ligne_cat = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.ligne_cat.setObjectName("ligne_cat")
+        self.label_cat = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        self.label_cat.setObjectName("label_cat")
+        self.ligne_cat.addWidget(self.label_cat)
+        self.pushButton_cat = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.pushButton_cat.setEnabled(True)
+        self.pushButton_cat.setObjectName("pushButton_cat")
+        self.ligne_cat.addWidget(self.pushButton_cat)
+        self.ligne_cat.setStretch(0, 9)
+        self.ligne_cat.setStretch(1, 1)
+
         self.scrollArea_cat.setWidget(self.scrollAreaWidgetContents_cat)
         self.Categories.addWidget(self.scrollArea_cat)
         self.ajouter_cat = QtWidgets.QLineEdit(self.horizontalLayoutWidget_3)
@@ -127,6 +143,8 @@ class Ui_fenetreGestion(object):
         self.site_web.setText(_translate("fenetreGestion", "Site 1"))
         self.identifiant.setText(_translate("fenetreGestion", "Identifiant"))
         self.titre_cat.setText(_translate("fenetreGestion", "Catégories"))
+        self.label_cat.setText(_translate("fenetreGestion", "TextLabel"))
+        self.pushButton_cat.setText(_translate("fenetreGestion", "X"))
         self.menuAide.setTitle(_translate("fenetreGestion", "Aide"))
 
 
