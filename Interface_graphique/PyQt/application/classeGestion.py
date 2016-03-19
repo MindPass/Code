@@ -92,6 +92,7 @@ class ClasseGestion(Ui_fenetreGestion):
         cur.execute('SELECT site_web, identifiant, mdp, categorie FROM sites_reconnus')
         tab = cur.fetchall()
 
+        print(tab)
         for k in range(len(tab)):
             self.ajouter_ligne(k, tab[k][0], tab[k][1], tab[k][2], tab[k][3])
 
@@ -129,6 +130,9 @@ class ClasseGestion(Ui_fenetreGestion):
         self.h_layouts[y]["ligne"].setStretch(1, 120)
         self.h_layouts[y]["ligne"].setStretch(2, 120)
         self.h_layouts[y]["ligne"].setStretch(3, 10)
+
+        # On affiche le layout
+        self.h_layouts[y]["horizontalLayoutWidget"].show()
 
 
 if __name__ == "__main__":
