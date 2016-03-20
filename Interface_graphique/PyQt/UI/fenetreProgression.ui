@@ -2,18 +2,24 @@
 <ui version="4.0">
  <class>fenetreProgression</class>
  <widget class="QWidget" name="fenetreProgression">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1011</width>
-    <height>645</height>
+    <width>855</width>
+    <height>542</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1011</width>
-    <height>645</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -31,10 +37,10 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>30</y>
-     <width>951</width>
-     <height>571</height>
+     <x>10</x>
+     <y>10</y>
+     <width>831</width>
+     <height>521</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">

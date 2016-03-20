@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1145</width>
-    <height>857</height>
+    <width>1113</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,8 +41,8 @@ QLineEdit {
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>1121</width>
-      <height>811</height>
+      <width>1091</width>
+      <height>571</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_gestion" stretch="8,2">
@@ -72,8 +72,8 @@ QLabel {
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>890</width>
-          <height>809</height>
+          <width>866</width>
+          <height>569</height>
          </rect>
         </property>
        </widget>
@@ -109,8 +109,8 @@ QLabel {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>219</width>
-            <height>742</height>
+            <width>213</width>
+            <height>502</height>
            </rect>
           </property>
          </widget>
@@ -142,7 +142,7 @@ QLabel {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1145</width>
+     <width>1113</width>
      <height>21</height>
     </rect>
    </property>

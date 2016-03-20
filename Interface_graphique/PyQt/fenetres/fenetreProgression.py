@@ -11,12 +11,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_fenetreProgression(object):
     def setupUi(self, fenetreProgression):
         fenetreProgression.setObjectName("fenetreProgression")
-        fenetreProgression.resize(1011, 645)
-        fenetreProgression.setMinimumSize(QtCore.QSize(1011, 645))
+        fenetreProgression.setWindowModality(QtCore.Qt.WindowModal)
+        fenetreProgression.setEnabled(True)
+        fenetreProgression.resize(855, 542)
+        fenetreProgression.setMinimumSize(QtCore.QSize(0, 0))
         fenetreProgression.setMaximumSize(QtCore.QSize(1011, 645))
         fenetreProgression.setStyleSheet("")
         self.verticalLayoutWidget = QtWidgets.QWidget(fenetreProgression)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(30, 30, 951, 571))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 831, 521))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)

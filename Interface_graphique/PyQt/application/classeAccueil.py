@@ -14,8 +14,8 @@ class ClasseAccueil(Ui_fenetreAccueil):
         self.pushButton.clicked.connect(self.check_login)
 
     def check_login(self):
-        # identifiants = [self.lineEdit_id.displayText(), self.lineEdit_mdp.displayText()]
-        identifiants = ["mindpasstest", "Verv00rt"]
+        identifiants = [self.lineEdit_id.displayText(), self.lineEdit_mdp.displayText()]
+
         condition = identifiants == ["mindpasstest", "Verv00rt"]
 
         if condition:

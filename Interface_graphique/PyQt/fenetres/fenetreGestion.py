@@ -8,54 +8,53 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_fenetreGestion(object):
     def setupUi(self, fenetreGestion):
         fenetreGestion.setObjectName("fenetreGestion")
-        fenetreGestion.resize(1145, 857)
+        fenetreGestion.resize(1113, 614)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fenetreGestion.setWindowIcon(icon)
         fenetreGestion.setStyleSheet("QMainWindow {\n"
-                                     "    background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));\n"
-                                     "}\n"
-                                     "\n"
-                                     "#catTitle {\n"
-                                     "    color: white;\n"
-                                     "}\n"
-                                     "\n"
-                                     "QLineEdit {\n"
-                                     "    background: rgba(255,255,255,100);\n"
-                                     "    border: none;\n"
-                                     "    border-radius: 5px;\n"
-                                     "    color: black;\n"
-                                     "    padding-left: 10px;\n"
-                                     "}\n"
-                                     "")
+"    background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));\n"
+"}\n"
+"\n"
+"#catTitle {\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"    background: rgba(255,255,255,100);\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    color: black;\n"
+"    padding-left: 10px;\n"
+"}\n"
+"")
         self.corps_gestion = QtWidgets.QWidget(fenetreGestion)
         self.corps_gestion.setObjectName("corps_gestion")
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.corps_gestion)
-        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 10, 1121, 811))
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 10, 1091, 571))
         self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
         self.horizontalLayout_gestion = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
         self.horizontalLayout_gestion.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.horizontalLayout_gestion.setObjectName("horizontalLayout_gestion")
         self.scrollArea = QtWidgets.QScrollArea(self.horizontalLayoutWidget_3)
         self.scrollArea.setStyleSheet("QWidget {\n"
-                                      "    border: none;\n"
-                                      "    border-radius: 5px;\n"
-                                      "    background: rgba(255,255,255,50);\n"
-                                      "}\n"
-                                      "\n"
-                                      "QLabel {\n"
-                                      "    background-color: transparent;\n"
-                                      "    background: transparent;\n"
-                                      "}\n"
-                                      "")
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    background: rgba(255,255,255,50);\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"    background-color: transparent;\n"
+"    background: transparent;\n"
+"}\n"
+"")
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 890, 809))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 866, 569))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout_gestion.addWidget(self.scrollArea)
@@ -73,7 +72,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_cat.setWidgetResizable(True)
         self.scrollArea_cat.setObjectName("scrollArea_cat")
         self.scrollAreaWidgetContents_cat = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 219, 742))
+        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 213, 502))
         self.scrollAreaWidgetContents_cat.setObjectName("scrollAreaWidgetContents_cat")
         self.scrollArea_cat.setWidget(self.scrollAreaWidgetContents_cat)
         self.Categories.addWidget(self.scrollArea_cat)
@@ -89,7 +88,7 @@ class Ui_fenetreGestion(object):
         self.horizontalLayout_gestion.setStretch(1, 2)
         fenetreGestion.setCentralWidget(self.corps_gestion)
         self.menubar = QtWidgets.QMenuBar(fenetreGestion)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1145, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1113, 21))
         self.menubar.setObjectName("menubar")
         self.menuAide = QtWidgets.QMenu(self.menubar)
         self.menuAide.setObjectName("menuAide")
@@ -108,10 +107,10 @@ class Ui_fenetreGestion(object):
 
 if __name__ == "__main__":
     import sys
-
     app = QtWidgets.QApplication(sys.argv)
     fenetreGestion = QtWidgets.QMainWindow()
     ui = Ui_fenetreGestion()
     ui.setupUi(fenetreGestion)
     fenetreGestion.show()
     sys.exit(app.exec_())
+
