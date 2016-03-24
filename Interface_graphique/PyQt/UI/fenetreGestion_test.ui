@@ -45,10 +45,94 @@ QLineEdit {
       <height>811</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_gestion" stretch="8,2">
+    <layout class="QHBoxLayout" name="horizontalLayout_gestion" stretch="0,8,2">
      <property name="sizeConstraint">
       <enum>QLayout::SetNoConstraint</enum>
      </property>
+     <item>
+      <layout class="QVBoxLayout" name="Passwords" stretch="0,0,2">
+       <item>
+        <widget class="QLabel" name="titre_cat_2">
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Catégories</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="indent">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollArea_pwd">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_pwd">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>114</width>
+            <height>742</height>
+           </rect>
+          </property>
+          <widget class="QWidget" name="horizontalLayoutWidget_4">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>201</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="ligne_pwd" stretch="9,1">
+            <item>
+             <widget class="QLabel" name="label_pwd">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_cat_2">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>X</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="ajouter_pwd">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
      <item>
       <widget class="QScrollArea" name="scrollArea">
        <property name="styleSheet">
@@ -72,7 +156,7 @@ QLabel {
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>890</width>
+          <width>791</width>
           <height>809</height>
          </rect>
         </property>
@@ -151,7 +235,7 @@ QLabel {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>219</width>
+            <width>194</width>
             <height>742</height>
            </rect>
           </property>

@@ -21,11 +21,28 @@ def print_(arg):
     print("-------------------------------------")
 
 
+#Filtre les événements de FocusOut (ex pour une lineEdit)
+class Filter(QtCore.QObject):
+    def eventFilter(self, widget, event):
+        # FocusOut event
+        if event.type() == QtCore.QEvent.FocusOut:
+            # do custom stuff
+            print(event)
+            print(widget)
+            print(widget.text())
+            # return False so that the widget will also handle the event
+            # otherwise it won't focus out
+            return False
+        else:
+            # we don't care about other events
+            return False
+
 class ClasseGestion(Ui_fenetreGestion):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
         self.h_layouts = []
         self.lignes_cat = []
+        self._filter = Filter() #filtre pour les lineEdit
 
     def lancement(self):
         self.afficher_sites()
@@ -152,13 +169,25 @@ class ClasseGestion(Ui_fenetreGestion):
         self.h_layouts[y]["ligne"].addWidget(self.h_layouts[y]["site_web"])
         self.h_layouts[y]["identifiant"] = QtWidgets.QLineEdit(self.h_layouts[y]["horizontalLayoutWidget"])
         self.h_layouts[y]["identifiant"].setAlignment(QtCore.Qt.AlignCenter)
-        self.h_layouts[y]["identifiant"].setPlaceholderText(identifiant)
+
+        if identifiant is None:
+            self.h_layouts[y]["identifiant"].setPlaceholderText("Ajouter un pseudo")
+        else:
+            self.h_layouts[y]["identifiant"].setText(identifiant)
+
+        self.h_layouts[y]["identifiant"].installEventFilter(self._filter)
         self.h_layouts[y]["identifiant"].setObjectName("identifiant" + str(y))
         self.h_layouts[y]["ligne"].addWidget(self.h_layouts[y]["identifiant"])
         self.h_layouts[y]["mdp"] = QtWidgets.QLineEdit(self.h_layouts[y]["horizontalLayoutWidget"])
         self.h_layouts[y]["mdp"].setAlignment(QtCore.Qt.AlignCenter)
-        self.h_layouts[y]["mdp"].setPlaceholderText(mdp)
         self.h_layouts[y]["mdp"].setObjectName("mdp" + str(y))
+
+        if mdp is None:
+            self.h_layouts[y]["mdp"].setPlaceholderText("Ajouter un mdp")
+        else:
+            self.h_layouts[y]["mdp"].setText(mdp)
+
+
         self.h_layouts[y]["ligne"].addWidget(self.h_layouts[y]["mdp"])
         self.h_layouts[y]["categorie"] = QtWidgets.QCheckBox(self.h_layouts[y]["horizontalLayoutWidget"])
         self.h_layouts[y]["categorie"].setText(categorie)
@@ -172,6 +201,8 @@ class ClasseGestion(Ui_fenetreGestion):
         # On affiche le layout
         self.h_layouts[y]["horizontalLayoutWidget"].show()
 
+    def modification_identifiant(self, y):
+        print_(self.h_layouts[y]["identifiant"].text())
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
