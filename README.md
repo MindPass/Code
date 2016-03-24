@@ -1,6 +1,6 @@
 ﻿---
 
-# [![MindPass](https://raw.githubusercontent.com/MindPass/Code/master/Interface%20graphique/PyQt/ressources/MindPass-logoHQ.png)](http://www.mindpass.fr/)
+# [![MindPass](https://raw.githubusercontent.com/MindPass/Code/master/Interface%5Fgraphique/PyQt/ressources/MindPass-logoHQ.png)](http://www.mindpass.fr/)
 
 ---
 
