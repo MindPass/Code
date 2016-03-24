@@ -2,13 +2,22 @@
 <ui version="4.0">
  <class>fenetreGestion</class>
  <widget class="QMainWindow" name="fenetreGestion">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1145</width>
-    <height>857</height>
+    <width>1119</width>
+    <height>873</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Fenêtre de Gestion - MindPass</string>
@@ -36,72 +45,68 @@ QLineEdit {
 </string>
   </property>
   <widget class="QWidget" name="corps_gestion">
-   <widget class="QWidget" name="horizontalLayoutWidget_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>1121</width>
-      <height>811</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_gestion" stretch="0,8,2">
-     <property name="sizeConstraint">
-      <enum>QLayout::SetNoConstraint</enum>
-     </property>
-     <item>
-      <layout class="QVBoxLayout" name="Passwords" stretch="0,0,2">
-       <item>
-        <widget class="QLabel" name="titre_cat_2">
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-          </font>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,4,1">
+    <item>
+     <layout class="QVBoxLayout" name="Passwords" stretch="0,4,1">
+      <item>
+       <widget class="QLabel" name="titre_pwd">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Mots de Passe</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="indent">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QScrollArea" name="scrollArea_pwd">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>767</height>
+         </size>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_pwd">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>178</width>
+           <height>765</height>
+          </rect>
          </property>
-         <property name="text">
-          <string>Catégories</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="indent">
-          <number>0</number>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QScrollArea" name="scrollArea_pwd">
-         <property name="widgetResizable">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents_pwd">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>114</width>
-            <height>742</height>
-           </rect>
-          </property>
-          <widget class="QWidget" name="horizontalLayoutWidget_4">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>201</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <layout class="QHBoxLayout" name="ligne_pwd" stretch="9,1">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QHBoxLayout" name="ligne_pwd">
             <item>
              <widget class="QLabel" name="label_pwd">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>745</height>
+               </size>
+              </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>mdp</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_cat_2">
+             <widget class="QPushButton" name="pushButton_pwd">
               <property name="enabled">
                <bool>true</bool>
               </property>
@@ -111,32 +116,42 @@ QLineEdit {
              </widget>
             </item>
            </layout>
-          </widget>
-         </widget>
+          </item>
+         </layout>
         </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="ajouter_pwd">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QScrollArea" name="scrollArea">
-       <property name="styleSheet">
-        <string notr="true">QWidget {
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="ajouter_pwd">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QScrollArea" name="Sites">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget {
     border: none;
     border-radius: 5px;
 	background: rgba(255,255,255,50);
@@ -147,29 +162,22 @@ QLabel {
 	background: transparent;
 }
 </string>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_sites">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>726</width>
+         <height>834</height>
+        </rect>
        </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>791</width>
-          <height>809</height>
-         </rect>
-        </property>
-        <widget class="QWidget" name="horizontalLayoutWidget">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>881</width>
-           <height>122</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" name="ligne" stretch="100,120,120,0">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="ligne_site" stretch="1,1,1,0">
           <item>
            <widget class="QLabel" name="site_web">
             <property name="text">
@@ -191,68 +199,84 @@ QLabel {
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="mdp"/>
+           <widget class="QLineEdit" name="mdp">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>mdp</string>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="categorie">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
             <property name="text">
              <string notr="true"/>
             </property>
            </widget>
           </item>
          </layout>
-        </widget>
-       </widget>
+        </item>
+       </layout>
       </widget>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="Categories" stretch="0,0,2">
-       <item>
-        <widget class="QLabel" name="titre_cat">
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-          </font>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="Categories" stretch="0,4,1">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetNoConstraint</enum>
+      </property>
+      <item>
+       <widget class="QLabel" name="titre_cat">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Catégories</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="indent">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QScrollArea" name="scrollArea_cat">
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_cat">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>177</width>
+           <height>767</height>
+          </rect>
          </property>
-         <property name="text">
-          <string>Catégories</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="indent">
-          <number>0</number>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QScrollArea" name="scrollArea_cat">
-         <property name="widgetResizable">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents_cat">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>194</width>
-            <height>742</height>
-           </rect>
-          </property>
-          <widget class="QWidget" name="horizontalLayoutWidget_2">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>201</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <layout class="QHBoxLayout" name="ligne_cat" stretch="9,1">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="ligne_categorie">
             <item>
              <widget class="QLabel" name="label_cat">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>608</height>
+               </size>
+              </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>cat1</string>
               </property>
              </widget>
             </item>
@@ -267,37 +291,37 @@ QLabel {
              </widget>
             </item>
            </layout>
-          </widget>
-         </widget>
+          </item>
+         </layout>
         </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="ajouter_cat">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="ajouter_cat">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1145</width>
+     <width>1119</width>
      <height>21</height>
     </rect>
    </property>
@@ -309,6 +333,18 @@ QLabel {
    <addaction name="menuAide"/>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>identifiant</tabstop>
+  <tabstop>mdp</tabstop>
+  <tabstop>categorie</tabstop>
+  <tabstop>pushButton_cat</tabstop>
+  <tabstop>scrollArea_cat</tabstop>
+  <tabstop>ajouter_cat</tabstop>
+  <tabstop>Sites</tabstop>
+  <tabstop>pushButton_pwd</tabstop>
+  <tabstop>scrollArea_pwd</tabstop>
+  <tabstop>ajouter_pwd</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
