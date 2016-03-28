@@ -100,35 +100,7 @@ QLineEdit {
              <height>765</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <layout class="QHBoxLayout" name="ligne_pwd">
-              <item>
-               <widget class="QLabel" name="label_pwd">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>745</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>mdp</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_pwd">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="text">
-                 <string>X</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
+           <layout class="QVBoxLayout" name="verticalLayout_2"/>
           </widget>
          </widget>
         </item>
@@ -197,67 +169,7 @@ QLabel {
              <height>832</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout">
-            <item>
-             <layout class="QHBoxLayout" name="ligne_site">
-              <property name="leftMargin">
-               <number>5</number>
-              </property>
-              <property name="topMargin">
-               <number>10</number>
-              </property>
-              <property name="rightMargin">
-               <number>5</number>
-              </property>
-              <property name="bottomMargin">
-               <number>10</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="site_web">
-                <property name="text">
-                 <string>Site 1</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="identifiant">
-                <property name="text">
-                 <string>Identifiant</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="mdp">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>mdp</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QCheckBox" name="categorie">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
+           <layout class="QVBoxLayout" name="verticalLayout"/>
           </widget>
          </widget>
         </item>
@@ -303,35 +215,7 @@ QLabel {
              <height>767</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <item>
-             <layout class="QHBoxLayout" name="ligne_categorie">
-              <item>
-               <widget class="QLabel" name="label_cat">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>608</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>cat1</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_cat">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="text">
-                 <string>X</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
+           <layout class="QVBoxLayout" name="verticalLayout_3"/>
           </widget>
          </widget>
         </item>
@@ -375,13 +259,8 @@ QLabel {
   </widget>
  </widget>
  <tabstops>
-  <tabstop>identifiant</tabstop>
-  <tabstop>mdp</tabstop>
-  <tabstop>categorie</tabstop>
-  <tabstop>pushButton_cat</tabstop>
   <tabstop>scrollArea_cat</tabstop>
   <tabstop>ajouter_cat</tabstop>
-  <tabstop>pushButton_pwd</tabstop>
   <tabstop>scrollArea_pwd</tabstop>
   <tabstop>ajouter_pwd</tabstop>
  </tabstops>
