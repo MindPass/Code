@@ -52,7 +52,7 @@ class ClasseGestion(Ui_fenetreGestion):
         self.lignes_pwd = []
         self._filter = Filter()
 
-        # A mettre dans lancement()
+        #def lancement(self):
         self.afficher_sites()
         self.afficher_categories()
         self.afficher_pwds()
@@ -93,7 +93,7 @@ class ClasseGestion(Ui_fenetreGestion):
 
             conditions = not pwds_table or pwds_table[0][0] != self.ajouter_pwd.displayText()
             if conditions:
-                self.ajouter_pwd()
+                self.ajouter_password()
 
 
     def afficher_categories(self):
@@ -177,9 +177,9 @@ class ClasseGestion(Ui_fenetreGestion):
         self.verticalLayout_2.setAlignment(QtCore.Qt.AlignTop)
 
         # Evenement quand le boutton de suppression est cliqué
-        self.lignes_pwd[y]["pushButton_pwd"].clicked.connect(partial(self.supprimer_pwd, y=y))
+        self.lignes_pwd[y]["pushButton_pwd"].clicked.connect(partial(self.supprimer_password, y=y))
 
-    def ajouter_pwd(self):
+    def ajouter_password(self):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
         cur.execute("INSERT INTO mdps (mdp) VALUES(?)", (self.ajouter_pwd.displayText(),))
@@ -191,7 +191,7 @@ class ClasseGestion(Ui_fenetreGestion):
         self.ajouter_ligne_pwd(len(self.lignes_pwd), self.ajouter_pwd.displayText())
         self.ajouter_pwd.setText("")
 
-    def supprimer_pwd(self, y):
+    def supprimer_password(self, y):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
         cur.execute("DELETE FROM mdps WHERE mdp=?", (self.lignes_pwd[y]["label_pwd"].text(),))
@@ -213,7 +213,7 @@ class ClasseGestion(Ui_fenetreGestion):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.scrollArea_pwd.setWidget(self.scrollAreaWidgetContents_pwd)
 
-        self.afficher_pwd()
+        self.afficher_pwds()
 
 
         ##### PASSWORD

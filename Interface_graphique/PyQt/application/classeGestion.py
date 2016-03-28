@@ -43,17 +43,21 @@ class ClasseGestion(Ui_fenetreGestion):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
         self.ajouter_cat.setPlaceholderText("Ajouter une catégorie")
-        self.ajouter_cat.returnPressed.connect(self.check_if_exist)
+        self.ajouter_pwd.setPlaceholderText("Ajouter un mot de passe")
+        self.ajouter_cat.returnPressed.connect(self.check_if_exist_cat)
+        self.ajouter_pwd.returnPressed.connect(self.check_if_exist_pwd)
 
         self.lignes_site = []
         self.lignes_cat = []
+        self.lignes_pwd = []
         self._filter = Filter()
 
     def lancement(self):
         self.afficher_sites()
         self.afficher_categories()
+        self.afficher_pwds()
 
-    def check_if_exist(self):
+    def check_if_exist_cat(self):
         """
         Vérifier que la catégorie en question n'est pas déjà dans la base de donnée
         """
@@ -72,8 +76,27 @@ class ClasseGestion(Ui_fenetreGestion):
             if conditions:
                 self.ajouter_categorie()
 
+    def check_if_exist_pwd(self):
+        """
+        Vérifier que le pwd en question n'est pas déjà dans la base de donnée
+        """
+        if self.ajouter_pwd.displayText() != "":
+            conn = sqlite3.connect(bdd)
+            cur = conn.cursor()
+
+            cur.execute("SELECT mdp FROM mdps WHERE mdp=?", (self.ajouter_pwd.displayText(),))
+            pwds_table = cur.fetchall()
+
+            conn.commit()
+            cur.close()
+            conn.close()
+
+            conditions = not pwds_table or pwds_table[0][0] != self.ajouter_pwd.displayText()
+            if conditions:
+                self.ajouter_password()
+
+
     def afficher_categories(self):
-        self.label_cats = []
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
         cur.execute('SELECT nom_categorie FROM categories')
@@ -120,6 +143,84 @@ class ClasseGestion(Ui_fenetreGestion):
         self.ajouter_ligne_categorie(len(self.lignes_cat), self.ajouter_cat.displayText())
         self.ajouter_cat.setText("")
 
+      ###### PASSWORD
+    def afficher_pwds(self):
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute('SELECT mdp FROM mdps')
+        tab = cur.fetchall()
+
+        if tab:
+            for k in range(len(tab)):
+                self.ajouter_ligne_pwd(k, tab[k][0])
+
+        conn.commit()
+        cur.close()
+        conn.close()
+
+    def ajouter_ligne_pwd(self, y, nom_categorie):
+        self.lignes_pwd.append({'ligne_pwd': QtWidgets.QHBoxLayout()})
+        self.lignes_pwd[y]['ligne_pwd'].setObjectName("ligne_pwd")
+        self.lignes_pwd[y]['label_pwd'] = QtWidgets.QLabel(self.scrollAreaWidgetContents_pwd)
+        self.lignes_pwd[y]['label_pwd'].setMaximumSize(QtCore.QSize(16777215, 608))
+        self.lignes_pwd[y]['label_pwd'].setObjectName("label_pwd")
+        self.lignes_pwd[y]['label_pwd'].setText(nom_categorie)
+        self.lignes_pwd[y]['ligne_pwd'].addWidget(self.lignes_pwd[y]['label_pwd'])
+        self.lignes_pwd[y]['pushButton_pwd'] = QtWidgets.QPushButton(self.scrollAreaWidgetContents_pwd)
+        self.lignes_pwd[y]['pushButton_pwd'].setEnabled(True)
+        self.lignes_pwd[y]['pushButton_pwd'].setObjectName("pushButton_pwd")
+        self.lignes_pwd[y]['pushButton_pwd'].setText('X')
+        self.lignes_pwd[y]['ligne_pwd'].addWidget(self.lignes_pwd[y]['pushButton_pwd'])
+        self.verticalLayout_2.addLayout(self.lignes_pwd[y]['ligne_pwd'])
+
+        # On garde l'alignement haut
+        self.verticalLayout_2.setAlignment(QtCore.Qt.AlignTop)
+
+        # Evenement quand le boutton de suppression est cliqué
+        self.lignes_pwd[y]["pushButton_pwd"].clicked.connect(partial(self.supprimer_password, y=y))
+
+    def ajouter_password(self):
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute("INSERT INTO mdps (mdp) VALUES(?)", (self.ajouter_pwd.displayText(),))
+        conn.commit()
+        cur.close()
+        conn.close()
+
+        print("Password ajoutée : " + self.ajouter_pwd.displayText())
+        self.ajouter_ligne_pwd(len(self.lignes_pwd), self.ajouter_pwd.displayText())
+        self.ajouter_pwd.setText("")
+
+    def supprimer_password(self, y):
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute("DELETE FROM mdps WHERE mdp=?", (self.lignes_pwd[y]["label_pwd"].text(),))
+        conn.commit()
+        cur.close()
+        conn.close()
+
+        print("Suppression du Password: " + str(self.lignes_pwd[y]["label_pwd"].text()))
+
+        # destruction des layouts dans la scroll_area
+        self.scrollAreaWidgetContents_pwd.deleteLater()
+        # on vide les attributs
+        self.lignes_pwd = []
+        # On en recrée un vide
+        self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 177, 767))
+        self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_pwd")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.scrollArea_pwd.setWidget(self.scrollAreaWidgetContents_pwd)
+
+        self.afficher_pwds()
+
+
+        ##### PASSWORD
+
+
+
+
     def supprimer_cat(self, y):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
@@ -143,6 +244,7 @@ class ClasseGestion(Ui_fenetreGestion):
         self.scrollArea_cat.setWidget(self.scrollAreaWidgetContents_cat)
 
         self.afficher_categories()
+
 
     def afficher_sites(self):
         conn = sqlite3.connect(bdd)
