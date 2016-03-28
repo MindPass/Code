@@ -68,6 +68,7 @@ class Ui_fenetreGestion(object):
         self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_pwd")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
+
         self.ligne_pwd = QtWidgets.QHBoxLayout()
         self.ligne_pwd.setObjectName("ligne_pwd")
         self.label_pwd = QtWidgets.QLabel(self.scrollAreaWidgetContents_pwd)
@@ -79,6 +80,7 @@ class Ui_fenetreGestion(object):
         self.pushButton_pwd.setObjectName("pushButton_pwd")
         self.ligne_pwd.addWidget(self.pushButton_pwd)
         self.verticalLayout_2.addLayout(self.ligne_pwd)
+
         self.scrollArea_pwd.setWidget(self.scrollAreaWidgetContents_pwd)
         self.Passwords.addWidget(self.scrollArea_pwd)
         self.ajouter_pwd = QtWidgets.QLineEdit(self.widget)

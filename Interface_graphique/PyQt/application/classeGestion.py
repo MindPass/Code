@@ -45,17 +45,11 @@ class ClasseGestion(Ui_fenetreGestion):
         self.ajouter_cat.setPlaceholderText("Ajouter une catégorie")
         self.ajouter_cat.returnPressed.connect(self.check_if_exist)
 
-        # Alignement des lignes en haut
-        self.verticalLayout.setAlignment(QtCore.Qt.AlignTop)
-        self.verticalLayout_2.setAlignment(QtCore.Qt.AlignTop)
-        self.verticalLayout_3.setAlignment(QtCore.Qt.AlignTop)
-
         self.lignes_site = []
         self.lignes_cat = []
         self._filter = Filter()
 
     def lancement(self):
-        # A mettre dans lancement()
         self.afficher_sites()
         self.afficher_categories()
 
