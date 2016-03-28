@@ -43,7 +43,9 @@ class ClasseGestion(Ui_fenetreGestion):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
         self.ajouter_cat.setPlaceholderText("Ajouter une catégorie")
-        self.ajouter_cat.returnPressed.connect(self.check_if_exist)
+        self.ajouter_pwd.setPlaceholderText("Ajouter un mot de passe")
+        self.ajouter_cat.returnPressed.connect(self.check_if_exist_cat)
+        self.ajouter_pwd.returnPressed.connect(self.check_if_exist_pwd)
 
         self.lignes_site = []
         self.lignes_cat = []
@@ -55,7 +57,7 @@ class ClasseGestion(Ui_fenetreGestion):
         self.afficher_categories()
         self.afficher_pwds()
 
-    def check_if_exist(self):
+    def check_if_exist_cat(self):
         """
         Vérifier que la catégorie en question n'est pas déjà dans la base de donnée
         """
@@ -73,6 +75,26 @@ class ClasseGestion(Ui_fenetreGestion):
             conditions = not categories_table or categories_table[0][0] != self.ajouter_cat.displayText()
             if conditions:
                 self.ajouter_categorie()
+
+    def check_if_exist_pwd(self):
+        """
+        Vérifier que le pwd en question n'est pas déjà dans la base de donnée
+        """
+        if self.ajouter_pwd.displayText() != "":
+            conn = sqlite3.connect(bdd)
+            cur = conn.cursor()
+
+            cur.execute("SELECT mdp FROM mdps WHERE mdp=?", (self.ajouter_pwd.displayText(),))
+            pwds_table = cur.fetchall()
+
+            conn.commit()
+            cur.close()
+            conn.close()
+
+            conditions = not pwds_table or pwds_table[0][0] != self.ajouter_pwd.displayText()
+            if conditions:
+                self.ajouter_pwd()
+
 
     def afficher_categories(self):
         conn = sqlite3.connect(bdd)
@@ -125,7 +147,7 @@ class ClasseGestion(Ui_fenetreGestion):
     def afficher_pwds(self):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
-        cur.execute('SELECT mdp FROM sites_reconnus')
+        cur.execute('SELECT mdp FROM mdps')
         tab = cur.fetchall()
 
         if tab:
@@ -134,9 +156,9 @@ class ClasseGestion(Ui_fenetreGestion):
 
         conn.commit()
         cur.close()
-        conn.close()lignes_pwd
+        conn.close()
 
-    def ajouter_ligne_pwds(self, y, nom_categorie):
+    def ajouter_ligne_pwd(self, y, nom_categorie):
         self.lignes_pwd.append({'ligne_pwd': QtWidgets.QHBoxLayout()})
         self.lignes_pwd[y]['ligne_pwd'].setObjectName("ligne_pwd")
         self.lignes_pwd[y]['label_pwd'] = QtWidgets.QLabel(self.scrollAreaWidgetContents_pwd)
@@ -160,39 +182,38 @@ class ClasseGestion(Ui_fenetreGestion):
     def ajouter_pwd(self):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
-        cur.execute("INSERT INTO categories (nom_categorie) VALUES(?)", (self.ajouter_cat.displayText(),))
+        cur.execute("INSERT INTO mdps (mdp) VALUES(?)", (self.ajouter_pwd.displayText(),))
         conn.commit()
         cur.close()
         conn.close()
 
-        print("Catégorie ajoutée : " + self.ajouter_cat.displayText())
-        self.ajouter_ligne_categorie(len(self.lignes_cat), self.ajouter_cat.displayText())
-        self.ajouter_cat.setText("")
-
+        print("Password ajoutée : " + self.ajouter_pwd.displayText())
+        self.ajouter_ligne_pwd(len(self.lignes_pwd), self.ajouter_pwd.displayText())
+        self.ajouter_pwd.setText("")
 
     def supprimer_pwd(self, y):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
-        cur.execute("DELETE FROM categories WHERE nom_categorie=?", (self.lignes_cat[y]["label_cat"].text(),))
+        cur.execute("DELETE FROM mdps WHERE mdp=?", (self.lignes_pwd[y]["label_pwd"].text(),))
         conn.commit()
         cur.close()
         conn.close()
 
-        print("Suppression de " + str(self.lignes_cat[y]["label_cat"].text()))
+        print("Suppression du Password: " + str(self.lignes_pwd[y]["label_pwd"].text()))
 
         # destruction des layouts dans la scroll_area
-        self.scrollAreaWidgetContents_cat.deleteLater()
+        self.scrollAreaWidgetContents_pwd.deleteLater()
         # on vide les attributs
-        self.lignes_cat = []
+        self.lignes_pwd = []
         # On en recrée un vide
-        self.scrollAreaWidgetContents_cat = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 177, 767))
-        self.scrollAreaWidgetContents_cat.setObjectName("scrollAreaWidgetContents_cat")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_cat)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.scrollArea_cat.setWidget(self.scrollAreaWidgetContents_cat)
+        self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 177, 767))
+        self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_pwd")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.scrollArea_pwd.setWidget(self.scrollAreaWidgetContents_pwd)
 
-        self.afficher_categories()
+        self.afficher_pwd()
 
 
         ##### PASSWORD
