@@ -6,32 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>806</width>
-    <height>604</height>
+    <width>698</width>
+    <height>578</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MindMap</string>
+   <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QTabWidget" name="tabWidget">
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Par mots de pass</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Par catégorie</string>
-      </attribute>
-     </widget>
-    </widget>
-   </item>
-  </layout>
  </widget>
  <resources/>
  <connections/>
