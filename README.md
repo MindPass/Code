@@ -4,7 +4,7 @@
 
 ---
 
-
+git
 ## :two_men_holding_hands: Présentation
 
 **MindPass** est un projet informatique, né en septembre 2015 et soutenu par **[Tetra Informatique](http://www.tetra-informatique.com/)**.

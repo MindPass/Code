@@ -22,7 +22,7 @@ class Accueil(ClasseAccueil):
 
 class Progression(ClasseProgression):
     def __init__(self, fenetre):
-        super().__init__(fenetre)git
+        super().__init__(fenetre)
 
     def fenetre_suivante(self):
         print("Passage à la fenêtre de gestion !")
