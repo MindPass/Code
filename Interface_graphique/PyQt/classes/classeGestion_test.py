@@ -28,7 +28,20 @@ class Filter(QtCore.QObject):
         # FocusOut event
         if event.type() == QtCore.QEvent.FocusOut:
             # do custom stuff
-            print(widget)
+            print(self)
+            conn = sqlite3.connect(bdd)
+            cur = conn.cursor()
+
+            for k in range(len(self.lignes_site)):
+                if self.lignes_site[k]['identifiant'] == widget:
+                    cur.execute("UPDATE sites_reconnus SET identifiant=? WHERE row_id=?", (self.lignes_site[y]['identifiant'].displayText(), y+1))
+                elif self.lignes_site[k]['mdp'] == widget:
+                    cur.execute("UPDATE sites_reconnus SET mdp=? WHERE row_id=?", (self.lignes_site[y]['mdp'], y+1))
+
+            conn.commit()
+            cur.close()
+            conn.close()
+
             print(widget.text())
             print("focus out")
             # return False so that the widget will also handle the event
@@ -217,8 +230,6 @@ class ClasseGestion(Ui_fenetreGestion):
 
 
         ##### PASSWORD
-
-
 
 
     def supprimer_cat(self, y):
