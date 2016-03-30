@@ -14,6 +14,8 @@ Martial G. | Alexandre D. | Pierre L. | Yassine B. | Thibaut C.
 ------------ | ------------- | ------------- | ------------- | -------------
 @martialgarchery | @alexandredomain | - | @boulmaneyassine | @aquathi
 
+Nombre de ces membres sont *inspecteurs des travaux finis*, mais on les aime bien quand même (un peu).
+
 Ce projet est rédigé exclusivement en [Python 3.4](https://docs.python.org/3.4/) :
 
 ```python
@@ -21,7 +23,7 @@ def __init__(self):
   print("Hello World, Hello MindPass !")
 ```
 
-Le livrable de ce projet est un exécutable, dont le premier déploiement sur Linux (Ubuntu) en version bêta est prévu le 1er avril 2016 (non non, ce n'est pas une blague !).
+Le livrable de ce projet est un exécutable, dont le premier déploiement sur Windows (version bêta) est prévu le 1er avril 2016 (non non, ce n'est pas une blague !).
 
 
 ## :interrobang: But du projet
@@ -45,7 +47,7 @@ De plus en plus d'internautes sont présents chaque jour sur Internet. Les inter
 
 - [ ] Afficher des messages de prévention
 
-- [ ] Créer un exécutable d'abord sur Linux, puis implémenter le logiciel en multi-plateformes.
+- [ ] Créer un exécutable d'abord sur Windows, puis implémenter le logiciel en multi-plateformes.
 
 - [ ] ...
 
