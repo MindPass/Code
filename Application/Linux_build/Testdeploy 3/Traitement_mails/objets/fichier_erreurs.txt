@@ -1,0 +1,1 @@
+ERREUR POUR l'ID b'1' : 'NoneType' object has no attribute 'decode'
