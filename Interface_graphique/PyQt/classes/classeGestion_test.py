@@ -298,14 +298,45 @@ class ClasseGestion(Ui_fenetreGestion):
         self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['mdp'])
         self.lignes_site[y]['categorie'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
         self.lignes_site[y]['categorie'].setObjectName("categorie")
-        self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['categorie'])
 
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute('SELECT nom_categorie FROM categories')
+        tab = cur.fetchall()
+        cur.execute('SELECT categorie FROM sites_reconnus WHERE rowid=?', (y+1, ))
+        cat_ligne = cur.fetchall()[0][0]
+
+        if cat_ligne:
+            self.lignes_site[y]['categorie'].addItem(cat_ligne)
+            for k in range(len(tab)):
+                if tab[k][0] != cat_ligne:
+                    self.lignes_site[y]['categorie'].addItem(tab[k][0])
+        else:
+            self.lignes_site[y]['categorie'].addItem("")
+            for k in range(len(tab)):
+                self.lignes_site[y]['categorie'].addItem(tab[k][0])
+        cur.close()
+        conn.close()
+
+        self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['categorie'])
         self.lignes_site[y]['ligne_site'].setStretch(0, 2)
         self.lignes_site[y]['ligne_site'].setStretch(1, 2)
         self.lignes_site[y]['ligne_site'].setStretch(2, 2)
         self.lignes_site[y]['ligne_site'].setStretch(3, 2)
-        
         self.verticalLayout.addLayout(self.lignes_site[y]['ligne_site'])
+
+        # Changement de catégories
+        self.lignes_site[y]['categorie'].currentIndexChanged.connect(partial(self.cat_changement, y=y))
+
+    def cat_changement(self, y):
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        print(self.lignes_site[y]['categorie'].currentText())
+        print(y)
+        cur.execute('UPDATE sites_reconnus SET categorie=? WHERE rowid=?', (self.lignes_site[y]['categorie'].currentText(), y+1))
+        conn.commit()
+        cur.close()
+        conn.close()
 
 
 if __name__ == "__main__":

@@ -52,7 +52,7 @@ De plus en plus d'internautes sont présents chaque jour sur Internet. Les inter
 
 ## :floppy_disk: Dernière version
 
-La sortie de la version bêta (v0.1-beta0) est planifiée le 1er avril 2016.
+La sortie de la version bêta (v0.1-beta0) est planifiée aux alentours du 1er avril 2016.
 
 Stay tuned ! :computer:
 

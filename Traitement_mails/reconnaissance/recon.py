@@ -17,8 +17,8 @@ def print_(arg):
 conn = sqlite3.connect('../bdd.sq3')
 cur = conn.cursor()
 
-cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus (adresse_mail TEXT, site_web TEXT, identifiant TEXT,"
-            " mdp TEXT, categorie TEXT, PRIMARY KEY (adresse_mail))")
+cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus (adresse_mail TEXT PRIMARY KEY, site_web TEXT, identifiant TEXT,"
+            " mdp TEXT, categorie TEXT)")
 
 cur.execute("SELECT DISTINCT expediteur FROM mindpasstest_laposte")
 tableau = cur.fetchall()
