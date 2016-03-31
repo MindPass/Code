@@ -170,11 +170,15 @@ class ClasseGestion(Ui_fenetreGestion):
 
         print("Suppression de " + str(self.lignes_cat[y]["label_cat"].text()))
 
-        print(len(self.lignes_site))
+
         for k in range(len(self.lignes_site)):
-            print(k)
-            index = self.lignes_site[k]['categorie'].findText(self.lignes_cat[k]["label_cat"].text())
+            if self.lignes_site[k]['categorie'].currentText() == self.lignes_cat[y]['label_cat'].text():
+                if self.lignes_site[k]['categorie'].findText("") == -1:
+                    self.lignes_site[k]['categorie'].insertItem(0, "")
+                self.lignes_site[k]['categorie'].setCurrentIndex(0)
+            index = self.lignes_site[k]['categorie'].findText(self.lignes_cat[y]["label_cat"].text())
             self.lignes_site[k]['categorie'].removeItem(index)
+
 
         # destruction des layouts dans la scroll_area
         self.scrollAreaWidgetContents_cat.deleteLater()
@@ -320,8 +324,6 @@ class ClasseGestion(Ui_fenetreGestion):
     def cat_changement(self, y):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
-        print(self.lignes_site[y]['categorie'].currentText())
-        print(y)
         cur.execute('UPDATE sites_reconnus SET categorie=? WHERE rowid=?',
                     (self.lignes_site[y]['categorie'].currentText(), y + 1))
         conn.commit()
