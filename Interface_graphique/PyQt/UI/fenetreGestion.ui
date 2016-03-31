@@ -49,6 +49,9 @@ QLineEdit {
     <bool>true</bool>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMaximumSize</enum>
+    </property>
     <item>
      <widget class="QSplitter" name="splitter">
       <property name="orientation">
@@ -57,7 +60,10 @@ QLineEdit {
       <property name="handleWidth">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="">
+      <property name="childrenCollapsible">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="Passwords" stretch="0,4,1">
         <item>
          <widget class="QLabel" name="titre_pwd">
@@ -96,7 +102,7 @@ QLineEdit {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>238</width>
+             <width>241</width>
              <height>765</height>
             </rect>
            </property>
@@ -165,7 +171,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>613</width>
+             <width>607</width>
              <height>832</height>
             </rect>
            </property>
@@ -175,7 +181,7 @@ QLabel {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="Categories" stretch="0,4,1">
         <property name="sizeConstraint">
          <enum>QLayout::SetNoConstraint</enum>
@@ -211,7 +217,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>240</width>
+             <width>243</width>
              <height>767</height>
             </rect>
            </property>

@@ -57,7 +57,7 @@ QLineEdit {
       <property name="handleWidth">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="Passwords" stretch="0,4,1">
         <item>
          <widget class="QLabel" name="titre_pwd">
@@ -96,7 +96,7 @@ QLineEdit {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>238</width>
+             <width>241</width>
              <height>765</height>
             </rect>
            </property>
@@ -187,13 +187,16 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>613</width>
+             <width>607</width>
              <height>832</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
-             <layout class="QHBoxLayout" name="ligne_site">
+             <layout class="QHBoxLayout" name="ligne_site" stretch="2,2,2,2">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMaximumSize</enum>
+              </property>
               <property name="leftMargin">
                <number>5</number>
               </property>
@@ -227,27 +230,10 @@ QLabel {
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="mdp">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>mdp</string>
-                </property>
-               </widget>
+               <widget class="QComboBox" name="mdp"/>
               </item>
               <item>
-               <widget class="QCheckBox" name="categorie">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-               </widget>
+               <widget class="QComboBox" name="categorie"/>
               </item>
              </layout>
             </item>
@@ -257,7 +243,7 @@ QLabel {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="Categories" stretch="0,4,1">
         <property name="sizeConstraint">
          <enum>QLayout::SetNoConstraint</enum>
@@ -293,7 +279,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>240</width>
+             <width>243</width>
              <height>767</height>
             </rect>
            </property>
@@ -370,8 +356,6 @@ QLabel {
  </widget>
  <tabstops>
   <tabstop>identifiant</tabstop>
-  <tabstop>mdp</tabstop>
-  <tabstop>categorie</tabstop>
   <tabstop>pushButton_cat</tabstop>
   <tabstop>scrollArea_cat</tabstop>
   <tabstop>ajouter_cat</tabstop>

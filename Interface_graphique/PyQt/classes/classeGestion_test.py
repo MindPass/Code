@@ -290,27 +290,21 @@ class ClasseGestion(Ui_fenetreGestion):
 
         # Event filter pour les identifiants
         self.lignes_site[y]["identifiant"].installEventFilter(self._filter)
-
         self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['identifiant'])
-        self.lignes_site[y]['mdp'] = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_sites)
-        self.lignes_site[y]['mdp'].setMaximumSize(QtCore.QSize(16777215, 40))
+
+
+        self.lignes_site[y]['mdp'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
         self.lignes_site[y]['mdp'].setObjectName("mdp")
-
-        if mdp is None:
-            self.lignes_site[y]['mdp'].setPlaceholderText("Ajouter un mdp")
-        else:
-            self.lignes_site[y]['mdp'].setText(mdp)
-
-
         self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['mdp'])
-        self.lignes_site[y]['categorie'] = QtWidgets.QCheckBox(self.scrollAreaWidgetContents_sites)
-        self.lignes_site[y]['categorie'].setEnabled(True)
-        self.lignes_site[y]['categorie'].setText(categorie)
+        self.lignes_site[y]['categorie'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
         self.lignes_site[y]['categorie'].setObjectName("categorie")
         self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['categorie'])
-        self.lignes_site[y]['ligne_site'].setStretch(0, 1)
-        self.lignes_site[y]['ligne_site'].setStretch(1, 1)
-        self.lignes_site[y]['ligne_site'].setStretch(2, 1)
+
+        self.lignes_site[y]['ligne_site'].setStretch(0, 2)
+        self.lignes_site[y]['ligne_site'].setStretch(1, 2)
+        self.lignes_site[y]['ligne_site'].setStretch(2, 2)
+        self.lignes_site[y]['ligne_site'].setStretch(3, 2)
+        
         self.verticalLayout.addLayout(self.lignes_site[y]['ligne_site'])
 
 
