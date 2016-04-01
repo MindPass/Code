@@ -1,0 +1,2 @@
+with open("style/fenetreXXX.css", "r") as feuilleDeStyle:
+            fenetreXXX.setStyleSheet(feuilleDeStyle.read())
