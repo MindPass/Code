@@ -1,1 +1,0 @@
-C:\pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat -x ../UI/fenetreMindMap.ui -o ../fenetres/fenetreMindMap.py

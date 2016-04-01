@@ -1,8 +1,0 @@
-QProgressBar {
-	background-color: lightgrey;
-	border: 2px solid purple;
-	border-radius: 10px;
-}
-
-QProgressBar::chunk {
-}
