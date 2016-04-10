@@ -9,7 +9,6 @@ from fenetreGestion import Ui_fenetreGestion
 
 bdd = "../../../Traitement_mails/bdd.sq3"
 
-
 def print_(arg):
     """
     Args:
@@ -21,37 +20,22 @@ def print_(arg):
     print(arg)
     print("-------------------------------------")
 
+class LineEditWithFocusOut(QtWidgets.QLineEdit):
+    """docstring for LineEditWithFocusOut"""
 
-# Filtre les événements de FocusOut (ex pour une lineEdit)
-class Filter(QtCore.QObject):
-    def eventFilter(self, widget, event):
-        # FocusOut event
-        if event.type() == QtCore.QEvent.FocusOut:
-            # do custom stuff
-            print(self)
-            conn = sqlite3.connect(bdd)
-            cur = conn.cursor()
+    def focusOutEvent(self, arg):
+        QtWidgets.QLineEdit.focusOutEvent(self, arg)
+        # self.id contient l'id de la LigneEdit, ajouté dans afficher_ligne_site()
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute("UPDATE sites_reconnus SET identifiant=? WHERE rowid=?", (self.text(), self.id+1))
+        conn.commit()
+        cur.close()
+        conn.close()
 
-            for k in range(len(self.lignes_site)):
-                if self.lignes_site[k]['identifiant'] == widget:
-                    cur.execute("UPDATE sites_reconnus SET identifiant=? WHERE row_id=?",
-                                (self.lignes_site[y]['identifiant'].displayText(), y + 1))
-                elif self.lignes_site[k]['mdp'] == widget:
-                    cur.execute("UPDATE sites_reconnus SET mdp=? WHERE row_id=?", (self.lignes_site[y]['mdp'], y + 1))
-
-            conn.commit()
-            cur.close()
-            conn.close()
-
-            print(widget.text())
-            print("focus out")
-            # return False so that the widget will also handle the event
-            # otherwise it won't focus out
-            return False
-        else:
-            # we don't care about other events
-            return False
-
+        if self.text() == "":
+            self.setPlaceholderText("Ajouter un pseudo")
+        
 
 class ClasseGestion(Ui_fenetreGestion):
     def __init__(self, fenetre):
@@ -64,13 +48,14 @@ class ClasseGestion(Ui_fenetreGestion):
         self.lignes_site = []
         self.lignes_cat = []
         self.lignes_pwd = []
-        self._filter = Filter()
 
-        # def lancement(self):
+        #lancement(self):
         self.afficher_sites()
         self.afficher_categories()
         self.afficher_pwds()
 
+    # CATEGORIES 
+ 
     def check_if_exist_cat(self):
         """
         Vérifier que la catégorie en question n'est pas déjà dans la base de donnée
@@ -89,25 +74,6 @@ class ClasseGestion(Ui_fenetreGestion):
             conditions = not categories_table or categories_table[0][0] != self.ajouter_cat.displayText()
             if conditions:
                 self.ajouter_categorie()
-
-    def check_if_exist_pwd(self):
-        """
-        Vérifier que le pwd en question n'est pas déjà dans la base de donnée
-        """
-        if self.ajouter_pwd.displayText() != "":
-            conn = sqlite3.connect(bdd)
-            cur = conn.cursor()
-
-            cur.execute("SELECT mdp FROM mdps WHERE mdp=?", (self.ajouter_pwd.displayText(),))
-            pwds_table = cur.fetchall()
-
-            conn.commit()
-            cur.close()
-            conn.close()
-
-            conditions = not pwds_table or pwds_table[0][0] != self.ajouter_pwd.displayText()
-            if conditions:
-                self.ajouter_password()
 
     def afficher_categories(self):
         conn = sqlite3.connect(bdd)
@@ -152,7 +118,7 @@ class ClasseGestion(Ui_fenetreGestion):
         cur.close()
         conn.close()
 
-        print("Catégorie ajoutée : " + self.ajouter_cat.displayText())
+        print("Catégorie ajoutée : ")
         self.ajouter_ligne_categorie(len(self.lignes_cat), self.ajouter_cat.displayText())
 
         for y in range(len(self.lignes_site)):
@@ -170,15 +136,15 @@ class ClasseGestion(Ui_fenetreGestion):
 
         print("Suppression de " + str(self.lignes_cat[y]["label_cat"].text()))
 
-
         for k in range(len(self.lignes_site)):
             if self.lignes_site[k]['categorie'].currentText() == self.lignes_cat[y]['label_cat'].text():
+                # si la catégorie supprimée était celle du site, alors on change la catégorie de celui-ci en le choix vide:""
                 if self.lignes_site[k]['categorie'].findText("") == -1:
-                    self.lignes_site[k]['categorie'].insertItem(0, "")
-                self.lignes_site[k]['categorie'].setCurrentIndex(0)
+                    # si il n'y a pas le choix vide "", on l'ajoute
+                    self.lignes_site[k]['categorie'].addItem("")
+                self.lignes_site[k]['categorie'].setCurrentIndex(self.lignes_site[k]['categorie'].findText(""))
             index = self.lignes_site[k]['categorie'].findText(self.lignes_cat[y]["label_cat"].text())
             self.lignes_site[k]['categorie'].removeItem(index)
-
 
         # destruction des layouts dans la scroll_area
         self.scrollAreaWidgetContents_cat.deleteLater()
@@ -195,6 +161,63 @@ class ClasseGestion(Ui_fenetreGestion):
         self.afficher_categories()
 
         # PASSWORD
+
+    def afficher_combo_cat(self, y):
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute('SELECT nom_categorie FROM categories')
+        tab = cur.fetchall()
+        result = []
+        for k in range(len(tab)):
+            result.append(tab[k][0])
+        cur.execute('SELECT categorie FROM sites_reconnus WHERE rowid=?', (y + 1,))
+        cat_ligne = cur.fetchall()[0][0]
+
+        if cat_ligne and (cat_ligne in result):
+            self.lignes_site[y]['categorie'].addItem(cat_ligne)
+            for nom_categorie in result:
+                if nom_categorie != cat_ligne:
+                    self.lignes_site[y]['categorie'].addItem(nom_categorie)
+            self.lignes_site[y]['categorie'].addItem("")
+        else:
+            self.lignes_site[y]['categorie'].addItem("")
+            for nom_categorie in result:
+                self.lignes_site[y]['categorie'].addItem(nom_categorie)
+        cur.close()
+        conn.close()
+   
+    def cat_changement(self, y):
+
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute('UPDATE sites_reconnus SET categorie=? WHERE rowid=?',
+                    (self.lignes_site[y]['categorie'].currentText(), y + 1))
+
+        print("Catégorie changée en"+ str(self.lignes_site[y]['categorie'].currentText()))
+        conn.commit()
+        cur.close()
+        conn.close()
+
+    # PASSWORDS
+
+    def check_if_exist_pwd(self):
+        """
+        Vérifier que le pwd en question n'est pas déjà dans la base de donnée
+        """
+        if self.ajouter_pwd.displayText() != "":
+            conn = sqlite3.connect(bdd)
+            cur = conn.cursor()
+
+            cur.execute("SELECT mdp FROM mdps WHERE mdp=?", (self.ajouter_pwd.displayText(),))
+            pwds_table = cur.fetchall()
+
+            conn.commit()
+            cur.close()
+            conn.close()
+
+            conditions = not pwds_table or pwds_table[0][0] != self.ajouter_pwd.displayText()
+            if conditions:
+                self.ajouter_password()
 
     def afficher_pwds(self):
         conn = sqlite3.connect(bdd)
@@ -269,6 +292,8 @@ class ClasseGestion(Ui_fenetreGestion):
 
         #  PASSWORD
 
+    # SITES
+
     def afficher_sites(self):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
@@ -292,17 +317,20 @@ class ClasseGestion(Ui_fenetreGestion):
         self.lignes_site[y]['site_web'].setText(site_web)
         self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['site_web'])
 
-        self.lignes_site[y]['identifiant'] = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_sites)
+        self.lignes_site[y]['identifiant'] = LineEditWithFocusOut(self.scrollAreaWidgetContents_sites)
         self.lignes_site[y]['identifiant'].setAlignment(QtCore.Qt.AlignCenter)
-        self.lignes_site[y]['identifiant'].setObjectName("identifiant")
+        self.lignes_site[y]['identifiant'].setObjectName('identifiant')
+        self.lignes_site[y]['identifiant'].id = y # On définit une id pour cet objet
 
-        if identifiant is None:
+
+        if identifiant is None or identifiant == "":
             self.lignes_site[y]['identifiant'].setPlaceholderText("Ajouter un pseudo")
         else:
             self.lignes_site[y]['identifiant'].setText(identifiant)
 
         # Event filter pour les identifiants
-        self.lignes_site[y]["identifiant"].installEventFilter(self._filter)
+        # QtWidgets.QWidget.focusOutEvent(self.lignes_site[y]["identifiant"], self.print_)
+        #self.lignes_site[y]["identifiant"].installEventFilter(event)
         self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['identifiant'])
 
         self.lignes_site[y]['mdp'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
@@ -321,37 +349,7 @@ class ClasseGestion(Ui_fenetreGestion):
         # Changement de catégories
         self.lignes_site[y]['categorie'].currentIndexChanged.connect(partial(self.cat_changement, y=y))
 
-    def cat_changement(self, y):
-        conn = sqlite3.connect(bdd)
-        cur = conn.cursor()
-        cur.execute('UPDATE sites_reconnus SET categorie=? WHERE rowid=?',
-                    (self.lignes_site[y]['categorie'].currentText(), y + 1))
-        conn.commit()
-        cur.close()
-        conn.close()
-
-    def afficher_combo_cat(self, y):
-        conn = sqlite3.connect(bdd)
-        cur = conn.cursor()
-        cur.execute('SELECT nom_categorie FROM categories')
-        tab = cur.fetchall()
-        result = []
-        for k in range(len(tab)):
-            result.append(tab[k][0])
-        cur.execute('SELECT categorie FROM sites_reconnus WHERE rowid=?', (y + 1,))
-        cat_ligne = cur.fetchall()[0][0]
-
-        if cat_ligne and (cat_ligne in result):
-            self.lignes_site[y]['categorie'].addItem(cat_ligne)
-            for nom_categorie in result:
-                if nom_categorie != cat_ligne:
-                    self.lignes_site[y]['categorie'].addItem(nom_categorie)
-        else:
-            self.lignes_site[y]['categorie'].addItem("")
-            for nom_categorie in result:
-                self.lignes_site[y]['categorie'].addItem(nom_categorie)
-        cur.close()
-        conn.close()
+ 
 
 
 if __name__ == "__main__":
