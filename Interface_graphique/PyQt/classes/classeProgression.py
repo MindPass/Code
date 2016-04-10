@@ -5,10 +5,11 @@ from fenetreProgression import Ui_fenetreProgression
 import time
 
 
-class ClassProgression(Ui_fenetreProgression):
+class ClasseProgression(Ui_fenetreProgression):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
         fenetre.show()
+        self.loop(10)
 
     def change_bar_value(self, value):
         self.progressBar.setValue(value)
@@ -24,8 +25,8 @@ class ClassProgression(Ui_fenetreProgression):
 
 if __name__ == "__main__":
     import sys
-
     app = QtWidgets.QApplication(sys.argv)
     fenetreProgression = QtWidgets.QMainWindow()
-    page_progression = ClassProgression(fenetreProgression)
+    
+    page_progression = ClasseProgression(fenetreProgression)
     sys.exit(app.exec_())
