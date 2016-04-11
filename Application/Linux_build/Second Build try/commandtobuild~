@@ -1,5 +1,0 @@
-pyinstaller /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/application/application.py
-
-pyinstaller /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/application/application.py /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/application/classeGestion.py /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/application/classeAccueil.py /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/application/classeProgression.py
-
-pyinstaller /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/application/application.py /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/application/classeGestion.py /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/application/classeAccueil.py /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/application/classeProgression.py /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/fenetres/fenetreAccueil.py /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/fenetres/fenetreGestion.py /home/aquathi/Documents/Testdeploy/Interface_graphique/PyQt/fenetres/fenetreProgression.py 
