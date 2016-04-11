@@ -86,7 +86,7 @@ class ClasseGestion(Ui_fenetreGestion):
                 self.ajouter_ligne_categorie(k, tab[k][0])
 
         conn.commit()
-        cur.close()
+        cur.close() 
         conn.close()
 
     def ajouter_ligne_categorie(self, y, nom_categorie):
@@ -118,9 +118,11 @@ class ClasseGestion(Ui_fenetreGestion):
         cur.close()
         conn.close()
 
-        print("Catégorie ajoutée : ")
+        # ajout de la catégorie dans la scrollArea Categories        
         self.ajouter_ligne_categorie(len(self.lignes_cat), self.ajouter_cat.displayText())
+        print("Catégorie ajoutée : ")
 
+        # ajout de la catégorie dans les comboBox
         for y in range(len(self.lignes_site)):
             self.lignes_site[y]['categorie'].addItem(self.ajouter_cat.displayText())
 
@@ -136,6 +138,7 @@ class ClasseGestion(Ui_fenetreGestion):
 
         print("Suppression de " + str(self.lignes_cat[y]["label_cat"].text()))
 
+        # suppression des items dans les ComboBox
         for k in range(len(self.lignes_site)):
             if self.lignes_site[k]['categorie'].currentText() == self.lignes_cat[y]['label_cat'].text():
                 # si la catégorie supprimée était celle du site, alors on change la catégorie de celui-ci en le choix vide:""
@@ -157,11 +160,11 @@ class ClasseGestion(Ui_fenetreGestion):
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_cat)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.scrollArea_cat.setWidget(self.scrollAreaWidgetContents_cat)
-
+        # on relance la méthode d'affichage des catégories
         self.afficher_categories()
 
         # PASSWORD
-
+ 
     def afficher_combo_cat(self, y):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
@@ -262,9 +265,39 @@ class ClasseGestion(Ui_fenetreGestion):
         cur.close()
         conn.close()
 
-        print("Password ajoutée : " + self.ajouter_pwd.displayText())
+        # ajout dans la ScrollArea Passwords
         self.ajouter_ligne_pwd(len(self.lignes_pwd), self.ajouter_pwd.displayText())
+        print("Password ajoutée : " + self.ajouter_pwd.displayText())
+
+        # ajout du mdp dans les comboBox
+        for y in range(len(self.lignes_site)):
+            self.lignes_site[y]['mdp'].addItem(self.ajouter_pwd.displayText())
+
         self.ajouter_pwd.setText("")
+
+    def afficher_combo_pwd(self, y):
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute('SELECT mdp FROM mdps')
+        tab = cur.fetchall()
+        result = []
+        for k in range(len(tab)):
+            result.append(tab[k][0])
+        cur.execute('SELECT mdp FROM sites_reconnus WHERE rowid=?', (y + 1,))
+        pwd_ligne = cur.fetchall()[0][0]
+
+        if pwd_ligne and (pwd_ligne in result):
+            self.lignes_site[y]['mdp'].addItem(pwd_ligne)
+            for nom_pwd in result:
+                if nom_pwd != pwd_ligne:
+                    self.lignes_site[y]['mdp'].addItem(nom_pwd)
+            self.lignes_site[y]['mdp'].addItem("")
+        else:
+            self.lignes_site[y]['mdp'].addItem("")
+            for nom_pwd in result:
+                self.lignes_site[y]['mdp'].addItem(nom_pwd)
+        cur.close()
+        conn.close()
 
     def supprimer_password(self, y):
         conn = sqlite3.connect(bdd)
@@ -275,6 +308,17 @@ class ClasseGestion(Ui_fenetreGestion):
         conn.close()
 
         print("Suppression du Password: " + str(self.lignes_pwd[y]["label_pwd"].text()))
+
+        # suppression des items dans les ComboBox
+        for k in range(len(self.lignes_site)):
+            if self.lignes_site[k]['mdp'].currentText() == self.lignes_pwd[y]['label_pwd'].text():
+                # si la catégorie supprimée était celle du site, alors on change la catégorie de celui-ci en le choix vide:""
+                if self.lignes_site[k]['mdp'].findText("") == -1:
+                    # si il n'y a pas le choix vide "", on l'ajoute
+                    self.lignes_site[k]['mdp'].addItem("")
+                self.lignes_site[k]['mdp'].setCurrentIndex(self.lignes_site[k]['mdp'].findText(""))
+            index = self.lignes_site[k]['mdp'].findText(self.lignes_pwd[y]["label_pwd"].text())
+            self.lignes_site[k]['mdp'].removeItem(index)
 
         # destruction des layouts dans la scroll_area
         self.scrollAreaWidgetContents_pwd.deleteLater()
@@ -290,7 +334,17 @@ class ClasseGestion(Ui_fenetreGestion):
 
         self.afficher_pwds()
 
-        #  PASSWORD
+    def pwd_changement(self, y):
+
+        conn = sqlite3.connect(bdd)
+        cur = conn.cursor()
+        cur.execute('UPDATE sites_reconnus SET mdp=? WHERE rowid=?',
+                    (self.lignes_site[y]['mdp'].currentText(), y + 1))
+
+        print("Pwd changée en"+ str(self.lignes_site[y]['mdp'].currentText()))
+        conn.commit()
+        cur.close()
+        conn.close()
 
     # SITES
 
@@ -335,6 +389,7 @@ class ClasseGestion(Ui_fenetreGestion):
 
         self.lignes_site[y]['mdp'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
         self.lignes_site[y]['mdp'].setObjectName("mdp")
+        self.afficher_combo_pwd(y) # affichage des éléments de la combobox en fonction de la bdd
         self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['mdp'])
         self.lignes_site[y]['categorie'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
         self.lignes_site[y]['categorie'].setObjectName("categorie")
@@ -346,8 +401,9 @@ class ClasseGestion(Ui_fenetreGestion):
         self.lignes_site[y]['ligne_site'].setStretch(3, 2)
         self.verticalLayout.addLayout(self.lignes_site[y]['ligne_site'])
 
-        # Changement de catégories
+        # Changement de pwd/catégories
         self.lignes_site[y]['categorie'].currentIndexChanged.connect(partial(self.cat_changement, y=y))
+        self.lignes_site[y]['mdp'].currentIndexChanged.connect(partial(self.pwd_changement, y=y))
 
  
 
