@@ -48,7 +48,7 @@ QLineEdit {
    <property name="enabled">
     <bool>true</bool>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1">
     <item>
      <widget class="QSplitter" name="splitter">
       <property name="orientation">
@@ -162,6 +162,12 @@ QLineEdit {
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>500</width>
+            <height>0</height>
+           </size>
           </property>
           <property name="styleSheet">
            <string notr="true">QWidget {
@@ -351,6 +357,12 @@ QLabel {
      <string>Aide</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuMindMap">
+    <property name="title">
+     <string>Voir la MindMap</string>
+    </property>
+   </widget>
+   <addaction name="menuMindMap"/>
    <addaction name="menuAide"/>
   </widget>
  </widget>

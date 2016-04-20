@@ -41,12 +41,10 @@ class Ui_fenetreGestion(object):
         self.corps_gestion.setEnabled(True)
         self.corps_gestion.setObjectName("corps_gestion")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.corps_gestion)
-        self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.splitter = QtWidgets.QSplitter(self.corps_gestion)
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
         self.splitter.setHandleWidth(0)
-        self.splitter.setChildrenCollapsible(True)
         self.splitter.setObjectName("splitter")
         self.layoutWidget = QtWidgets.QWidget(self.splitter)
         self.layoutWidget.setObjectName("layoutWidget")
@@ -91,7 +89,7 @@ class Ui_fenetreGestion(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.scrollArea_sites.sizePolicy().hasHeightForWidth())
         self.scrollArea_sites.setSizePolicy(sizePolicy)
-        self.scrollArea_sites.setMinimumSize(QtCore.QSize(450, 0))
+        self.scrollArea_sites.setMinimumSize(QtCore.QSize(500, 0))
         self.scrollArea_sites.setStyleSheet("QWidget {\n"
 "    border: none;\n"
 "    border-radius: 5px;\n"
@@ -146,13 +144,17 @@ class Ui_fenetreGestion(object):
         self.Categories.setStretch(1, 4)
         self.Categories.setStretch(2, 1)
         self.horizontalLayout.addWidget(self.splitter)
+        self.horizontalLayout.setStretch(0, 1)
         fenetreGestion.setCentralWidget(self.corps_gestion)
         self.menubar = QtWidgets.QMenuBar(fenetreGestion)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1119, 21))
         self.menubar.setObjectName("menubar")
         self.menuAide = QtWidgets.QMenu(self.menubar)
         self.menuAide.setObjectName("menuAide")
+        self.menuMindMap = QtWidgets.QMenu(self.menubar)
+        self.menuMindMap.setObjectName("menuMindMap")
         fenetreGestion.setMenuBar(self.menubar)
+        self.menubar.addAction(self.menuMindMap.menuAction())
         self.menubar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(fenetreGestion)
@@ -167,6 +169,7 @@ class Ui_fenetreGestion(object):
         self.titre_pwd.setText(_translate("fenetreGestion", "Mots de Passe"))
         self.titre_cat.setText(_translate("fenetreGestion", "Catégories"))
         self.menuAide.setTitle(_translate("fenetreGestion", "Aide"))
+        self.menuMindMap.setTitle(_translate("fenetreGestion", "Voir la MindMap"))
 
 
 if __name__ == "__main__":
