@@ -19,6 +19,8 @@ cur = conn.cursor()
 
 cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus (adresse_mail TEXT PRIMARY KEY, site_web TEXT, identifiant TEXT,"
             " mdp TEXT, categorie TEXT)")
+            
+
 
 cur.execute("SELECT DISTINCT expediteur FROM mindpasstest_laposte WHERE expediteur NOT LIKE '%outlook%' AND expediteur NOT LIKE '%gmail%' AND expediteur NOT LIKE '%laposte%' AND expediteur NOT LIKE '%yahoo%' AND expediteur NOT LIKE '%hotmail%' AND expediteur NOT LIKE '%zoho%' AND expediteur NOT LIKE '%msn%' AND expediteur NOT LIKE '%aol%' AND expediteur NOT LIKE '%gmx%' AND expediteur NOT LIKE '%caramail%' AND expediteur NOT LIKE '%voila%' AND expediteur NOT LIKE '%orange.fr%' AND expediteur NOT LIKE '%mailoo%' AND expediteur NOT LIKE '%wanadoo%'")
 tableau = cur.fetchall()
