@@ -35,8 +35,8 @@ class Example(QWidget):
         sld.valueChanged[int].connect(self.changeValue)
         
         self.label = QLabel(self)
-        self.label.setPixmap(QPixmap('mute.png'))
-        self.label.setGeometry(160, 40, 500, 500)
+        self.label.setPixmap(QPixmap('Zeichen_123.svg'))
+        self.label.setGeometry(160, 40, 600, 400)
         
         self.setGeometry(300, 300, 280, 170)
         self.setWindowTitle('QSlider')
@@ -46,7 +46,7 @@ class Example(QWidget):
     def changeValue(self, value):
 
         if value == 0:
-            self.label.setPixmap(QPixmap('mute.png'))
+            self.label.setPixmap(QPixmap('Zeichen_123.svg'))
         elif value > 0 and value <= 30:
             self.label.setPixmap(QPixmap('min.png'))
         elif value > 30 and value < 80:
