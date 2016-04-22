@@ -1,0 +1,1 @@
+"C:\Program Files\Pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat" -x ../UI/fenetreProgression.ui -o ../fenetres/fenetreProgression.py
