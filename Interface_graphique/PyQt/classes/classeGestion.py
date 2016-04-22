@@ -6,6 +6,7 @@ from functools import partial
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from fenetreGestion import Ui_fenetreGestion
+from requetes import *
 
 bdd = "../../../Traitement_mails/bdd.sq3"
 
@@ -25,13 +26,8 @@ class LineEditWithFocusOut(QtWidgets.QLineEdit):
 
     def focusOutEvent(self, arg):
         QtWidgets.QLineEdit.focusOutEvent(self, arg)
-        # self.id contient l'id de la LigneEdit, ajouté dans afficher_ligne_site()
-        conn = sqlite3.connect(bdd)
-        cur = conn.cursor()
-        cur.execute("UPDATE sites_reconnus SET identifiant=? WHERE rowid=?", (self.text(), self.id+1))
-        conn.commit()
-        cur.close()
-        conn.close()
+
+        bdd_update("sites_reconnus", ("identifiant",), "rowid", (self.text(), self.id +1))
 
         if self.text() == "":
             self.setPlaceholderText("Ajouter un pseudo")
