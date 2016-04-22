@@ -12,6 +12,7 @@ last edited: January 2015
 """
 
 import sys
+import time
 from PyQt5 import QtSvg
 from PyQt5.QtWidgets import (QWidget, QSlider, 
     QLabel, QApplication)
@@ -28,15 +29,19 @@ class Example(QWidget):
         
         
     def initUI(self):      
-
+        
+        date_debut = time.time()
+        intervalle = 25
+        
         sld = QSlider(Qt.Horizontal, self)
         sld.setFocusPolicy(Qt.NoFocus)
         sld.setGeometry(30, 40, 100, 30)
         sld.valueChanged[int].connect(self.changeValue)
-        
+
+
         self.label = QLabel(self)
-        self.label.setPixmap(QPixmap('mute.png'))
-        self.label.setGeometry(160, 40, 500, 500)
+        self.label.setPixmap(QPixmap('Zeichen_123.svg'))
+        self.label.setGeometry(160, 40, 600, 400)
         
         self.setGeometry(300, 300, 280, 170)
         self.setWindowTitle('QSlider')
@@ -45,14 +50,14 @@ class Example(QWidget):
         
     def changeValue(self, value):
 
-        if value == 0:
+        if value >= 0 and value < 25:
+            self.label.setPixmap(QPixmap('Zeichen_123.svg'))
+        elif value >=25 and value < 50:
             self.label.setPixmap(QPixmap('mute.png'))
-        elif value > 0 and value <= 30:
-            self.label.setPixmap(QPixmap('min.png'))
-        elif value > 30 and value < 80:
-            self.label.setPixmap(QPixmap('med.png'))
+        elif value >= 50 and value < 75:
+            self.label.setPixmap(QPixmap('Zeichen_123.svg'))
         else:
-            self.label.setPixmap(QPixmap('max.png'))
+            self.label.setPixmap(QPixmap('mute.png'))
             
 
 if __name__ == '__main__':
