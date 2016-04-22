@@ -118,6 +118,9 @@ class Ui_fenetreProgression(object):
         self.gridLayout.addWidget(self.progressBar, 0, 0, 1, 1)
         self.horizontalSlider = QtWidgets.QSlider(self.verticalLayoutWidget)
         self.horizontalSlider.setEnabled(True)
+        ##### A GARDER - debut
+        self.horizontalSlider.valueChanged[int].connect(self.changeValue)
+        ##### A GARDER - fin
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -136,6 +139,19 @@ class Ui_fenetreProgression(object):
         self.retranslateUi(fenetreProgression)
         QtCore.QMetaObject.connectSlotsByName(fenetreProgression)
 
+    ##### A GARDER - debut
+    def changeValue(self, value):
+
+        if value >= 0 and value < 25:
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Zeichen_123.svg"))
+        elif value >=25 and value < 50:
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/mute.png"))
+        elif value >= 50 and value < 75:
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Zeichen_123.svg"))
+        else:
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/mute.png"))
+    ##### A GARDER - fin
+    
     def retranslateUi(self, fenetreProgression):
         _translate = QtCore.QCoreApplication.translate
         fenetreProgression.setWindowTitle(_translate("fenetreProgression", "Progression"))
