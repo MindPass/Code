@@ -40,7 +40,7 @@ class Example(QWidget):
 
 
         self.label = QLabel(self)
-        self.label.setPixmap(QPixmap('Zeichen_123.svg'))
+        self.label.setPixmap(QPixmap('Pub1.svg'))
         self.label.setGeometry(160, 40, 600, 400)
         
         self.setGeometry(300, 300, 280, 170)
@@ -51,13 +51,13 @@ class Example(QWidget):
     def changeValue(self, value):
 
         if value >= 0 and value < 25:
-            self.label.setPixmap(QPixmap('Zeichen_123.svg'))
+            self.label.setPixmap(QPixmap('Pub1.svg'))
         elif value >=25 and value < 50:
-            self.label.setPixmap(QPixmap('mute.png'))
-        elif value >= 50 and value < 75:
             self.label.setPixmap(QPixmap('Zeichen_123.svg'))
-        else:
+        elif value >= 50 and value < 75:
             self.label.setPixmap(QPixmap('mute.png'))
+        else:
+            self.label.setPixmap(QPixmap('Pub1.svg'))
             
 
 if __name__ == '__main__':
