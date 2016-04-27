@@ -8,7 +8,8 @@ user=raw_input("prefixe gmail: ")
 user= user +"@gmail.com"
 
 client_id="287712233618-7qua8pervof64n6g740gi8d0o7ifiu28.apps.googleusercontent.com"
-access_token=raw_input("Access token: ")
+#access_token=raw_input("Access token: ")
+access_token = "ya29.CjHPAvnOH17P3g7UPuacy3vVmaV_spffEzVlEAUWBf6_7ZAAUacdJex3xC7n-Z4qShJ7"
 
 auth_string=oauth2.GenerateOAuth2String(user, access_token, False)
 #print(auth_string)

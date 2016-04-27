@@ -45,9 +45,9 @@ class ClasseGestion(Ui_fenetreGestion):
         self.ajouter_cat.returnPressed.connect(self.check_if_exist_cat)
         self.ajouter_pwd.returnPressed.connect(self.check_if_exist_pwd)
 
-        self.lignes_site = []
+        self.sites = []
         self.lignes_cat = []
-        self.lignes_pwd = []
+        self.pwds = []
 
     def lancement(self):
         self.afficher_sites()
@@ -123,8 +123,8 @@ class ClasseGestion(Ui_fenetreGestion):
         print("Catégorie ajoutée : ")
 
         # ajout de la catégorie dans les comboBox
-        for y in range(len(self.lignes_site)):
-            self.lignes_site[y]['categorie'].addItem(self.ajouter_cat.displayText())
+        for y in range(len(self.sites)):
+            self.sites[y]['categorie'].addItem(self.ajouter_cat.displayText())
 
         self.ajouter_cat.setText("")
 
@@ -139,15 +139,15 @@ class ClasseGestion(Ui_fenetreGestion):
         print("Suppression de " + str(self.lignes_cat[y]["label_cat"].text()))
 
         # suppression des items dans les ComboBox
-        for k in range(len(self.lignes_site)):
-            if self.lignes_site[k]['categorie'].currentText() == self.lignes_cat[y]['label_cat'].text():
+        for k in range(len(self.sites)):
+            if self.sites[k]['categorie'].currentText() == self.lignes_cat[y]['label_cat'].text():
                 # si la catégorie supprimée était celle du site, alors on change la catégorie de celui-ci en le choix vide:""
-                if self.lignes_site[k]['categorie'].findText("") == -1:
+                if self.sites[k]['categorie'].findText("") == -1:
                     # si il n'y a pas le choix vide "", on l'ajoute
-                    self.lignes_site[k]['categorie'].addItem("")
-                self.lignes_site[k]['categorie'].setCurrentIndex(self.lignes_site[k]['categorie'].findText(""))
-            index = self.lignes_site[k]['categorie'].findText(self.lignes_cat[y]["label_cat"].text())
-            self.lignes_site[k]['categorie'].removeItem(index)
+                    self.sites[k]['categorie'].addItem("")
+                self.sites[k]['categorie'].setCurrentIndex(self.sites[k]['categorie'].findText(""))
+            index = self.sites[k]['categorie'].findText(self.lignes_cat[y]["label_cat"].text())
+            self.sites[k]['categorie'].removeItem(index)
 
         # destruction des layouts dans la scroll_area
         self.scrollAreaWidgetContents_cat.deleteLater()
@@ -177,15 +177,15 @@ class ClasseGestion(Ui_fenetreGestion):
         cat_ligne = cur.fetchall()[0][0]
 
         if cat_ligne and (cat_ligne in result):
-            self.lignes_site[y]['categorie'].addItem(cat_ligne)
+            self.sites[y]['categorie'].addItem(cat_ligne)
             for nom_categorie in result:
                 if nom_categorie != cat_ligne:
-                    self.lignes_site[y]['categorie'].addItem(nom_categorie)
-            self.lignes_site[y]['categorie'].addItem("")
+                    self.sites[y]['categorie'].addItem(nom_categorie)
+            self.sites[y]['categorie'].addItem("")
         else:
-            self.lignes_site[y]['categorie'].addItem("")
+            self.sites[y]['categorie'].addItem("")
             for nom_categorie in result:
-                self.lignes_site[y]['categorie'].addItem(nom_categorie)
+                self.sites[y]['categorie'].addItem(nom_categorie)
         cur.close()
         conn.close()
    
@@ -194,9 +194,9 @@ class ClasseGestion(Ui_fenetreGestion):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
         cur.execute('UPDATE sites_reconnus SET categorie=? WHERE rowid=?',
-                    (self.lignes_site[y]['categorie'].currentText(), y + 1))
+                    (self.sites[y]['categorie'].currentText(), y + 1))
 
-        print("Catégorie changée en"+ str(self.lignes_site[y]['categorie'].currentText()))
+        print("Catégorie changée en"+ str(self.sites[y]['categorie'].currentText()))
         conn.commit()
         cur.close()
         conn.close()
@@ -237,25 +237,25 @@ class ClasseGestion(Ui_fenetreGestion):
         conn.close()
 
     def ajouter_ligne_pwd(self, y, nom_categorie):
-        self.lignes_pwd.append({'ligne_pwd': QtWidgets.QHBoxLayout()})
-        self.lignes_pwd[y]['ligne_pwd'].setObjectName("ligne_pwd")
-        self.lignes_pwd[y]['label_pwd'] = QtWidgets.QLabel(self.scrollAreaWidgetContents_pwd)
-        self.lignes_pwd[y]['label_pwd'].setMaximumSize(QtCore.QSize(16777215, 608))
-        self.lignes_pwd[y]['label_pwd'].setObjectName("label_pwd")
-        self.lignes_pwd[y]['label_pwd'].setText(nom_categorie)
-        self.lignes_pwd[y]['ligne_pwd'].addWidget(self.lignes_pwd[y]['label_pwd'])
-        self.lignes_pwd[y]['pushButton_pwd'] = QtWidgets.QPushButton(self.scrollAreaWidgetContents_pwd)
-        self.lignes_pwd[y]['pushButton_pwd'].setEnabled(True)
-        self.lignes_pwd[y]['pushButton_pwd'].setObjectName("pushButton_pwd")
-        self.lignes_pwd[y]['pushButton_pwd'].setText('X')
-        self.lignes_pwd[y]['ligne_pwd'].addWidget(self.lignes_pwd[y]['pushButton_pwd'])
-        self.verticalLayout_2.addLayout(self.lignes_pwd[y]['ligne_pwd'])
+        self.pwds.append({'ligne_pwd': QtWidgets.QHBoxLayout()})
+        self.pwds[y]['ligne_pwd'].setObjectName("ligne_pwd")
+        self.pwds[y]['label_pwd'] = QtWidgets.QLabel(self.scrollAreaWidgetContents_pwd)
+        self.pwds[y]['label_pwd'].setMaximumSize(QtCore.QSize(16777215, 608))
+        self.pwds[y]['label_pwd'].setObjectName("label_pwd")
+        self.pwds[y]['label_pwd'].setText(nom_categorie)
+        self.pwds[y]['ligne_pwd'].addWidget(self.pwds[y]['label_pwd'])
+        self.pwds[y]['pushButton_pwd'] = QtWidgets.QPushButton(self.scrollAreaWidgetContents_pwd)
+        self.pwds[y]['pushButton_pwd'].setEnabled(True)
+        self.pwds[y]['pushButton_pwd'].setObjectName("pushButton_pwd")
+        self.pwds[y]['pushButton_pwd'].setText('X')
+        self.pwds[y]['ligne_pwd'].addWidget(self.pwds[y]['pushButton_pwd'])
+        self.verticalLayout_2.addLayout(self.pwds[y]['ligne_pwd'])
 
         # On garde l'alignement haut
         self.verticalLayout_2.setAlignment(QtCore.Qt.AlignTop)
 
         # Evenement quand le boutton de suppression est cliqué
-        self.lignes_pwd[y]["pushButton_pwd"].clicked.connect(partial(self.supprimer_password, y=y))
+        self.pwds[y]["pushButton_pwd"].clicked.connect(partial(self.supprimer_password, y=y))
 
     def ajouter_password(self):
         conn = sqlite3.connect(bdd)
@@ -266,12 +266,12 @@ class ClasseGestion(Ui_fenetreGestion):
         conn.close()
 
         # ajout dans la ScrollArea Passwords
-        self.ajouter_ligne_pwd(len(self.lignes_pwd), self.ajouter_pwd.displayText())
+        self.ajouter_ligne_pwd(len(self.pwds), self.ajouter_pwd.displayText())
         print("Password ajoutée : " + self.ajouter_pwd.displayText())
 
         # ajout du mdp dans les comboBox
-        for y in range(len(self.lignes_site)):
-            self.lignes_site[y]['mdp'].addItem(self.ajouter_pwd.displayText())
+        for y in range(len(self.sites)):
+            self.sites[y]['mdp'].addItem(self.ajouter_pwd.displayText())
 
         self.ajouter_pwd.setText("")
 
@@ -287,43 +287,43 @@ class ClasseGestion(Ui_fenetreGestion):
         pwd_ligne = cur.fetchall()[0][0]
 
         if pwd_ligne and (pwd_ligne in result):
-            self.lignes_site[y]['mdp'].addItem(pwd_ligne)
+            self.sites[y]['mdp'].addItem(pwd_ligne)
             for nom_pwd in result:
                 if nom_pwd != pwd_ligne:
-                    self.lignes_site[y]['mdp'].addItem(nom_pwd)
-            self.lignes_site[y]['mdp'].addItem("")
+                    self.sites[y]['mdp'].addItem(nom_pwd)
+            self.sites[y]['mdp'].addItem("")
         else:
-            self.lignes_site[y]['mdp'].addItem("")
+            self.sites[y]['mdp'].addItem("")
             for nom_pwd in result:
-                self.lignes_site[y]['mdp'].addItem(nom_pwd)
+                self.sites[y]['mdp'].addItem(nom_pwd)
         cur.close()
         conn.close()
 
     def supprimer_password(self, y):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
-        cur.execute("DELETE FROM mdps WHERE mdp=?", (self.lignes_pwd[y]["label_pwd"].text(),))
+        cur.execute("DELETE FROM mdps WHERE mdp=?", (self.pwds[y]["label_pwd"].text(),))
         conn.commit()
         cur.close()
         conn.close()
 
-        print("Suppression du Password: " + str(self.lignes_pwd[y]["label_pwd"].text()))
+        print("Suppression du Password: " + str(self.pwds[y]["label_pwd"].text()))
 
         # suppression des items dans les ComboBox
-        for k in range(len(self.lignes_site)):
-            if self.lignes_site[k]['mdp'].currentText() == self.lignes_pwd[y]['label_pwd'].text():
+        for k in range(len(self.sites)):
+            if self.sites[k]['mdp'].currentText() == self.pwds[y]['label_pwd'].text():
                 # si la catégorie supprimée était celle du site, alors on change la catégorie de celui-ci en le choix vide:""
-                if self.lignes_site[k]['mdp'].findText("") == -1:
+                if self.sites[k]['mdp'].findText("") == -1:
                     # si il n'y a pas le choix vide "", on l'ajoute
-                    self.lignes_site[k]['mdp'].addItem("")
-                self.lignes_site[k]['mdp'].setCurrentIndex(self.lignes_site[k]['mdp'].findText(""))
-            index = self.lignes_site[k]['mdp'].findText(self.lignes_pwd[y]["label_pwd"].text())
-            self.lignes_site[k]['mdp'].removeItem(index)
+                    self.sites[k]['mdp'].addItem("")
+                self.sites[k]['mdp'].setCurrentIndex(self.sites[k]['mdp'].findText(""))
+            index = self.sites[k]['mdp'].findText(self.pwds[y]["label_pwd"].text())
+            self.sites[k]['mdp'].removeItem(index)
 
         # destruction des layouts dans la scroll_area
         self.scrollAreaWidgetContents_pwd.deleteLater()
         # on vide les attributs
-        self.lignes_pwd = []
+        self.pwds = []
         # On en recrée un vide
         self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
         self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 177, 767))
@@ -339,9 +339,9 @@ class ClasseGestion(Ui_fenetreGestion):
         conn = sqlite3.connect(bdd)
         cur = conn.cursor()
         cur.execute('UPDATE sites_reconnus SET mdp=? WHERE rowid=?',
-                    (self.lignes_site[y]['mdp'].currentText(), y + 1))
+                    (self.sites[y]['mdp'].currentText(), y + 1))
 
-        print("Pwd changée en"+ str(self.lignes_site[y]['mdp'].currentText()))
+        print("Pwd changée en"+ str(self.sites[y]['mdp'].currentText()))
         conn.commit()
         cur.close()
         conn.close()
@@ -362,48 +362,48 @@ class ClasseGestion(Ui_fenetreGestion):
         conn.close()
 
     def ajouter_ligne_site(self, y, site_web, identifiant, mdp, categorie):
-        self.lignes_site.append({'ligne_site': QtWidgets.QHBoxLayout()})
-        self.lignes_site[y]['ligne_site'] = QtWidgets.QHBoxLayout()
-        self.lignes_site[y]['ligne_site'].setObjectName("ligne_site")
-        self.lignes_site[y]['site_web'] = QtWidgets.QLabel(self.scrollAreaWidgetContents_sites)
-        self.lignes_site[y]['site_web'].setAlignment(QtCore.Qt.AlignCenter)
-        self.lignes_site[y]['site_web'].setObjectName("site_web")
-        self.lignes_site[y]['site_web'].setText(site_web)
-        self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['site_web'])
+        self.sites.append({'ligne_site': QtWidgets.QHBoxLayout()})
+        self.sites[y]['ligne_site'] = QtWidgets.QHBoxLayout()
+        self.sites[y]['ligne_site'].setObjectName("ligne_site")
+        self.sites[y]['site_web'] = QtWidgets.QLabel(self.scrollAreaWidgetContents_sites)
+        self.sites[y]['site_web'].setAlignment(QtCore.Qt.AlignCenter)
+        self.sites[y]['site_web'].setObjectName("site_web")
+        self.sites[y]['site_web'].setText(site_web)
+        self.sites[y]['ligne_site'].addWidget(self.sites[y]['site_web'])
 
-        self.lignes_site[y]['identifiant'] = LineEditWithFocusOut(self.scrollAreaWidgetContents_sites)
-        self.lignes_site[y]['identifiant'].setAlignment(QtCore.Qt.AlignCenter)
-        self.lignes_site[y]['identifiant'].setObjectName('identifiant')
-        self.lignes_site[y]['identifiant'].id = y # On définit une id pour cet objet
+        self.sites[y]['identifiant'] = LineEditWithFocusOut(self.scrollAreaWidgetContents_sites)
+        self.sites[y]['identifiant'].setAlignment(QtCore.Qt.AlignCenter)
+        self.sites[y]['identifiant'].setObjectName('identifiant')
+        self.sites[y]['identifiant'].id = y # On définit une id pour cet objet
 
 
         if identifiant is None or identifiant == "":
-            self.lignes_site[y]['identifiant'].setPlaceholderText("Ajouter un pseudo")
+            self.sites[y]['identifiant'].setPlaceholderText("Ajouter un pseudo")
         else:
-            self.lignes_site[y]['identifiant'].setText(identifiant)
+            self.sites[y]['identifiant'].setText(identifiant)
 
         # Event filter pour les identifiants
-        # QtWidgets.QWidget.focusOutEvent(self.lignes_site[y]["identifiant"], self.print_)
-        #self.lignes_site[y]["identifiant"].installEventFilter(event)
-        self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['identifiant'])
+        # QtWidgets.QWidget.focusOutEvent(self.sites[y]["identifiant"], self.print_)
+        #self.sites[y]["identifiant"].installEventFilter(event)
+        self.sites[y]['ligne_site'].addWidget(self.sites[y]['identifiant'])
 
-        self.lignes_site[y]['mdp'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
-        self.lignes_site[y]['mdp'].setObjectName("mdp")
+        self.sites[y]['mdp'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
+        self.sites[y]['mdp'].setObjectName("mdp")
         self.afficher_combo_pwd(y) # affichage des éléments de la combobox en fonction de la bdd
-        self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['mdp'])
-        self.lignes_site[y]['categorie'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
-        self.lignes_site[y]['categorie'].setObjectName("categorie")
+        self.sites[y]['ligne_site'].addWidget(self.sites[y]['mdp'])
+        self.sites[y]['categorie'] = QtWidgets.QComboBox(self.scrollAreaWidgetContents_sites)
+        self.sites[y]['categorie'].setObjectName("categorie")
         self.afficher_combo_cat(y)  # affichage des éléments de la combobox en fonction de la bdd
-        self.lignes_site[y]['ligne_site'].addWidget(self.lignes_site[y]['categorie'])
-        self.lignes_site[y]['ligne_site'].setStretch(0, 2)
-        self.lignes_site[y]['ligne_site'].setStretch(1, 2)
-        self.lignes_site[y]['ligne_site'].setStretch(2, 2)
-        self.lignes_site[y]['ligne_site'].setStretch(3, 2)
-        self.verticalLayout.addLayout(self.lignes_site[y]['ligne_site'])
+        self.sites[y]['ligne_site'].addWidget(self.sites[y]['categorie'])
+        self.sites[y]['ligne_site'].setStretch(0, 2)
+        self.sites[y]['ligne_site'].setStretch(1, 2)
+        self.sites[y]['ligne_site'].setStretch(2, 2)
+        self.sites[y]['ligne_site'].setStretch(3, 2)
+        self.verticalLayout.addLayout(self.sites[y]['ligne_site'])
 
         # Changement de pwd/catégories
-        self.lignes_site[y]['categorie'].currentIndexChanged.connect(partial(self.cat_changement, y=y))
-        self.lignes_site[y]['mdp'].currentIndexChanged.connect(partial(self.pwd_changement, y=y))
+        self.sites[y]['categorie'].currentIndexChanged.connect(partial(self.cat_changement, y=y))
+        self.sites[y]['mdp'].currentIndexChanged.connect(partial(self.pwd_changement, y=y))
 
  
 

@@ -10,6 +10,7 @@ from requetes import *
 
 bdd = "../../../Traitement_mails/bdd.sq3"
 
+### POUR LE DEVELOPPEMENT
 def print_(arg):
     """
     Args:
@@ -20,6 +21,44 @@ def print_(arg):
     """
     print(arg)
     print("-------------------------------------")
+####
+
+class Ligne(object):
+    """docstring for ligneCategorie"""
+
+    def __init__(self, position, nom, sites): 
+        self.position = position
+        self.nom = nom
+        self.lignes_site = sites
+
+        self.ligne = QtWidgets.QHBoxLayout()
+        self.label = QtWidgets.QLabel()
+        self.pushButton = QtWidgets.QPushButton()
+
+        self.ligne.addWidget(self.label)
+        self.ligne.addWidget(self.pushButton)
+
+
+class Categorie(Ligne):
+    """docstring for Categorie"""
+
+    def __init__(self, position, nom, sites):
+        super().__init__(position, nom, sites)
+        self.label.setObjectName("label_cat")
+        self.label.setText(nom)
+        self.pushButton.setObjectName("pushButton_cat")
+        self.pushButton.setText('X_cat')
+
+class Password(Ligne):
+    """docstring for Password"""
+
+    def __init__(self, position, nom, sites):
+        super().__init__(position, nom, sites)
+        self.label.setObjectName("label_pwd")
+        self.label.setText(nom)
+        self.pushButton.setObjectName("pushButton_pwd")
+        self.pushButton.setText('X_pwd')
+        
 
 class LineEditWithFocusOut(QtWidgets.QLineEdit):
     """docstring for LineEditWithFocusOut"""
@@ -27,7 +66,8 @@ class LineEditWithFocusOut(QtWidgets.QLineEdit):
     def focusOutEvent(self, arg):
         QtWidgets.QLineEdit.focusOutEvent(self, arg)
 
-        bdd_update("sites_reconnus", ("identifiant",), "rowid", (self.text(), self.id +1))
+        requete= "UPDATE sites_reconnus SET identifiant =? WHERE rowid=?"
+        bdd_update(requete, (self.text(), self.id +1))
 
         if self.text() == "":
             self.setPlaceholderText("Ajouter un pseudo")
@@ -57,62 +97,35 @@ class ClasseGestion(Ui_fenetreGestion):
         Vérifier que la catégorie en question n'est pas déjà dans la base de donnée
         """
         if self.ajouter_cat.displayText() != "":
-            conn = sqlite3.connect(bdd)
-            cur = conn.cursor()
 
-            cur.execute("SELECT nom_categorie FROM categories WHERE nom_categorie=?", (self.ajouter_cat.displayText(),))
-            categories_table = cur.fetchall()
-
-            conn.commit()
-            cur.close()
-            conn.close()
+            requete = "SELECT nom_categorie FROM categories WHERE nom_categorie=?"
+            categories_table = bdd_select(requete, (self.ajouter_cat.displayText(),))
 
             conditions = not categories_table or categories_table[0][0] != self.ajouter_cat.displayText()
             if conditions:
                 self.ajouter_categorie()
 
     def afficher_categories(self):
-        conn = sqlite3.connect(bdd)
-        cur = conn.cursor()
-        cur.execute('SELECT nom_categorie FROM categories')
-        tab = cur.fetchall()
+        requete = "SELECT nom_categorie FROM categories"
+        tab = bdd_select(requete)
 
         if tab:
             for k in range(len(tab)):
                 self.ajouter_ligne_categorie(k, tab[k][0])
 
-        conn.commit()
-        cur.close() 
-        conn.close()
 
     def ajouter_ligne_categorie(self, y, nom_categorie):
-        self.lignes_cat.append({'ligne_categorie': QtWidgets.QHBoxLayout()})
-        self.lignes_cat[y]['ligne_categorie'].setObjectName("ligne_categorie")
-        self.lignes_cat[y]['label_cat'] = QtWidgets.QLabel(self.scrollAreaWidgetContents_cat)
-        self.lignes_cat[y]['label_cat'].setMaximumSize(QtCore.QSize(16777215, 608))
-        self.lignes_cat[y]['label_cat'].setObjectName("label_cat")
-        self.lignes_cat[y]['label_cat'].setText(nom_categorie)
-        self.lignes_cat[y]['ligne_categorie'].addWidget(self.lignes_cat[y]['label_cat'])
-        self.lignes_cat[y]['pushButton_cat'] = QtWidgets.QPushButton(self.scrollAreaWidgetContents_cat)
-        self.lignes_cat[y]['pushButton_cat'].setEnabled(True)
-        self.lignes_cat[y]['pushButton_cat'].setObjectName("pushButton_cat")
-        self.lignes_cat[y]['pushButton_cat'].setText('X')
-        self.lignes_cat[y]['ligne_categorie'].addWidget(self.lignes_cat[y]['pushButton_cat'])
-        self.verticalLayout_3.addLayout(self.lignes_cat[y]['ligne_categorie'])
-
+        self.lignes_cat.append(Categorie(y, nom_categorie,[]))
+        self.verticalLayout_3.addLayout(self.lignes_cat[y].ligne)
         # On garde l'alignement haut
-        self.verticalLayout_3.setAlignment(QtCore.Qt.AlignTop)
+        self.verticalLayout_3.setAlignment(QtCore.Qt.AlignTop) 
 
         # Evenement quand le boutton de suppression est cliqué
         self.lignes_cat[y]["pushButton_cat"].clicked.connect(partial(self.supprimer_cat, y=y))
 
     def ajouter_categorie(self):
-        conn = sqlite3.connect(bdd)
-        cur = conn.cursor()
-        cur.execute("INSERT INTO categories (nom_categorie) VALUES(?)", (self.ajouter_cat.displayText(),))
-        conn.commit()
-        cur.close()
-        conn.close()
+        requete ="INSERT INTO categories (nom_categorie) VALUES(?)"
+        bdd_insert(requete, (self.ajouter_cat.displayText(),))
 
         # ajout de la catégorie dans la scrollArea Categories        
         self.ajouter_ligne_categorie(len(self.lignes_cat), self.ajouter_cat.displayText())
