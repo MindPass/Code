@@ -13,23 +13,27 @@
     <x>0</x>
     <y>0</y>
     <width>740</width>
-    <height>650</height>
+    <height>630</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>740</width>
-    <height>650</height>
+    <height>630</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>740</width>
-    <height>650</height>
+    <height>630</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Progression</string>
+   <string>Scan en cours - MindPass</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../ressources/MindPass-icone.png</normaloff>../ressources/MindPass-icone.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#fenetreProgression {
@@ -43,7 +47,7 @@ QSlider, QLabel, QVBoxLayout, QGridLayout {
 QSlider::groove:horizontal {
 border: 1px solid white;
 background: rgba(255,255,255,100);
-height: 10px;
+height: 8px;
 border-radius: 4px;
 }
 
@@ -53,14 +57,14 @@ background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
 background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
     stop: 0 #bbf, stop: 1 #55f);
 border: 1px solid white;
-height: 10px;
+height: 8px;
 border-radius: 4px;
 }
 
 QSlider::add-page:horizontal {
 background: rgba(255,255,255,100);
 border: 1px solid white;
-height: 10px;
+height: 8px;
 border-radius: 4px;
 }
 
@@ -103,7 +107,7 @@ border-radius: 7px;
      <x>10</x>
      <y>20</y>
      <width>721</width>
-     <height>515</height>
+     <height>552</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout" stretch="0">
@@ -115,19 +119,25 @@ border-radius: 7px;
       <property name="bottomMargin">
        <number>20</number>
       </property>
-      <property name="spacing">
+      <property name="horizontalSpacing">
        <number>0</number>
       </property>
-      <item row="1" column="0">
-       <widget class="QLabel" name="imageDefil">
-        <property name="text">
-         <string/>
+      <property name="verticalSpacing">
+       <number>10</number>
+      </property>
+      <item row="2" column="0">
+       <widget class="QSlider" name="horizontalSlider">
+        <property name="enabled">
+         <bool>true</bool>
         </property>
-        <property name="pixmap">
-         <pixmap>../../test alex slideshow + svg/Zeichen_123.svg</pixmap>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -145,7 +155,7 @@ border-radius: 7px;
         <property name="styleSheet">
          <string notr="true">QProgressBar {
 background-color: lightgrey;
-border: 2px solid purple;
+border: 2px solid white;
 border-radius: 10px;
 }
 
@@ -164,19 +174,19 @@ QProgressBar::chunk {
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QSlider" name="horizontalSlider">
-        <property name="enabled">
-         <bool>true</bool>
+      <item row="1" column="0">
+       <widget class="QLabel" name="imageDefil">
+        <property name="text">
+         <string/>
         </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+        <property name="pixmap">
+         <pixmap>../../test alex slideshow + svg/Pub1.svg</pixmap>
         </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="margin">
+         <number>15</number>
         </property>
        </widget>
       </item>
@@ -188,7 +198,7 @@ QProgressBar::chunk {
    <property name="geometry">
     <rect>
      <x>142</x>
-     <y>565</y>
+     <y>540</y>
      <width>455</width>
      <height>80</height>
     </rect>
