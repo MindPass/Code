@@ -91,7 +91,7 @@ QLineEdit {
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>769</height>
+            <height>16777215</height>
            </size>
           </property>
           <property name="widgetResizable">
@@ -105,8 +105,8 @@ QLineEdit {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>172</width>
-             <height>767</height>
+             <width>260</width>
+             <height>699</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2"/>
@@ -174,8 +174,8 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>747</width>
-             <height>832</height>
+             <width>596</width>
+             <height>797</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout"/>
@@ -226,8 +226,8 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>172</width>
-             <height>767</height>
+             <width>217</width>
+             <height>699</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3"/>
@@ -262,7 +262,7 @@ QLabel {
      <x>0</x>
      <y>0</y>
      <width>1119</width>
-     <height>21</height>
+     <height>38</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAide">
