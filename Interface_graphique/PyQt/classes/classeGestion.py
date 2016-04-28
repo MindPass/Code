@@ -368,6 +368,7 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.afficher_categories()
 		self.afficher_pwds()
 
+
 	def check_if_exist_cat(self):
 		"""
 		Vérifier que la catégorie en question n'est pas déjà dans la base de donnée
