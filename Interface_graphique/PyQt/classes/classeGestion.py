@@ -106,6 +106,7 @@ class LigneSite(object):
 					font.setPointSize(9)
 					font.setItalic(True)
 					label.setFont(font)
+					label.setObjectName("sites_lies_cat")
 					label.setText(self.site_web.text())
 
 					self.objet.cats[k].labels.append(label)
@@ -148,6 +149,7 @@ class LigneSite(object):
 					font.setPointSize(9)
 					font.setItalic(True)
 					label.setFont(font)
+					label.setObjectName("sites_lies_pwd")
 					label.setText(self.site_web.text())
 
 					self.objet.pwds[k].labels.append(label)
@@ -225,8 +227,23 @@ class Ligne(object):
 		self.affichage_sites_lies(sites_lies)
 
 		# Evènement
-		self.pushButton.clicked.connect(self.suppression)
+		self.pushButton.clicked.connect(self.msgbox)
 
+	def msgbox(self):
+		msg = QtWidgets.QMessageBox()
+		msg.setIcon(QtWidgets.QMessageBox.Information)
+
+		msg.setText("Voulez-vous vraiment supprimer \""+ str(self.nom) + "\" ?")
+		msg.setIcon(2)
+		msg.setInformativeText("Les liens établis avec les sites seront perdus.")
+		msg.setWindowTitle("Confirmer suppression")
+		msg.addButton(QtWidgets.QPushButton('Oui'), QtWidgets.QMessageBox.YesRole)
+		msg.addButton(QtWidgets.QPushButton('Non'), QtWidgets.QMessageBox.NoRole)
+		print(msg.buttons())
+		ret = msg.exec_();
+
+	def msgbtn(self, i):
+		print("Bouton clické" + i)
 
 	def suppression(self):
 		self.suppression_bdd()
@@ -239,7 +256,9 @@ class Categorie(Ligne):
 	"""docstring for Categorie"""
 
 	def __init__(self, position, nom, sites_lies, objet):
+		# On exécute Ligne.__init__()
 		super().__init__(position, nom, sites_lies, objet)
+		# On ajoute d'autres attributs/propriétés
 		self.groupBox.setObjectName("groupBox_cat")
 		self.groupBox.setTitle(nom)
 		self.pushButton.setObjectName("pushButton_cat")
@@ -253,6 +272,7 @@ class Categorie(Ligne):
 			font.setPointSize(9)
 			font.setItalic(True)
 			label.setFont(font)
+			label.setObjectName("sites_lies_cat")
 			label.setText(site)
 
 			self.labels.append(label)
@@ -314,6 +334,7 @@ class Password(Ligne):
 			font.setPointSize(9)
 			font.setItalic(True)
 			label.setFont(font)
+			label.setObjectName("sites_lies_pwd")
 			label.setText(site)
 
 			self.labels.append(label)
