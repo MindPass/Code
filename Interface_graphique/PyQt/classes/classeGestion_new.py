@@ -193,8 +193,6 @@ class Categorie(Ligne):
 		    self.objet.sites[k].categorie.addItem(self.nom)
 
 
-
-
 class Password(Ligne):
 	"""docstring for Password"""
 
@@ -205,10 +203,22 @@ class Password(Ligne):
 		self.pushButton.setObjectName("pushButton_pwd")
 		self.pushButton.setText('X_pwd')
 
-	def suppression(self):
+	def suppression_bdd(self):
 		requete = "DELETE FROM mdps WHERE mdp=?"
 		bdd_delete(requete, (self.nom,))
 		print("Pwd supprimée: "+ self.nom)
+
+	def suppression_affichage(self):
+		# suppression combobox
+		for k in range(len(self.objet.sites)):
+		    if self.objet.sites[k].mdp.currentText() == self.nom:
+		        # si la catégorie supprimée était celle du site, alors on change la catégorie de celui-ci en le choix vide:""
+		        if self.objet.sites[k].mdp.findText("") == -1:
+		            # si il n'y a pas le choix vide "", on l'ajoute
+		            self.objet.sites[k].mdp.addItem("")
+		        self.objet.sites[k].mdp.setCurrentIndex(self.objet.sites[k].mdp.findText(""))
+		    index = self.objet.sites[k].mdp.findText(self.nom)
+		    self.objet.sites[k].mdp.removeItem(index)
 
 		# destruction des layouts dans la scroll_area
 		self.objet.scrollAreaWidgetContents_pwd.deleteLater()
