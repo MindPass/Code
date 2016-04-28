@@ -15,7 +15,7 @@ class Ui_fenetreAccueil(object):
         fenetreAccueil.setMinimumSize(QtCore.QSize(800, 500))
         fenetreAccueil.setMaximumSize(QtCore.QSize(800, 500))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fenetreAccueil.setWindowIcon(icon)
         fenetreAccueil.setStyleSheet("")
         with open("../style/fenetreAccueil.css", "r") as feuilleDeStyle:
@@ -42,7 +42,7 @@ class Ui_fenetreAccueil(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(180, 350, 500, 100))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("ressources/MindPass-transparent.svg"))
+        self.label.setPixmap(QtGui.QPixmap("../ressources/MindPass-transparent.svg"))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         fenetreAccueil.setCentralWidget(self.centralwidget)

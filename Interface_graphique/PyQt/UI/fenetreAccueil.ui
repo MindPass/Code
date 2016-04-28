@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>ressources/MindPass-icone.png</normaloff>ressources/MindPass-icone.png</iconset>
+    <normaloff>../ressources/MindPass-icone.png</normaloff>../ressources/MindPass-icone.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
