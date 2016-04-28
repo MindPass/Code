@@ -21,7 +21,7 @@ def __init__(self):
   print("Hello World, Hello MindPass !")
 ```
 
-Le livrable de ce projet est un exécutable, dont le premier déploiement sur Linux (Ubuntu) en version bêta est prévu le 1er avril 2016 (non non, ce n'est pas une blague !).
+Le livrable de ce projet est un exécutable, dont le premier déploiement a été lancé en version alpha début-avril.
 
 
 ## :interrobang: But du projet
@@ -39,20 +39,24 @@ De plus en plus d'internautes sont présents chaque jour sur Internet. Les inter
 
 - [x] Parcourir les mails reçus par l'utilisateur de façon honnête et sécurisée
 
-- [ ] Reconnaître les mails d'inscriptions reçus par l'ensemble des mails
+- [ ] Reconnaître les mails d'inscriptions reçus par l'ensemble des mails : @boulmaneyassine
 
-- [x] Avoir une interface claire, épurée et intuitive [en cours]
+- [x] Avoir une interface claire, épurée et intuitive : @alexandredomain
 
-- [ ] Afficher des messages de prévention
+- [x] Afficher des messages de prévention : @alexandredomain
 
-- [ ] Créer un exécutable d'abord sur Linux, puis implémenter le logiciel en multi-plateformes.
+- [ ] Implémenter le logiciel en multi-plateformes : @aquathi
+
+- [ ] Bichonner la fenêtreGestion : @martialgarchery
+
+- [ ] Mindmap finale : @martialgarchery ; @alexandredomain
 
 - [ ] ...
 
 
 ## :floppy_disk: Dernière version
 
-La sortie de la version bêta (v0.1-beta0) est planifiée aux alentours du 1er avril 2016.
+La sortie de la version alpha (v0.1-alpha) a eu lieu le 1er avril 2016. La version v.0.1 est prévue dans les jours à venir.
 
 Stay tuned ! :computer:
 
