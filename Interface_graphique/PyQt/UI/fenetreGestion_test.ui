@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1119</width>
+    <width>1200</width>
     <height>873</height>
    </rect>
   </property>
@@ -31,7 +31,7 @@
 	background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));
 }
 
-#catTitle {
+#titre_cat, #titre_pwd {
 	color: white;
 }
 
@@ -42,7 +42,34 @@ QLineEdit {
     color: black;
     padding-left: 10px;
 }
-</string>
+
+#ajouter_cat, #ajouter_pwd  {
+	border: solid 3px white;
+}
+
+ QPushButton {
+     background-color: transparent;
+     border: none;
+	 image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/croix_757575.svg&quot;);
+ }
+
+ QPushButton:hover {
+	 image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/croix_929292.svg&quot;);
+ }
+
+ QPushButton:pressed {
+	 image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/croix_575757.svg&quot;);
+ }
+
+QScrollArea {
+    background: transparent;
+	border: none;
+	border-radius: 5px;
+}
+
+#scrollAreaWidgetContents_cat, #scrollAreaWidgetContents_pwd {
+	background : rgba(255,255,255,44);
+}</string>
   </property>
   <widget class="QWidget" name="corps_gestion">
    <property name="enabled">
@@ -58,7 +85,7 @@ QLineEdit {
        <number>0</number>
       </property>
       <widget class="QWidget" name="layoutWidget">
-       <layout class="QVBoxLayout" name="Passwords" stretch="0,4,1">
+       <layout class="QVBoxLayout" name="Passwords" stretch="0,0,1">
         <item>
          <widget class="QLabel" name="titre_pwd">
           <property name="font">
@@ -82,7 +109,7 @@ QLineEdit {
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>767</height>
+            <height>16777215</height>
            </size>
           </property>
           <property name="widgetResizable">
@@ -96,11 +123,14 @@ QLineEdit {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>179</width>
-             <height>765</height>
+             <width>274</width>
+             <height>701</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="rightMargin">
+             <number>14</number>
+            </property>
             <item>
              <layout class="QHBoxLayout" name="ligne_pwd">
               <item>
@@ -110,21 +140,21 @@ QLineEdit {
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
                  <item>
-                  <widget class="QLabel" name="label_3">
+                  <widget class="QLabel" name="sites_lies_pwd_2">
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label">
+                  <widget class="QLabel" name="sites_lies_pwd">
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_2">
+                  <widget class="QLabel" name="sites_lies_pwd_3">
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
@@ -138,8 +168,14 @@ QLineEdit {
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>36</width>
+                  <height>36</height>
+                 </size>
+                </property>
                 <property name="text">
-                 <string>X</string>
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -210,8 +246,8 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>732</width>
-             <height>832</height>
+             <width>623</width>
+             <height>797</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout">
@@ -302,11 +338,14 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>180</width>
-             <height>767</height>
+             <width>261</width>
+             <height>701</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="rightMargin">
+             <number>14</number>
+            </property>
             <item>
              <layout class="QHBoxLayout" name="ligne_categorie">
               <item>
@@ -316,21 +355,21 @@ QLabel {
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_5">
                  <item>
-                  <widget class="QLabel" name="label_4">
+                  <widget class="QLabel" name="sites_lies_cat">
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_5">
+                  <widget class="QLabel" name="sites_lies_cat_2">
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_6">
+                  <widget class="QLabel" name="sites_lies_cat_3">
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
@@ -344,8 +383,14 @@ QLabel {
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>36</width>
+                  <height>36</height>
+                 </size>
+                </property>
                 <property name="text">
-                 <string>X</string>
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -382,8 +427,8 @@ QLabel {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1119</width>
-     <height>21</height>
+     <width>1200</width>
+     <height>38</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAide">
