@@ -12,16 +12,19 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(400, 300)
+
         self.groupBox = QtWidgets.QGroupBox(Form)
         self.groupBox.setTitle('mdp1')
-        self.groupBox.setGeometry(QtCore.QRect(20, 130, 91, 101))
+        self.groupBox.setGeometry(QtCore.QRect(20, 50, 91, 50))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.groupBox.setFont(font)
         self.groupBox.setObjectName("groupBox")
+        """
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-
+        """    
+        """
         self.label_4 = QtWidgets.QLabel(self.groupBox)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -30,6 +33,7 @@ class Ui_Form(object):
         self.label_4.setObjectName("label_4")
         self.label_4.setText("site")
         self.verticalLayout_2.addWidget(self.label_4)
+        """
 
 
 

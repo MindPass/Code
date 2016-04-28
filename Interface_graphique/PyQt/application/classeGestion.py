@@ -3,8 +3,7 @@ import sys
 
 sys.path.append('../fenetres/')
 from functools import partial
-from PyQt5 import QtWidgets
-from PyQt5 import QtCore
+from PyQt5 import QtWidgets, QtGui, QtCore
 from fenetreGestion import Ui_fenetreGestion
 from requetes import *
 
@@ -85,15 +84,88 @@ class LigneSite(object):
 		self.categorie.currentIndexChanged.connect(self.changement_cat)
 		self.mdp.currentIndexChanged.connect(self.changement_pwd)
 
-	def changement_cat(self):
+	def changement_cat(self, event):
+		requete ="SELECT categorie FROM sites_reconnus WHERE rowid=?"
+		ancienne_categorie = toliste(bdd_select(requete, (self.position+1,)))[0]
+
+		# On ajoute le site_web sous la catégorie correspondate
 		requete= 'UPDATE sites_reconnus SET categorie=? WHERE rowid=?'
 		bdd_update(requete, (self.categorie.currentText(), self.position +1))
 		print("Catégorie changée en"+ self.categorie.currentText())
 
+		for k in range(len(self.objet.cats)):
+			if(self.objet.cats[k].nom == self.categorie.currentText()):
+				liste_label_name =[]
+				for element in self.objet.cats[k].labels:
+					liste_label_name.append(element.text())
+				print(liste_label_name)
+				if(self.categorie.currentText() not in liste_label_name):
+					label = QtWidgets.QLabel()
+
+					font = QtGui.QFont()
+					font.setPointSize(9)
+					font.setItalic(True)
+					label.setFont(font)
+					label.setText(self.site_web.text())
+
+					self.objet.cats[k].labels.append(label)
+					self.objet.cats[k].verticalLayout_groupBox.addWidget(label)
+				break
+
+		# On met à jour le groupBox de l'ancienne catégorie
+		for k in range(len(self.objet.cats)):
+			if(self.objet.cats[k].nom == ancienne_categorie):
+				print(self.objet.cats[k].nom)
+
+				for label in self.objet.cats[k].labels:
+					label.deleteLater()
+				self.objet.cats[k].labels = []
+
+				requete ="SELECT site_web FROM sites_reconnus WHERE categorie=?"
+				sites_lies= toliste(bdd_select(requete, (ancienne_categorie,)))
+				self.objet.cats[k].affichage_sites_lies(sites_lies)
+
+
 	def changement_pwd(self):
+		requete ="SELECT mdp FROM sites_reconnus WHERE rowid=?"
+		ancien_mdp = toliste(bdd_select(requete, (self.position+1,)))[0]
+
+		# On ajoute le site_web sous la catégorie correspondate
 		requete= 'UPDATE sites_reconnus SET mdp=? WHERE rowid=?'
 		bdd_update(requete, (self.mdp.currentText(), self.position +1))
 		print("Mdp changée en"+ self.mdp.currentText())
+
+		for k in range(len(self.objet.pwds)):
+			if(self.objet.pwds[k].nom == self.mdp.currentText()):
+				liste_label_name =[]
+				for element in self.objet.pwds[k].labels:
+					liste_label_name.append(element.text())
+				print(liste_label_name)
+				if(self.mdp.currentText() not in liste_label_name):
+					label = QtWidgets.QLabel()
+
+					font = QtGui.QFont()
+					font.setPointSize(9)
+					font.setItalic(True)
+					label.setFont(font)
+					label.setText(self.site_web.text())
+
+					self.objet.pwds[k].labels.append(label)
+					self.objet.pwds[k].verticalLayout_groupBox.addWidget(label)
+				break
+
+		# On met à jour le groupBox de l'ancienne catégorie
+		for k in range(len(self.objet.pwds)):
+			if(self.objet.pwds[k].nom == ancien_mdp):
+				print(self.objet.pwds[k].nom)
+
+				for label in self.objet.pwds[k].labels:
+					label.deleteLater()
+				self.objet.pwds[k].labels = []
+
+				requete ="SELECT site_web FROM sites_reconnus WHERE mdp=?"
+				sites_lies= toliste(bdd_select(requete, (ancien_mdp,)))
+				self.objet.pwds[k].affichage_sites_lies(sites_lies)
 
 	def afficher_combo_pwd(self):
 		requete= 'SELECT mdp FROM mdps'
@@ -133,28 +205,59 @@ class Ligne(object):
 		self.objet = objet
 
 		self.ligne = QtWidgets.QHBoxLayout()
-		self.label = QtWidgets.QLabel()
 		self.pushButton = QtWidgets.QPushButton()
-		self.ligne.addWidget(self.label)
+		self.groupBox = QtWidgets.QGroupBox()
+		self.labels = [] # contiendra la liste des labels (noms des sites liés)
+		self.groupBox.setGeometry(QtCore.QRect(20, 50, 91, 50))
+		font = QtGui.QFont()
+		font.setPointSize(11)
+		self.groupBox.setFont(font)
+		self.groupBox.setObjectName("groupBox")
+		self.verticalLayout_groupBox = QtWidgets.QVBoxLayout(self.groupBox)
+		self.verticalLayout_groupBox.setObjectName("verticalLayout_groupBox")
+
+		self.ligne.addWidget(self.groupBox)
 		self.ligne.addWidget(self.pushButton)
+		self.ligne.setStretch(0, 3)
+		self.ligne.setStretch(1, 1)
 
 
+		self.affichage_sites_lies(sites_lies)
+
+		# Evènement
 		self.pushButton.clicked.connect(self.suppression)
+
 
 	def suppression(self):
 		self.suppression_bdd()
 		self.suppression_affichage()
 
+	def affichage_sites_lies(self, site_lies):
+		pass
 
 class Categorie(Ligne):
 	"""docstring for Categorie"""
 
 	def __init__(self, position, nom, sites_lies, objet):
 		super().__init__(position, nom, sites_lies, objet)
-		self.label.setObjectName("label_cat")
-		self.label.setText(nom)
+		self.groupBox.setObjectName("groupBox_cat")
+		self.groupBox.setTitle(nom)
 		self.pushButton.setObjectName("pushButton_cat")
-		self.pushButton.setText('X_cat')
+		self.pushButton.setText('X')
+
+	def affichage_sites_lies(self, sites_lies):
+		for site in sites_lies:
+			label = QtWidgets.QLabel()
+				
+			font = QtGui.QFont()
+			font.setPointSize(9)
+			font.setItalic(True)
+			label.setFont(font)
+			label.setText(site)
+
+			self.labels.append(label)
+			self.verticalLayout_groupBox.addWidget(label)
+
 
 	def suppression_bdd(self):
 		requete = "DELETE FROM categories WHERE nom_categorie=?"
@@ -198,10 +301,23 @@ class Password(Ligne):
 
 	def __init__(self, position, nom, sites_lies, objet):
 		super().__init__(position, nom, sites_lies, objet)
-		self.label.setObjectName("label_pwd")
-		self.label.setText(nom)
+		self.groupBox.setObjectName("groupBox_pwd")
+		self.groupBox.setTitle(nom)
 		self.pushButton.setObjectName("pushButton_pwd")
-		self.pushButton.setText('X_pwd')
+		self.pushButton.setText('X')
+
+	def affichage_sites_lies(self, sites_lies):
+		for site in sites_lies:
+			label = QtWidgets.QLabel()
+				
+			font = QtGui.QFont()
+			font.setPointSize(9)
+			font.setItalic(True)
+			label.setFont(font)
+			label.setText(site)
+
+			self.labels.append(label)
+			self.verticalLayout_groupBox.addWidget(label)
 
 	def suppression_bdd(self):
 		requete = "DELETE FROM mdps WHERE mdp=?"
@@ -212,7 +328,7 @@ class Password(Ligne):
 		# suppression combobox
 		for k in range(len(self.objet.sites)):
 		    if self.objet.sites[k].mdp.currentText() == self.nom:
-		        # si la catégorie supprimée était celle du site, alors on change la catégorie de celui-ci en le choix vide:""
+		        # si le mdp supprimée était celui du site, alors on change le change en le choix vide:""
 		        if self.objet.sites[k].mdp.findText("") == -1:
 		            # si il n'y a pas le choix vide "", on l'ajoute
 		            self.objet.sites[k].mdp.addItem("")
@@ -231,7 +347,7 @@ class Password(Ligne):
 		self.objet.verticalLayout_2 = QtWidgets.QVBoxLayout(self.objet.scrollAreaWidgetContents_pwd)
 		self.objet.verticalLayout_2.setObjectName("verticalLayout_3")
 		self.objet.scrollArea_pwd.setWidget(self.objet.scrollAreaWidgetContents_pwd)
-		# on relance la méthode d'affichage des catégories
+		# on relance la méthode d'affichage des mdps
 		self.objet.afficher_pwds()
 		
 
@@ -289,7 +405,9 @@ class ClasseGestion(Ui_fenetreGestion):
 
 
 	def ajouter_ligne_categorie(self, y, nom_categorie):
-		self.cats.append(Categorie(y, nom_categorie,[], self))
+		requete = "SELECT site_web FROM sites_reconnus WHERE categorie=?"
+		sites_lies= toliste(bdd_select(requete, (nom_categorie,)))
+		self.cats.append(Categorie(y, nom_categorie, sites_lies, self))
 		self.verticalLayout_3.addLayout(self.cats[y].ligne)
 		# On garde l'alignement haut
 		self.verticalLayout_3.setAlignment(QtCore.Qt.AlignTop) 
@@ -331,7 +449,9 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.ajouter_pwd.setText("")
 
 	def ajouter_ligne_pwd(self, y, nom_pwd):
-		self.pwds.append(Password(y, nom_pwd, [], self))
+		requete = "SELECT site_web FROM sites_reconnus WHERE mdp=?"
+		sites_lies= toliste(bdd_select(requete, (nom_pwd,)))
+		self.pwds.append(Password(y, nom_pwd, sites_lies, self))
 		self.verticalLayout_2.addLayout(self.pwds[y].ligne)
 
 		# On garde l'alignement haut
