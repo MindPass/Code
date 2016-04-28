@@ -44,7 +44,9 @@ class LigneSite(object):
 	"""docstring for LigneSite"""
 	def __init__(self, y, site_web, identifiant, mdp, categorie, objet):
 		self.position = y
-		self.objet = objet 
+		self.objet = objet
+		self.nom_mdp = mdp
+		self.nom_cat = categorie
 
 		self.ligne = QtWidgets.QHBoxLayout()
 		self.site_web =QtWidgets.QLabel()
@@ -69,72 +71,53 @@ class LigneSite(object):
 		self.mdp.setObjectName("mdp")
 		self.afficher_combo_pwd() # affichage des éléments de la combobox en fonction de la bdd
 		self.ligne.addWidget(self.mdp)
+
 		self.categorie = QtWidgets.QComboBox()
 		self.categorie.setObjectName("categorie")
 		self.afficher_combo_cat()  # affichage des éléments de la combobox en fonction de la bdd
 		self.ligne.addWidget(self.categorie)
+
 		self.ligne.setStretch(0, 2)
 		self.ligne.setStretch(1, 2)
 		self.ligne.setStretch(2, 2)
 		self.ligne.setStretch(3, 2)
 
-		# Changement de pwd/catégories
 		self.categorie.currentIndexChanged.connect(self.changement_cat)
 		self.mdp.currentIndexChanged.connect(self.changement_pwd)
-	
+
 	def changement_cat(self):
-		print("changement")
-		requete = "UPDATE sites_reconnus SET categorie=? WHERE rowid=?"
-		bdd_update(requete, (self.categorie.currentText(), self.position + 1))
-		print("Catégorie changée en"+ str(self.categorie.currentText()))	
+		requete= 'UPDATE sites_reconnus SET categorie=? WHERE rowid=?'
+		bdd_update(requete, (self.categorie.currentText(), self.position +1))
+		print("Catégorie changée en"+ self.categorie.currentText())
 
 	def changement_pwd(self):
-		requete = "UPDATE sites_reconnus SET mdp=? WHERE rowid=?"
-		bdd_update(requete, (self.mdp.currentText(), self.position + 1))
-		print("Pwd changée en"+ str(self.mdp.currentText()))
+		requete= 'UPDATE sites_reconnus SET mdp=? WHERE rowid=?'
+		bdd_update(requete, (self.mdp.currentText(), self.position +1))
+		print("Mdp changée en"+ self.mdp.currentText())
 
 	def afficher_combo_pwd(self):
-		y= self.position
 		requete= 'SELECT mdp FROM mdps'
 		tab = bdd_select(requete)
 		result = []
 		for k in range(len(tab)):
 		    result.append(tab[k][0])
-		requete= 'SELECT mdp FROM sites_reconnus WHERE rowid=?'
-		pwd_ligne = bdd_select(requete, (y + 1,))[0][0]
 
-		if pwd_ligne and (pwd_ligne in result):
-		    self.mdp.addItem(pwd_ligne)
-		    for nom_pwd in result:
-		        if nom_pwd != pwd_ligne:
-		            self.mdp.addItem(nom_pwd)
-		    self.mdp.addItem("")
-		else:
-		    self.mdp.addItem("")
-		    for nom_pwd in result:
-		        self.mdp.addItem(nom_pwd)
+		self.mdp.addItem(self.nom_mdp)
+		for pwd in result:
+		    if pwd != self.nom_mdp:
+		        self.mdp.addItem(pwd)
 
 	def afficher_combo_cat(self):
-		y = self.position
-		requete = 'SELECT nom_categorie FROM categories'
+		requete= 'SELECT nom_categorie FROM categories'
 		tab = bdd_select(requete)
 		result = []
 		for k in range(len(tab)):
 		    result.append(tab[k][0])
-		requete='SELECT categorie FROM sites_reconnus WHERE rowid=?'
-		cat_ligne = bdd_select(requete, (y + 1,))[0][0]
 
-		if cat_ligne and (cat_ligne in result):
-		    self.categorie.addItem(cat_ligne)
-		    for nom_categorie in result:
-		        if nom_categorie != cat_ligne:
-		            self.categorie.addItem(nom_categorie)
-		    self.categorie.addItem("")
-		else:
-		    self.categorie.addItem("")
-		    for nom_categorie in result:
-		        self.categorie.addItem(nom_categorie)
-
+		self.categorie.addItem(self.nom_cat)
+		for cat in result:
+		    if cat != self.nom_cat:
+		        self.categorie.addItem(cat)
 
 class Ligne(object):
 	"""docstring for ligneCategorie
@@ -152,13 +135,16 @@ class Ligne(object):
 		self.ligne = QtWidgets.QHBoxLayout()
 		self.label = QtWidgets.QLabel()
 		self.pushButton = QtWidgets.QPushButton()
-		self.pushButton.clicked.connect(self.suppression)
-
 		self.ligne.addWidget(self.label)
 		self.ligne.addWidget(self.pushButton)
 
+
+		self.pushButton.clicked.connect(self.suppression)
+
 	def suppression(self):
-		pass
+		self.suppression_bdd()
+		self.suppression_affichage()
+
 
 class Categorie(Ligne):
 	"""docstring for Categorie"""
@@ -170,10 +156,23 @@ class Categorie(Ligne):
 		self.pushButton.setObjectName("pushButton_cat")
 		self.pushButton.setText('X_cat')
 
-	def suppression(self):
+	def suppression_bdd(self):
 		requete = "DELETE FROM categories WHERE nom_categorie=?"
 		bdd_delete(requete, (self.nom,))
 		print("Categorie supprimée: "+ self.nom)
+
+	def suppression_affichage(self):
+		# suppression combobox
+		for k in range(len(self.objet.sites)):
+		    if self.objet.sites[k].categorie.currentText() == self.nom:
+		        # si la catégorie supprimée était celle du site, alors on change la catégorie de celui-ci en le choix vide:""
+		        if self.objet.sites[k].categorie.findText("") == -1:
+		            # si il n'y a pas le choix vide "", on l'ajoute
+		            self.objet.sites[k].categorie.addItem("")
+		        self.objet.sites[k].categorie.setCurrentIndex(self.objet.sites[k].categorie.findText(""))
+		    index = self.objet.sites[k].categorie.findText(self.nom)
+		    self.objet.sites[k].categorie.removeItem(index)
+
 
 		# destruction des layouts dans la scroll_area
 		self.objet.scrollAreaWidgetContents_cat.deleteLater()
@@ -189,6 +188,12 @@ class Categorie(Ligne):
 		# on relance la méthode d'affichage des catégories
 		self.objet.afficher_categories()
 
+	def ajout_combobox(self):
+		for k in range(len(self.objet.sites)):
+		    self.objet.sites[k].categorie.addItem(self.nom)
+
+
+
 
 class Password(Ligne):
 	"""docstring for Password"""
@@ -199,6 +204,25 @@ class Password(Ligne):
 		self.label.setText(nom)
 		self.pushButton.setObjectName("pushButton_pwd")
 		self.pushButton.setText('X_pwd')
+
+	def suppression(self):
+		requete = "DELETE FROM mdps WHERE mdp=?"
+		bdd_delete(requete, (self.nom,))
+		print("Pwd supprimée: "+ self.nom)
+
+		# destruction des layouts dans la scroll_area
+		self.objet.scrollAreaWidgetContents_pwd.deleteLater()
+		# on vide les attributs
+		self.objet.pwds = []
+		# On en recrée un vide
+		self.objet.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
+		self.objet.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 177, 767))
+		self.objet.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_cat")
+		self.objet.verticalLayout_2 = QtWidgets.QVBoxLayout(self.objet.scrollAreaWidgetContents_pwd)
+		self.objet.verticalLayout_2.setObjectName("verticalLayout_3")
+		self.objet.scrollArea_pwd.setWidget(self.objet.scrollAreaWidgetContents_pwd)
+		# on relance la méthode d'affichage des catégories
+		self.objet.afficher_pwds()
 		
 
 class ClasseGestion(Ui_fenetreGestion):
@@ -243,17 +267,16 @@ class ClasseGestion(Ui_fenetreGestion):
 		requete ="INSERT INTO categories (nom_categorie) VALUES(?)"
 		bdd_insert(requete, (self.ajouter_cat.displayText(),))
 
+		#ajout dans les combobox
+		for k in range(len(self.sites)):
+			self.sites[k].categorie.addItem(self.ajouter_cat.displayText())
+
 		# ajout de la catégorie dans la scrollArea Categories        
 		self.ajouter_ligne_categorie(len(self.cats), self.ajouter_cat.displayText())
 		print("Catégorie ajoutée : "+ str(self.ajouter_cat.displayText()))
 
-		"""
-		# ajout de la catégorie dans les comboBox
-		for y in range(len(self.sites)):
-		    self.sites[y]['categorie'].addItem(self.ajouter_cat.displayText())
-		"""
-
 		self.ajouter_cat.setText("")
+
 
 	def ajouter_ligne_categorie(self, y, nom_categorie):
 		self.cats.append(Categorie(y, nom_categorie,[], self))
@@ -287,15 +310,14 @@ class ClasseGestion(Ui_fenetreGestion):
 		requete = "INSERT INTO mdps (mdp) VALUES(?)"
 		bdd_insert(requete, (self.ajouter_pwd.displayText(),))
 
+		#ajout dans les combobox
+		for k in range(len(self.sites)):
+			self.sites[k].mdp.addItem(self.ajouter_pwd.displayText())
+
 		# ajout dans la ScrollArea Passwords
 		self.ajouter_ligne_pwd(len(self.pwds), self.ajouter_pwd.displayText())
 		print("Password ajoutée : " + self.ajouter_pwd.displayText())
 
-		"""
-		# ajout du mdp dans les comboBox
-		for y in range(len(self.sites)):
-		    self.sites[y]['mdp'].addItem(self.ajouter_pwd.displayText())
-		"""
 		self.ajouter_pwd.setText("")
 
 	def ajouter_ligne_pwd(self, y, nom_pwd):
@@ -310,7 +332,8 @@ class ClasseGestion(Ui_fenetreGestion):
 		tab = bdd_select(requete)
 
 		for k in range(len(tab)):
-		    self.verticalLayout.addLayout(LigneSite(k,tab[k][0], tab[k][1], tab[k][2], tab[k][3], self).ligne)
+			self.sites.append(LigneSite(k,tab[k][0], tab[k][1], tab[k][2], tab[k][3], self))
+			self.verticalLayout.addLayout(self.sites[k].ligne)
 
 
 if __name__ == "__main__":

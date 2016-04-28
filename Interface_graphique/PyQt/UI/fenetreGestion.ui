@@ -59,8 +59,17 @@ QLineEdit {
       </property>
       <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="Passwords" stretch="0,4,1">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetNoConstraint</enum>
+        </property>
         <item>
          <widget class="QLabel" name="titre_pwd">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="font">
            <font>
             <pointsize>13</pointsize>
@@ -82,7 +91,7 @@ QLineEdit {
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>767</height>
+            <height>769</height>
            </size>
           </property>
           <property name="widgetResizable">
@@ -96,8 +105,8 @@ QLineEdit {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>241</width>
-             <height>765</height>
+             <width>172</width>
+             <height>767</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2"/>
@@ -130,7 +139,7 @@ QLineEdit {
            <bool>true</bool>
           </property>
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -165,7 +174,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>607</width>
+             <width>747</width>
              <height>832</height>
             </rect>
            </property>
@@ -182,6 +191,12 @@ QLabel {
         </property>
         <item>
          <widget class="QLabel" name="titre_cat">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="font">
            <font>
             <pointsize>13</pointsize>
@@ -211,7 +226,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>243</width>
+             <width>172</width>
              <height>767</height>
             </rect>
            </property>
