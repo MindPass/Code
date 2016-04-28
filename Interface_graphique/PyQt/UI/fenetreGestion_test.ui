@@ -96,7 +96,7 @@ QLineEdit {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>241</width>
+             <width>179</width>
              <height>765</height>
             </rect>
            </property>
@@ -104,16 +104,33 @@ QLineEdit {
             <item>
              <layout class="QHBoxLayout" name="ligne_pwd">
               <item>
-               <widget class="QLabel" name="label_pwd">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>745</height>
-                 </size>
+               <widget class="QGroupBox" name="groupBox">
+                <property name="title">
+                 <string>GroupBox</string>
                 </property>
-                <property name="text">
-                 <string>mdp</string>
-                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QLabel" name="label_3">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_2">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
               <item>
@@ -193,7 +210,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>607</width>
+             <width>732</width>
              <height>832</height>
             </rect>
            </property>
@@ -285,7 +302,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>243</width>
+             <width>180</width>
              <height>767</height>
             </rect>
            </property>
@@ -293,16 +310,33 @@ QLabel {
             <item>
              <layout class="QHBoxLayout" name="ligne_categorie">
               <item>
-               <widget class="QLabel" name="label_cat">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>608</height>
-                 </size>
+               <widget class="QGroupBox" name="groupBox_2">
+                <property name="title">
+                 <string>GroupBox</string>
                 </property>
-                <property name="text">
-                 <string>cat1</string>
-                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <widget class="QLabel" name="label_4">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_6">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
               <item>
