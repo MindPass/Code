@@ -98,7 +98,6 @@ class LigneSite(object):
 				liste_label_name =[]
 				for element in self.objet.cats[k].labels:
 					liste_label_name.append(element.text())
-				print(liste_label_name)
 				if(self.categorie.currentText() not in liste_label_name):
 					label = QtWidgets.QLabel()
 
@@ -116,8 +115,6 @@ class LigneSite(object):
 		# On met à jour le groupBox de l'ancienne catégorie
 		for k in range(len(self.objet.cats)):
 			if(self.objet.cats[k].nom == ancienne_categorie):
-				print(self.objet.cats[k].nom)
-
 				for label in self.objet.cats[k].labels:
 					label.deleteLater()
 				self.objet.cats[k].labels = []
@@ -141,7 +138,6 @@ class LigneSite(object):
 				liste_label_name =[]
 				for element in self.objet.pwds[k].labels:
 					liste_label_name.append(element.text())
-				print(liste_label_name)
 				if(self.mdp.currentText() not in liste_label_name):
 					label = QtWidgets.QLabel()
 
@@ -159,8 +155,6 @@ class LigneSite(object):
 		# On met à jour le groupBox de l'ancienne catégorie
 		for k in range(len(self.objet.pwds)):
 			if(self.objet.pwds[k].nom == ancien_mdp):
-				print(self.objet.pwds[k].nom)
-
 				for label in self.objet.pwds[k].labels:
 					label.deleteLater()
 				self.objet.pwds[k].labels = []
@@ -239,11 +233,13 @@ class Ligne(object):
 		msg.setWindowTitle("Confirmer suppression")
 		msg.addButton(QtWidgets.QPushButton('Oui'), QtWidgets.QMessageBox.YesRole)
 		msg.addButton(QtWidgets.QPushButton('Non'), QtWidgets.QMessageBox.NoRole)
-		print(msg.buttons())
+
+		msg.buttonClicked.connect(self.msgbtn)
 		ret = msg.exec_();
 
-	def msgbtn(self, i):
-		print("Bouton clické" + i)
+	def msgbtn(self, buttonClicked):
+		if(buttonClicked.text() == "Oui"):
+			self.suppression()
 
 	def suppression(self):
 		self.suppression_bdd()
@@ -442,8 +438,6 @@ class ClasseGestion(Ui_fenetreGestion):
 		if self.ajouter_pwd.displayText() != "":
 		    requete = "SELECT mdp FROM mdps WHERE mdp=?"
 		    pwds_table = bdd_select(requete, (self.ajouter_pwd.displayText(),))
-
-
 		    conditions = not pwds_table or pwds_table[0][0] != self.ajouter_pwd.displayText()
 		    if conditions:
 		        self.ajouter_password()
