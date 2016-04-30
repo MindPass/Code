@@ -127,9 +127,9 @@
      <height>38</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuMindPass">
+   <widget class="QMenu" name="menuFichier">
     <property name="title">
-     <string>MindPass</string>
+     <string>Fichier</string>
     </property>
     <addaction name="actionFermer"/>
    </widget>
@@ -141,12 +141,12 @@
      <property name="title">
       <string>Changer de langue</string>
      </property>
-     <addaction name="actionFran_ais"/>
-     <addaction name="actionAnglais"/>
+     <addaction name="actionFrancais"/>
+     <addaction name="actionEnglish"/>
     </widget>
     <addaction name="menuChanger_de_langue"/>
     <addaction name="separator"/>
-    <addaction name="actionPr_f_rences"/>
+    <addaction name="actionPreferences"/>
    </widget>
    <widget class="QMenu" name="menuAide">
     <property name="title">
@@ -156,7 +156,7 @@
     <addaction name="separator"/>
     <addaction name="actionA_propos_de_MindPass"/>
    </widget>
-   <addaction name="menuMindPass"/>
+   <addaction name="menuFichier"/>
    <addaction name="menuOutils"/>
    <addaction name="menuAide"/>
   </widget>
@@ -168,7 +168,7 @@
     <string>Alt+F4</string>
    </property>
   </action>
-  <action name="actionFran_ais">
+  <action name="actionFrancais">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -179,12 +179,12 @@
     <string>Français</string>
    </property>
   </action>
-  <action name="actionAnglais">
+  <action name="actionEnglish">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Anglais</string>
+    <string>English</string>
    </property>
   </action>
   <action name="actionObtenir_de_l_aide">
@@ -197,10 +197,10 @@
   </action>
   <action name="actionA_propos_de_MindPass">
    <property name="text">
-    <string>A propos de MindPass</string>
+    <string>À propos de MindPass</string>
    </property>
   </action>
-  <action name="actionPr_f_rences">
+  <action name="actionPreferences">
    <property name="text">
     <string>Préférences</string>
    </property>

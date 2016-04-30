@@ -152,7 +152,7 @@ QGroupBox &gt; QLabel {
              <number>14</number>
             </property>
             <item>
-             <layout class="QHBoxLayout" name="ligne_pwd">
+             <layout class="QHBoxLayout" name="ligne_pwd" stretch="20,1">
               <item>
                <widget class="QGroupBox" name="groupBox">
                 <property name="font">
@@ -194,10 +194,16 @@ QGroupBox &gt; QLabel {
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>42</width>
+                  <height>42</height>
+                 </size>
+                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>36</width>
-                  <height>36</height>
+                  <width>42</width>
+                  <height>42</height>
                  </size>
                 </property>
                 <property name="text">
@@ -431,7 +437,7 @@ QLabel {
              <number>14</number>
             </property>
             <item>
-             <layout class="QHBoxLayout" name="ligne_categorie">
+             <layout class="QHBoxLayout" name="ligne_categorie" stretch="20,1">
               <item>
                <widget class="QGroupBox" name="groupBox_2">
                 <property name="font">
@@ -525,15 +531,113 @@ QLabel {
     <property name="title">
      <string>Aide</string>
     </property>
+    <addaction name="actionObtenir_de_l_aide"/>
+    <addaction name="separator"/>
+    <addaction name="actionA_propos_de_MindPass"/>
    </widget>
-   <widget class="QMenu" name="menuMindMap">
+   <widget class="QMenu" name="menuFichier">
     <property name="title">
-     <string>Voir la MindMap</string>
+     <string>Fichier</string>
     </property>
+    <addaction name="actionFermer"/>
    </widget>
-   <addaction name="menuMindMap"/>
+   <widget class="QMenu" name="menuOutils">
+    <property name="title">
+     <string>Outils</string>
+    </property>
+    <widget class="QMenu" name="menuConfidentialite">
+     <property name="title">
+      <string>Confidentialité</string>
+     </property>
+     <addaction name="actionMode_deux_lettres"/>
+     <addaction name="actionMode_complet"/>
+    </widget>
+    <widget class="QMenu" name="menuChanger_de_langue">
+     <property name="title">
+      <string>Changer de langue</string>
+     </property>
+     <addaction name="actionFrancais"/>
+     <addaction name="actionEnglish"/>
+    </widget>
+    <addaction name="menuChanger_de_langue"/>
+    <addaction name="separator"/>
+    <addaction name="actionPreferences"/>
+    <addaction name="menuConfidentialite"/>
+   </widget>
+   <addaction name="menuFichier"/>
+   <addaction name="menuOutils"/>
    <addaction name="menuAide"/>
   </widget>
+  <action name="actionFermer">
+   <property name="text">
+    <string>Fermer</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+F4</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>Préférences</string>
+   </property>
+  </action>
+  <action name="actionObtenir_de_l_aide">
+   <property name="text">
+    <string>Obtenir de l'aide</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="actionA_propos_de_MindPass">
+   <property name="text">
+    <string>À propos de MindPass</string>
+   </property>
+  </action>
+  <action name="actionMode_deux_lettres">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Mode &quot;deux lettres&quot;</string>
+   </property>
+   <property name="toolTip">
+    <string>N'affiche que les 2 premières lettres de tous vos mots de passe à l'écran</string>
+   </property>
+  </action>
+  <action name="actionMode_complet">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Mode complet</string>
+   </property>
+   <property name="toolTip">
+    <string>Affiche tous vos mots de passe de façon explicite à l'écran</string>
+   </property>
+  </action>
+  <action name="actionFrancais">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Français</string>
+   </property>
+  </action>
+  <action name="actionEnglish">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>identifiant</tabstop>
