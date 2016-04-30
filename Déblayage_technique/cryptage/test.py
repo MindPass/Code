@@ -1,3 +1,12 @@
 import hashlib
-print(help(hashlib.sha1))
-print(hashlib.sha1(b'salut'))
+import Crypto
+
+# HASH
+chaine = "secret"
+pwd=bytes(chaine, 'utf-8')
+hashed = hashlib.sha224(pwd).hexdigest()
+print(hashed)
+print(type(hashed))
+
+# Chiffrement asymétrique, clé privé: hashed 
+
