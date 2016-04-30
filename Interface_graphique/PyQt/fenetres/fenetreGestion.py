@@ -12,7 +12,8 @@ class Ui_fenetreGestion(object):
     def setupUi(self, fenetreGestion):
         fenetreGestion.setObjectName("fenetreGestion")
         fenetreGestion.setEnabled(True)
-        fenetreGestion.resize(1200, 873)
+        fenetreGestion.resize(1200, 900)
+        fenetreGestion.showMaximized() # NE PAS SUPPRIMER
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

@@ -269,9 +269,12 @@ class Categorie(Ligne):
 		self.colorRGB = (int(t[k][0]*255),int(t[k][1]*255),int(t[k][2]*255))
 		self.colorHEX ='#%02x%02x%02x' % self.colorRGB
 
-		self.groupBox.setStyleSheet(" QGroupBox {"
-			"border: 2px solid rgb("+str(self.colorRGB[0])+","+str(self.colorRGB[1])+","+str(self.colorRGB[2])+");" 
-			"}"
+		self.groupBox.setStyleSheet("QGroupBox {\n"
+			"border: 2px solid rgb(" + str(self.colorRGB[0]) + "," + str(self.colorRGB[1]) + "," + str(self.colorRGB[2]) + ");\n"
+			"}\n"
+			"QGroupBox:title {\n"
+			"color: rgb(" + str(self.colorRGB[0]) + "," + str(self.colorRGB[1]) + "," + str(self.colorRGB[2]) + ");\n"
+			"}\n"
 			)
 
 	def affichage_sites_lies(self, sites_lies):
@@ -352,9 +355,9 @@ class Password(Ligne):
 		label.colorRGB = self.getColor_label(site)[0]
 		label.colorHEX = self.getColor_label(site)[1]
 
-		texte= "<font size='5' color="+label.colorHEX+" >•</font> "
+		texte = "<font size='5' color="+label.colorHEX+">•</font> "
 		for lettre in site:
-			texte=texte+lettre
+			texte += lettre
 
 		label.setText(texte)
 
