@@ -173,6 +173,8 @@ class LigneSite(object):
 		for pwd in result:
 		    if pwd != self.nom_mdp:
 		        self.mdp.addItem(pwd)
+		if(self.nom_mdp != ""):
+			self.mdp.addItem("")
 
 	def afficher_combo_cat(self):
 		requete= 'SELECT nom_categorie FROM categories'
@@ -185,6 +187,8 @@ class LigneSite(object):
 		for cat in result:
 		    if cat != self.nom_cat:
 		        self.categorie.addItem(cat)
+		if(self.nom_cat != ""):
+			self.categorie.addItem("")
 
 class Ligne(object):
 	"""docstring for ligneCategorie
@@ -370,7 +374,7 @@ class Password(Ligne):
 		self.verticalLayout_groupBox.addWidget(label)
 
 	def create_text_label(self, couleur, site):
-		texte = "<font size='5' color="+couleur+">•</font> "
+		texte = "<font size='5' font-style='' color="+couleur+">•</font> "
 		for lettre in site:
 			texte += lettre
 		return(texte)

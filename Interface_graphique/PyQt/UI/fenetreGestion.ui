@@ -95,7 +95,7 @@ QGroupBox &gt; QLabel {
    <property name="enabled">
     <bool>true</bool>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QSplitter" name="splitter">
       <property name="orientation">
@@ -105,16 +105,31 @@ QGroupBox &gt; QLabel {
        <number>0</number>
       </property>
       <widget class="QWidget" name="layoutWidget">
-       <layout class="QVBoxLayout" name="Passwords" stretch="0,0,1">
+       <layout class="QVBoxLayout" name="Categories" stretch="0,4,1">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetNoConstraint</enum>
+        </property>
         <item>
-         <widget class="QLabel" name="titre_pwd">
+         <widget class="QLabel" name="titre_cat">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>210</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <pointsize>13</pointsize>
            </font>
           </property>
           <property name="text">
-           <string>Mots de Passe</string>
+           <string>Catégories</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -125,29 +140,29 @@ QGroupBox &gt; QLabel {
          </widget>
         </item>
         <item>
-         <widget class="QScrollArea" name="scrollArea_pwd">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
+         <widget class="QScrollArea" name="scrollArea_cat">
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
           </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_pwd">
+          <widget class="QWidget" name="scrollAreaWidgetContents_cat">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>274</width>
-             <height>701</height>
+             <width>210</width>
+             <height>769</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
             <property name="rightMargin">
              <number>14</number>
             </property>
@@ -156,7 +171,7 @@ QGroupBox &gt; QLabel {
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="ajouter_pwd">
+         <widget class="QLineEdit" name="ajouter_cat">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -260,8 +275,8 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>621</width>
-             <height>690</height>
+             <width>752</width>
+             <height>746</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout"/>
@@ -285,19 +300,22 @@ QLabel {
        </layout>
       </widget>
       <widget class="QWidget" name="layoutWidget">
-       <layout class="QVBoxLayout" name="Categories" stretch="0,4,1">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetNoConstraint</enum>
-        </property>
+       <layout class="QVBoxLayout" name="Passwords" stretch="0,0,1">
         <item>
-         <widget class="QLabel" name="titre_cat">
+         <widget class="QLabel" name="titre_pwd">
+          <property name="minimumSize">
+           <size>
+            <width>210</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <pointsize>13</pointsize>
            </font>
           </property>
           <property name="text">
-           <string>Catégories</string>
+           <string>Mots de Passe</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -308,23 +326,29 @@ QLabel {
          </widget>
         </item>
         <item>
-         <widget class="QScrollArea" name="scrollArea_cat">
+         <widget class="QScrollArea" name="scrollArea_pwd">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
           </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_cat">
+          <widget class="QWidget" name="scrollAreaWidgetContents_pwd">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>263</width>
-             <height>701</height>
+             <width>214</width>
+             <height>769</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
             <property name="rightMargin">
              <number>14</number>
             </property>
@@ -333,7 +357,7 @@ QLabel {
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="ajouter_cat">
+         <widget class="QLineEdit" name="ajouter_pwd">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -360,7 +384,7 @@ QLabel {
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>38</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAide">
