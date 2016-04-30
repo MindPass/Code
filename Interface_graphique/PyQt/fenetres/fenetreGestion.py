@@ -25,7 +25,7 @@ class Ui_fenetreGestion(object):
 "    background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));\n"
 "}\n"
 "\n"
-"#catTitle {\n"
+"#titre_cat, #titre_pwd {\n"
 "    color: white;\n"
 "}\n"
 "\n"
@@ -36,7 +36,54 @@ class Ui_fenetreGestion(object):
 "    color: black;\n"
 "    padding-left: 10px;\n"
 "}\n"
-"")
+"\n"
+"#ajouter_cat, #ajouter_pwd  {\n"
+"    border: solid 3px white;\n"
+"}\n"
+"\n"
+" QPushButton {\n"
+"     background-color: transparent;\n"
+"     border: none;\n"
+"     image: url(\"D:/Users/Alexandre/Desktop/MindPass/croix_757575.svg\");\n"
+" }\n"
+"\n"
+" QPushButton:hover {\n"
+"     image: url(\"D:/Users/Alexandre/Desktop/MindPass/croix_929292.svg\");\n"
+" }\n"
+"\n"
+" QPushButton:pressed {\n"
+"     image: url(\"D:/Users/Alexandre/Desktop/MindPass/croix_575757.svg\");\n"
+" }\n"
+"\n"
+"QScrollArea {\n"
+"    background: transparent;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"#scrollAreaWidgetContents_cat, #scrollAreaWidgetContents_pwd {\n"
+"    background : rgba(255,255,255,44);\n"
+"}\n"
+"\n"
+"QGroupBox {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 transparent, stop: 1 rgba(117,117,117,22));\n"
+"    border: 2px solid gray;\n"
+"    border-radius: 10px;\n"
+"    margin-top: 2.5ex; /* leave space at the top for the title */\n"
+"}\n"
+"\n"
+"QGroupBox::title {\n"
+"    subcontrol-origin: margin;\n"
+"    subcontrol-position: top center; /* position at the top center */\n"
+"    padding: 0 10px;\n"
+"    color: #757575;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QGroupBox > QLabel {\n"
+"    color: rgba(255,255,255,200);\n"
+"}")
         self.corps_gestion = QtWidgets.QWidget(fenetreGestion)
         self.corps_gestion.setEnabled(True)
         self.corps_gestion.setObjectName("corps_gestion")
@@ -49,14 +96,8 @@ class Ui_fenetreGestion(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitter)
         self.layoutWidget.setObjectName("layoutWidget")
         self.Passwords = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.Passwords.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.Passwords.setObjectName("Passwords")
         self.titre_pwd = QtWidgets.QLabel(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.titre_pwd.sizePolicy().hasHeightForWidth())
-        self.titre_pwd.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.titre_pwd.setFont(font)
@@ -70,9 +111,10 @@ class Ui_fenetreGestion(object):
         self.scrollArea_pwd.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_pwd.setObjectName("scrollArea_pwd")
         self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 260, 699))
+        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 255, 701))
         self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_pwd")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
+        self.verticalLayout_2.setContentsMargins(-1, -1, 14, -1)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.scrollArea_pwd.setWidget(self.scrollAreaWidgetContents_pwd)
         self.Passwords.addWidget(self.scrollArea_pwd)
@@ -82,7 +124,6 @@ class Ui_fenetreGestion(object):
         self.ajouter_pwd.setAlignment(QtCore.Qt.AlignCenter)
         self.ajouter_pwd.setObjectName("ajouter_pwd")
         self.Passwords.addWidget(self.ajouter_pwd)
-        self.Passwords.setStretch(1, 4)
         self.Passwords.setStretch(2, 1)
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.splitter)
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
@@ -90,7 +131,7 @@ class Ui_fenetreGestion(object):
         self.Sites.setObjectName("Sites")
         self.scrollArea_sites = QtWidgets.QScrollArea(self.verticalLayoutWidget_2)
         self.scrollArea_sites.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.scrollArea_sites.sizePolicy().hasHeightForWidth())
@@ -111,7 +152,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_sites.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_sites.setObjectName("scrollArea_sites")
         self.scrollAreaWidgetContents_sites = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 596, 797))
+        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 578, 797))
         self.scrollAreaWidgetContents_sites.setObjectName("scrollAreaWidgetContents_sites")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_sites)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -123,11 +164,6 @@ class Ui_fenetreGestion(object):
         self.Categories.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.Categories.setObjectName("Categories")
         self.titre_cat = QtWidgets.QLabel(self.layoutWidget1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.titre_cat.sizePolicy().hasHeightForWidth())
-        self.titre_cat.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.titre_cat.setFont(font)
@@ -140,10 +176,38 @@ class Ui_fenetreGestion(object):
         self.scrollArea_cat.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_cat.setObjectName("scrollArea_cat")
         self.scrollAreaWidgetContents_cat = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 217, 699))
+        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 244, 701))
         self.scrollAreaWidgetContents_cat.setObjectName("scrollAreaWidgetContents_cat")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_cat)
+        self.verticalLayout_3.setContentsMargins(-1, -1, 14, -1)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.ligne_categorie = QtWidgets.QHBoxLayout()
+        self.ligne_categorie.setObjectName("ligne_categorie")
+        self.groupBox_2 = QtWidgets.QGroupBox(self.scrollAreaWidgetContents_cat)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.groupBox_2.setFont(font)
+        self.groupBox_2.setObjectName("groupBox_2")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.sites_lies_cat = QtWidgets.QLabel(self.groupBox_2)
+        self.sites_lies_cat.setObjectName("sites_lies_cat")
+        self.verticalLayout_5.addWidget(self.sites_lies_cat)
+        self.sites_lies_cat_2 = QtWidgets.QLabel(self.groupBox_2)
+        self.sites_lies_cat_2.setObjectName("sites_lies_cat_2")
+        self.verticalLayout_5.addWidget(self.sites_lies_cat_2)
+        self.sites_lies_cat_3 = QtWidgets.QLabel(self.groupBox_2)
+        self.sites_lies_cat_3.setObjectName("sites_lies_cat_3")
+        self.verticalLayout_5.addWidget(self.sites_lies_cat_3)
+        self.ligne_categorie.addWidget(self.groupBox_2)
+        self.pushButton_cat = QtWidgets.QPushButton(self.scrollAreaWidgetContents_cat)
+        self.pushButton_cat.setEnabled(True)
+        self.pushButton_cat.setMaximumSize(QtCore.QSize(36, 36))
+        self.pushButton_cat.setText("")
+        self.pushButton_cat.setObjectName("pushButton_cat")
+        self.ligne_categorie.addWidget(self.pushButton_cat)
+        self.verticalLayout_3.addLayout(self.ligne_categorie)
         self.scrollArea_cat.setWidget(self.scrollAreaWidgetContents_cat)
         self.Categories.addWidget(self.scrollArea_cat)
         self.ajouter_cat = QtWidgets.QLineEdit(self.layoutWidget1)
@@ -170,6 +234,7 @@ class Ui_fenetreGestion(object):
 
         self.retranslateUi(fenetreGestion)
         QtCore.QMetaObject.connectSlotsByName(fenetreGestion)
+        fenetreGestion.setTabOrder(self.pushButton_cat, self.scrollArea_cat)
         fenetreGestion.setTabOrder(self.scrollArea_cat, self.ajouter_cat)
         fenetreGestion.setTabOrder(self.ajouter_cat, self.scrollArea_pwd)
         fenetreGestion.setTabOrder(self.scrollArea_pwd, self.ajouter_pwd)
@@ -179,6 +244,10 @@ class Ui_fenetreGestion(object):
         fenetreGestion.setWindowTitle(_translate("fenetreGestion", "Fenêtre de Gestion - MindPass"))
         self.titre_pwd.setText(_translate("fenetreGestion", "Mots de Passe"))
         self.titre_cat.setText(_translate("fenetreGestion", "Catégories"))
+        self.groupBox_2.setTitle(_translate("fenetreGestion", "GroupBox"))
+        self.sites_lies_cat.setText(_translate("fenetreGestion", "TextLabel"))
+        self.sites_lies_cat_2.setText(_translate("fenetreGestion", "TextLabel"))
+        self.sites_lies_cat_3.setText(_translate("fenetreGestion", "TextLabel"))
         self.menuAide.setTitle(_translate("fenetreGestion", "Aide"))
         self.menuMindMap.setTitle(_translate("fenetreGestion", "Voir la MindMap"))
 
