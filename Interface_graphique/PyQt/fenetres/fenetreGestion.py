@@ -83,7 +83,7 @@ class Ui_fenetreGestion(object):
 "\n"
 "QGroupBox > QLabel {\n"
 "    color: rgba(255,255,255,200);\n"
-"}")
+"}")    
         self.corps_gestion = QtWidgets.QWidget(fenetreGestion)
         self.corps_gestion.setEnabled(True)
         self.corps_gestion.setObjectName("corps_gestion")

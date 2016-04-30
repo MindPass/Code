@@ -6,6 +6,8 @@ from functools import partial
 from PyQt5 import QtWidgets, QtGui, QtCore
 from fenetreGestion import Ui_fenetreGestion
 from requetes import *
+import numpy as np
+import colorsys
 
 bdd = "../../../Traitement_mails/bdd.sq3"
 
@@ -263,6 +265,24 @@ class Categorie(Ligne):
 		self.groupBox.setTitle(nom)
 		self.pushButton.setObjectName("pushButton_cat")
 
+	def setColor(self, k, nb_cat):
+		
+		num_colors=nb_cat
+		colors=[]
+		for i in np.arange(0., 360., 360. / num_colors):
+			hue = i/360.
+			lightness = (50 + np.random.rand() * 10)/100.
+			saturation = (55 + np.random.rand() * 10)/100.
+			colors.append(colorsys.hls_to_rgb(hue, lightness, saturation))
+		t= colors
+		
+		self.color = [int(t[k][0]*255),int(t[k][1]*255),int(t[k][2]*255)]
+
+		self.groupBox.setStyleSheet(" QGroupBox {"
+			"border: 2px solid rgb("+str(self.color[0])+","+str(self.color[1])+","+str(self.color[2])+");" 
+			"}"
+			)
+
 	def affichage_sites_lies(self, sites_lies):
 		for site in sites_lies:
 			label = QtWidgets.QLabel()
@@ -406,6 +426,13 @@ class ClasseGestion(Ui_fenetreGestion):
 		    conditions = not categories_table or categories_table[0][0] != self.ajouter_cat.displayText()
 		    if conditions:
 		        self.ajouter_categorie()
+		        self.actualiser_couleur()
+
+	def actualiser_couleur(self):
+		nb_cat = len(self.cats)
+		for i in range(nb_cat):
+			self.cats[i].setColor(i, nb_cat)
+
 
 	def afficher_categories(self):
 		requete= 'SELECT nom_categorie FROM categories'
@@ -414,6 +441,9 @@ class ClasseGestion(Ui_fenetreGestion):
 		if tab:
 		    for k in range(len(tab)):
 		        self.ajouter_ligne_categorie(k, tab[k][0])
+
+		self.actualiser_couleur()
+
 
 	def ajouter_categorie(self):
 		requete ="INSERT INTO categories (nom_categorie) VALUES(?)"
