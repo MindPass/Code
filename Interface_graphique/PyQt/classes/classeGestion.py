@@ -385,6 +385,8 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.afficher_categories()
 		self.afficher_pwds()
 
+		self.afficher_ajout_site()
+
 
 	def check_if_exist_cat(self):
 		"""
@@ -480,6 +482,17 @@ class ClasseGestion(Ui_fenetreGestion):
 		for k in range(len(tab)):
 			self.sites.append(LigneSite(k,tab[k][0], tab[k][1], tab[k][2], tab[k][3], self))
 			self.verticalLayout.addLayout(self.sites[k].ligne)
+
+	def afficher_ajout_site(self):
+		self.ajout_site = QtWidgets.QHBoxLayout()
+		self.site_web_ajout =QtWidgets.QLineEdit()
+		self.site_web_ajout.setAlignment(QtCore.Qt.AlignCenter)
+		self.site_web_ajout.setObjectName("site_web")
+		self.site_web_ajout.setPlaceholderText("Ajouter site web")
+		self.ajout_site.addWidget(self.site_web_ajout)
+
+		self.ajout_site.setStretch(0, 2)
+		self.ajout_site.setStretch(1, 2)
 
 
 if __name__ == "__main__":

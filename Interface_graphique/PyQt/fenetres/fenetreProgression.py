@@ -13,9 +13,9 @@ class Ui_fenetreProgression(object):
         fenetreProgression.setObjectName("fenetreProgression")
         fenetreProgression.setWindowModality(QtCore.Qt.WindowModal)
         fenetreProgression.setEnabled(True)
-        fenetreProgression.resize(740, 630)
-        fenetreProgression.setMinimumSize(QtCore.QSize(740, 630))
-        fenetreProgression.setMaximumSize(QtCore.QSize(740, 630))
+        fenetreProgression.resize(740, 600)
+        fenetreProgression.setMinimumSize(QtCore.QSize(740, 600))
+        fenetreProgression.setMaximumSize(QtCore.QSize(740, 600))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fenetreProgression.setWindowIcon(icon)
@@ -82,9 +82,13 @@ class Ui_fenetreProgression(object):
 "background: #eee;\n"
 "border: 1px solid #aaa;\n"
 "border-radius: 7px;\n"
+"}\n"
+"\n"
+"QSlider {\n"
+"display: none;\n"
 "}")
         self.verticalLayoutWidget = QtWidgets.QWidget(fenetreProgression)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 20, 721, 552))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 20, 721, 588))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
@@ -103,10 +107,6 @@ class Ui_fenetreProgression(object):
         self.horizontalSlider.setSizePolicy(sizePolicy)
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider.setObjectName("horizontalSlider")
-        ##### A GARDER - debut
-        self.horizontalSlider.valueChanged[int].connect(self.changeValue)
-        ##### A GARDER - fin
-
         self.gridLayout.addWidget(self.horizontalSlider, 2, 0, 1, 1)
         self.progressBar = QtWidgets.QProgressBar(self.verticalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
@@ -117,7 +117,7 @@ class Ui_fenetreProgression(object):
         self.progressBar.setAccessibleName("")
         self.progressBar.setStyleSheet("QProgressBar {\n"
 "background-color: lightgrey;\n"
-"border: 2px solid purple;\n"
+"border: 2px solid white;\n"
 "border-radius: 10px;\n"
 "}\n"
 "\n"
@@ -134,35 +134,26 @@ class Ui_fenetreProgression(object):
         self.imageDefil.setAlignment(QtCore.Qt.AlignCenter)
         self.imageDefil.setObjectName("imageDefil")
         self.gridLayout.addWidget(self.imageDefil, 1, 0, 1, 1)
+        self.bouton_page_suiv = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.bouton_page_suiv.sizePolicy().hasHeightForWidth())
+        self.bouton_page_suiv.setSizePolicy(sizePolicy)
+        self.bouton_page_suiv.setObjectName("bouton_page_suiv")
+        self.gridLayout.addWidget(self.bouton_page_suiv, 3, 0, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)
-        self.label = QtWidgets.QLabel(fenetreProgression)
-        self.label.setGeometry(QtCore.QRect(142, 540, 455, 80))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../ressources/MindPass-transparent.svg"))
-        self.label.setObjectName("label")
+        self.verticalLayoutWidget.raise_()
+        self.imageDefil.raise_()
 
         self.retranslateUi(fenetreProgression)
         QtCore.QMetaObject.connectSlotsByName(fenetreProgression)
-
-
-    ##### A GARDER - debut
-    def changeValue(self, value):
-
-        if value >= 0 and value < 25:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub1.svg"))
-        elif value >=25 and value < 50:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Zeichen_123.svg"))
-        elif value >= 50 and value < 75:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/mute.png"))
-        else:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub1.svg"))
-    ##### A GARDER - fin
-
 
     def retranslateUi(self, fenetreProgression):
         _translate = QtCore.QCoreApplication.translate
         fenetreProgression.setWindowTitle(_translate("fenetreProgression", "Scan en cours - MindPass"))
         self.progressBar.setFormat(_translate("fenetreProgression", "%p%"))
+        self.bouton_page_suiv.setText(_translate("fenetreProgression", "Suivant"))
 
 
 if __name__ == "__main__":
