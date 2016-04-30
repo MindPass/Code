@@ -383,8 +383,9 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.afficher_categories()
 		self.afficher_pwds()
 
-		# Affiche une QlineEdit et un QPushButton pour l'ajout de site
-		self.afficher_ajout_site()
+		#
+		self.pushButton_ajout_site.clicked.connect(self.check_new_site)
+
 
 
 	def check_if_exist_cat(self):
@@ -482,27 +483,13 @@ class ClasseGestion(Ui_fenetreGestion):
 			self.sites.append(LigneSite(k,tab[k][0], tab[k][1], tab[k][2], tab[k][3], self))
 			self.verticalLayout.addLayout(self.sites[k].ligne)
 
-	def afficher_ajout_site(self):
-		self.ajout_site = QtWidgets.QHBoxLayout()
-		self.site_web_ajout =QtWidgets.QLineEdit()
-		self.site_web_ajout.setAlignment(QtCore.Qt.AlignCenter)
-		self.site_web_ajout.setObjectName("site_web_ajout")
-		self.site_web_ajout.setPlaceholderText("Ajouter site web")
-		self.ajout_site.addWidget(self.site_web_ajout)
-		self.button_ajout_site = QtWidgets.QPushButton()
-		self.button_ajout_site.setText("Ajouter")
-		self.button_ajout_site.setObjectName("button_ajout_site")
-		self.ajout_site.addWidget(self.button_ajout_site)
-		self.ajout_site.setStretch(0, 2)
-		self.ajout_site.setStretch(1, 2)
-
-		self.verticalLayout.addLayout(self.ajout_site)
-
-		self.button_ajout_site.clicked.connect(self.check_new_site)
-
 	def check_new_site(self):
 		requete =  "SELECT site_web FROM sites_reconnus"
 		sites_web = toliste(bdd_select(requete))
+
+		if(self.lineEdit_ajout_site.text() not in sites_web):
+			self.verticalLayout.addLayout(LigneSite(len(self.sites), self.lineEdit_ajout_site.text(), "", "", "", self).ligne)
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
