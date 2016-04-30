@@ -371,6 +371,7 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.setupUi(fenetre)
 		self.ajouter_cat.setPlaceholderText("Ajouter une catégorie")
 		self.ajouter_pwd.setPlaceholderText("Ajouter un mot de passe")
+		self.lineEdit_ajout_site.setPlaceholderText("Ajouter un site web")
 		self.ajouter_cat.returnPressed.connect(self.check_if_exist_cat)
 		self.ajouter_pwd.returnPressed.connect(self.check_if_exist_pwd)
 
@@ -487,7 +488,10 @@ class ClasseGestion(Ui_fenetreGestion):
 		requete =  "SELECT site_web FROM sites_reconnus"
 		sites_web = toliste(bdd_select(requete))
 
-		if(self.lineEdit_ajout_site.text() not in sites_web):
+		if(self.lineEdit_ajout_site.text() not in sites_web and self.lineEdit_ajout_site.text() != ""):
+			requete = "INSERT INTO sites_reconnus VALUES(?,?,?,?,?)"
+			valeurs =("",self.lineEdit_ajout_site.text(),"", "", "")
+			bdd_insert(requete, valeurs)
 			self.verticalLayout.addLayout(LigneSite(len(self.sites), self.lineEdit_ajout_site.text(), "", "", "", self).ligne)
 
 
