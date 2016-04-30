@@ -363,24 +363,26 @@ class Password(Ligne):
 		label.colorRGB = self.getColor_label(site)[0]
 		label.colorHEX = self.getColor_label(site)[1]
 
-		texte = "<font size='5' color="+label.colorHEX+">•</font> "
-		for lettre in site:
-			texte += lettre
-
+		texte = self.create_text_label(label.colorHEX, site)
 		label.setText(texte)
 
 		self.labels.append(label)
 		self.verticalLayout_groupBox.addWidget(label)
 
+	def create_text_label(self, couleur, site):
+		texte = "<font size='5' color="+couleur+">•</font> "
+		for lettre in site:
+			texte += lettre
+		return(texte)
+
+
 	def update(self, label, categorie):
+		couleur ="#fff"
 		for k in range(len(self.objet.cats)):
 			if(self.objet.cats[k].nom == categorie):
 				couleur = self.objet.cats[k].colorHEX
 
-		texte ="<font size='5' color="+couleur+">•</font> "
-		for lettre in label.texte:
-			texte += lettre
-
+		texte= self.create_text_label(couleur, label.texte)
 		label.setText(texte)
 
 

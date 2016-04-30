@@ -46,6 +46,7 @@ class LigneSite(object):
 	def __init__(self, y, site_web, identifiant, mdp, categorie, objet):
 		self.position = y
 		self.objet = objet
+		self.nom_site = site_web
 		self.nom_mdp = mdp
 		self.nom_cat = categorie
 
@@ -90,7 +91,7 @@ class LigneSite(object):
 		requete ="SELECT categorie FROM sites_reconnus WHERE rowid=?"
 		ancienne_categorie = toliste(bdd_select(requete, (self.position+1,)))[0]
 
-		# On ajoute le site_web sous la catégorie correspondate
+		# On ajoute le site_web sous la catégorie correspondante
 		requete= 'UPDATE sites_reconnus SET categorie=? WHERE rowid=?'
 		bdd_update(requete, (self.categorie.currentText(), self.position +1))
 		print("Catégorie changée en"+ self.categorie.currentText())
@@ -124,6 +125,12 @@ class LigneSite(object):
 				requete ="SELECT site_web FROM sites_reconnus WHERE categorie=?"
 				sites_lies= toliste(bdd_select(requete, (ancienne_categorie,)))
 				self.objet.cats[k].affichage_sites_lies(sites_lies)
+
+		# On update le label dont la catégorie a été changée
+		for pwd in self.objet.pwds:
+			for label in pwd.labels:
+				if(label.texte == self.nom_site):
+					pwd.update(label, self.categorie.currentText())
 
 
 	def changement_pwd(self):
@@ -323,6 +330,8 @@ class Categorie(Ligne):
 		self.objet.scrollArea_cat.setWidget(self.objet.scrollAreaWidgetContents_cat)
 		# on relance la méthode d'affichage des catégories
 		self.objet.afficher_categories()
+		self.objet.actualiser_couleur_pwd()
+
 
 	def ajout_combobox(self):
 		for k in range(len(self.objet.sites)):
@@ -345,13 +354,12 @@ class Password(Ligne):
 
 	def label(self, site):
 		label = QtWidgets.QLabel()
-				
+		label.texte = site
 		font = QtGui.QFont()
 		font.setPointSize(9)
 		font.setItalic(True)
 		label.setFont(font)
 		label.setObjectName("sites_lies_pwd")
-		label.texte = site
 		label.colorRGB = self.getColor_label(site)[0]
 		label.colorHEX = self.getColor_label(site)[1]
 
@@ -363,6 +371,17 @@ class Password(Ligne):
 
 		self.labels.append(label)
 		self.verticalLayout_groupBox.addWidget(label)
+
+	def update(self, label, categorie):
+		for k in range(len(self.objet.cats)):
+			if(self.objet.cats[k].nom == categorie):
+				couleur = self.objet.cats[k].colorHEX
+
+		texte ="<font size='5' color="+couleur+">•</font> "
+		for lettre in label.texte:
+			texte += lettre
+
+		label.setText(texte)
 
 
 	def getColor_label(self, site):
@@ -443,13 +462,17 @@ class ClasseGestion(Ui_fenetreGestion):
 		"""
 		if self.ajouter_cat.displayText() != "":
 
-		    requete = "SELECT nom_categorie FROM categories WHERE nom_categorie=?"
-		    categories_table = bdd_select(requete, (self.ajouter_cat.displayText(),))
+			requete = "SELECT nom_categorie FROM categories WHERE nom_categorie=?"
+			categories_table = bdd_select(requete, (self.ajouter_cat.displayText(),))
 
-		    conditions = not categories_table or categories_table[0][0] != self.ajouter_cat.displayText()
-		    if conditions:
-		        self.ajouter_categorie()
-		        self.actualiser_couleur()
+			conditions = not categories_table or categories_table[0][0] != self.ajouter_cat.displayText()
+			if conditions:
+
+				self.ajouter_categorie()
+				# On actualise les couleurs des catégories
+				self.actualiser_couleur()
+				# On actualise les couleurs des labels dans la colonne Mots de Passe
+				self.actualiser_couleur_pwd()
 
 	def actualiser_couleur(self):
 		nb_cat = len(self.cats)
@@ -535,6 +558,23 @@ class ClasseGestion(Ui_fenetreGestion):
 
 		# On garde l'alignement haut
 		self.verticalLayout_2.setAlignment(QtCore.Qt.AlignTop)
+
+
+	def actualiser_couleur_pwd(self):
+		# destruction des layouts dans la scroll_area
+		self.scrollAreaWidgetContents_pwd.deleteLater()
+		# on vide les attributs
+		self.pwds = []
+		# On en recrée un vide
+		self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
+		self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 177, 767))
+		self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_cat")
+		self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
+		self.verticalLayout_2.setObjectName("verticalLayout_3")
+		self.scrollArea_pwd.setWidget(self.scrollAreaWidgetContents_pwd)
+		# on relance la méthode d'affichage des mdps
+		self.afficher_pwds()
+
 
 	def afficher_sites(self):
 		requete= 'SELECT site_web, identifiant, mdp, categorie FROM sites_reconnus'
