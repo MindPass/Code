@@ -24,28 +24,26 @@ QScrollBar::handle:vertical {
 }
 
 QScrollBar::add-line:vertical {
-	  display: none;
       border: none;
       background: none;
       color: none;
 }
 
 QScrollBar::sub-line:vertical {
-	  display: none;
+
       border: none;
       background: none;
       color: none;
 }
 
 QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-	  display: none;
+
       border: none;
       background: none;
       color: none;
 }
 
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-	  display: none;
       border: none;
       background: none;
       color: none;

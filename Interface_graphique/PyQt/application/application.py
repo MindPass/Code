@@ -28,7 +28,7 @@ class Progression(ClasseProgression):
         print("Passage à la fenêtre de gestion !")
         time.sleep(1.5)
         deuxieme_fenetre.hide()
-        troisieme_fenetre.show()
+        troisieme_fenetre.showMaximized()
         objet_gestion.lancement()
 
 
