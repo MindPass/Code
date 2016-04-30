@@ -47,18 +47,18 @@ QLineEdit {
 	border: solid 3px white;
 }
 
- QPushButton {
+QPushButton#pushButton_pwd, QPushButton#pushButton_cat {
      background-color: transparent;
      border: none;
-	 image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/croix_757575.svg&quot;);
+	 image: url(&quot;../ressources/croix_757575.svg&quot;);
  }
 
- QPushButton:hover {
-	 image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/croix_929292.svg&quot;);
+QPushButton:hover#pushButton_pwd, QPushButton:hover#pushButton_cat {
+	 image: url(&quot;../ressources/croix_929292.svg&quot;);
  }
 
- QPushButton:pressed {
-	 image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/croix_575757.svg&quot;);
+ QPushButton:pressed#pushButton_pwd, QPushButton:pressed#pushButton_cat {
+	 image: url(&quot;../ressources/croix_575757.svg&quot;);
  }
 
 QScrollArea {
@@ -76,12 +76,12 @@ QGroupBox {
                                       stop: 0 transparent, stop: 1 rgba(117,117,117,22));
     border: 2px solid gray;
     border-radius: 10px;
-    margin-top: 2.5ex; /* leave space at the top for the title */
+    margin-top: 2.5ex;
 }
 
 QGroupBox::title {
     subcontrol-origin: margin;
-    subcontrol-position: top center; /* position at the top center */
+    subcontrol-position: top center;
     padding: 0 10px;
 	color: #757575;
 	font-weight: bold;
@@ -143,8 +143,8 @@ QGroupBox &gt; QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>196</width>
-             <height>769</height>
+             <width>274</width>
+             <height>701</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -316,8 +316,8 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>784</width>
-             <height>746</height>
+             <width>621</width>
+             <height>690</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout">
@@ -373,10 +373,10 @@ QLabel {
         <item>
          <layout class="QHBoxLayout" name="ajout_site" stretch="1,1">
           <item>
-           <widget class="QLineEdit" name="lineEdit"/>
+           <widget class="QLineEdit" name="lineEdit_ajout_site"/>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="pushButton_ajout_site">
             <property name="text">
              <string>Ajouter</string>
             </property>
@@ -422,8 +422,8 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>196</width>
-             <height>769</height>
+             <width>263</width>
+             <height>701</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -518,7 +518,7 @@ QLabel {
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>38</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAide">

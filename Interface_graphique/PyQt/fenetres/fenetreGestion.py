@@ -41,18 +41,18 @@ class Ui_fenetreGestion(object):
 "    border: solid 3px white;\n"
 "}\n"
 "\n"
-" QPushButton {\n"
+"QPushButton#pushButton_pwd, QPushButton#pushButton_cat {\n"
 "     background-color: transparent;\n"
 "     border: none;\n"
-"     image: url(\"D:/Users/Alexandre/Desktop/MindPass/croix_757575.svg\");\n"
+"     image: url(\"../ressources/croix_757575.svg\");\n"
 " }\n"
 "\n"
-" QPushButton:hover {\n"
-"     image: url(\"D:/Users/Alexandre/Desktop/MindPass/croix_929292.svg\");\n"
+"QPushButton:hover#pushButton_pwd, QPushButton:hover#pushButton_cat {\n"
+"     image: url(\"../ressources/croix_929292.svg\");\n"
 " }\n"
 "\n"
-" QPushButton:pressed {\n"
-"     image: url(\"D:/Users/Alexandre/Desktop/MindPass/croix_575757.svg\");\n"
+" QPushButton:pressed#pushButton_pwd, QPushButton:pressed#pushButton_cat {\n"
+"     image: url(\"../ressources/croix_575757.svg\");\n"
 " }\n"
 "\n"
 "QScrollArea {\n"
@@ -70,12 +70,12 @@ class Ui_fenetreGestion(object):
 "                                      stop: 0 transparent, stop: 1 rgba(117,117,117,22));\n"
 "    border: 2px solid gray;\n"
 "    border-radius: 10px;\n"
-"    margin-top: 2.5ex; /* leave space at the top for the title */\n"
+"    margin-top: 2.5ex;\n"
 "}\n"
 "\n"
 "QGroupBox::title {\n"
 "    subcontrol-origin: margin;\n"
-"    subcontrol-position: top center; /* position at the top center */\n"
+"    subcontrol-position: top center;\n"
 "    padding: 0 10px;\n"
 "    color: #757575;\n"
 "    font-weight: bold;\n"
@@ -111,7 +111,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_pwd.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_pwd.setObjectName("scrollArea_pwd")
         self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 196, 769))
+        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 274, 701))
         self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_pwd")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
         self.verticalLayout_2.setContentsMargins(-1, -1, 14, -1)
@@ -171,7 +171,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_sites.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_sites.setObjectName("scrollArea_sites")
         self.scrollAreaWidgetContents_sites = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 784, 746))
+        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 621, 690))
         self.scrollAreaWidgetContents_sites.setObjectName("scrollAreaWidgetContents_sites")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_sites)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -179,12 +179,12 @@ class Ui_fenetreGestion(object):
         self.Sites.addWidget(self.scrollArea_sites)
         self.ajout_site = QtWidgets.QHBoxLayout()
         self.ajout_site.setObjectName("ajout_site")
-        self.lineEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
-        self.lineEdit.setObjectName("lineEdit")
-        self.ajout_site.addWidget(self.lineEdit)
-        self.pushButton = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
-        self.pushButton.setObjectName("pushButton")
-        self.ajout_site.addWidget(self.pushButton)
+        self.lineEdit_ajout_site = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.lineEdit_ajout_site.setObjectName("lineEdit_ajout_site")
+        self.ajout_site.addWidget(self.lineEdit_ajout_site)
+        self.pushButton_ajout_site = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.pushButton_ajout_site.setObjectName("pushButton_ajout_site")
+        self.ajout_site.addWidget(self.pushButton_ajout_site)
         self.ajout_site.setStretch(0, 1)
         self.ajout_site.setStretch(1, 1)
         self.Sites.addLayout(self.ajout_site)
@@ -209,7 +209,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_cat.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_cat.setObjectName("scrollArea_cat")
         self.scrollAreaWidgetContents_cat = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 196, 769))
+        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 263, 701))
         self.scrollAreaWidgetContents_cat.setObjectName("scrollAreaWidgetContents_cat")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_cat)
         self.verticalLayout_3.setContentsMargins(-1, -1, 14, -1)
@@ -227,7 +227,7 @@ class Ui_fenetreGestion(object):
         self.horizontalLayout.addWidget(self.splitter)
         fenetreGestion.setCentralWidget(self.corps_gestion)
         self.menubar = QtWidgets.QMenuBar(fenetreGestion)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1200, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1200, 38))
         self.menubar.setObjectName("menubar")
         self.menuAide = QtWidgets.QMenu(self.menubar)
         self.menuAide.setObjectName("menuAide")
@@ -251,7 +251,7 @@ class Ui_fenetreGestion(object):
         self.label_3.setText(_translate("fenetreGestion", "Identifiant"))
         self.label_2.setText(_translate("fenetreGestion", "Mot de Passe"))
         self.label.setText(_translate("fenetreGestion", "Catégorie"))
-        self.pushButton.setText(_translate("fenetreGestion", "Ajouter"))
+        self.pushButton_ajout_site.setText(_translate("fenetreGestion", "Ajouter"))
         self.titre_cat.setText(_translate("fenetreGestion", "Catégories"))
         self.menuAide.setTitle(_translate("fenetreGestion", "Aide"))
         self.menuMindMap.setTitle(_translate("fenetreGestion", "Voir la MindMap"))
