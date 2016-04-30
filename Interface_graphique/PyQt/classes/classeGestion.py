@@ -130,7 +130,7 @@ class LigneSite(object):
 		requete ="SELECT mdp FROM sites_reconnus WHERE rowid=?"
 		ancien_mdp = toliste(bdd_select(requete, (self.position+1,)))[0]
 
-		# On ajoute le site_web sous la catégorie correspondate
+		# On ajoute le site_web sous le mdp correspondant
 		requete= 'UPDATE sites_reconnus SET mdp=? WHERE rowid=?'
 		bdd_update(requete, (self.mdp.currentText(), self.position +1))
 		print("Mdp changée en"+ self.mdp.currentText())
@@ -141,20 +141,10 @@ class LigneSite(object):
 				for element in self.objet.pwds[k].labels:
 					liste_label_name.append(element.text())
 				if(self.mdp.currentText() not in liste_label_name):
-					label = QtWidgets.QLabel()
-
-					font = QtGui.QFont()
-					font.setPointSize(9)
-					font.setItalic(True)
-					label.setFont(font)
-					label.setObjectName("sites_lies_pwd")
-					label.setText(self.site_web.text())
-
-					self.objet.pwds[k].labels.append(label)
-					self.objet.pwds[k].verticalLayout_groupBox.addWidget(label)
+					self.objet.pwds[k].label(self.site_web.text())
 				break
 
-		# On met à jour le groupBox de l'ancienne catégorie
+		# On met à jour le groupBox de l'ancienn mdp
 		for k in range(len(self.objet.pwds)):
 			if(self.objet.pwds[k].nom == ancien_mdp):
 				for label in self.objet.pwds[k].labels:
@@ -276,10 +266,11 @@ class Categorie(Ligne):
 			colors.append(colorsys.hls_to_rgb(hue, lightness, saturation))
 		t= colors
 		
-		self.color = [int(t[k][0]*255),int(t[k][1]*255),int(t[k][2]*255)]
+		self.colorRGB = (int(t[k][0]*255),int(t[k][1]*255),int(t[k][2]*255))
+		self.colorHEX ='#%02x%02x%02x' % self.colorRGB
 
 		self.groupBox.setStyleSheet(" QGroupBox {"
-			"border: 2px solid rgb("+str(self.color[0])+","+str(self.color[1])+","+str(self.color[2])+");" 
+			"border: 2px solid rgb("+str(self.colorRGB[0])+","+str(self.colorRGB[1])+","+str(self.colorRGB[2])+");" 
 			"}"
 			)
 
@@ -347,17 +338,46 @@ class Password(Ligne):
 
 	def affichage_sites_lies(self, sites_lies):
 		for site in sites_lies:
-			label = QtWidgets.QLabel()
-				
-			font = QtGui.QFont()
-			font.setPointSize(9)
-			font.setItalic(True)
-			label.setFont(font)
-			label.setObjectName("sites_lies_pwd")
-			label.setText(site)
+			self.label(site)
 
-			self.labels.append(label)
-			self.verticalLayout_groupBox.addWidget(label)
+	def label(self, site):
+		label = QtWidgets.QLabel()
+				
+		font = QtGui.QFont()
+		font.setPointSize(9)
+		font.setItalic(True)
+		label.setFont(font)
+		label.setObjectName("sites_lies_pwd")
+		label.texte = site
+		label.colorRGB = self.getColor_label(site)[0]
+		label.colorHEX = self.getColor_label(site)[1]
+
+		texte= "<font size='5' color="+label.colorHEX+" >•</font> "
+		for lettre in site:
+			texte=texte+lettre
+
+		label.setText(texte)
+
+		self.labels.append(label)
+		self.verticalLayout_groupBox.addWidget(label)
+
+
+	def getColor_label(self, site):
+		"""En paramètre le site, retourne un tableau de couleur [RGB, HEX] (associée à la categorie
+		éventuellement assignées
+		"""
+		requete = "SELECT categorie FROM sites_reconnus WHERE site_web=?"
+		categorie = toliste(bdd_select(requete, (site,)))[0]
+
+		tab = ["rgb(255,255,255)","#fff"]
+
+		for k in range(len(self.objet.cats)):
+			if(self.objet.cats[k].nom == categorie):
+				tab[0] = self.objet.cats[k].colorRGB
+				tab[1] = self.objet.cats[k].colorHEX
+		return(tab)
+
+
 
 	def suppression_bdd(self):
 		requete = "DELETE FROM mdps WHERE mdp=?"
@@ -480,6 +500,7 @@ class ClasseGestion(Ui_fenetreGestion):
 		    if conditions:
 		        self.ajouter_password()
 
+
 	def afficher_pwds(self):
 		requete= 'SELECT mdp FROM mdps'
 		tab = bdd_select(requete)
@@ -487,6 +508,7 @@ class ClasseGestion(Ui_fenetreGestion):
 		if tab:
 		    for k in range(len(tab)):
 		        self.ajouter_ligne_pwd(k, tab[k][0])
+
 
 	def ajouter_password(self):
 		requete = "INSERT INTO mdps (mdp) VALUES(?)"
