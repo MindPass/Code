@@ -1,0 +1,3 @@
+import hashlib
+
+help(hashlib)

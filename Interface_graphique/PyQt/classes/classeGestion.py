@@ -214,7 +214,7 @@ class Ligne(object):
 
 		self.ligne.addWidget(self.groupBox)
 		self.ligne.addWidget(self.pushButton)
-		self.ligne.setStretch(0, 3)
+		self.ligne.setStretch(0, 20)
 		self.ligne.setStretch(1, 1)
 
 
@@ -255,6 +255,7 @@ class Categorie(Ligne):
 		# On exécute Ligne.__init__()
 		super().__init__(position, nom, sites_lies, objet)
 		# On ajoute d'autres attributs/propriétés
+		self.ligne.setObjectName("ligne_categorie")
 		self.groupBox.setObjectName("groupBox_cat")
 		self.groupBox.setTitle(nom)
 		self.pushButton.setObjectName("pushButton_cat")
@@ -316,6 +317,7 @@ class Password(Ligne):
 
 	def __init__(self, position, nom, sites_lies, objet):
 		super().__init__(position, nom, sites_lies, objet)
+		self.ligne.setObjectName("ligne_pwd")
 		self.groupBox.setObjectName("groupBox_pwd")
 		self.groupBox.setTitle(nom)
 		self.pushButton.setObjectName("pushButton_pwd")
