@@ -47,18 +47,18 @@ QLineEdit {
 	border: solid 3px white;
 }
 
- QPushButton {
+ QPushButton#pushButton_pwd, QPushButton#pushButton_cat {
      background-color: transparent;
      border: none;
-	 image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/croix_757575.svg&quot;);
+	 image: url(&quot;../ressources/croix_757575.svg&quot;);
  }
 
- QPushButton:hover {
-	 image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/croix_929292.svg&quot;);
+ QPushButton:hover#pushButton_pwd, QPushButton#pushButton_cat {
+	 image: url(&quot;../ressources/croix_929292.svg&quot;);
  }
 
- QPushButton:pressed {
-	 image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/croix_575757.svg&quot;);
+ QPushButton:pressed#pushButton_pwd,  QPushButton:pressed#pushButton_cat {
+	 image: url(&quot;../ressources/croix_575757.svg&quot;);
  }
 
 QScrollArea {
@@ -76,12 +76,12 @@ QGroupBox {
                                       stop: 0 transparent, stop: 1 rgba(117,117,117,22));
     border: 2px solid gray;
     border-radius: 10px;
-    margin-top: 2.5ex; /* leave space at the top for the title */
+    margin-top: 2.5ex;
 }
 
 QGroupBox::title {
     subcontrol-origin: margin;
-    subcontrol-position: top center; /* position at the top center */
+    subcontrol-position: top center;
     padding: 0 10px;
 	color: #757575;
 	font-weight: bold;
@@ -272,7 +272,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>623</width>
+             <width>621</width>
              <height>797</height>
             </rect>
            </property>
@@ -364,7 +364,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>261</width>
+             <width>263</width>
              <height>701</height>
             </rect>
            </property>
