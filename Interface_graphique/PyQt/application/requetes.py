@@ -49,6 +49,3 @@ def toliste(tab):
 	for k in range(len(tab)):
 		l.append(tab[k][0])
 	return(l)
-
-requete = "SELECT site_web, mdp FROM sites_reconnus WHERE categorie=?"
-print(toliste(bdd_select(requete, ("4",))))

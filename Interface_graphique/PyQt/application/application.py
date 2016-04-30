@@ -41,12 +41,11 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
 
     premiere_fenetre = QtWidgets.QMainWindow()
-    objet_accueil = Accueil(premiere_fenetre)
-
     deuxieme_fenetre = QtWidgets.QMainWindow()
-    objet_progression = Progression(deuxieme_fenetre)
-
     troisieme_fenetre = QtWidgets.QMainWindow()
+
+    objet_accueil = Accueil(premiere_fenetre)
+    objet_progression = Progression(deuxieme_fenetre)
     objet_gestion = Gestion(troisieme_fenetre)
 
     sys.exit(app.exec_())
