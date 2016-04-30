@@ -202,6 +202,10 @@ class Ligne(object):
 
 		self.ligne = QtWidgets.QHBoxLayout()
 		self.pushButton = QtWidgets.QPushButton()
+
+		self.pushButton.setMinimumSize(QtCore.QSize(20, 20))
+		self.pushButton.setMaximumSize(QtCore.QSize(20, 20))
+
 		self.groupBox = QtWidgets.QGroupBox()
 		self.labels = [] # contiendra la liste des labels (noms des sites liés)
 		self.groupBox.setGeometry(QtCore.QRect(20, 50, 91, 50))
