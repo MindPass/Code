@@ -1,5 +1,5 @@
 import sqlite3
-bdd = "C:/Users\Yassou\Code\Traitement_mails"
+bdd = "../Traitement_mails"
 
 def bdd_update(requete, valeurs): 
 	conn = sqlite3.connect(bdd)
