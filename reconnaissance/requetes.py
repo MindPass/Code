@@ -1,5 +1,4 @@
 import sqlite3
-import os
 bdd= "../Traitement_mails/bdd.sq3"
 
 def bdd_update(requete, valeurs): 
