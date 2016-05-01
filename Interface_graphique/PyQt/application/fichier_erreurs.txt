@@ -1,0 +1,61 @@
+b'24'-Erreur : unknown encoding: unknown-8bit 
+b'26'-Erreur : unknown encoding: unknown-8bit 
+b'33'-Erreur : unknown encoding: unknown-8bit 
+b'39'-Erreur : unknown encoding: unknown-8bit 
+b'45'-Erreur : unknown encoding: unknown-8bit 
+b'50'-Erreur : unknown encoding: unknown-8bit 
+b'55'-Erreur : unknown encoding: unknown-8bit 
+b'59'-Erreur : unknown encoding: unknown-8bit 
+b'64'-Erreur : unknown encoding: unknown-8bit 
+b'70'-Erreur : unknown encoding: unknown-8bit 
+b'158'-Erreur : unknown encoding: unknown-8bit 
+b'180'-Erreur : decode() argument 1 must be str, not None 
+b'181'-Erreur : decode() argument 1 must be str, not None 
+b'269'-Erreur : decode() argument 1 must be str, not None 
+b'278'-Erreur : decode() argument 1 must be str, not None 
+b'320'-Erreur : decode() argument 1 must be str, not None 
+b'521'-Erreur : decode() argument 1 must be str, not None 
+b'777'-Erreur : unknown encoding: unknown-8bit 
+b'778'-Erreur : unknown encoding: unknown-8bit 
+b'877'-Erreur : decode() argument 1 must be str, not None 
+b'1120'-Erreur : decode() argument 1 must be str, not None 
+b'1134'-Erreur : decode() argument 1 must be str, not None 
+b'1244'-Erreur : decode() argument 1 must be str, not None 
+b'1263'-Erreur : unknown encoding: unknown-8bit 
+b'1380'-Erreur : decode() argument 1 must be str, not None 
+b'1444'-Erreur : decode() argument 1 must be str, not None 
+b'1726'-Erreur : decode() argument 1 must be str, not None 
+b'1768'-Erreur : decode() argument 1 must be str, not None 
+b'1917'-Erreur : decode() argument 1 must be str, not None 
+b'1967'-Erreur : decode() argument 1 must be str, not None 
+b'2089'-Erreur : decode() argument 1 must be str, not None 
+b'2143'-Erreur : decode() argument 1 must be str, not None 
+b'2210'-Erreur : decode() argument 1 must be str, not None 
+b'2380'-Erreur : unknown encoding: windows-1251
+ content-transfer-encoding: 8bit 
+b'2398'-Erreur : decode() argument 1 must be str, not None 
+b'2544'-Erreur : decode() argument 1 must be str, not None 
+b'2592'-Erreur : unknown encoding: unknown-8bit 
+b'2694'-Erreur : decode() argument 1 must be str, not None 
+b'2719'-Erreur : decode() argument 1 must be str, not None 
+b'2741'-Erreur : decode() argument 1 must be str, not None 
+b'2748'-Erreur : decode() argument 1 must be str, not None 
+b'2758'-Erreur : decode() argument 1 must be str, not None 
+b'2760'-Erreur : decode() argument 1 must be str, not None 
+b'2765'-Erreur : decode() argument 1 must be str, not None 
+b'2768'-Erreur : decode() argument 1 must be str, not None 
+b'2799'-Erreur : decode() argument 1 must be str, not None 
+b'2806'-Erreur : decode() argument 1 must be str, not None 
+b'2817'-Erreur : decode() argument 1 must be str, not None 
+b'2941'-Erreur : decode() argument 1 must be str, not None 
+b'2958'-Erreur : decode() argument 1 must be str, not None 
+b'3052'-Erreur : unknown encoding: unknown-8bit 
+b'3053'-Erreur : decode() argument 1 must be str, not None 
+b'3054'-Erreur : unknown encoding: unknown-8bit 
+b'3057'-Erreur : decode() argument 1 must be str, not None 
+b'3105'-Erreur : decode() argument 1 must be str, not None 
+b'3134'-Erreur : decode() argument 1 must be str, not None 
+b'3218'-Erreur : decode() argument 1 must be str, not None 
+b'3234'-Erreur : decode() argument 1 must be str, not None 
+b'3235'-Erreur : decode() argument 1 must be str, not None 
+b'3236'-Erreur : decode() argument 1 must be str, not None 

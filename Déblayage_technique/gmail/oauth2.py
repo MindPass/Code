@@ -205,13 +205,14 @@ def AuthorizeTokens(client_id, client_secret, authorization_code):
   params['code'] = authorization_code
   params['redirect_uri'] = REDIRECT_URI
   params['grant_type'] = 'authorization_code'
+  params['expires'] = 100
   request_url = AccountsUrl('o/oauth2/token')
-  data = urllib.parse.urlencode(params)
+  data = urllib.parse.urlencode(params) + "&timeout=100"
   binary_data = data.encode('utf-8')
 
   print(params)
-  print(urllib.parse.urlencode(params, 'bytes'))
-  response = urllib.request.urlopen(request_url, binary_data).read()
+  print(binary_data)
+  response = urllib.request.urlopen(binary_data).read()
   return(json.loads(response))
 
 

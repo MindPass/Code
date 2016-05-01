@@ -14,6 +14,7 @@ url=GeneratePermissionUrl(client_id, scope='https://mail.google.com/')
 print(url)
 
 print("Autoriser la recherche dans vos mails.") #Récupérer l'authcode
+#auth_code = input("Rentrez le code fourni par google"
 auth_code="4/G9VdvC6trIxSdF9DmLZuCTq8-sTskXgO9ItzQ2yUx5w"
 resultat=str(AuthorizeTokens(client_id, client_secret,auth_code))
 """ resultat vaut: {u'access_token': u'ya29.CjHPAvnOH17P3g7UPuacy3vVmaV_spffEzVlEAUWBf6_7ZAAUacdJex3xC7n-Z4qShJ7',
