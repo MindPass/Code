@@ -47,6 +47,20 @@ QLineEdit {
 	border: solid 3px white;
 }
 
+QPushButton#pushButton_ajout_site {
+     background-color: transparent;
+     border: none;
+	 image: url(&quot;../ressources/check.svg&quot;);
+ }
+
+QPushButton:hover#pushButton_ajout_site {
+	 image: url(&quot;../ressources/check-vertclair.svg&quot;);
+ }
+
+ QPushButton:pressed#pushButton_ajout_site {
+	 image: url(&quot;../ressources/check-vertfonce.svg&quot;);
+ }
+
 QPushButton#pushButton_pwd, QPushButton#pushButton_cat {
      background-color: transparent;
      border: none;
@@ -89,11 +103,18 @@ QGroupBox::title {
 
 QGroupBox &gt; QLabel {
 	color: rgba(255,255,255,200);
+}
+
+QVBoxLayout &gt; QHBoxLayout#libelles &gt; QLabel {
+	color: white;
 }</string>
   </property>
   <widget class="QWidget" name="corps_gestion">
    <property name="enabled">
     <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
@@ -140,8 +161,8 @@ QGroupBox &gt; QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>250</width>
-             <height>752</height>
+             <width>263</width>
+             <height>701</height>
             </rect>
            </property>
            <property name="minimumSize">
@@ -155,7 +176,7 @@ QGroupBox &gt; QLabel {
              <number>14</number>
             </property>
             <item>
-             <layout class="QHBoxLayout" name="ligne_categorie" stretch="20,1">
+             <layout class="QHBoxLayout" name="ligne_categorie" stretch="20,3">
               <item>
                <widget class="QGroupBox" name="groupBox_2">
                 <property name="font">
@@ -193,20 +214,43 @@ QGroupBox &gt; QLabel {
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_cat">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>36</width>
-                  <height>36</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
+               <layout class="QVBoxLayout" name="verticalLayout_9">
+                <item>
+                 <widget class="QPushButton" name="pushButton_cat">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
               </item>
              </layout>
             </item>
@@ -235,9 +279,15 @@ QGroupBox &gt; QLabel {
       <widget class="QWidget" name="verticalLayoutWidget_2">
        <layout class="QVBoxLayout" name="Sites" stretch="1,20,1">
         <item>
-         <layout class="QHBoxLayout" name="intitule">
+         <layout class="QHBoxLayout" name="libelles">
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="libelle_site">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Site</string>
             </property>
@@ -247,7 +297,13 @@ QGroupBox &gt; QLabel {
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="libelle_id">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Identifiant</string>
             </property>
@@ -257,7 +313,13 @@ QGroupBox &gt; QLabel {
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="libelle_pwd">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Mot de Passe</string>
             </property>
@@ -267,7 +329,13 @@ QGroupBox &gt; QLabel {
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="libelle_categorie">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Catégorie</string>
             </property>
@@ -319,8 +387,8 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>767</width>
-             <height>746</height>
+             <width>621</width>
+             <height>703</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout">
@@ -374,16 +442,42 @@ QLabel {
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="ajout_site" stretch="1,1">
+         <layout class="QHBoxLayout" name="ajout_site" stretch="4,10,1,3">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_ajout_site"/>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_ajout_site">
             <property name="text">
-             <string>Ajouter</string>
+             <string/>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
@@ -428,8 +522,8 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>218</width>
-             <height>769</height>
+             <width>274</width>
+             <height>701</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -437,7 +531,7 @@ QLabel {
              <number>14</number>
             </property>
             <item>
-             <layout class="QHBoxLayout" name="ligne_pwd" stretch="20,1">
+             <layout class="QHBoxLayout" name="ligne_pwd" stretch="20,5">
               <item>
                <widget class="QGroupBox" name="groupBox">
                 <property name="font">
@@ -475,26 +569,43 @@ QLabel {
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_pwd">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>42</width>
-                  <height>42</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>42</width>
-                  <height>42</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QPushButton" name="pushButton_pwd">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
               </item>
              </layout>
             </item>
@@ -530,7 +641,7 @@ QLabel {
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>38</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAide">
@@ -647,10 +758,8 @@ QLabel {
  </widget>
  <tabstops>
   <tabstop>identifiant</tabstop>
-  <tabstop>pushButton_cat</tabstop>
   <tabstop>scrollArea_cat</tabstop>
   <tabstop>ajouter_cat</tabstop>
-  <tabstop>pushButton_pwd</tabstop>
   <tabstop>scrollArea_pwd</tabstop>
   <tabstop>ajouter_pwd</tabstop>
  </tabstops>
