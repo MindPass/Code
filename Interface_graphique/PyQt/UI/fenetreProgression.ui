@@ -37,11 +37,11 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#fenetreProgression {
-	background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));
+  background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));
 }
 
 QSlider, QLabel, QVBoxLayout, QGridLayout {
-	background: transparent;
+  background: transparent;
 }
 
 QSlider::groove:horizontal {
@@ -99,10 +99,6 @@ QSlider::handle:horizontal:disabled {
 background: #eee;
 border: 1px solid #aaa;
 border-radius: 7px;
-}
-
-QSlider {
-display: none;
 }</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">

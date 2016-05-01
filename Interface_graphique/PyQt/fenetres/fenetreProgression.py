@@ -82,11 +82,7 @@ class Ui_fenetreProgression(object):
 "background: #eee;\n"
 "border: 1px solid #aaa;\n"
 "border-radius: 7px;\n"
-"}\n"
-"\n"
-"QSlider {\n"
-"display: none;\n"
-"}")
+"}\n")
         self.verticalLayoutWidget = QtWidgets.QWidget(fenetreProgression)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 20, 721, 588))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
@@ -107,6 +103,9 @@ class Ui_fenetreProgression(object):
         self.horizontalSlider.setSizePolicy(sizePolicy)
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider.setObjectName("horizontalSlider")
+        ##### A GARDER - debut
+        self.horizontalSlider.valueChanged[int].connect(self.changeValue)
+        ##### A GARDER - fin
         self.gridLayout.addWidget(self.horizontalSlider, 2, 0, 1, 1)
         self.progressBar = QtWidgets.QProgressBar(self.verticalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
@@ -130,7 +129,7 @@ class Ui_fenetreProgression(object):
         self.gridLayout.addWidget(self.progressBar, 0, 0, 1, 1)
         self.imageDefil = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.imageDefil.setText("")
-        self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub1.svg"))
+        self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub2.svg"))
         self.imageDefil.setAlignment(QtCore.Qt.AlignCenter)
         self.imageDefil.setObjectName("imageDefil")
         self.gridLayout.addWidget(self.imageDefil, 1, 0, 1, 1)
@@ -155,6 +154,18 @@ class Ui_fenetreProgression(object):
         self.progressBar.setFormat(_translate("fenetreProgression", "%p%"))
         self.bouton_page_suiv.setText(_translate("fenetreProgression", "Suivant"))
 
+    ##### A GARDER - debut
+    def changeValue(self, value):
+
+        if value >= 0 and value < 25:
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub2.svg"))
+        elif value >=25 and value < 50:
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub1.svg"))
+        elif value >= 50 and value < 75:
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Zeichen_123.svg"))
+        else:
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/mute.png"))
+    ##### A GARDER - fin
 
 if __name__ == "__main__":
     import sys
@@ -164,4 +175,3 @@ if __name__ == "__main__":
     ui.setupUi(fenetreProgression)
     fenetreProgression.show()
     sys.exit(app.exec_())
-
