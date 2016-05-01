@@ -150,13 +150,17 @@ class Ui_fenetreGestion(object):
 "    image: url(\"../ressources/icones/derouler.svg\");\n"
 "}\n"
 "\n"
+"\n"
+"\n"
 "QComboBox::up-arrow {\n"
-"    image: url(\"../ressources/icones/enrouler.svg\");\n"
+"    image: url(\"D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/enrouler.svg\");\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on { /* shift the arrow when popup is open */\n"
-"    top: 1px;\n"
+"    image: url(\"../ressources/icones/enrouler.svg\");\n"
+"    /*top: 1px;\n"
 "    left: 1px;\n"
+"*/\n"
 "}\n"
 "\n"
 "/* perso test : remplacer par D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/ */")
@@ -176,6 +180,7 @@ class Ui_fenetreGestion(object):
         self.Categories.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.Categories.setObjectName("Categories")
         self.titre_cat = QtWidgets.QLabel(self.layoutWidget)
+        self.titre_cat.setMinimumSize(QtCore.QSize(210, 0))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.titre_cat.setFont(font)
@@ -188,7 +193,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_cat.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_cat.setObjectName("scrollArea_cat")
         self.scrollAreaWidgetContents_cat = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 270, 701))
+        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 250, 667))
         self.scrollAreaWidgetContents_cat.setMinimumSize(QtCore.QSize(250, 0))
         self.scrollAreaWidgetContents_cat.setObjectName("scrollAreaWidgetContents_cat")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_cat)
@@ -266,7 +271,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_sites.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_sites.setObjectName("scrollArea_sites")
         self.scrollAreaWidgetContents_sites = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 617, 703))
+        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 711, 703))
         self.scrollAreaWidgetContents_sites.setObjectName("scrollAreaWidgetContents_sites")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_sites)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -298,6 +303,7 @@ class Ui_fenetreGestion(object):
         self.Passwords = QtWidgets.QVBoxLayout(self.layoutWidget1)
         self.Passwords.setObjectName("Passwords")
         self.titre_pwd = QtWidgets.QLabel(self.layoutWidget1)
+        self.titre_pwd.setMinimumSize(QtCore.QSize(210, 0))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.titre_pwd.setFont(font)
@@ -311,7 +317,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_pwd.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_pwd.setObjectName("scrollArea_pwd")
         self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 271, 701))
+        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 224, 701))
         self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_pwd")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
         self.verticalLayout_2.setContentsMargins(-1, -1, 14, -1)
