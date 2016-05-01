@@ -44,29 +44,29 @@ class Ui_fenetreGestion(object):
 "QPushButton#pushButton_ajout_site {\n"
 "     background-color: transparent;\n"
 "     border: none;\n"
-"     image: url(\"../ressources/check.svg\");\n"
+"     image: url(\"../ressources/icones/check.svg\");\n"
 " }\n"
 "\n"
 "QPushButton:hover#pushButton_ajout_site {\n"
-"     image: url(\"../ressources/check-vertclair.svg\");\n"
+"     image: url(\"../ressources/icones/check-vertclair.svg\");\n"
 " }\n"
 "\n"
 " QPushButton:pressed#pushButton_ajout_site {\n"
-"     image: url(\"../ressources/check-vertfonce.svg\");\n"
+"     image: url(\"../ressources/icones/check-vertfonce.svg\");\n"
 " }\n"
 "\n"
 "QPushButton#pushButton_pwd, QPushButton#pushButton_cat {\n"
 "     background-color: transparent;\n"
 "     border: none;\n"
-"     image: url(\"../ressources/croix_757575.svg\");\n"
+"     image: url(\"../ressources/icones/croix_757575.svg\");\n"
 " }\n"
 "\n"
 "QPushButton:hover#pushButton_pwd, QPushButton:hover#pushButton_cat {\n"
-"     image: url(\"../ressources/croix_929292.svg\");\n"
+"     image: url(\"../ressources/icones/croix_929292.svg\");\n"
 " }\n"
 "\n"
 " QPushButton:pressed#pushButton_pwd, QPushButton:pressed#pushButton_cat {\n"
-"     image: url(\"../ressources/croix_575757.svg\");\n"
+"     image: url(\"../ressources/icones/croix_575757.svg\");\n"
 " }\n"
 "\n"
 "QScrollArea {\n"
@@ -101,7 +101,65 @@ class Ui_fenetreGestion(object):
 "\n"
 "QVBoxLayout > QHBoxLayout#libelles > QLabel {\n"
 "    color: white;\n"
-"}")
+"}\n"
+"\n"
+"\n"
+"\n"
+"QComboBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    padding: 1px 18px 1px 3px;\n"
+"    min-width: 6em;\n"
+"}\n"
+"\n"
+"QComboBox:editable {\n"
+"    background: white;\n"
+"}\n"
+"\n"
+"QComboBox:!editable, QComboBox::drop-down:editable {\n"
+"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,\n"
+"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
+"}\n"
+"\n"
+"/* QComboBox gets the \"on\" state when the popup is open */\n"
+"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
+"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                stop: 0 #D3D3D3, stop: 0.4 #D8D8D8,\n"
+"                                stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);\n"
+"}\n"
+"\n"
+"QComboBox:on { /* shift the text when the popup opens */\n"
+"    padding-top: 3px;\n"
+"    padding-left: 4px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 15px;\n"
+"\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid; /* just a single line */\n"
+"    border-top-right-radius: 3px; /* same radius as the QComboBox */\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(\"../ressources/icones/derouler.svg\");\n"
+"}\n"
+"\n"
+"QComboBox::up-arrow {\n"
+"    image: url(\"../ressources/icones/enrouler.svg\");\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow:on { /* shift the arrow when popup is open */\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}\n"
+"\n"
+"/* perso test : remplacer par D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/ */")
         self.corps_gestion = QtWidgets.QWidget(fenetreGestion)
         self.corps_gestion.setEnabled(True)
         self.corps_gestion.setStyleSheet("")
@@ -130,7 +188,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_cat.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_cat.setObjectName("scrollArea_cat")
         self.scrollAreaWidgetContents_cat = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 263, 701))
+        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 270, 701))
         self.scrollAreaWidgetContents_cat.setMinimumSize(QtCore.QSize(250, 0))
         self.scrollAreaWidgetContents_cat.setObjectName("scrollAreaWidgetContents_cat")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_cat)
@@ -208,7 +266,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_sites.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_sites.setObjectName("scrollArea_sites")
         self.scrollAreaWidgetContents_sites = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 621, 703))
+        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 617, 703))
         self.scrollAreaWidgetContents_sites.setObjectName("scrollAreaWidgetContents_sites")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_sites)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -253,7 +311,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_pwd.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_pwd.setObjectName("scrollArea_pwd")
         self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 274, 701))
+        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 271, 701))
         self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_pwd")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
         self.verticalLayout_2.setContentsMargins(-1, -1, 14, -1)
@@ -286,6 +344,9 @@ class Ui_fenetreGestion(object):
         self.actionFermer = QtWidgets.QAction(fenetreGestion)
         self.actionFermer.setObjectName("actionFermer")
         self.actionPreferences = QtWidgets.QAction(fenetreGestion)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../ressources/icones/paramètres.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionPreferences.setIcon(icon1)
         self.actionPreferences.setObjectName("actionPreferences")
         self.actionObtenir_de_l_aide = QtWidgets.QAction(fenetreGestion)
         self.actionObtenir_de_l_aide.setObjectName("actionObtenir_de_l_aide")

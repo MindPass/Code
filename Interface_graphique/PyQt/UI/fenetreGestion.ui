@@ -153,11 +153,11 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/derouler.svg&quot;);
+    image: url(&quot;../ressources/icones/derouler.svg&quot;);
 }
 
 QComboBox::up-arrow {
-    image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/enrouler.svg&quot;);
+    image: url(&quot;../ressources/icones/enrouler.svg&quot;);
 }
 
 QComboBox::down-arrow:on { /* shift the arrow when popup is open */
