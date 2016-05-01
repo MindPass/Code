@@ -118,7 +118,7 @@ class ClasseProgression(Ui_fenetreProgression):
 
         time.sleep(10)
         
-        creation_tables(nom_table)
+        creation_tables(nom_table, identifiants[0])
         self.fenetre_suivante()
         
 
