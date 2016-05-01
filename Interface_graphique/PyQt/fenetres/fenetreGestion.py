@@ -112,21 +112,8 @@ class Ui_fenetreGestion(object):
 "    min-width: 6em;\n"
 "}\n"
 "\n"
-"QComboBox:editable {\n"
-"    background: white;\n"
-"}\n"
-"\n"
-"QComboBox:!editable, QComboBox::drop-down:editable {\n"
-"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,\n"
-"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
-"}\n"
-"\n"
-"/* QComboBox gets the \"on\" state when the popup is open */\n"
-"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
-"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                stop: 0 #D3D3D3, stop: 0.4 #D8D8D8,\n"
-"                                stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);\n"
+"QStringList, QString, QStringView, QListView {\n"
+"    background-color: white;\n"
 "}\n"
 "\n"
 "QComboBox:on { /* shift the text when the popup opens */\n"
@@ -138,9 +125,9 @@ class Ui_fenetreGestion(object):
 "    subcontrol-origin: padding;\n"
 "    subcontrol-position: top right;\n"
 "    width: 15px;\n"
-"\n"
-"    border-left-width: 1px;\n"
-"    border-left-color: darkgray;\n"
+"    padding: 1px 5px 0px 0px;\n"
+"    border-left-width: 2px;\n"
+"    border-left-color: #757575;\n"
 "    border-left-style: solid; /* just a single line */\n"
 "    border-top-right-radius: 3px; /* same radius as the QComboBox */\n"
 "    border-bottom-right-radius: 3px;\n"
@@ -150,17 +137,8 @@ class Ui_fenetreGestion(object):
 "    image: url(\"../ressources/icones/derouler.svg\");\n"
 "}\n"
 "\n"
-"\n"
-"\n"
-"QComboBox::up-arrow {\n"
-"    image: url(\"D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/enrouler.svg\");\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow:on { /* shift the arrow when popup is open */\n"
+"QComboBox::down-arrow:on {\n"
 "    image: url(\"../ressources/icones/enrouler.svg\");\n"
-"    /*top: 1px;\n"
-"    left: 1px;\n"
-"*/\n"
 "}\n"
 "\n"
 "/* perso test : remplacer par D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/ */")
@@ -271,7 +249,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_sites.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_sites.setObjectName("scrollArea_sites")
         self.scrollAreaWidgetContents_sites = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 711, 703))
+        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 715, 703))
         self.scrollAreaWidgetContents_sites.setObjectName("scrollAreaWidgetContents_sites")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_sites)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -317,7 +295,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_pwd.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_pwd.setObjectName("scrollArea_pwd")
         self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 224, 701))
+        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 222, 701))
         self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_pwd")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
         self.verticalLayout_2.setContentsMargins(-1, -1, 14, -1)
@@ -382,8 +360,8 @@ class Ui_fenetreGestion(object):
         self.menuChanger_de_langue.addAction(self.actionEnglish)
         self.menuOutils.addAction(self.menuChanger_de_langue.menuAction())
         self.menuOutils.addSeparator()
-        self.menuOutils.addAction(self.actionPreferences)
         self.menuOutils.addAction(self.menuConfidentialite.menuAction())
+        self.menuOutils.addAction(self.actionPreferences)
         self.menubar.addAction(self.menuFichier.menuAction())
         self.menubar.addAction(self.menuOutils.menuAction())
         self.menubar.addAction(self.menuAide.menuAction())
@@ -406,7 +384,7 @@ class Ui_fenetreGestion(object):
         self.menuAide.setTitle(_translate("fenetreGestion", "Aide"))
         self.menuFichier.setTitle(_translate("fenetreGestion", "Fichier"))
         self.menuOutils.setTitle(_translate("fenetreGestion", "Outils"))
-        self.menuConfidentialite.setTitle(_translate("fenetreGestion", "Confidentialité"))
+        self.menuConfidentialite.setTitle(_translate("fenetreGestion", "Affichage"))
         self.menuChanger_de_langue.setTitle(_translate("fenetreGestion", "Changer de langue"))
         self.actionFermer.setText(_translate("fenetreGestion", "Fermer"))
         self.actionFermer.setShortcut(_translate("fenetreGestion", "Alt+F4"))
