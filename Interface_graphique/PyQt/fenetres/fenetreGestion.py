@@ -325,8 +325,6 @@ class Ui_fenetreGestion(object):
         self.menuChanger_de_langue = QtWidgets.QMenu(self.menuOutils)
         self.menuChanger_de_langue.setObjectName("menuChanger_de_langue")
         fenetreGestion.setMenuBar(self.menubar)
-        self.actionFermer = QtWidgets.QAction(fenetreGestion)
-        self.actionFermer.setObjectName("actionFermer")
         self.actionPreferences = QtWidgets.QAction(fenetreGestion)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("../ressources/icones/paramètres.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -350,6 +348,8 @@ class Ui_fenetreGestion(object):
         self.actionEnglish = QtWidgets.QAction(fenetreGestion)
         self.actionEnglish.setCheckable(True)
         self.actionEnglish.setObjectName("actionEnglish")
+        self.actionFermer = QtWidgets.QAction(fenetreGestion)
+        self.actionFermer.setObjectName("actionFermer")
         self.menuAide.addAction(self.actionObtenir_de_l_aide)
         self.menuAide.addSeparator()
         self.menuAide.addAction(self.actionA_propos_de_MindPass)
@@ -367,6 +367,7 @@ class Ui_fenetreGestion(object):
         self.menubar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(fenetreGestion)
+        self.menubar.triggered['QAction*'].connect(fenetreGestion.close)
         QtCore.QMetaObject.connectSlotsByName(fenetreGestion)
         fenetreGestion.setTabOrder(self.scrollArea_cat, self.ajouter_cat)
         fenetreGestion.setTabOrder(self.ajouter_cat, self.scrollArea_pwd)
@@ -386,8 +387,6 @@ class Ui_fenetreGestion(object):
         self.menuOutils.setTitle(_translate("fenetreGestion", "Outils"))
         self.menuConfidentialite.setTitle(_translate("fenetreGestion", "Affichage"))
         self.menuChanger_de_langue.setTitle(_translate("fenetreGestion", "Changer de langue"))
-        self.actionFermer.setText(_translate("fenetreGestion", "Fermer"))
-        self.actionFermer.setShortcut(_translate("fenetreGestion", "Alt+F4"))
         self.actionPreferences.setText(_translate("fenetreGestion", "Préférences"))
         self.actionObtenir_de_l_aide.setText(_translate("fenetreGestion", "Obtenir de l\'aide"))
         self.actionObtenir_de_l_aide.setShortcut(_translate("fenetreGestion", "F1"))
@@ -398,6 +397,8 @@ class Ui_fenetreGestion(object):
         self.actionMode_complet.setToolTip(_translate("fenetreGestion", "Affiche tous vos mots de passe de façon explicite à l\'écran"))
         self.actionFrancais.setText(_translate("fenetreGestion", "Français"))
         self.actionEnglish.setText(_translate("fenetreGestion", "English"))
+        self.actionFermer.setText(_translate("fenetreGestion", "Fermer"))
+        self.actionFermer.setShortcut(_translate("fenetreGestion", "Alt+F4"))
 
 
 if __name__ == "__main__":

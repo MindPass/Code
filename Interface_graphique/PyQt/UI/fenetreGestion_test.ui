@@ -753,14 +753,6 @@ QLabel {
    <addaction name="menuOutils"/>
    <addaction name="menuAide"/>
   </widget>
-  <action name="actionFermer">
-   <property name="text">
-    <string>Fermer</string>
-   </property>
-   <property name="shortcut">
-    <string>Alt+F4</string>
-   </property>
-  </action>
   <action name="actionPreferences">
    <property name="icon">
     <iconset>
@@ -827,6 +819,14 @@ QLabel {
     <string>English</string>
    </property>
   </action>
+  <action name="actionFermer">
+   <property name="text">
+    <string>Fermer</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+F4</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>identifiant</tabstop>
@@ -836,5 +836,22 @@ QLabel {
   <tabstop>ajouter_pwd</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>menubar</sender>
+   <signal>triggered(QAction*)</signal>
+   <receiver>fenetreGestion</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1190</x>
+     <y>853</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
