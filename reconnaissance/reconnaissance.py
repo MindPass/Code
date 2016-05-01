@@ -5,10 +5,8 @@ import listes as li
 from requetes import *
 import re
 
-output = "output.sq3"
-conn = sq3.connect(output)
+conn = sq3.connect("../Traitement_mails/bdd.sq3")
 curr = conn.cursor()
-curr.execute ("CREATE TABLE IF NOT EXISTS expediteurs (expediteur TEXT UNIQUE, PRIMARY KEY ('expediteur'))")
 
 
 requete = "SELECT DISTINCT expediteur FROM mindpasstest_laposte WHERE sujet LIKE "
@@ -38,7 +36,7 @@ sites+= re.findall(regex_expediteur, valeurs[len(rows)-1])
 site= set(sites)
 liste_site= list(site)
 print(liste_site)
-request= "INSERT OR IGNORE INTO expediteurs (expediteur) VALUES "
+request= "INSERT OR IGNORE INTO sites_reconnus (expediteur) VALUES "
 for i in range (len(site)-1):
     request+="(?)," 
 request+= "(?)"

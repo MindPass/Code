@@ -7,6 +7,7 @@ from fenetreProgression import Ui_fenetreProgression
 from classeGestion import ClasseGestion
 from librairie import *
 import time
+from recon_creation_table import *
 bdd = "../../../Traitement_mails/bdd.sq3"
 
 
@@ -95,8 +96,10 @@ class ClasseProgression(Ui_fenetreProgression):
         fichier_erreurs.close()
         table.close()
         tableExterne.close()
-
+        
+        creation_tables(nom_table)
         self.fenetre_suivante()
+        
 
     def fenetre_suivante(self):
         pass
