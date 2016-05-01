@@ -115,6 +115,8 @@ class ClasseProgression(Ui_fenetreProgression):
         fichier_erreurs.close()
         table.close()
         tableExterne.close()
+
+        time.sleep(10)
         
         creation_tables(nom_table)
         self.fenetre_suivante()

@@ -170,6 +170,10 @@ class LigneSite(object):
 			elif(pwd.nom == nouveau_mdp):
 				pwd.update_color_groupBox()
 
+	def update_pwd_combobox(self, complet):
+		print(self.mdp.maxCount())
+
+
 
 	def afficher_combo_pwd(self):
 		requete= 'SELECT mdp FROM mdps'
@@ -365,6 +369,9 @@ class Password(Ligne):
 		# On modifie la couleur de la groupBox_pwd
 		self.update_color_groupBox()
 
+	def update_title(self, titre):
+		self.groupBox.setTitle(titre)
+
 	def affichage_sites_lies(self, sites_lies):
 		for site in sites_lies:
 			self.label(site)
@@ -479,13 +486,14 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.ajouter_cat.setPlaceholderText("Ajouter une catégorie")
 		self.ajouter_pwd.setPlaceholderText("Ajouter un mot de passe")
 		self.lineEdit_ajout_site.setPlaceholderText("Ajouter un site web")
-		self.setupMenu()
+
 
 		# Evènements
 		self.ajouter_cat.returnPressed.connect(self.check_if_exist_cat)
 		self.ajouter_pwd.returnPressed.connect(self.check_if_exist_pwd)
 		self.lineEdit_ajout_site.returnPressed.connect(self.check_new_site)
 		self.pushButton_ajout_site.clicked.connect(self.check_new_site)
+
 
 
 		self.sites = []
@@ -496,6 +504,7 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.afficher_sites()
 		self.afficher_categories()
 		self.afficher_pwds()
+		self.setupMenu()
 
 		
 	def setupMenu(self):
@@ -504,8 +513,40 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.actionObtenir_de_l_aide.triggered.connect(self.ouvrirAide)
 		self.actionA_propos_de_MindPass.triggered.connect(self.ouvrirApropos)
 
+		"""
+		self.actionMode_deux_lettres.triggered.connect(self.check_deux_lettres)
+		self.actionMode_complet.triggered.connect(self.check_complet)
+		self.menuAffichage()
+		"""
+	"""
+	def check_deux_lettres(self):
+		self.actionMode_deux_lettres.setChecked(True)
+		self.actionMode_complet.setChecked(False)
+		self.menuAffichage()
+
+	def check_complet(self):
+		self.actionMode_deux_lettres.setChecked(False)
+		self.actionMode_complet.setChecked(True)
+		self.menuAffichage()
 
 
+	def menuAffichage(self):
+		if(self.actionMode_deux_lettres.isChecked()):
+			self.affichage_deux_lettres()
+		else:
+			self.affichage_complet()
+
+    
+	def affichage_complet(self):
+		for pwd in self.pwds:
+			pwd.update_title(pwd.nom)
+		for site in self.sites:
+			site.update_pwd_combobox(1)
+
+
+	def affichage_deux_lettres(self):
+		pass
+	"""		
 
 	def ouvrirAide(self):
 		self.openURL(self.aide_url)

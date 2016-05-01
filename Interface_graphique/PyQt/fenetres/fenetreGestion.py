@@ -387,7 +387,7 @@ class Ui_fenetreGestion(object):
         self.menubar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(fenetreGestion)
-        self.menubar.triggered['QAction*'].connect(fenetreGestion.close)
+        self.actionFermer.triggered.connect(fenetreGestion.close)
         QtCore.QMetaObject.connectSlotsByName(fenetreGestion)
         fenetreGestion.setTabOrder(self.scrollArea_cat, self.ajouter_cat)
         fenetreGestion.setTabOrder(self.ajouter_cat, self.scrollArea_pwd)
