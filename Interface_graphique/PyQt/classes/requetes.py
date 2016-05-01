@@ -1,5 +1,9 @@
 import sqlite3
+<<<<<<< HEAD
 bdd = "../../../Traitement_mails/bdd.sq3"
+=======
+bdd = "../Traitement_mails"
+>>>>>>> a8bb09ddc98221ac8e52923d05eb233e3f0868e8
 
 def bdd_update(requete, valeurs): 
 	conn = sqlite3.connect(bdd)

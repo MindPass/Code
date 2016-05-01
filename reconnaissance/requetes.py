@@ -1,5 +1,6 @@
 import sqlite3
-bdd = "../Traitement_mails/bdd.sq3"
+import os
+bdd= "../Traitement_mails/bdd.sq3"
 
 def bdd_update(requete, valeurs): 
 	conn = sqlite3.connect(bdd)
