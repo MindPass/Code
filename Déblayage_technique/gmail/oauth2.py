@@ -206,10 +206,12 @@ def AuthorizeTokens(client_id, client_secret, authorization_code):
   params['redirect_uri'] = REDIRECT_URI
   params['grant_type'] = 'authorization_code'
   request_url = AccountsUrl('o/oauth2/token')
+  data = urllib.parse.urlencode(params)
+  binary_data = data.encode('utf-8')
 
   print(params)
   print(urllib.parse.urlencode(params, 'bytes'))
-  response = urllib.request.urlopen(request_url, urllib.parse.urlencode(params)).read()
+  response = urllib.request.urlopen(request_url, binary_data).read()
   return(json.loads(response))
 
 
@@ -232,9 +234,11 @@ def RefreshToken(client_id, client_secret, refresh_token):
   params['refresh_token'] = refresh_token
   params['grant_type'] = 'refresh_token'
   request_url = AccountsUrl('o/oauth2/token')
+  data = urllib.parse.urlencode(params)
+  binary_data = data.encode('utf-8')
 
   print(request_url)
-  response = urllib.urlopen(request_url, urllib.urlencode(params)).read()
+  response = urllib.urlopen(request_url, binary_data).read()
   return json.loads(response)
 
 

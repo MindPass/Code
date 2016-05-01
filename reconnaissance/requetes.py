@@ -1,5 +1,5 @@
 import sqlite3
-bdd = "C:/Users\Yassou\Code\Traitement_mails"
+bdd = "../Traitement_mails/bdd.sq3"
 
 def bdd_update(requete, valeurs): 
 	conn = sqlite3.connect(bdd)
@@ -10,7 +10,7 @@ def bdd_update(requete, valeurs):
 	conn.close()
 
 def bdd_select(requete, valeurs=None):
-	
+	conn = sqlite3.connect(bdd)
 	cur = conn.cursor()
 
 	if valeurs:
@@ -42,11 +42,4 @@ def bdd_delete(requete, valeurs):
 	conn.commit()
 	cur.close()
 	conn.close()
-
-
-def toliste(tab):
-	l=[]
-	for k in range(len(tab)):
-		l.append(tab[k][0])
-	return(l)
 

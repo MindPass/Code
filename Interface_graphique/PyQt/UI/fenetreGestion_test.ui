@@ -153,16 +153,20 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/derouler.svg&quot;);
+    image: url(&quot;../ressources/icones/derouler.svg&quot;);
 }
+
+
 
 QComboBox::up-arrow {
     image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/enrouler.svg&quot;);
 }
 
 QComboBox::down-arrow:on { /* shift the arrow when popup is open */
-    top: 1px;
+    image: url(&quot;../ressources/icones/enrouler.svg&quot;);
+    /*top: 1px;
     left: 1px;
+*/
 }
 
 /* perso test : remplacer par D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/ */</string>
@@ -190,6 +194,12 @@ QComboBox::down-arrow:on { /* shift the arrow when popup is open */
         </property>
         <item>
          <widget class="QLabel" name="titre_cat">
+          <property name="minimumSize">
+           <size>
+            <width>210</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <pointsize>13</pointsize>
@@ -219,8 +229,8 @@ QComboBox::down-arrow:on { /* shift the arrow when popup is open */
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>270</width>
-             <height>701</height>
+             <width>250</width>
+             <height>667</height>
             </rect>
            </property>
            <property name="minimumSize">
@@ -445,7 +455,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>617</width>
+             <width>711</width>
              <height>703</height>
             </rect>
            </property>
@@ -545,6 +555,12 @@ QLabel {
        <layout class="QVBoxLayout" name="Passwords" stretch="0,0,1">
         <item>
          <widget class="QLabel" name="titre_pwd">
+          <property name="minimumSize">
+           <size>
+            <width>210</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <pointsize>13</pointsize>
@@ -580,7 +596,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>271</width>
+             <width>224</width>
              <height>701</height>
             </rect>
            </property>

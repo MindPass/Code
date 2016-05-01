@@ -18,16 +18,60 @@ class ClasseProgression(Ui_fenetreProgression):
         # self.afficher_messages()  # faire défiler des images
 
         # et se connecter en même temps
-        user_email = identifiants[0] + "@laposte.net"
+        user_email = identifiants[0] #+ "@laposte.net"
         mdp = identifiants[1]
         # à garder pendant le développement
 
         l = user_email.split('@')
-        l[1] = l[1].split('.')[0]
-        nom_table = l[0] + '_' + l[1]  # vaut 'pseudo_laposte'
+        partie2 = l[1].split('.')[0]
+        nom_table = l[0] + '_' + partie2  # vaut 'pseudo_laposte'
 
-        table = Table(bdd, nom_table)
-        tableExterne = TableExterne('imap.laposte.net', user_email, mdp)
+        table = Table(bdd, nom_table) #La table avec le bon nom n'existe pas forcément!
+
+        if l[1]=='free.fr':
+            serv='imap.free.fr'
+            print(serv)
+        elif l[1]=='laposte.net':
+            serv='imap.laposte.net'
+            print(serv)
+        elif l[1]=='neuf.fr':
+            serv='imap.sfr.fr'
+            print(serv)
+        elif l[1]=='bbox.fr':
+            serv='imap4.bbox.fr'
+            print(serv)
+        elif l[1]=='numericable.fr':
+            serv='imap.numericable.fr'
+            print(serv)
+        elif l[1]=='orange.fr':
+            serv='imap.orange.fr'
+            print(serv)
+        elif l[1]=='sfr.fr':
+            serv='imap.sfr.fr'
+            print(serv)
+        elif l[1]=='aol.fr':
+            serv='imap.aol.com'
+            print(serv)
+        elif l[1]=='gmail.com':
+            serv='imap.gmail.com'
+            print(serv)
+        elif l[1]=='outlook.com':
+            serv='imap-mail.outlook.com'
+            print(serv)
+        elif l[1]=='hotmail.com':
+            serv='imap-mail.outlook.com'
+            print(serv)
+        elif l[1]=='hotmail.fr':
+            serv='imap-mail.outlook.com'
+            print(serv)
+        elif l[1]=='live.fr':
+            serv='imap-mail.outlook.com'
+            print(serv)
+        elif l[1]=='yahoo.com':
+            serv='imap.mail.yahoo.com'
+            print(serv)        
+        
+        tableExterne = TableExterne(serv, user_email, mdp)
         fichier_erreurs = open('fichier_erreurs.txt', 'a')
 
         liste_externe_id = tableExterne.liste_id()
