@@ -4,6 +4,7 @@ sys.path.append('../fenetres/')
 
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
+from PyQt5 import QtGui
 from fenetreAccueil import Ui_fenetreAccueil
 
 def print_(arg):
@@ -21,7 +22,7 @@ def print_(arg):
 class ClasseAccueil(Ui_fenetreAccueil):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
-        # modifications supplémentaires
+        self.setupMenu()
         self.lineEdit_mdp.setEchoMode(2) 
         """Le mot de passe est masqué ->utiliser self.lineEdit.text()
         pour récupérer le contenu.
@@ -29,6 +30,23 @@ class ClasseAccueil(Ui_fenetreAccueil):
         # event
         self.lineEdit_mdp.returnPressed.connect(self.check_login)  # Taper sur entrée revient à cliquer
         self.pushButton.clicked.connect(self.check_login)
+
+    def setupMenu(self):
+        self.aide_url = "https://github.com/MindPass/Code/wiki/Aide"
+        self.apropos_url  ="https://github.com/MindPass/Code"
+        self.actionObtenir_de_l_aide.triggered.connect(self.ouvrirAide)
+        self.actionA_propos_de_MindPass.triggered.connect(self.ouvrirApropos)
+
+    def ouvrirAide(self):
+        self.openURL(self.aide_url)
+
+    def ouvrirApropos(self):
+        self.openURL(self.apropos_url)
+
+    def openURL(self, given_url):
+        url = QtCore.QUrl(given_url)
+        if not QtGui.QDesktopServices.openUrl(url):
+            QtGui.QMessageBox.warning(self, 'Open Url', 'Could not open url')
 
 
     def check_login(self):
