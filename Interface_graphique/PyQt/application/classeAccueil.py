@@ -32,13 +32,13 @@ class ClasseAccueil(Ui_fenetreAccueil):
 
 
     def check_login(self):
-        # identifiants = [self.lineEdit_id.displayText(), self.lineEdit_mdp.text()]
-        identifiants = ["mindpasstest", "Verv00rt"]
-        condition = identifiants == ["mindpasstest", "Verv00rt"]
+        identifiants = [self.lineEdit_id.displayText(), self.lineEdit_mdp.text()]
+        #identifiants = ["mindpasstest", "Verv00rt"]
+        #condition = identifiants == ["mindpasstest", "Verv00rt"]
 
-        if condition:
-            self.identifiants = identifiants
-            self.fenetre_suivante()
+        #if condition:
+        self.identifiants = identifiants
+        self.fenetre_suivante()
 
     def fenetre_suivante(self):
         pass
