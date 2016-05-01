@@ -448,6 +448,11 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.ajouter_cat.returnPressed.connect(self.check_if_exist_cat)
 		self.ajouter_pwd.returnPressed.connect(self.check_if_exist_pwd)
 
+		# Evènements
+		self.lineEdit_ajout_site.returnPressed.connect(self.check_new_site)
+		self.pushButton_ajout_site.clicked.connect(self.check_new_site)
+
+
 		self.sites = []
 		self.cats = []
 		self.pwds = []
@@ -457,8 +462,7 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.afficher_categories()
 		self.afficher_pwds()
 
-		#
-		self.pushButton_ajout_site.clicked.connect(self.check_new_site)
+		
 
 
 

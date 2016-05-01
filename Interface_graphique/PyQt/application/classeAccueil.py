@@ -27,7 +27,7 @@ class ClasseAccueil(Ui_fenetreAccueil):
         pour récupérer le contenu.
         """
         # event
-        self.pushButton.setAutoDefault(True)  # Taper sur entrée revient à cliquer
+        self.lineEdit_mdp.returnPressed.connect(self.check_login)  # Taper sur entrée revient à cliquer
         self.pushButton.clicked.connect(self.check_login)
 
 

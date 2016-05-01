@@ -173,6 +173,8 @@ class LigneSite(object):
 		for pwd in result:
 		    if pwd != self.nom_mdp:
 		        self.mdp.addItem(pwd)
+		if(self.nom_mdp != ""):
+			self.mdp.addItem("")
 
 	def afficher_combo_cat(self):
 		requete= 'SELECT nom_categorie FROM categories'
@@ -185,6 +187,8 @@ class LigneSite(object):
 		for cat in result:
 		    if cat != self.nom_cat:
 		        self.categorie.addItem(cat)
+		if(self.nom_cat != ""):
+			self.categorie.addItem("")
 
 class Ligne(object):
 	"""docstring for ligneCategorie
@@ -363,24 +367,26 @@ class Password(Ligne):
 		label.colorRGB = self.getColor_label(site)[0]
 		label.colorHEX = self.getColor_label(site)[1]
 
-		texte = "<font size='5' color="+label.colorHEX+">•</font> "
-		for lettre in site:
-			texte += lettre
-
+		texte = self.create_text_label(label.colorHEX, site)
 		label.setText(texte)
 
 		self.labels.append(label)
 		self.verticalLayout_groupBox.addWidget(label)
 
+	def create_text_label(self, couleur, site):
+		texte = "<font size='5' font-style='' color="+couleur+">•</font> "
+		for lettre in site:
+			texte += lettre
+		return(texte)
+
+
 	def update(self, label, categorie):
+		couleur ="#fff"
 		for k in range(len(self.objet.cats)):
 			if(self.objet.cats[k].nom == categorie):
 				couleur = self.objet.cats[k].colorHEX
 
-		texte ="<font size='5' color="+couleur+">•</font> "
-		for lettre in label.texte:
-			texte += lettre
-
+		texte= self.create_text_label(couleur, label.texte)
 		label.setText(texte)
 
 
@@ -442,6 +448,11 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.ajouter_cat.returnPressed.connect(self.check_if_exist_cat)
 		self.ajouter_pwd.returnPressed.connect(self.check_if_exist_pwd)
 
+		# Evènements
+		self.lineEdit_ajout_site.returnPressed.connect(self.check_new_site)
+		self.pushButton_ajout_site.clicked.connect(self.check_new_site)
+
+
 		self.sites = []
 		self.cats = []
 		self.pwds = []
@@ -451,8 +462,7 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.afficher_categories()
 		self.afficher_pwds()
 
-		#
-		self.pushButton_ajout_site.clicked.connect(self.check_new_site)
+		
 
 
 
