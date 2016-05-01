@@ -637,6 +637,7 @@ class ClasseGestion(Ui_fenetreGestion):
 			bdd_insert(requete, valeurs)
 			self.sites.append(LigneSite(len(self.sites), self.lineEdit_ajout_site.text(), "", "", "", self))
 			self.verticalLayout.addLayout(self.sites[len(self.sites)-1].ligne)
+			self.lineEdit_ajout_site.setText("")
 
 
 if __name__ == "__main__":
