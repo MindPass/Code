@@ -39,7 +39,6 @@ def creation_tables(nom_table):
         valeurs+= list(rows[i])
    
     valeurs+= list(rows[len(rows)-1])
-    print (valeurs)
 
     sites=[]
     regex_expediteur = "<?([A-Za-z0-9]+\.[A-Za-z]{1,5})>?$"
@@ -50,7 +49,7 @@ def creation_tables(nom_table):
 
     site= set(sites)
     liste_site= list(site)
-    print(liste_site)
+    
     request= "INSERT OR IGNORE INTO sites_reconnus (site_web) VALUES "
     for i in range (len(site)-1):
         request+="(?)," 
