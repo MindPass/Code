@@ -505,14 +505,6 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.actionA_propos_de_MindPass.triggered.connect(self.ouvrirApropos)
 
 
-		
-		self.actionA_propos_de_MindPass.setObjectName("actionA_propos_de_MindPass")
-        self.actionMode_deux_lettres = QtWidgets.QAction(fenetreGestion)
-        self.actionMode_deux_lettres.setCheckable(True)
-        self.actionMode_deux_lettres.setObjectName("actionMode_deux_lettres")
-        self.actionMode_complet = QtWidgets.QAction(fenetreGestion)
-        self.actionMode_complet.setCheckable(True)
-        self.actionMode_complet.setChecked(True)
 
 
 	def ouvrirAide(self):
