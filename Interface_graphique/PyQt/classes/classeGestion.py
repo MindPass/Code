@@ -408,7 +408,8 @@ class Password(Ligne):
 
 		colorGroupBox = self.colorHEX
 		if(self.labels != []):
-			colorGroupBox = self.labels[0].colorHEX
+			if(self.labels[0].colorHEX != "#fff"):
+				colorGroupBox = self.labels[0].colorHEX
 			b = 1
 			for label in self.labels:
 				if(label.colorHEX != colorGroupBox):
@@ -478,10 +479,11 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.ajouter_cat.setPlaceholderText("Ajouter une catégorie")
 		self.ajouter_pwd.setPlaceholderText("Ajouter un mot de passe")
 		self.lineEdit_ajout_site.setPlaceholderText("Ajouter un site web")
+		
+		self.setupMenu()
+		# Evènements
 		self.ajouter_cat.returnPressed.connect(self.check_if_exist_cat)
 		self.ajouter_pwd.returnPressed.connect(self.check_if_exist_pwd)
-
-		# Evènements
 		self.lineEdit_ajout_site.returnPressed.connect(self.check_new_site)
 		self.pushButton_ajout_site.clicked.connect(self.check_new_site)
 
@@ -496,7 +498,22 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.afficher_pwds()
 
 		
+	def setupMenu(self):
+		self.aide_url = "https://github.com/MindPass/Code/wiki/Aide"
+		self.apropos_url  ="https://github.com/MindPass/Code"
+		self.actionObtenir_de_l_aide.triggered.connect(self.ouvrirAide)
+		self.actionA_propos_de_MindPass.triggered.connect(self.ouvrirApropos)
 
+	def ouvrirAide(self):
+		self.openURL(self.aide_url)
+
+	def ouvrirApropos(self):
+		self.openURL(self.apropos_url)
+
+	def openURL(self, given_url):
+		url = QtCore.QUrl(given_url)
+		if not QtGui.QDesktopServices.openUrl(url):
+		    QtGui.QMessageBox.warning(self, 'Open Url', 'Could not open url')
 
 
 	def check_if_exist_cat(self):
