@@ -66,6 +66,7 @@ def creation_tables(nom_table):
     for i in range(len(rows)-1):
         sites+= re.findall(regex_expediteur, valeurs[i])
     sites+= re.findall(regex_expediteur, valeurs[len(rows)-1])
+    print(sites)
 
     site= set(sites)
     liste_site= list(site)
@@ -82,3 +83,4 @@ def creation_tables(nom_table):
     conn.commit()
     cur.close()
     conn.close()
+creation_tables("mindpasstest_laposte")

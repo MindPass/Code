@@ -26,7 +26,7 @@ from fenetreProgression import Ui_fenetreProgression
 from classeGestion import ClasseGestion
 from librairie import *
 import time
-from recon_creation_table import *
+from recon_id import *
 bdd = "../../../Traitement_mails/bdd.sq3"
 
 
