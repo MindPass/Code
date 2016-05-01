@@ -131,7 +131,8 @@ class LigneSite(object):
 			for label in pwd.labels:
 				if(label.texte == self.nom_site):
 					pwd.update(label, self.categorie.currentText())
-
+					# On update la couleur du groupBox_pwd contenant le label associé
+					pwd.update_color_groupBox()
 
 	def changement_pwd(self):
 		requete ="SELECT mdp FROM sites_reconnus WHERE rowid=?"
@@ -139,15 +140,16 @@ class LigneSite(object):
 
 		# On ajoute le site_web sous le mdp correspondant
 		requete= 'UPDATE sites_reconnus SET mdp=? WHERE rowid=?'
-		bdd_update(requete, (self.mdp.currentText(), self.position +1))
-		print("Mdp changée en"+ self.mdp.currentText())
+		nouveau_mdp = self.mdp.currentText()
+		bdd_update(requete, (nouveau_mdp , self.position +1))
+		print("Mdp changée en"+ nouveau_mdp)
 
 		for k in range(len(self.objet.pwds)):
-			if(self.objet.pwds[k].nom == self.mdp.currentText()):
+			if(self.objet.pwds[k].nom == nouveau_mdp):
 				liste_label_name =[]
 				for element in self.objet.pwds[k].labels:
 					liste_label_name.append(element.text())
-				if(self.mdp.currentText() not in liste_label_name):
+				if(nouveau_mdp not in liste_label_name):
 					self.objet.pwds[k].label(self.site_web.text())
 				break
 
@@ -161,6 +163,13 @@ class LigneSite(object):
 				requete ="SELECT site_web FROM sites_reconnus WHERE mdp=?"
 				sites_lies= toliste(bdd_select(requete, (ancien_mdp,)))
 				self.objet.pwds[k].affichage_sites_lies(sites_lies)
+
+		for pwd in self.objet.pwds:
+			if(pwd.nom == ancien_mdp):
+				pwd.update_color_groupBox()
+			elif(pwd.nom == nouveau_mdp):
+				pwd.update_color_groupBox()
+
 
 	def afficher_combo_pwd(self):
 		requete= 'SELECT mdp FROM mdps'
@@ -209,6 +218,7 @@ class Ligne(object):
 		self.pushButton.setMinimumSize(QtCore.QSize(24, 24))
 
 		self.groupBox = QtWidgets.QGroupBox()
+		self.colorHEX = "#757575"
 		self.labels = [] # contiendra la liste des labels (noms des sites liés)
 		self.groupBox.setGeometry(QtCore.QRect(20, 50, 91, 50))
 		font = QtGui.QFont()
@@ -352,6 +362,9 @@ class Password(Ligne):
 		self.groupBox.setTitle(nom)
 		self.pushButton.setObjectName("pushButton_pwd")
 
+		# On modifie la couleur de la groupBox_pwd
+		self.update_color_groupBox()
+
 	def affichage_sites_lies(self, sites_lies):
 		for site in sites_lies:
 			self.label(site)
@@ -386,8 +399,28 @@ class Password(Ligne):
 			if(self.objet.cats[k].nom == categorie):
 				couleur = self.objet.cats[k].colorHEX
 
+		label.colorHEX = couleur
 		texte= self.create_text_label(couleur, label.texte)
 		label.setText(texte)
+
+
+	def update_color_groupBox(self):
+
+		colorGroupBox = self.colorHEX
+		if(self.labels != []):
+			colorGroupBox = self.labels[0].colorHEX
+			b = 1
+			for label in self.labels:
+				if(label.colorHEX != colorGroupBox):
+					b=0
+			if(not b):
+				colorGroupBox = "#757575"
+		else:
+			colorGroupBox = "#757575"
+		
+		self.groupBox.setStyleSheet("QGroupBox {"
+			"border-color:"+colorGroupBox+";"
+			"}")
 
 
 	def getColor_label(self, site):
@@ -602,7 +635,8 @@ class ClasseGestion(Ui_fenetreGestion):
 			requete = "INSERT INTO sites_reconnus VALUES(?,?,?,?,?)"
 			valeurs =("",self.lineEdit_ajout_site.text(),"", "", "")
 			bdd_insert(requete, valeurs)
-			self.verticalLayout.addLayout(LigneSite(len(self.sites), self.lineEdit_ajout_site.text(), "", "", "", self).ligne)
+			self.sites.append(LigneSite(len(self.sites), self.lineEdit_ajout_site.text(), "", "", "", self))
+			self.verticalLayout.addLayout(self.sites[len(self.sites)-1].ligne)
 
 
 if __name__ == "__main__":
