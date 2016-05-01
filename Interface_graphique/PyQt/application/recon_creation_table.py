@@ -63,5 +63,3 @@ def creation_tables(nom_table):
     conn.commit()
     cur.close()
     conn.close()
-
-creation_tables("mindpasstest_laposte")

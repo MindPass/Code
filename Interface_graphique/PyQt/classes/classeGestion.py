@@ -180,9 +180,9 @@ class LigneSite(object):
 
 		self.mdp.addItem(self.nom_mdp)
 		for pwd in result:
-		    if pwd != self.nom_mdp:
+		    if pwd and pwd != self.nom_mdp:
 		        self.mdp.addItem(pwd)
-		if(self.nom_mdp != ""):
+		if(self.nom_mdp and self.nom_mdp != ""):
 			self.mdp.addItem("")
 
 	def afficher_combo_cat(self):
@@ -194,9 +194,9 @@ class LigneSite(object):
 
 		self.categorie.addItem(self.nom_cat)
 		for cat in result:
-		    if cat != self.nom_cat:
+		    if cat and cat != self.nom_cat:
 		        self.categorie.addItem(cat)
-		if(self.nom_cat != ""):
+		if(self.nom_cat and self.nom_cat != ""):
 			self.categorie.addItem("")
 
 class Ligne(object):
