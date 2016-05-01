@@ -479,8 +479,8 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.ajouter_cat.setPlaceholderText("Ajouter une catégorie")
 		self.ajouter_pwd.setPlaceholderText("Ajouter un mot de passe")
 		self.lineEdit_ajout_site.setPlaceholderText("Ajouter un site web")
-		
 		self.setupMenu()
+
 		# Evènements
 		self.ajouter_cat.returnPressed.connect(self.check_if_exist_cat)
 		self.ajouter_pwd.returnPressed.connect(self.check_if_exist_pwd)
@@ -503,6 +503,17 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.apropos_url  ="https://github.com/MindPass/Code"
 		self.actionObtenir_de_l_aide.triggered.connect(self.ouvrirAide)
 		self.actionA_propos_de_MindPass.triggered.connect(self.ouvrirApropos)
+
+
+		
+		self.actionA_propos_de_MindPass.setObjectName("actionA_propos_de_MindPass")
+        self.actionMode_deux_lettres = QtWidgets.QAction(fenetreGestion)
+        self.actionMode_deux_lettres.setCheckable(True)
+        self.actionMode_deux_lettres.setObjectName("actionMode_deux_lettres")
+        self.actionMode_complet = QtWidgets.QAction(fenetreGestion)
+        self.actionMode_complet.setCheckable(True)
+        self.actionMode_complet.setChecked(True)
+
 
 	def ouvrirAide(self):
 		self.openURL(self.aide_url)

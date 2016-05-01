@@ -37,6 +37,15 @@ class ClasseAccueil(Ui_fenetreAccueil):
         self.actionObtenir_de_l_aide.triggered.connect(self.ouvrirAide)
         self.actionA_propos_de_MindPass.triggered.connect(self.ouvrirApropos)
 
+        # Affichage
+        self.actionMode_deux_lettres.triggered.connect(self.deuxLettres)
+
+    def deuxLettres(self):
+        pass
+
+    def touteLettres(self):
+        pass
+
     def ouvrirAide(self):
         self.openURL(self.aide_url)
 
