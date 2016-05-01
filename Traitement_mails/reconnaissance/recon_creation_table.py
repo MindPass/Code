@@ -17,7 +17,7 @@ def creation_tables():
     conn = sqlite3.connect('../bdd.sq3')
     cur = conn.cursor()
 
-    cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus (adresse_mail TEXT PRIMARY KEY, site_web TEXT, identifiant TEXT,"
+    cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus (adresse_mail TEXT , site_web TEXT, identifiant TEXT,"
                 " mdp TEXT, categorie TEXT)")
     cur.execute("CREATE TABLE IF NOT EXISTS mdps (mdp TEXT PRIMARY KEY)")
     cur.execute("CREATE TABLE IF NOT EXISTS categories (nom_categorie TEXT PRIMARY KEY)")
@@ -47,3 +47,5 @@ def creation_tables():
     conn.commit()
     cur.close()
     conn.close()
+
+creation_tables()

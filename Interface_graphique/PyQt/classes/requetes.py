@@ -1,5 +1,5 @@
 import sqlite3
-bdd = "C:/Users\Yassou\Code\Traitement_mails"
+bdd = "../../../Traitement_mails/bdd.sq3"
 
 def bdd_update(requete, valeurs): 
 	conn = sqlite3.connect(bdd)
@@ -10,7 +10,7 @@ def bdd_update(requete, valeurs):
 	conn.close()
 
 def bdd_select(requete, valeurs=None):
-	
+	conn = sqlite3.connect(bdd)
 	cur = conn.cursor()
 
 	if valeurs:
@@ -50,3 +50,5 @@ def toliste(tab):
 		l.append(tab[k][0])
 	return(l)
 
+# requete ="SELECT * FROM mdps"
+# print(bdd_select(requete))
