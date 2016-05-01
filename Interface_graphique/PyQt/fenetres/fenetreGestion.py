@@ -41,6 +41,20 @@ class Ui_fenetreGestion(object):
 "    border: solid 3px white;\n"
 "}\n"
 "\n"
+"QPushButton#pushButton_ajout_site {\n"
+"     background-color: transparent;\n"
+"     border: none;\n"
+"     image: url(\"../ressources/check.svg\");\n"
+" }\n"
+"\n"
+"QPushButton:hover#pushButton_ajout_site {\n"
+"     image: url(\"../ressources/check-vertclair.svg\");\n"
+" }\n"
+"\n"
+" QPushButton:pressed#pushButton_ajout_site {\n"
+"     image: url(\"../ressources/check-vertfonce.svg\");\n"
+" }\n"
+"\n"
 "QPushButton#pushButton_pwd, QPushButton#pushButton_cat {\n"
 "     background-color: transparent;\n"
 "     border: none;\n"
@@ -83,9 +97,14 @@ class Ui_fenetreGestion(object):
 "\n"
 "QGroupBox > QLabel {\n"
 "    color: rgba(255,255,255,200);\n"
+"}\n"
+"\n"
+"QVBoxLayout > QHBoxLayout#libelles > QLabel {\n"
+"    color: white;\n"
 "}")
         self.corps_gestion = QtWidgets.QWidget(fenetreGestion)
         self.corps_gestion.setEnabled(True)
+        self.corps_gestion.setStyleSheet("")
         self.corps_gestion.setObjectName("corps_gestion")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.corps_gestion)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -99,12 +118,6 @@ class Ui_fenetreGestion(object):
         self.Categories.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.Categories.setObjectName("Categories")
         self.titre_cat = QtWidgets.QLabel(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.titre_cat.sizePolicy().hasHeightForWidth())
-        self.titre_cat.setSizePolicy(sizePolicy)
-        self.titre_cat.setMinimumSize(QtCore.QSize(210, 0))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.titre_cat.setFont(font)
@@ -117,8 +130,8 @@ class Ui_fenetreGestion(object):
         self.scrollArea_cat.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_cat.setObjectName("scrollArea_cat")
         self.scrollAreaWidgetContents_cat = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 210, 769))
-        self.scrollAreaWidgetContents_cat.setMinimumSize(QtCore.QSize(0, 0))
+        self.scrollAreaWidgetContents_cat.setGeometry(QtCore.QRect(0, 0, 263, 701))
+        self.scrollAreaWidgetContents_cat.setMinimumSize(QtCore.QSize(250, 0))
         self.scrollAreaWidgetContents_cat.setObjectName("scrollAreaWidgetContents_cat")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_cat)
         self.verticalLayout_3.setContentsMargins(-1, -1, 14, -1)
@@ -137,25 +150,41 @@ class Ui_fenetreGestion(object):
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.Sites = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.Sites.setObjectName("Sites")
-        self.intitule = QtWidgets.QHBoxLayout()
-        self.intitule.setObjectName("intitule")
-        self.label_4 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
-        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_4.setObjectName("label_4")
-        self.intitule.addWidget(self.label_4)
-        self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
-        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_3.setObjectName("label_3")
-        self.intitule.addWidget(self.label_3)
-        self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.intitule.addWidget(self.label_2)
-        self.label = QtWidgets.QLabel(self.verticalLayoutWidget_2)
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label")
-        self.intitule.addWidget(self.label)
-        self.Sites.addLayout(self.intitule)
+        self.libelles = QtWidgets.QHBoxLayout()
+        self.libelles.setObjectName("libelles")
+        self.libelle_site = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.libelle_site.setFont(font)
+        self.libelle_site.setAlignment(QtCore.Qt.AlignCenter)
+        self.libelle_site.setObjectName("libelle_site")
+        self.libelles.addWidget(self.libelle_site)
+        self.libelle_id = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.libelle_id.setFont(font)
+        self.libelle_id.setAlignment(QtCore.Qt.AlignCenter)
+        self.libelle_id.setObjectName("libelle_id")
+        self.libelles.addWidget(self.libelle_id)
+        self.libelle_pwd = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.libelle_pwd.setFont(font)
+        self.libelle_pwd.setAlignment(QtCore.Qt.AlignCenter)
+        self.libelle_pwd.setObjectName("libelle_pwd")
+        self.libelles.addWidget(self.libelle_pwd)
+        self.libelle_categorie = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.libelle_categorie.setFont(font)
+        self.libelle_categorie.setAlignment(QtCore.Qt.AlignCenter)
+        self.libelle_categorie.setObjectName("libelle_categorie")
+        self.libelles.addWidget(self.libelle_categorie)
+        self.Sites.addLayout(self.libelles)
         self.scrollArea_sites = QtWidgets.QScrollArea(self.verticalLayoutWidget_2)
         self.scrollArea_sites.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -179,7 +208,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_sites.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_sites.setObjectName("scrollArea_sites")
         self.scrollAreaWidgetContents_sites = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 752, 746))
+        self.scrollAreaWidgetContents_sites.setGeometry(QtCore.QRect(0, 0, 621, 703))
         self.scrollAreaWidgetContents_sites.setObjectName("scrollAreaWidgetContents_sites")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_sites)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -187,14 +216,21 @@ class Ui_fenetreGestion(object):
         self.Sites.addWidget(self.scrollArea_sites)
         self.ajout_site = QtWidgets.QHBoxLayout()
         self.ajout_site.setObjectName("ajout_site")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.ajout_site.addItem(spacerItem)
         self.lineEdit_ajout_site = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
         self.lineEdit_ajout_site.setObjectName("lineEdit_ajout_site")
         self.ajout_site.addWidget(self.lineEdit_ajout_site)
         self.pushButton_ajout_site = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.pushButton_ajout_site.setText("")
         self.pushButton_ajout_site.setObjectName("pushButton_ajout_site")
         self.ajout_site.addWidget(self.pushButton_ajout_site)
-        self.ajout_site.setStretch(0, 1)
-        self.ajout_site.setStretch(1, 1)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.ajout_site.addItem(spacerItem1)
+        self.ajout_site.setStretch(0, 4)
+        self.ajout_site.setStretch(1, 10)
+        self.ajout_site.setStretch(2, 1)
+        self.ajout_site.setStretch(3, 3)
         self.Sites.addLayout(self.ajout_site)
         self.Sites.setStretch(0, 1)
         self.Sites.setStretch(1, 20)
@@ -204,7 +240,6 @@ class Ui_fenetreGestion(object):
         self.Passwords = QtWidgets.QVBoxLayout(self.layoutWidget1)
         self.Passwords.setObjectName("Passwords")
         self.titre_pwd = QtWidgets.QLabel(self.layoutWidget1)
-        self.titre_pwd.setMinimumSize(QtCore.QSize(210, 0))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.titre_pwd.setFont(font)
@@ -218,7 +253,7 @@ class Ui_fenetreGestion(object):
         self.scrollArea_pwd.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea_pwd.setObjectName("scrollArea_pwd")
         self.scrollAreaWidgetContents_pwd = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 214, 769))
+        self.scrollAreaWidgetContents_pwd.setGeometry(QtCore.QRect(0, 0, 274, 701))
         self.scrollAreaWidgetContents_pwd.setObjectName("scrollAreaWidgetContents_pwd")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
         self.verticalLayout_2.setContentsMargins(-1, -1, 14, -1)
@@ -235,7 +270,7 @@ class Ui_fenetreGestion(object):
         self.horizontalLayout.addWidget(self.splitter)
         fenetreGestion.setCentralWidget(self.corps_gestion)
         self.menubar = QtWidgets.QMenuBar(fenetreGestion)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1200, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1200, 38))
         self.menubar.setObjectName("menubar")
         self.menuAide = QtWidgets.QMenu(self.menubar)
         self.menuAide.setObjectName("menuAide")
@@ -296,11 +331,10 @@ class Ui_fenetreGestion(object):
         _translate = QtCore.QCoreApplication.translate
         fenetreGestion.setWindowTitle(_translate("fenetreGestion", "Fenêtre de Gestion - MindPass"))
         self.titre_cat.setText(_translate("fenetreGestion", "Catégories"))
-        self.label_4.setText(_translate("fenetreGestion", "Site"))
-        self.label_3.setText(_translate("fenetreGestion", "Identifiant"))
-        self.label_2.setText(_translate("fenetreGestion", "Mot de Passe"))
-        self.label.setText(_translate("fenetreGestion", "Catégorie"))
-        self.pushButton_ajout_site.setText(_translate("fenetreGestion", "Ajouter"))
+        self.libelle_site.setText(_translate("fenetreGestion", "Site"))
+        self.libelle_id.setText(_translate("fenetreGestion", "Identifiant"))
+        self.libelle_pwd.setText(_translate("fenetreGestion", "Mot de Passe"))
+        self.libelle_categorie.setText(_translate("fenetreGestion", "Catégorie"))
         self.titre_pwd.setText(_translate("fenetreGestion", "Mots de Passe"))
         self.menuAide.setTitle(_translate("fenetreGestion", "Aide"))
         self.menuFichier.setTitle(_translate("fenetreGestion", "Fichier"))

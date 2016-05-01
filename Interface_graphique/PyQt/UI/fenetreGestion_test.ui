@@ -50,29 +50,29 @@ QLineEdit {
 QPushButton#pushButton_ajout_site {
      background-color: transparent;
      border: none;
-	 image: url(&quot;../ressources/check.svg&quot;);
+	 image: url(&quot;../ressources/icones/check.svg&quot;);
  }
 
 QPushButton:hover#pushButton_ajout_site {
-	 image: url(&quot;../ressources/check-vertclair.svg&quot;);
+	 image: url(&quot;../ressources/icones/check-vertclair.svg&quot;);
  }
 
  QPushButton:pressed#pushButton_ajout_site {
-	 image: url(&quot;../ressources/check-vertfonce.svg&quot;);
+	 image: url(&quot;../ressources/icones/check-vertfonce.svg&quot;);
  }
 
 QPushButton#pushButton_pwd, QPushButton#pushButton_cat {
      background-color: transparent;
      border: none;
-	 image: url(&quot;../ressources/croix_757575.svg&quot;);
+	 image: url(&quot;../ressources/icones/croix_757575.svg&quot;);
  }
 
 QPushButton:hover#pushButton_pwd, QPushButton:hover#pushButton_cat {
-	 image: url(&quot;../ressources/croix_929292.svg&quot;);
+	 image: url(&quot;../ressources/icones/croix_929292.svg&quot;);
  }
 
  QPushButton:pressed#pushButton_pwd, QPushButton:pressed#pushButton_cat {
-	 image: url(&quot;../ressources/croix_575757.svg&quot;);
+	 image: url(&quot;../ressources/icones/croix_575757.svg&quot;);
  }
 
 QScrollArea {
@@ -107,7 +107,65 @@ QGroupBox &gt; QLabel {
 
 QVBoxLayout &gt; QHBoxLayout#libelles &gt; QLabel {
 	color: white;
-}</string>
+}
+
+
+
+QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+}
+
+QComboBox:editable {
+    background: white;
+}
+
+QComboBox:!editable, QComboBox::drop-down:editable {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+}
+
+/* QComboBox gets the &quot;on&quot; state when the popup is open */
+QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #D3D3D3, stop: 0.4 #D8D8D8,
+                                stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);
+}
+
+QComboBox:on { /* shift the text when the popup opens */
+    padding-top: 3px;
+    padding-left: 4px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid; /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/derouler.svg&quot;);
+}
+
+QComboBox::up-arrow {
+    image: url(&quot;D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/enrouler.svg&quot;);
+}
+
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+    top: 1px;
+    left: 1px;
+}
+
+/* perso test : remplacer par D:/Users/Alexandre/Desktop/MindPass/Code/Interface_graphique/PyQt/ressources/icones/ */</string>
   </property>
   <widget class="QWidget" name="corps_gestion">
    <property name="enabled">
@@ -161,7 +219,7 @@ QVBoxLayout &gt; QHBoxLayout#libelles &gt; QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>263</width>
+             <width>270</width>
              <height>701</height>
             </rect>
            </property>
@@ -387,7 +445,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>621</width>
+             <width>617</width>
              <height>703</height>
             </rect>
            </property>
@@ -522,7 +580,7 @@ QLabel {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>274</width>
+             <width>271</width>
              <height>701</height>
             </rect>
            </property>
@@ -694,6 +752,10 @@ QLabel {
    </property>
   </action>
   <action name="actionPreferences">
+   <property name="icon">
+    <iconset>
+     <normaloff>../ressources/icones/paramètres.svg</normaloff>../ressources/icones/paramètres.svg</iconset>
+   </property>
    <property name="text">
     <string>Préférences</string>
    </property>
