@@ -29,7 +29,7 @@ valeurs+= list(rows[len(rows)-1])
 print (valeurs)
 
 sites=[]
-regex_expediteur = "<?([A-Za-z0-9]+\.[A-Za-z]{1,4})>"
+regex_expediteur = "<?([A-Za-z0-9]+\.[A-Za-z]{1,5})>?$"
 
 for i in range(len(rows)-1):
     sites+= re.findall(regex_expediteur, valeurs[i])

@@ -1,5 +1,5 @@
 liste_mots_cles = []
-liste_mots_cles += ['Bienvenue', 'Confirm', 'Welcome', 'Identifiant', 'Activ', 'Verif', 'scrip', 'mot de passe', 'login', 'password']
+liste_mots_cles += ['Bienvenue', 'Confirm', 'Welcome', 'Identifiant', 'Activ', 'Verif', 'scrip', 'mot de passe', 'login', 'password', 'Valid']
 
 
 liste_messageries = []
