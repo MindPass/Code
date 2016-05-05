@@ -54,16 +54,24 @@ class ClasseAccueil(Ui_fenetreAccueil):
         #identifiants = ["mindpasstest", "Verv00rt"]
         #condition = identifiants == ["mindpasstest", "Verv00rt"]
 
-        #if condition:
-        self.identifiants = identifiants
-        self.fenetre_suivante()
+        condition = identifiants[0] != "" and identifiants[1] != ""
+        # Vérifier que l'identifiant a la bonne forme
+        # et qu'une connexion s'établit
+
+        if condition and not self.horsConnexion.isChecked():
+            self.identifiants = identifiants
+            self.fenetre_suivante()
+        elif condition and self.horsConnexion.isChecked():
+            self.identifiants = identifiants
+            self.fenetre_suivante_hors_connexion()
 
     def fenetre_suivante(self):
         pass
         # fonction définissant les modalités du passage à une autre fenêtre
         # qui va être overwrite dans class Accueil()
 
-
+    def fenetre_suivante_hors_connexion(self):
+        pass
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

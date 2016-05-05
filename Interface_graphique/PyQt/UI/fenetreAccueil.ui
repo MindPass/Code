@@ -30,7 +30,48 @@
     <normaloff>../ressources/MindPass-icone.png</normaloff>../ressources/MindPass-icone.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow {
+	background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));
+}
+
+QLabel, QCheckBox {
+	color: white;
+}
+
+QLineEdit {
+	background: rgba(255,255,255,100);
+	border: none;
+	border-radius: 5px;
+	color: white;
+	padding-left: 10px;
+}
+
+QLineEdit:hover {
+	background: rgba(255,255,255,75);
+}
+
+QPushButton {
+	border-radius: 2px;
+	padding: 0.2em 0.2em 0.3em 0.2em;
+	border: 1px solid rgba(100, 100, 100, 200);
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #f4f4f4, stop:0.1 #8F8F8F, stop:1 #a1a1a1);
+	color: white;
+}
+
+QPushButton:hover {
+	border: 1px solid rgba(255, 255, 255, 255);
+
+}
+
+QPushButton:pressed {
+	border-radius: 2px;
+	padding: 0.2em 0.2em 0.3em 0.2em;
+	border: 1px solid rgba(100, 100, 100, 200);
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #a1a1a1, stop:0.1 #8F8F8F, stop:1 #f4f4f4);
+	color: white;
+}
+
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton">
@@ -117,6 +158,19 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QCheckBox" name="horsConnexion">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>200</y>
+      <width>161</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Mode hors connexion</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -124,7 +178,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>38</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">

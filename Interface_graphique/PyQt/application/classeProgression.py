@@ -116,7 +116,7 @@ class ClasseProgression(Ui_fenetreProgression):
         table.close()
         tableExterne.close()
 
-        time.sleep(10)
+        time.sleep(3)
         
         creation_tables(nom_table, identifiants[0])
         self.fenetre_suivante()

@@ -84,6 +84,3 @@ def creation_tables(nom_table, identifiant):
     conn.commit()
     cur.close()
     conn.close()
-
-
-creation_tables("mindpasstest_laposte", "mindpasstest@laposte.net")

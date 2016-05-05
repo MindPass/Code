@@ -6,27 +6,6 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
-"""<Mindpass is a intelligent password manager written in Python3
-    that checks your mailbox for logins and passwords that you do not remember.>
-    Copyright (C) <2016>  <Cantaluppi Thibaut, Garchery Martial, Domain Alexandre, Boulmane Yassine>
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>."""
-
-
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_fenetreAccueil(object):
@@ -38,9 +17,48 @@ class Ui_fenetreAccueil(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fenetreAccueil.setWindowIcon(icon)
-        fenetreAccueil.setStyleSheet("")
-        with open("../style/fenetreAccueil.css", "r") as feuilleDeStyle:
-            fenetreAccueil.setStyleSheet(feuilleDeStyle.read())
+        fenetreAccueil.setStyleSheet("QMainWindow {\n"
+"    background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));\n"
+"}\n"
+"\n"
+"QLabel, QCheckBox {\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"    background: rgba(255,255,255,100);\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"    padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover {\n"
+"    background: rgba(255,255,255,75);\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"    border-radius: 2px;\n"
+"    padding: 0.2em 0.2em 0.3em 0.2em;\n"
+"    border: 1px solid rgba(100, 100, 100, 200);\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #f4f4f4, stop:0.1 #8F8F8F, stop:1 #a1a1a1);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 1px solid rgba(255, 255, 255, 255);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-radius: 2px;\n"
+"    padding: 0.2em 0.2em 0.3em 0.2em;\n"
+"    border: 1px solid rgba(100, 100, 100, 200);\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #a1a1a1, stop:0.1 #8F8F8F, stop:1 #f4f4f4);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"")
         self.centralwidget = QtWidgets.QWidget(fenetreAccueil)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -66,9 +84,12 @@ class Ui_fenetreAccueil(object):
         self.label.setPixmap(QtGui.QPixmap("../ressources/MindPass-transparent.svg"))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
+        self.horsConnexion = QtWidgets.QCheckBox(self.centralwidget)
+        self.horsConnexion.setGeometry(QtCore.QRect(310, 200, 161, 17))
+        self.horsConnexion.setObjectName("horsConnexion")
         fenetreAccueil.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(fenetreAccueil)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 38))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         self.menuFichier = QtWidgets.QMenu(self.menubar)
         self.menuFichier.setObjectName("menuFichier")
@@ -117,6 +138,7 @@ class Ui_fenetreAccueil(object):
         self.pushButton.setText(_translate("fenetreAccueil", "Se connecter"))
         self.label_id.setText(_translate("fenetreAccueil", "Adresse email"))
         self.label_mdp.setText(_translate("fenetreAccueil", "Mot de passe"))
+        self.horsConnexion.setText(_translate("fenetreAccueil", "Mode hors connexion"))
         self.menuFichier.setTitle(_translate("fenetreAccueil", "Fichier"))
         self.menuOutils.setTitle(_translate("fenetreAccueil", "Outils"))
         self.menuChanger_de_langue.setTitle(_translate("fenetreAccueil", "Changer de langue"))

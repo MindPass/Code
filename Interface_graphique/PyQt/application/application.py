@@ -34,9 +34,14 @@ class Accueil(ClasseAccueil):
     def fenetre_suivante(self):
         print(self.identifiants)
         print("Passage à la fenêtre de progression")
-        premiere_fenetre.hide()
-        deuxieme_fenetre.show()
+        fenetreAccueil.hide()
+        fenetreProgression.show()
         objet_progression.lancement(self.identifiants)
+
+    def fenetre_suivante_hors_connexion(self):
+        fenetreAccueil.hide()
+        fenetreGestion.show()
+        objet_gestion.lancement()
 
 
 class Progression(ClasseProgression):
@@ -46,8 +51,8 @@ class Progression(ClasseProgression):
     def fenetre_suivante(self):
         print("Passage à la fenêtre de gestion !")
         time.sleep(1.5)
-        deuxieme_fenetre.hide()
-        troisieme_fenetre.show()
+        fenetreProgression.hide()
+        fenetreGestion.show()
         objet_gestion.lancement()
 
 
@@ -59,12 +64,12 @@ class Gestion(ClasseGestion):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
 
-    premiere_fenetre = QtWidgets.QMainWindow()
-    deuxieme_fenetre = QtWidgets.QMainWindow()
-    troisieme_fenetre = QtWidgets.QMainWindow()
+    fenetreAccueil = QtWidgets.QMainWindow()
+    fenetreProgression = QtWidgets.QMainWindow()
+    fenetreGestion = QtWidgets.QMainWindow()
 
-    objet_accueil = Accueil(premiere_fenetre)
-    objet_progression = Progression(deuxieme_fenetre)
-    objet_gestion = Gestion(troisieme_fenetre)
+    objet_accueil = Accueil(fenetreAccueil)
+    objet_progression = Progression(fenetreProgression)
+    objet_gestion = Gestion(fenetreGestion)
 
     sys.exit(app.exec_())
