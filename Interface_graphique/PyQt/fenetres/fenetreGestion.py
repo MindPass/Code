@@ -145,7 +145,7 @@ class Ui_fenetreGestion(object):
 "    subcontrol-origin: padding;\n"
 "    subcontrol-position: top right;\n"
 "    width: 15px;\n"
-"    padding: 1px 5px 0px 0px;\n"
+"    padding: 1px 5px 0px 5px;\n"
 "    border-left-width: 2px;\n"
 "    border-left-color: #757575;\n"
 "    border-left-style: solid; /* just a single line */\n"
