@@ -500,7 +500,9 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.cats = []
 		self.pwds = []
 
-		#lancement(self):
+		#lancement(self, nom_table):
+		
+		#self.nom_table = nom_table
 		self.afficher_sites()
 		self.afficher_categories()
 		self.afficher_pwds()

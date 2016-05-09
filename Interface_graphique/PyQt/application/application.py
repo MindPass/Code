@@ -32,11 +32,10 @@ class Accueil(ClasseAccueil):
         fenetre.show()
 
     def fenetre_suivante(self):
-        print(self.identifiants)
         print("Passage à la fenêtre de progression")
         fenetreAccueil.hide()
         fenetreProgression.show()
-        objet_progression.lancement(self.identifiants)
+        objet_progression.lancement(self.serv, self.user_email, self.mdp, self.nom_table)
 
     def fenetre_suivante_hors_connexion(self):
         fenetreAccueil.hide()

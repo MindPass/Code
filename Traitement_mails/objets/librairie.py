@@ -101,6 +101,23 @@ class TableExterne(object):
         self.user = user
         self.mdp = mdp
 
+        """
+        self.imap_conn = imaplib.IMAP4_SSL(connexion)
+        self.imap_conn.debug = 4
+        self.imap_conn.login(user, mdp)
+        self.imap_conn.select('INBOX')  # renvoie ('OK', b'nombredemaildanslaboite')
+        """
+
+    def test_connexion(self, connexion, user, mdp):
+        imap_conn = imaplib.IMAP4_SSL(connexion)
+        imap_conn.debug = 4
+        try:
+            imap_conn.login(user, mdp)
+            return True
+        except Exception:
+            return False
+
+    def connexion(self):
         self.imap_conn = imaplib.IMAP4_SSL(connexion)
         self.imap_conn.debug = 4
         self.imap_conn.login(user, mdp)

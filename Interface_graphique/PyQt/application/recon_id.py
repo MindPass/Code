@@ -2,6 +2,7 @@ import sqlite3
 import re
 import listes as li
 from requetes import *
+bdd = "../../../Traitement_mails/bdd.sq3"
 
 
 def print_(arg):
@@ -16,10 +17,10 @@ def print_(arg):
     print("-------------------------------------")
 
 def creation_tables(nom_table, identifiant):
-    conn = sqlite3.connect('../../../Traitement_mails/bdd.sq3')
+    conn = sqlite3.connect(bdd)
     cur = conn.cursor()
 
-    cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus (adresse_mail TEXT , site_web TEXT UNIQUE, identifiant TEXT,"
+    cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus_"+nom_table+" (adresse_mail TEXT , site_web TEXT UNIQUE, identifiant TEXT,"
                 " mdp TEXT, categorie TEXT, PRIMARY KEY(site_web))")
     cur.execute("CREATE TABLE IF NOT EXISTS mdps (mdp TEXT PRIMARY KEY)")
     cur.execute("CREATE TABLE IF NOT EXISTS categories (nom_categorie TEXT PRIMARY KEY)")
@@ -56,7 +57,7 @@ def creation_tables(nom_table, identifiant):
     print(liste_site)
 
 
-    request= "INSERT OR IGNORE INTO sites_reconnus (site_web, identifiant) VALUES "
+    request= "INSERT OR IGNORE INTO sites_reconnus_"+nom_table+" (site_web, identifiant) VALUES "
     for i in range (len(liste_site)-1):
         request+="(?,?)," 
     request+= "(?,?)"
