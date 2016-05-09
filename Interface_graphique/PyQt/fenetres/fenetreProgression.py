@@ -149,7 +149,7 @@ class Ui_fenetreProgression(object):
         self.gridLayout.addWidget(self.progressBar, 0, 0, 1, 1)
         self.imageDefil = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.imageDefil.setText("")
-        self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub2.svg"))
+        self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub1.svg"))
         self.imageDefil.setAlignment(QtCore.Qt.AlignCenter)
         self.imageDefil.setObjectName("imageDefil")
         self.gridLayout.addWidget(self.imageDefil, 1, 0, 1, 1)
@@ -178,13 +178,13 @@ class Ui_fenetreProgression(object):
     def changeValue(self, value):
 
         if value >= 0 and value < 25:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub2.svg"))
-        elif value >=25 and value < 50:
             self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub1.svg"))
+        elif value >=25 and value < 50:
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub2.svg"))
         elif value >= 50 and value < 75:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Zeichen_123.svg"))
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub3.svg"))
         else:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/mute.png"))
+            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Zeichen_123.svg"))
     ##### A GARDER - fin
 
 if __name__ == "__main__":
