@@ -32,7 +32,7 @@ class Accueil(ClasseAccueil):
         fenetre.show()
 
     def fenetre_suivante(self):
-        print("Passage à la fenêtre de progression")
+        print("hello")
         fenetreAccueil.hide()
         fenetreProgression.show()
         objet_progression.lancement(self.serv, self.user_email, self.mdp, self.nom_table)
@@ -48,11 +48,9 @@ class Progression(ClasseProgression):
         super().__init__(fenetre)
 
     def fenetre_suivante(self):
-        print("Passage à la fenêtre de gestion !")
-        time.sleep(1.5)
         fenetreProgression.hide()
         fenetreGestion.show()
-        objet_gestion.lancement()
+        objet_gestion.lancement(self.nom_table)
 
 
 class Gestion(ClasseGestion):

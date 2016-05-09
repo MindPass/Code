@@ -43,6 +43,7 @@ class ClasseAccueil(Ui_fenetreAccueil):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
         # modifications supplémentaires
+        self.pushButton.setAutoDefault(True)
         self.lineEdit_mdp.setEchoMode(2) 
         """Le mot de passe est masqué ->utiliser self.lineEdit.text()
         pour récupérer le contenu.
@@ -62,7 +63,7 @@ class ClasseAccueil(Ui_fenetreAccueil):
 
         formatMailOk = self.check_format_mail()
 
-        if formatMailOk:
+        if formatMailOk and identifiants[1] !="":
             user_email = identifiants[0] 
             mdp = identifiants[1]
 
@@ -118,40 +119,40 @@ class ClasseAccueil(Ui_fenetreAccueil):
                     self.nom_table = nom_table
                     self.fenetre_suivante()
                     """
-                    
                     pass
+
                 else:
-                    if(serv == "imap.gmail.com"):
-                        print("Adresse gmail")
-                        # A continuer
+                    tableE = TableExterne(serv, user_email, mdp)
+
+                    if(tableE.test_connexion(serv, user_email, mdp)):
+                        print("connexion faite")
+                        self.serv = serv
+                        self.user_email = user_email
+                        self.mdp = mdp
+                        self.nom_table = nom_table
+                        self.fenetre_suivante()
+
                     else:
-                        tableE = TableExterne(serv, user_email, mdp)
+                        # check gmail
+                        if(serv == "imap.gmail.com"):
+                            print("Adresse gmail")
 
-                        if(tableE.test_connexion(serv, user_email, mdp)):
+                            msg = QtWidgets.QMessageBox()
+                            msg.setIcon(QtWidgets.QMessageBox.Information)
 
-                            print("connexion faite")
-                            self.serv = serv
-                            self.user_email = user_email
-                            self.mdp = mdp
-                            self.nom_table = nom_table
-                            self.fenetre_suivante()
+                            texte = """Nous avons détecté une boite de messagerie Gmail.
+                            Pour pouvoir utiliser notre application, vous devrez vous rendre sur ce lien : <a href='https://www.google.com/settings/security/lesssecureapps'>www.google.com/settings/security/lesssecureapps</a>
+                            Une fois sur la page, identifiez-vous et cochez la case 'Activer'.
+                            Vous pourrez ensuite utiliser Mindpass normalement."""
+                            msg.setTextFormat(QtCore.Qt.RichText)
+                            msg.setText(texte)
+                            msg.setIcon(1)
+                            msg.setWindowTitle("Gmail")
+                            msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
 
-                            """
+                            ret = msg.exec_();
 
-                            if(TableExterne.test_connexion())
 
-                                table = Table(bdd, nom_table) #La table avec le bon nom n'existe pas forcément!
-                            # Vérifier que l'identifiant a la bonne forme
-                            # et qu'une connexion s'établit
-
-                            if formatMailOk and not self.horsConnexion.isChecked() and connexion_existe:
-                                self.identifiants = identifiants
-                                self.fenetre_suivante()
-                            elif formatMailOk and self.horsConnexion.isChecked():
-                                self.identifiants = identifiants
-                                self.fenetre_suivante_hors_connexion()
-
-                            """
                         else:
                             self.label_erreur.setText("Problème de connexion ou d'identifiants.")
 

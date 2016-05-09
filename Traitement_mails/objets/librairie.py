@@ -117,10 +117,10 @@ class TableExterne(object):
         except Exception:
             return False
 
-    def connexion(self):
-        self.imap_conn = imaplib.IMAP4_SSL(connexion)
+    def connexionMail(self):
+        self.imap_conn = imaplib.IMAP4_SSL(self.connexion)
         self.imap_conn.debug = 4
-        self.imap_conn.login(user, mdp)
+        self.imap_conn.login(self.user, self.mdp)
         self.imap_conn.select('INBOX')  # renvoie ('OK', b'nombredemaildanslaboite')
 
     def liste_id(self):

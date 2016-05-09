@@ -59,3 +59,10 @@ b'3218'-Erreur : decode() argument 1 must be str, not None
 b'3234'-Erreur : decode() argument 1 must be str, not None 
 b'3235'-Erreur : decode() argument 1 must be str, not None 
 b'3236'-Erreur : decode() argument 1 must be str, not None 
+b'4'-Erreur : decode() argument 1 must be str, not None 
+b'5'-Erreur : decode() argument 1 must be str, not None 
+b'6'-Erreur : decode() argument 1 must be str, not None 
+b'7'-Erreur : decode() argument 1 must be str, not None 
+b'9'-Erreur : decode() argument 1 must be str, not None 
+b'10'-Erreur : decode() argument 1 must be str, not None 
+b'11'-Erreur : decode() argument 1 must be str, not None 

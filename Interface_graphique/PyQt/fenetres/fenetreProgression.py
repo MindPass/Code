@@ -6,26 +6,6 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-"""<Mindpass is a intelligent password manager written in Python3
-    that checks your mailbox for logins and passwords that you do not remember.>
-    Copyright (C) <2016>  <Cantaluppi Thibaut, Garchery Martial, Domain Alexandre, Boulmane Yassine>
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>."""
-
-
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_fenetreProgression(object):
@@ -33,18 +13,18 @@ class Ui_fenetreProgression(object):
         fenetreProgression.setObjectName("fenetreProgression")
         fenetreProgression.setWindowModality(QtCore.Qt.WindowModal)
         fenetreProgression.setEnabled(True)
-        fenetreProgression.resize(740, 600)
-        fenetreProgression.setMinimumSize(QtCore.QSize(740, 600))
-        fenetreProgression.setMaximumSize(QtCore.QSize(740, 600))
+        fenetreProgression.resize(740, 500)
+        fenetreProgression.setMinimumSize(QtCore.QSize(740, 500))
+        fenetreProgression.setMaximumSize(QtCore.QSize(740, 500))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../ressources/MindPass-icone.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fenetreProgression.setWindowIcon(icon)
         fenetreProgression.setStyleSheet("QWidget#fenetreProgression {\n"
-"    background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));\n"
+"  background: qradialgradient(spread:pad, cx:0, cy:1, radius:1.406, fx:0, fy:1, stop:0 rgba(244, 216, 148, 255), stop:1 rgba(255, 102, 102, 255));\n"
 "}\n"
 "\n"
 "QSlider, QLabel, QVBoxLayout, QGridLayout {\n"
-"    background: transparent;\n"
+"  background: transparent;\n"
 "}\n"
 "\n"
 "QSlider::groove:horizontal {\n"
@@ -102,32 +82,14 @@ class Ui_fenetreProgression(object):
 "background: #eee;\n"
 "border: 1px solid #aaa;\n"
 "border-radius: 7px;\n"
-"}\n")
-        self.verticalLayoutWidget = QtWidgets.QWidget(fenetreProgression)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 20, 721, 588))
-        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
-        self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.gridLayout = QtWidgets.QGridLayout()
-        self.gridLayout.setContentsMargins(-1, -1, -1, 20)
-        self.gridLayout.setHorizontalSpacing(0)
-        self.gridLayout.setVerticalSpacing(10)
-        self.gridLayout.setObjectName("gridLayout")
-        self.horizontalSlider = QtWidgets.QSlider(self.verticalLayoutWidget)
-        self.horizontalSlider.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.horizontalSlider.sizePolicy().hasHeightForWidth())
-        self.horizontalSlider.setSizePolicy(sizePolicy)
-        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
-        self.horizontalSlider.setObjectName("horizontalSlider")
-        ##### A GARDER - debut
-        self.horizontalSlider.valueChanged[int].connect(self.changeValue)
-        ##### A GARDER - fin
-        self.gridLayout.addWidget(self.horizontalSlider, 2, 0, 1, 1)
-        self.progressBar = QtWidgets.QProgressBar(self.verticalLayoutWidget)
+"}")
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(fenetreProgression)
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(9, 9, 722, 482))
+        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_4.setSpacing(12)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.progressBar = QtWidgets.QProgressBar(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -146,24 +108,44 @@ class Ui_fenetreProgression(object):
         self.progressBar.setProperty("value", 0)
         self.progressBar.setAlignment(QtCore.Qt.AlignCenter)
         self.progressBar.setObjectName("progressBar")
-        self.gridLayout.addWidget(self.progressBar, 0, 0, 1, 1)
-        self.imageDefil = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.verticalLayout_4.addWidget(self.progressBar)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.pushButton_image_prec = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.pushButton_image_prec.setMaximumSize(QtCore.QSize(24, 24))
+        self.pushButton_image_prec.setObjectName("pushButton_image_prec")
+        self.horizontalLayout.addWidget(self.pushButton_image_prec)
+        self.imageDefil = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        self.imageDefil.setMaximumSize(QtCore.QSize(700, 500))
+        self.imageDefil.setMouseTracking(True)
         self.imageDefil.setText("")
-        self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub1.svg"))
+        self.imageDefil.setPixmap(QtGui.QPixmap("../ressources/images/Pub0.svg"))
         self.imageDefil.setAlignment(QtCore.Qt.AlignCenter)
         self.imageDefil.setObjectName("imageDefil")
-        self.gridLayout.addWidget(self.imageDefil, 1, 0, 1, 1)
-        self.bouton_page_suiv = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.horizontalLayout.addWidget(self.imageDefil)
+        self.pushButton_image_suiv = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.pushButton_image_suiv.setMaximumSize(QtCore.QSize(24, 24))
+        self.pushButton_image_suiv.setObjectName("pushButton_image_suiv")
+        self.horizontalLayout.addWidget(self.pushButton_image_suiv)
+        self.verticalLayout_4.addLayout(self.horizontalLayout)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
+        self.bouton_page_suiv = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.bouton_page_suiv.sizePolicy().hasHeightForWidth())
         self.bouton_page_suiv.setSizePolicy(sizePolicy)
         self.bouton_page_suiv.setObjectName("bouton_page_suiv")
-        self.gridLayout.addWidget(self.bouton_page_suiv, 3, 0, 1, 1)
-        self.verticalLayout.addLayout(self.gridLayout)
-        self.verticalLayoutWidget.raise_()
-        self.imageDefil.raise_()
+        self.horizontalLayout_2.addWidget(self.bouton_page_suiv)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem1)
+        self.horizontalLayout_2.setStretch(0, 1)
+        self.horizontalLayout_2.setStretch(1, 2)
+        self.horizontalLayout_2.setStretch(2, 1)
+        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
 
         self.retranslateUi(fenetreProgression)
         QtCore.QMetaObject.connectSlotsByName(fenetreProgression)
@@ -172,20 +154,10 @@ class Ui_fenetreProgression(object):
         _translate = QtCore.QCoreApplication.translate
         fenetreProgression.setWindowTitle(_translate("fenetreProgression", "Scan en cours - MindPass"))
         self.progressBar.setFormat(_translate("fenetreProgression", "%p%"))
+        self.pushButton_image_prec.setText(_translate("fenetreProgression", "<"))
+        self.pushButton_image_suiv.setText(_translate("fenetreProgression", ">"))
         self.bouton_page_suiv.setText(_translate("fenetreProgression", "Suivant"))
 
-    ##### A GARDER - debut
-    def changeValue(self, value):
-
-        if value >= 0 and value < 25:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub1.svg"))
-        elif value >=25 and value < 50:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub2.svg"))
-        elif value >= 50 and value < 75:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Pub3.svg"))
-        else:
-            self.imageDefil.setPixmap(QtGui.QPixmap("../../test alex slideshow + svg/Zeichen_123.svg"))
-    ##### A GARDER - fin
 
 if __name__ == "__main__":
     import sys
@@ -195,3 +167,4 @@ if __name__ == "__main__":
     ui.setupUi(fenetreProgression)
     fenetreProgression.show()
     sys.exit(app.exec_())
+

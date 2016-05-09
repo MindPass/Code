@@ -45,14 +45,14 @@ class LineEditWithFocusOut(QtWidgets.QLineEdit):
     """docstring for LineEditWithFocusOut
     Ré-implémentation de QLineEdit(), en modifiant son comportement
     lors d'un focusOut event. Ici, on update l'identifiant de la 
-    table sites_reconnus.
+    table sites_reconnus_"+self.nom_table+".
     """
 
     def focusOutEvent(self, arg):
         QtWidgets.QLineEdit.focusOutEvent(self, arg)
         # self.id contient l'id de la LigneEdit, ajouté dans afficher_ligne_site()
 
-        requete= "UPDATE sites_reconnus SET identifiant =? WHERE rowid=?"
+        requete= "UPDATE sites_reconnus_"+self.nom_table+" SET identifiant =? WHERE rowid=?"
         bdd_update(requete, (self.text(), self.id +1))
 
         if self.text() == "":
@@ -62,12 +62,13 @@ class LineEditWithFocusOut(QtWidgets.QLineEdit):
 
 class LigneSite(object):
 	"""docstring for LigneSite"""
-	def __init__(self, y, site_web, identifiant, mdp, categorie, objet):
+	def __init__(self, y, site_web, identifiant, mdp, categorie, objet, nom_table):
 		self.position = y
 		self.objet = objet
 		self.nom_site = site_web
 		self.nom_mdp = mdp
 		self.nom_cat = categorie
+		self.nom_table = nom_table
 
 		self.ligne = QtWidgets.QHBoxLayout()
 		self.site_web =QtWidgets.QLabel()
@@ -107,11 +108,11 @@ class LigneSite(object):
 		self.mdp.currentIndexChanged.connect(self.changement_pwd)
 
 	def changement_cat(self, event):
-		requete ="SELECT categorie FROM sites_reconnus WHERE rowid=?"
+		requete ="SELECT categorie FROM sites_reconnus_"+self.nom_table+" WHERE rowid=?"
 		ancienne_categorie = toliste(bdd_select(requete, (self.position+1,)))[0]
 
 		# On ajoute le site_web sous la catégorie correspondante
-		requete= 'UPDATE sites_reconnus SET categorie=? WHERE rowid=?'
+		requete= "UPDATE sites_reconnus_"+self.nom_table+" SET categorie=? WHERE rowid=?"
 		bdd_update(requete, (self.categorie.currentText(), self.position +1))
 		print("Catégorie changée en"+ self.categorie.currentText())
 
@@ -141,7 +142,7 @@ class LigneSite(object):
 					label.deleteLater()
 				self.objet.cats[k].labels = []
 
-				requete ="SELECT site_web FROM sites_reconnus WHERE categorie=?"
+				requete ="SELECT site_web FROM sites_reconnus_"+self.nom_table+" WHERE categorie=?"
 				sites_lies= toliste(bdd_select(requete, (ancienne_categorie,)))
 				self.objet.cats[k].affichage_sites_lies(sites_lies)
 
@@ -154,11 +155,11 @@ class LigneSite(object):
 					pwd.update_color_groupBox()
 
 	def changement_pwd(self):
-		requete ="SELECT mdp FROM sites_reconnus WHERE rowid=?"
+		requete ="SELECT mdp FROM sites_reconnus_"+self.nom_table+" WHERE rowid=?"
 		ancien_mdp = toliste(bdd_select(requete, (self.position+1,)))[0]
 
 		# On ajoute le site_web sous le mdp correspondant
-		requete= 'UPDATE sites_reconnus SET mdp=? WHERE rowid=?'
+		requete= "UPDATE sites_reconnus_"+self.nom_table+" SET mdp=? WHERE rowid=?"
 		nouveau_mdp = self.mdp.currentText()
 		bdd_update(requete, (nouveau_mdp , self.position +1))
 		print("Mdp changée en"+ nouveau_mdp)
@@ -179,7 +180,7 @@ class LigneSite(object):
 					label.deleteLater()
 				self.objet.pwds[k].labels = []
 
-				requete ="SELECT site_web FROM sites_reconnus WHERE mdp=?"
+				requete ="SELECT site_web FROM sites_reconnus_"+self.nom_table+" WHERE mdp=?"
 				sites_lies= toliste(bdd_select(requete, (ancien_mdp,)))
 				self.objet.pwds[k].affichage_sites_lies(sites_lies)
 
@@ -195,7 +196,7 @@ class LigneSite(object):
 
 
 	def afficher_combo_pwd(self):
-		requete= 'SELECT mdp FROM mdps'
+		requete= "SELECT mdp FROM mdps_"+self.nom_table+""
 		tab = bdd_select(requete)
 		result = []
 		for k in range(len(tab)):
@@ -209,7 +210,7 @@ class LigneSite(object):
 			self.mdp.addItem("")
 
 	def afficher_combo_cat(self):
-		requete= 'SELECT nom_categorie FROM categories'
+		requete= "SELECT nom_categorie FROM categories_"+self.nom_table 
 		tab = bdd_select(requete)
 		result = []
 		for k in range(len(tab)):
@@ -229,11 +230,12 @@ class Ligne(object):
 	Permet d'accéder à ces éléments et de les modifier.
 	"""
 
-	def __init__(self, position, nom, sites_lies, objet): 
+	def __init__(self, position, nom, sites_lies, objet, nom_table): 
 		self.position = position
 		self.nom = nom
 		self.sites_lies = sites_lies
 		self.objet = objet
+		self.nom_table =nom_table
 
 		self.ligne = QtWidgets.QHBoxLayout()
 		self.pushButton = QtWidgets.QPushButton()
@@ -290,9 +292,9 @@ class Ligne(object):
 class Categorie(Ligne):
 	"""docstring for Categorie"""
 
-	def __init__(self, position, nom, sites_lies, objet):
+	def __init__(self, position, nom, sites_lies, objet, nom_table):
 		# On exécute Ligne.__init__()
-		super().__init__(position, nom, sites_lies, objet)
+		super().__init__(position, nom, sites_lies, objet, nom_table)
 		# On ajoute d'autres attributs/propriétés
 		self.ligne.setObjectName("ligne_categorie")
 		self.groupBox.setObjectName("groupBox_cat")
@@ -337,7 +339,7 @@ class Categorie(Ligne):
 
 
 	def suppression_bdd(self):
-		requete = "DELETE FROM categories WHERE nom_categorie=?"
+		requete = "DELETE FROM categories_"+self.nom_table +" WHERE nom_categorie=?"
 		bdd_delete(requete, (self.nom,))
 		print("Categorie supprimée: "+ self.nom)
 
@@ -378,8 +380,8 @@ class Categorie(Ligne):
 class Password(Ligne):
 	"""docstring for Password"""
 
-	def __init__(self, position, nom, sites_lies, objet):
-		super().__init__(position, nom, sites_lies, objet)
+	def __init__(self, position, nom, sites_lies, objet, nom_table):
+		super().__init__(position, nom, sites_lies, objet, nom_table)
 		self.ligne.setObjectName("ligne_pwd")
 		self.groupBox.setObjectName("groupBox_pwd")
 		self.groupBox.setTitle(nom)
@@ -454,7 +456,7 @@ class Password(Ligne):
 		"""En paramètre le site, retourne un tableau de couleur [RGB, HEX] (associée à la categorie
 		éventuellement assignées
 		"""
-		requete = "SELECT categorie FROM sites_reconnus WHERE site_web=?"
+		requete = "SELECT categorie FROM sites_reconnus_"+self.nom_table+" WHERE site_web=?"
 		categorie = toliste(bdd_select(requete, (site,)))[0]
 
 		tab = ["rgb(255,255,255)","#fff"]
@@ -468,7 +470,7 @@ class Password(Ligne):
 
 
 	def suppression_bdd(self):
-		requete = "DELETE FROM mdps WHERE mdp=?"
+		requete = "DELETE FROM mdps_"+self.nom_table+" WHERE mdp=?"
 		bdd_delete(requete, (self.nom,))
 		print("Pwd supprimée: "+ self.nom)
 
@@ -495,7 +497,7 @@ class Password(Ligne):
 		self.objet.verticalLayout_2 = QtWidgets.QVBoxLayout(self.objet.scrollAreaWidgetContents_pwd)
 		self.objet.verticalLayout_2.setObjectName("verticalLayout_3")
 		self.objet.scrollArea_pwd.setWidget(self.objet.scrollAreaWidgetContents_pwd)
-		# on relance la méthode d'affichage des mdps
+		# on relance la méthode d'affichage des mdps_"+self.nom_table+"
 		self.objet.afficher_pwds()
 		
 
@@ -519,7 +521,8 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.cats = []
 		self.pwds = []
 
-	def lancement(self):
+	def lancement(self, nom_table):
+		self.nom_table = nom_table
 		self.afficher_sites()
 		self.afficher_categories()
 		self.afficher_pwds()
@@ -576,7 +579,7 @@ class ClasseGestion(Ui_fenetreGestion):
 	def openURL(self, given_url):
 		url = QtCore.QUrl(given_url)
 		if not QtGui.QDesktopServices.openUrl(url):
-		    QtGui.QMessageBox.warning(self, 'Open Url', 'Could not open url')
+		    QtGui.QMessageBox.warning(self, "Open Url", "Could not open url")
 
 
 	def check_if_exist_cat(self):
@@ -585,7 +588,7 @@ class ClasseGestion(Ui_fenetreGestion):
 		"""
 		if self.ajouter_cat.displayText() != "":
 
-			requete = "SELECT nom_categorie FROM categories WHERE nom_categorie=?"
+			requete = "SELECT nom_categorie FROM categories_"+self.nom_table +" WHERE nom_categorie=?"
 			categories_table = bdd_select(requete, (self.ajouter_cat.displayText(),))
 
 			conditions = not categories_table or categories_table[0][0] != self.ajouter_cat.displayText()
@@ -604,7 +607,7 @@ class ClasseGestion(Ui_fenetreGestion):
 
 
 	def afficher_categories(self):
-		requete= 'SELECT nom_categorie FROM categories'
+		requete= "SELECT nom_categorie FROM categories_"+self.nom_table 
 		tab = bdd_select(requete)
 
 		if tab:
@@ -615,7 +618,7 @@ class ClasseGestion(Ui_fenetreGestion):
 
 
 	def ajouter_categorie(self):
-		requete ="INSERT INTO categories (nom_categorie) VALUES(?)"
+		requete ="INSERT INTO categories_"+self.nom_table +" (nom_categorie) VALUES(?)"
 		bdd_insert(requete, (self.ajouter_cat.displayText(),))
 
 		#ajout dans les combobox
@@ -630,9 +633,9 @@ class ClasseGestion(Ui_fenetreGestion):
 
 
 	def ajouter_ligne_categorie(self, y, nom_categorie):
-		requete = "SELECT site_web FROM sites_reconnus WHERE categorie=?"
+		requete = "SELECT site_web FROM sites_reconnus_"+self.nom_table+" WHERE categorie=?"
 		sites_lies= toliste(bdd_select(requete, (nom_categorie,)))
-		self.cats.append(Categorie(y, nom_categorie, sites_lies, self))
+		self.cats.append(Categorie(y, nom_categorie, sites_lies, self , self.nom_table))
 		self.verticalLayout_3.addLayout(self.cats[y].ligne)
 		# On garde l'alignement haut
 		self.verticalLayout_3.setAlignment(QtCore.Qt.AlignTop) 
@@ -643,7 +646,7 @@ class ClasseGestion(Ui_fenetreGestion):
 		Vérifier que le pwd en question n'est pas déjà dans la base de donnée
 		"""
 		if self.ajouter_pwd.displayText() != "":
-		    requete = "SELECT mdp FROM mdps WHERE mdp=?"
+		    requete = "SELECT mdp FROM mdps_"+self.nom_table+" WHERE mdp=?"
 		    pwds_table = bdd_select(requete, (self.ajouter_pwd.displayText(),))
 		    conditions = not pwds_table or pwds_table[0][0] != self.ajouter_pwd.displayText()
 		    if conditions:
@@ -651,7 +654,7 @@ class ClasseGestion(Ui_fenetreGestion):
 
 
 	def afficher_pwds(self):
-		requete= 'SELECT mdp FROM mdps'
+		requete= "SELECT mdp FROM mdps_"+self.nom_table+""
 		tab = bdd_select(requete)
 
 		if tab:
@@ -660,7 +663,7 @@ class ClasseGestion(Ui_fenetreGestion):
 
 
 	def ajouter_password(self):
-		requete = "INSERT INTO mdps (mdp) VALUES(?)"
+		requete = "INSERT INTO mdps_"+self.nom_table+" (mdp) VALUES(?)"
 		bdd_insert(requete, (self.ajouter_pwd.displayText(),))
 
 		#ajout dans les combobox
@@ -674,9 +677,9 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.ajouter_pwd.setText("")
 
 	def ajouter_ligne_pwd(self, y, nom_pwd):
-		requete = "SELECT site_web FROM sites_reconnus WHERE mdp=?"
+		requete = "SELECT site_web FROM sites_reconnus_"+self.nom_table+" WHERE mdp=?"
 		sites_lies= toliste(bdd_select(requete, (nom_pwd,)))
-		self.pwds.append(Password(y, nom_pwd, sites_lies, self))
+		self.pwds.append(Password(y, nom_pwd, sites_lies, self, self.nom_table))
 		self.verticalLayout_2.addLayout(self.pwds[y].ligne)
 
 		# On garde l'alignement haut
@@ -695,27 +698,27 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_pwd)
 		self.verticalLayout_2.setObjectName("verticalLayout_3")
 		self.scrollArea_pwd.setWidget(self.scrollAreaWidgetContents_pwd)
-		# on relance la méthode d'affichage des mdps
+		# on relance la méthode d'affichage des mdps_"+self.nom_table+"
 		self.afficher_pwds()
 
 
 	def afficher_sites(self):
-		requete= 'SELECT site_web, identifiant, mdp, categorie FROM sites_reconnus'
+		requete= "SELECT site_web, identifiant, mdp, categorie FROM sites_reconnus_"+self.nom_table+""
 		tab = bdd_select(requete)
 
 		for k in range(len(tab)):
-			self.sites.append(LigneSite(k,tab[k][0], tab[k][1], tab[k][2], tab[k][3], self))
+			self.sites.append(LigneSite(k,tab[k][0], tab[k][1], tab[k][2], tab[k][3], self, self.nom_table))
 			self.verticalLayout.addLayout(self.sites[k].ligne)
 
 	def check_new_site(self):
-		requete =  "SELECT site_web FROM sites_reconnus"
+		requete =  "SELECT site_web FROM sites_reconnus_"+self.nom_table+""
 		sites_web = toliste(bdd_select(requete))
 
 		if(self.lineEdit_ajout_site.text() not in sites_web and self.lineEdit_ajout_site.text() != ""):
-			requete = "INSERT INTO sites_reconnus VALUES(?,?,?,?,?)"
+			requete = "INSERT INTO sites_reconnus_"+self.nom_table+" VALUES(?,?,?,?,?)"
 			valeurs =("",self.lineEdit_ajout_site.text(),"", "", "")
 			bdd_insert(requete, valeurs)
-			self.sites.append(LigneSite(len(self.sites), self.lineEdit_ajout_site.text(), "", "", "", self))
+			self.sites.append(LigneSite(len(self.sites), self.lineEdit_ajout_site.text(), "", "", "", self, self.nom_table))
 			self.verticalLayout.addLayout(self.sites[len(self.sites)-1].ligne)
 			self.lineEdit_ajout_site.setText("")
 

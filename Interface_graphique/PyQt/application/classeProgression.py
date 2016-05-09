@@ -1,4 +1,5 @@
 import sys 
+import os
 sys.path.append('../fenetres/')
 sys.path.append('../../../Traitement_mails/objets/')
 
@@ -22,6 +23,7 @@ sys.path.append('../../../Traitement_mails/objets/')
 
 
 from PyQt5 import QtWidgets
+from PyQt5 import QtGui
 from fenetreProgression import Ui_fenetreProgression
 from classeGestion import ClasseGestion
 from librairie import *
@@ -33,11 +35,22 @@ bdd = "../../../Traitement_mails/bdd.sq3"
 class ClasseProgression(Ui_fenetreProgression):
     def __init__(self, fenetre):
         self.setupUi(fenetre)
+        self.bouton_page_suiv.hide()
+        self.compteurImage = 0
+
+        # evenements
+        self.pushButton_image_prec.clicked.connect(self.image_precedente)
+        self.pushButton_image_suiv.clicked.connect(self.image_suivante)
+
 
     def lancement(self, serv, user_email, mdp, nom_table):
 
+        self.nom_table = nom_table
+
         table = Table(bdd, nom_table) #La table avec le bon nom n'existe pas forcément!
         tableExterne = TableExterne(serv, user_email, mdp)
+        tableExterne.connexionMail()
+
         fichier_erreurs = open('fichier_erreurs.txt', 'a')
 
         liste_externe_id = tableExterne.liste_id()
@@ -53,9 +66,13 @@ class ClasseProgression(Ui_fenetreProgression):
                     print("ID erreur:" + str(id_email) + ": " + str(e))
                     fichier_erreurs.write(str(id_email) + "-Erreur : %s \n" % e)
             count += 1
-            ratio = int(count / len(liste_externe_id) * 100)
-            self.progressBar.setValue(ratio)
-            QtWidgets.QApplication.processEvents()
+
+            if(count % 3 ==0):
+                ratio = int(count / len(liste_externe_id) * 100)
+                self.progressBar.setValue(ratio)
+                QtWidgets.QApplication.processEvents()
+                if(count % 10 ==0):
+                    table.save()
 
         table.save()
         fichier_erreurs.close()
@@ -63,14 +80,31 @@ class ClasseProgression(Ui_fenetreProgression):
         tableExterne.close()
 
         
-        creation_tables(nom_table, identifiants[0])
+        creation_tables(nom_table, user_email)
         
-
         # si suivant est cliqué, on passe à la fenetre suivante
-        self.bouton_page_suiv.clicked(self.fenetre_suivante
-        
+        self.bouton_page_suiv.show()
+        self.bouton_page_suiv.clicked.connect(self.fenetre_suivante)
+
+    def image_suivante(self):
+        listeImages = os.listdir('../ressources/images/')
+        self.compteurImage = (self.compteurImage+1) % len(listeImages)
+        self.imageDefil.setPixmap(QtGui.QPixmap("../ressources/images/"+listeImages[self.compteurImage]))
+
+    def image_precedente(self):
+        listeImages = os.listdir('../ressources/images/')
+        self.compteurImage = (self.compteurImage-1) % len(listeImages)
+        self.imageDefil.setPixmap(QtGui.QPixmap("../ressources/images/"+listeImages[self.compteurImage]))
 
     def fenetre_suivante(self):
-        pass
+        print("fenêtre suivante")
 
 
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    fenetreProgression = QtWidgets.QMainWindow()
+
+    classProgression = ClasseProgression(fenetreProgression)
+
+    fenetreProgression.show()
+    sys.exit(app.exec_())

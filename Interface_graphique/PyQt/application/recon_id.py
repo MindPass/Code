@@ -22,8 +22,8 @@ def creation_tables(nom_table, identifiant):
 
     cur.execute("CREATE TABLE IF NOT EXISTS sites_reconnus_"+nom_table+" (adresse_mail TEXT , site_web TEXT UNIQUE, identifiant TEXT,"
                 " mdp TEXT, categorie TEXT, PRIMARY KEY(site_web))")
-    cur.execute("CREATE TABLE IF NOT EXISTS mdps (mdp TEXT PRIMARY KEY)")
-    cur.execute("CREATE TABLE IF NOT EXISTS categories (nom_categorie TEXT PRIMARY KEY)")
+    cur.execute("CREATE TABLE IF NOT EXISTS mdps_"+nom_table+" (mdp TEXT PRIMARY KEY)")
+    cur.execute("CREATE TABLE IF NOT EXISTS categories_"+nom_table+" (nom_categorie TEXT PRIMARY KEY)")
     
     requete = "SELECT DISTINCT expediteur, contenu, rowid FROM " + nom_table + " WHERE sujet LIKE "
     for i in range(len(li.liste_mots_cles)-1):
