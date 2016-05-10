@@ -21,7 +21,7 @@ def __init__(self):
   print("Hello World, Hello MindPass !")
 ```
 
-Le livrable de ce projet est un exécutable, dont le premier déploiement a été lancé en version alpha début-avril. Une version stable est sur le point de sortir.
+Le livrable de ce projet est un exécutable, dont le premier déploiement en version alpha a été lancé début-avril. Une version stable (v1.0) est sortie.
 
     <Mindpass is a intelligent password manager written in Python3
     that checks your mailbox for logins and passwords that you do not remember.>
@@ -34,7 +34,7 @@ Le livrable de ce projet est un exécutable, dont le premier déploiement a ét�
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
@@ -75,7 +75,7 @@ Vous trouverez l'aide de ce programme à [cette adresse](https://github.com/Mind
 
 ## :floppy_disk: Dernière version
 
-La sortie de la version alpha (v0.1-alpha) a eu lieu le 1er avril 2016. La version v0.1 (stable) est prévue dans les jours à venir.
+La sortie de la version [v0.1-alpha](https://github.com/MindPass/Code/releases/tag/v0.1-alpha) a eu lieu le 1er avril 2016. La [version v1.0](https://github.com/MindPass/Code/releases/tag/1.0) (stable) est prévue dans les jours à venir.
 
 Stay tuned ! :computer:
 
