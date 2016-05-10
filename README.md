@@ -75,7 +75,7 @@ Vous trouverez l'aide de ce programme à [cette adresse](https://github.com/Mind
 
 ## :floppy_disk: Dernière version
 
-La sortie de la version [v0.1-alpha](https://github.com/MindPass/Code/releases/tag/v0.1-alpha) a eu lieu le 1er avril 2016. La [version v1.0](https://github.com/MindPass/Code/releases/tag/1.0) (stable) est prévue dans les jours à venir.
+La sortie de la version [v0.1-alpha](https://github.com/MindPass/Code/releases/tag/v0.1-alpha) a eu lieu le 1er avril 2016. La [version v1.0](https://github.com/MindPass/Code/releases/tag/1.0) (stable) est disponible.
 
 Stay tuned ! :computer:
 
