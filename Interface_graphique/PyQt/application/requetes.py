@@ -21,6 +21,17 @@
 import sqlite3
 bdd = "../../../Traitement_mails/bdd.sq3"
 
+def bdd_exec(requete, valeurs=None): 
+	conn = sqlite3.connect(bdd)
+	cur = conn.cursor()
+	if valeurs:
+		cur.execute(requete, valeurs)
+	else:
+		cur.execute(requete)
+	conn.commit()
+	cur.close()
+	conn.close()
+
 def bdd_update(requete, valeurs): 
 	conn = sqlite3.connect(bdd)
 	cur = conn.cursor()

@@ -47,6 +47,9 @@ class LineEditWithFocusOut(QtWidgets.QLineEdit):
     lors d'un focusOut event. Ici, on update l'identifiant de la 
     table sites_reconnus_"+self.nom_table+".
     """
+    def __init__(self, nom_table):
+    	super().__init__()
+    	self.nom_table = nom_table
 
     def focusOutEvent(self, arg):
         QtWidgets.QLineEdit.focusOutEvent(self, arg)
@@ -77,7 +80,7 @@ class LigneSite(object):
 		self.site_web.setText(site_web)
 		self.ligne.addWidget(self.site_web)
 
-		self.identifiant = LineEditWithFocusOut()
+		self.identifiant = LineEditWithFocusOut(self.nom_table)
 		self.identifiant.setAlignment(QtCore.Qt.AlignCenter)
 		self.identifiant.setObjectName('identifiant')
 		self.identifiant.id = y 

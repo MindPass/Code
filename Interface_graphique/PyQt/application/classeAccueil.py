@@ -17,6 +17,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>."""
 
 import sys
+# pour le cryptage
+import hashlib
+import Crypto
 
 sys.path.append('../fenetres/')
 sys.path.append('../../../Traitement_mails/objets/')
@@ -25,6 +28,7 @@ from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 import re
 from librairie import *
+from requetes import *
 from fenetreAccueil import Ui_fenetreAccueil
 
 def print_(arg):
@@ -112,31 +116,35 @@ class ClasseAccueil(Ui_fenetreAccueil):
                 if(horsConnexion):
                     # vérifier qu'il existe un couple adresse_mail/mdp_hash qui correspondent
                     # dans CONNEXIONS
-                    """
-                    self.serv = serv
-                    self.user_email = user_email
-                    self.mdp = mdp
-                    self.nom_table = nom_table
-                    self.fenetre_suivante()
-                    """
-                    pass
+                    requete ="SELECT adresse_mail,mdp_hash FROM connexions WHERE adresse_mail=?"
+                    resultat=bdd_select(requete, (user_email, ))
+                    if(resultat):
+                        mdpb=bytes(mdp, 'utf-8')
+                        hashed_pwd = hashlib.sha224(mdpb).hexdigest()
+                        if(resultat[0][1] == hashed_pwd):
+                            self.nom_table = nom_table
+                            self.fenetre_suivante_hors_connexion()
+                        else:
+                            self.label_erreur.setText("Mauvais mot de passe.")
+                    else:
+                        self.label_erreur.setText("Connectez-vous d'abord avec cette adresse email.")
 
                 else:
                     tableE = TableExterne(serv, user_email, mdp)
 
                     if(tableE.test_connexion(serv, user_email, mdp)):
-                        print("connexion faite")
                         self.serv = serv
                         self.user_email = user_email
                         self.mdp = mdp
                         self.nom_table = nom_table
+
+                        # on ajoute un champ a la table connexion
+                        self.update_table_connexions(self.user_email, self.mdp)
                         self.fenetre_suivante()
 
                     else:
                         # check gmail
                         if(serv == "imap.gmail.com"):
-                            print("Adresse gmail")
-
                             msg = QtWidgets.QMessageBox()
                             msg.setIcon(QtWidgets.QMessageBox.Information)
 
@@ -151,8 +159,6 @@ class ClasseAccueil(Ui_fenetreAccueil):
                             msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
 
                             ret = msg.exec_();
-
-
                         else:
                             self.label_erreur.setText("Problème de connexion ou d'identifiants.")
 
@@ -172,7 +178,29 @@ class ClasseAccueil(Ui_fenetreAccueil):
         lineEdit.setStyleSheet("QLineEdit { border: 1px solid " + couleur + "; }")
 
 
+    def update_table_connexions(self, user_email, mdp):
+        requete="CREATE TABLE IF NOT EXISTS connexions (adresse_mail TEXT UNIQUE, mdp_hash TEXT, PRIMARY KEY(adresse_mail))"
+        bdd_exec(requete)
+
+
+        recherche = "SELECT adresse_mail FROM connexions WHERE adresse_mail=?"
+        result = toliste(bdd_select(recherche, (user_email,)))
+
+        if(result):
+            result= result[0]
+            requete = "UPDATE connexions SET mdp_hash=?"
+            mdpb=bytes(mdp, 'utf-8')
+            hashed_pwd = hashlib.sha224(mdpb).hexdigest()
+            bdd_update(requete, (hashed_pwd,))
+        else:
+            requete="INSERT INTO connexions (adresse_mail, mdp_hash) VALUES(?,?)"
+            mdpb=bytes(mdp, 'utf-8')
+            hashed_pwd = hashlib.sha224(mdpb).hexdigest()
+            bdd_insert(requete, (user_email, hashed_pwd))
+
+
     def fenetre_suivante(self):
+        print("hello")
         pass
         # fonction définissant les modalités du passage à une autre fenêtre
         # qui va être overwrite dans class Accueil()

@@ -67,12 +67,11 @@ class ClasseProgression(Ui_fenetreProgression):
                     fichier_erreurs.write(str(id_email) + "-Erreur : %s \n" % e)
             count += 1
 
-            if(count % 3 ==0):
-                ratio = int(count / len(liste_externe_id) * 100)
-                self.progressBar.setValue(ratio)
-                QtWidgets.QApplication.processEvents()
-                if(count % 10 ==0):
-                    table.save()
+            ratio = int(count / len(liste_externe_id) * 100)
+            self.progressBar.setValue(ratio)
+            QtWidgets.QApplication.processEvents()
+            if(count % 10 ==0):
+                table.save()
 
         table.save()
         fichier_erreurs.close()

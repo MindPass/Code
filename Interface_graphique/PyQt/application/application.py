@@ -32,15 +32,16 @@ class Accueil(ClasseAccueil):
         fenetre.show()
 
     def fenetre_suivante(self):
-        print("hello")
+        ClasseAccueil.fenetre_suivante(self)
         fenetreAccueil.hide()
         fenetreProgression.show()
         objet_progression.lancement(self.serv, self.user_email, self.mdp, self.nom_table)
 
     def fenetre_suivante_hors_connexion(self):
+        ClasseAccueil.fenetre_suivante_hors_connexion(self)
         fenetreAccueil.hide()
         fenetreGestion.show()
-        objet_gestion.lancement()
+        objet_gestion.lancement(self.nom_table)
 
 
 class Progression(ClasseProgression):
@@ -48,6 +49,7 @@ class Progression(ClasseProgression):
         super().__init__(fenetre)
 
     def fenetre_suivante(self):
+        ClasseProgression.fenetre_suivante(self)
         fenetreProgression.hide()
         fenetreGestion.show()
         objet_gestion.lancement(self.nom_table)
