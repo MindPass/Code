@@ -25,13 +25,12 @@ def creation_tables(nom_table, identifiant):
     cur.execute("CREATE TABLE IF NOT EXISTS mdps_"+nom_table+" (mdp TEXT PRIMARY KEY)")
     cur.execute("CREATE TABLE IF NOT EXISTS categories_"+nom_table+" (nom_categorie TEXT PRIMARY KEY)")
     
-    requete = "SELECT DISTINCT expediteur, contenu, rowid FROM " + nom_table + " WHERE sujet LIKE "
-    for i in range(len(li.liste_mots_cles)-1):
-        requete+= "'%" + li.liste_mots_cles[i] + "%' OR sujet LIKE "
-    requete+= "'%" + li.liste_mots_cles[len(li.liste_mots_cles)-1] + "%'"
+    requete = "SELECT DISTINCT expediteur, contenu, rowid FROM " + nom_table + " WHERE expediteur NOT LIKE"
     
-    for i in range(len(li.liste_messageries)):
-        requete+= " AND expediteur NOT LIKE '%" + li.liste_messageries[i] + "%'"
+    for i in range(len(li.liste_messageries)-1):
+        requete+= " '%" + li.liste_messageries[i] + "%' AND expediteur NOT LIKE"
+    if (len(li.liste_messageries)>0):
+        requete+= " '%" + li.liste_messageries[len(li.liste_messageries)-1] + "%'"
 
     rows=bdd_select(requete)
     regex_mail= identifiant
@@ -60,7 +59,8 @@ def creation_tables(nom_table, identifiant):
     request= "INSERT OR IGNORE INTO sites_reconnus_"+nom_table+" (site_web, identifiant) VALUES "
     for i in range (len(liste_site)-1):
         request+="(?,?)," 
-    request+= "(?,?)"
+    if (len(liste_site)>0):
+        request+= "(?,?)"
     
     valeurs2=[]
     for i in range(len(liste_site)):
