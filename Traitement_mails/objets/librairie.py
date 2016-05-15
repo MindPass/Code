@@ -22,6 +22,7 @@
 import imaplib
 import sqlite3
 import email
+from email.header import decode_header
 
 
 def print_(arg):
@@ -88,6 +89,7 @@ class Table(object):
     def close(self):
         self.cur.close()
         self.conn.close()
+
 
 
 class TableExterne(object):
@@ -214,6 +216,60 @@ class TableExterne(object):
 
         return email_liste
 
+
+    def decoder(self, chaine):
+        str_email = email.message_from_bytes(chaine)
+
+        mime_subject = str_email.get('Subject')
+        # sujet du mail, possiblement encodé par le protocole MIME
+        subject_encoded, encoding = email.header.decode_header(mime_subject)[0]
+        # liste contenant un seul tuple  ('sujet', None) si sujet non encodé
+
+        if encoding is None:
+            subject = subject_encoded
+        else:
+            subject = subject_encoded.decode(encoding)
+        ##
+
+        ### EXPEDITEUR
+        mime_exp = str_email.get('From')
+
+        if len(email.header.decode_header(mime_exp)) != 1:
+            exp = ""
+            for element in email.header.decode_header(mime_exp):
+                exp_encoded, encoding = element
+                if encoding is None:
+                    exp += exp_encoded.decode('utf-8')
+                else:
+                    exp += exp_encoded.decode(encoding)
+
+        else:
+            exp_encoded, encoding = email.header.decode_header(mime_exp)[0]
+            if encoding is None:
+                exp = exp_encoded
+            else:
+                exp = exp_encoded.decode(encoding)
+        ##
+
+        
+        return exp, subject
+
+    def get_exp_sujet(self, liste_id):
+        # liste_id = [1,2,3,6 ..]
+        fetch_ids = b','.join(liste_id) # nous sort '1,2,3,6'
+        status, data = self.imap_conn.fetch(fetch_ids, '(BODY[HEADER.FIELDS (SUBJECT FROM)])')
+
+        clean_liste =[]
+        for i in range(0, len(data), 2):
+            clean_liste.append(tuple(self.decoder(data[i][1])))
+
+        return clean_liste
+
+
     def close(self):
         self.imap_conn.close()
         self.imap_conn.logout()
+
+
+liste = [b'1', b'2']
+print(b','.join(liste))
