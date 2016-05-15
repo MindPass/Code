@@ -9,13 +9,18 @@ import hashlib
 import Crypto
 
 
-def isMailInscription(sujet):
+def isMailInscription(exp, sujet):
 	# email_liste = [id_email, expediteur, sujet, corps, date]
 	l= listes.liste_mots_cles
+	l2=listes.liste_messageries
 	b = False
 	for mot_cle in l:
 		if(re.findall(mot_cle, sujet)):
 			b = True
+	for messagerie in l2:
+		if(re.findall(messagerie, exp)):
+			b= False
+
 	return b
 
 
@@ -84,37 +89,9 @@ site_enregistres = toliste(cur.fetchall())
 
 regex_expediteur = "<?([A-Za-z0-9]+\.[A-Za-z]{1,5})>?$"
 
-"""
-count= 0
-for id_email in liste_id[last_id:]:
-	print(id_email)
-	exp, sujet = tableExterne.get_essentials(id_email)
-	# liste = [id_email, expediteur, sujet, corps, date]
-	recherche = re.findall(regex_expediteur, exp)
-	if(recherche):
-		site= recherche[0]
-		print(site)
 
-	if(recherche and site not in site_enregistres):
-		if(isMailInscription(sujet)):
-			try:
-				requete = "INSERT INTO sites_reconnus_"+nom_table+" (site_web) VALUES(?)"
-				cur.execute(requete, (site,) )
-				site_enregistres.append(site)
-				print(site_enregistres)
-				print(id_email)
-			except Exception as e:
-				print(e)
-				print("Probleme d'insertion, last_id:"+str(last_id)+" new_last_id:"+str(new_last_id)+" id_du_mail:"+str(id_email))
-
-	if(count % 10 == 0):
-		conn.commit()
-	count+=1
-
-"""
-
-# exp et sujet des derniers mails
 if(nouveaux_mails):
+	# exp et sujet des derniers mails
 	liste_exp_sujet= tableExterne.get_exp_sujet(liste_id[last_id:])
 
 	for element in liste_exp_sujet:
@@ -124,7 +101,7 @@ if(nouveaux_mails):
 			site= recherche[0]
 
 		if(recherche and site not in site_enregistres):
-			if(isMailInscription(sujet)):
+			if(isMailInscription(exp, sujet)):
 				try:
 					requete = "INSERT INTO sites_reconnus_"+nom_table+" (site_web) VALUES(?)"
 					cur.execute(requete, (site,) )

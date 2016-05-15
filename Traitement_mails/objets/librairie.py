@@ -234,6 +234,7 @@ class TableExterne(object):
         ### EXPEDITEUR
         mime_exp = str_email.get('From')
 
+        """
         if len(email.header.decode_header(mime_exp)) != 1:
             exp = ""
             for element in email.header.decode_header(mime_exp):
@@ -250,14 +251,20 @@ class TableExterne(object):
             else:
                 exp = exp_encoded.decode(encoding)
         ##
-
-        
+        """
+        exp_encoded, encoding = email.header.decode_header(mime_exp)[0]
+        if encoding is None:
+            exp = exp_encoded
+        else:
+            exp = exp_encoded.decode(encoding)
+            
         return exp, subject
 
     def get_exp_sujet(self, liste_id):
-        # liste_id = [1,2,3,6 ..]
-        fetch_ids = b','.join(liste_id) # nous sort '1,2,3,6'
-        status, data = self.imap_conn.fetch(fetch_ids, '(BODY[HEADER.FIELDS (SUBJECT FROM)])')
+        # liste_id = [b'1',b'2' ..]
+        fetch_ids = b','.join(liste_id) # nous sort b'1,2,..'
+        #status, data = self.imap_conn.fetch(fetch_ids, '(BODY[HEADER.FIELDS (SUBJECT FROM)])')
+        status, data = self.imap_conn.fetch(fetch_ids, '(BODY.PEEK[HEADER.FIELDS (From Subject)] RFC822.SIZE)')
 
         clean_liste =[]
         for i in range(0, len(data), 2):

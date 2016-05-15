@@ -20,7 +20,7 @@ import re
 
 
 liste_mots_cles = []
-liste_mots_cles += ['Bienvenue', 'Confirm', 'Welcome', 'Identifiant', 'Activ', 'Verif', 'scrip', 'mot de passe', 'login', 'password', 'Valid']
+liste_mots_cles += ['Bienvenue', 'Confirm', 'Registration', 'Welcome', 'Identifiant', 'Activat', 'Verif', 'scrip', 'mot de passe', 'login', 'password', 'Valid']
 
 
 liste_messageries = []
