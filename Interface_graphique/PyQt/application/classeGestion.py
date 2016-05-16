@@ -524,7 +524,8 @@ class ClasseGestion(Ui_fenetreGestion):
 		self.cats = []
 		self.pwds = []
 
-	def lancement(self, nom_table):
+	def lancement(self, user_email, nom_table):
+		self.user_email = user_email
 		self.nom_table = nom_table
 		self.afficher_sites()
 		self.afficher_categories()

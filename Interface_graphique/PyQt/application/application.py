@@ -41,7 +41,7 @@ class Accueil(ClasseAccueil):
         ClasseAccueil.fenetre_suivante_hors_connexion(self)
         fenetreAccueil.hide()
         fenetreGestion.show()
-        objet_gestion.lancement(self.nom_table)
+        objet_gestion.lancement(self.user_email, self.nom_table)
 
 
 class Progression(ClasseProgression):

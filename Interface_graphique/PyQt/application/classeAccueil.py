@@ -116,12 +116,18 @@ class ClasseAccueil(Ui_fenetreAccueil):
                 if(horsConnexion):
                     # vérifier qu'il existe un couple adresse_mail/mdp_hash qui correspondent
                     # dans CONNEXIONS
-                    requete ="SELECT adresse_mail,mdp_hash FROM connexions WHERE adresse_mail=?"
-                    resultat=bdd_select(requete, (user_email, ))
+                    resultat = False
+                    try:
+                        requete ="SELECT adresse_mail,mdp_hash FROM connexions WHERE adresse_mail=?"
+                        resultat=bdd_select(requete, (user_email, ))
+                    except Exception as e:
+                        print(e)
+                        
                     if(resultat):
                         mdpb=bytes(mdp, 'utf-8')
                         hashed_pwd = hashlib.sha224(mdpb).hexdigest()
                         if(resultat[0][1] == hashed_pwd):
+                            self.user_email = user_email
                             self.nom_table = nom_table
                             self.fenetre_suivante_hors_connexion()
                         else:

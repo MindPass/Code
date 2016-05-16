@@ -44,7 +44,7 @@ class ClasseProgression(Ui_fenetreProgression):
 
 
     def lancement(self, serv, user_email, mdp, nom_table):
-
+        self.user_email = user_email
         self.nom_table = nom_table
 
         table = Table(bdd, nom_table) #La table avec le bon nom n'existe pas forcément!
