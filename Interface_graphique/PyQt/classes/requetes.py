@@ -53,3 +53,11 @@ def toliste(tab):
 
 # requete ="SELECT * FROM mdps"
 # print(bdd_select(requete))
+
+def bdd_exec(requete, valeurs): 
+	conn = sqlite3.connect(bdd)
+	cur = conn.cursor()
+	cur.execute(requete, valeurs)
+	conn.commit()
+	cur.close()
+	conn.close()

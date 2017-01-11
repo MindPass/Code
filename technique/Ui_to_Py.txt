@@ -1,0 +1,5 @@
+Martial
+C:\pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat -x fichier.ui -o fichier.py
+
+Alexandre
+"C:\Program Files\Pyzo2015a\Lib\site-packages\PyQt5\pyuic5.bat" -x pageAccueil.ui -o pageAccueil.py

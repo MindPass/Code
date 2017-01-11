@@ -73,3 +73,4 @@ b'7'-Erreur : decode() argument 1 must be str, not None
 b'9'-Erreur : decode() argument 1 must be str, not None 
 b'10'-Erreur : decode() argument 1 must be str, not None 
 b'11'-Erreur : decode() argument 1 must be str, not None 
+b'1644'-Erreur : decode() argument 1 must be str, not None 
