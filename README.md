@@ -1,1 +1,1 @@
-# this is an old repository, who needs a update, go there for the moment https://github.com/FirstWorldSlardar/mindpass
+# This is an oold and obsolete repository. You'd rather go there: https://github.com/FirstWorldSlardar/mindpass
